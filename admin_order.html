@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+      integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+      integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./dist/Script/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="layout">
+      <div class="sidebar hide_sidebar">
+        <header
+          class="px-4 pt-3 d-flex align-items-center justify-content-between w-100"
+        >
+          <h1>Logo</h1>
+          <i class="fa-solid fa-xmark close_sidebar"></i>
+        </header>
+        <ul class="list-unstyled mt-3 navigations">
+          <a
+            href="./admin_dashboard.html"
+            class="navigation unactive_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-house"></i>Home
+          </a>
+          <a
+            href="./admin_location.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-location-dot"></i>Location
+          </a>
+          <a
+          href="./admin_order.html"
+          class="active_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+        >
+        <i class="fa-solid fa-table-list"></i>Orders
+        </a>
+          <a
+            href="./admin_truck.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+          <i class="fa-solid fa-truck"></i>Truck
+          </a>
+          <a
+          href="./admin_patners.html"
+          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+        >
+        <i class="fa-solid fa-handshake-simple"></i>Patners
+        </a>
+          <a
+            href="./admin_profile.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-user"></i>Profile
+          </a>
+        </ul>
+        <footer class="footer px-4">
+          <span
+            class="profile_preview d-flex gap-2 px-2 pt-1 pb-2 rounded shadow"
+          >
+            <img src="./dist/img/woman.jpg" alt="" />
+            <small class="d-flex flex-column">
+              <span class="fw-bold name">Iofeow Listra</span>
+              <span class="email">xys@example.com</span>
+            </small>
+          </span>
+        </footer>
+      </div>
+
+      <div
+        class="body d-flex flex-column align-items-center px-2 px-md-2 px-lg-3"
+      >
+        <section class="body_container">
+          <header class="body_header bg-white px-2 px-md-4 py-2 shadow">
+            <div
+              class="d-flex justify-content-between align-items-center gap-1 main_header"
+            >
+              <span class="search_bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="search"
+                  name="search"
+                  id=""
+                  class="rounded"
+                  placeholder="Search here..."
+                />
+              </span>
+
+              <span class="profile_menu">
+                <img src="./dist/img/woman.jpg" alt="" class="profile_img" />
+                <ul
+                  class="list-unstyled bg-white shadow pb-2 z-3 rounded hide_element action_list"
+                >
+                  <li class="d-flex gap-2 px-2 mt-3">
+                    <img src="./dist/img/woman.jpg" alt="" class="" />
+                    <span class="d-flex flex-column">
+                      <small>Iofeow Listra</small>
+                      <small class="gray_color2">Admin</small>
+                    </span>
+                  </li>
+                  <li class="line mt-3"></li>
+
+                  <a
+                    href="./admin_profile.html"
+                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
+                    ><i class="fa-solid fa-user"></i>My Profile</a
+                  >
+                  <a
+                    href="./admin_profile.html"
+                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
+                    ><i class="fa-solid fa-lock"></i>Change Password</a
+                  >
+                  <li class="line mt-3"></li>
+                  <li class="px-2 mt-2">
+                    <button class="logOut btn text-white">
+                      <i class="fa-solid fa-power-off"></i>Log Out
+                    </button>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </header>
+
+          <section class="metrics mt-4">
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_orange"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-piggy-bank h5 color_orange bg_orange_light p-2 rounded"
+                ></i>
+                <h4>$42M</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Monthly income</span>
+                <span
+                  ><span>+18.2% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_red"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-truck-fast h5 color_red bg_red_light rounded p-2"
+                ></i>
+                <h4>42</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Todays Order</span>
+                <span
+                  ><span>+62% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_blue"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-clock h5 color_blue bg_blue_light rounded p-2"
+                ></i>
+                <h4>8</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Previous Shipping</span>
+                <span
+                  ><span>-8.2% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_black"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-person-dots-from-line h5 color_black bg_black_light rounded p-2"
+                ></i>
+                <h4>27</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Daily Visitors</span>
+                <span
+                  ><span>+4% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+          </section>
+
+          <section class="patner_activity mt-4">
+            <div class="transaction_history bg-white shadow rounded py-3">
+              <h5 class="px-3 mt-4">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i> Transaction
+                History
+              </h5>
+              <ul class="list_container list-unstyled">
+                <li class="d-flex align-items-center gap-2 px-3 pt-3">
+                  <i
+                    class="fa-solid fa-arrow-left bg-white fs-5 shadow text-danger"
+                  ></i>
+                  <span
+                    class="d-flex justify-content-between transaction_detail py-3"
+                  >
+                    <span class="d-flex flex-column">
+                      <a href="" class="text-decoration-none text-dark"
+                        >Hyundai</a
+                      >
+                      <small class="gray_color2">09348723</small>
+                    </span>
+                    <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                    <span class="d-flex flex-column">
+                      <span class="text-danger">- ₦23,094</span>
+                      <small class="gray_color2">14/12/2024</small>
+                    </span>
+                  </span>
+                </li>
+
+                <li class="d-flex align-items-center gap-2 px-3 pt-3">
+                  <i
+                    class="fa-solid fa-arrow-right bg-white fs-5 shadow text-success"
+                  ></i>
+
+                  <span
+                    class="d-flex justify-content-between transaction_detail py-3"
+                  >
+                    <span class="d-flex flex-column">
+                      <a href="" class="text-decoration-none text-dark"
+                        >Credit</a
+                      >
+                      <small class="gray_color2">09348723</small>
+                    </span>
+                    <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                    <span class="d-flex flex-column">
+                      <span class="text-success">+ ₦23,094</span>
+                      <small class="gray_color2">14/12/2024</small>
+                    </span>
+                  </span>
+                </li>
+
+                <li class="d-flex align-items-center gap-2 px-3 pt-3">
+                  <i
+                    class="fa-solid fa-arrow-left bg-white fs-5 shadow text-danger"
+                  ></i>
+                  <span
+                    class="d-flex justify-content-between transaction_detail py-3"
+                  >
+                    <span class="d-flex flex-column">
+                      <a href="" class="text-decoration-none text-dark"
+                        >Withdrawal</a
+                      >
+                      <small class="gray_color2">09348723</small>
+                    </span>
+                    <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                    <span class="d-flex flex-column">
+                      <span class="text-danger">- ₦23,094</span>
+                      <small class="gray_color2">14/12/2024</small>
+                    </span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="withdrawal_request bg-white rounded shadow py-3 mt-4 mt-md-0"
+            >
+              <h5 class="mt-4 px-3">
+                <i class="fa-solid fa-bell"></i> Notifications
+              </h5>
+              <ul class="list_container list-unstyled notification">
+                <li class="d-flex align-items-start gap-2 px-3 pt-3 mt-3 note">
+                  <img src="./dist/img/mockuser.jpg" alt="" />
+                  <div class="d-block w-100">
+                    <span
+                      class="d-flex justify-content-between transaction_detail w-100"
+                    >
+                      <span class="d-flex flex-column">
+                        <a
+                          href="./admin_profile.html"
+                          class="text-decoration-none text-dark text-capitalize"
+                          >Effa ricke</a
+                        >
+                        <small class="gray_color2"
+                          >Effa Ricke requsted for withdrawal</small
+                        >
+                      </span>
+                      <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                      <span class="d-flex flex-column align-items-center">
+                        <span class="text-danger">-₦23,903</span>
+                        <small class="gray_color2">14/12/2024</small>
+                      </span>
+                    </span>
+                  </div>
+                </li>
+
+                <li class="d-flex align-items-start gap-2 px-3 pt-3 mt-3 note">
+                  <img src="./dist/img/mockuser.jpg" alt="" />
+                  <div class="d-block w-100">
+                    <span
+                      class="d-flex justify-content-between transaction_detail w-100"
+                    >
+                      <span class="d-flex flex-column">
+                        <a
+                          href="./admin_profile.html"
+                          class="text-decoration-none text-dark text-capitalize"
+                          >Effa ricke</a
+                        >
+                        <small class="gray_color2">Effa Ricke credited</small>
+                      </span>
+                      <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                      <span class="d-flex flex-column align-items-center">
+                        <span class="text-success">+₦23,903</span>
+                        <small class="gray_color2">14/12/2024</small>
+                      </span>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="orders shadow bg-white rounded mt-4 px-3 py-3">
+            <h5><i class="fa-solid fa-cart-shopping mt-4"></i> Orders</h5>
+            <section class="table_section mt-4">
+              <table id="myTable" class="display" style="width: 100%">
+                <thead>
+                  <tr class="text-capitalize">
+                    <th><input type="checkbox" name="select_all" id="selectAll" /></th>
+                    <th>order</th>
+                    <th>description</th>
+                    <th>role</th>
+                    <th>email</th>
+                    <th>phone</th>
+                    <th>name</th>
+                    <th>actions</th>
+                    <th>date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td><input type="checkbox" name="select_ind" class="select_ind" /></td>
+                    <td>Mercedes Heavy duty</td>
+                    <td>20 tons, 34m X 34</td>
+                    <td><a href="javascript:void" class="text-decoration-none text-black">User</a></td>
+
+                    <td class="">
+                     oololo2341112@gmail.com 
+
+                    </td>
+                    <td>0993 898 8933</td>
+                    <td>Ifeanyi Okoronkwo</td>
+
+                    <td class="d-flex gap-2">
+                      <i class="fa-solid fa-trash text-danger pointer"></i>
+                      <input type="radio" name="1" title="successful" class="success pointer" />
+                      <input type="radio" name="1" title="pending" class="pending pointer" checked />
+                      <input type="radio" name="1" title="canceled" class="cancled pointer" />
+                    </td>
+                    <td>23/09/24</td>
+                  </tr>
+          
+                  <tr class="">
+                    <td><input type="checkbox" name="select_ind" class="select_ind" /></td>
+                    <td>Suzuki</td>
+                    <td>20 tons, 34m X 34</td>
+                    <td><a href="javascript:void" class="text-decoration-none text-black">Partner</a></td>
+                    <td>oololo2341112@gmail.com</td>
+                    <td>0993 898 8933</td>
+                    <td>Ifeanyi Okoronkwo</td>
+                    <td class="d-flex gap-2">
+                      <i class="fa-solid fa-trash text-danger pointer"></i>
+                      <input type="radio" name="2" title="successful" class="success pointer" />
+                      <input type="radio" name="2" title="pending" class="pending pointer" checked />
+                      <input type="radio" name="2" title="canceled" class="cancled pointer" />
+                    </td>
+                    <td>23/09/24</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </section>
+          
+        </section>
+      </div>
+
+      <div
+        class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
+      >
+        <i class="fa-solid fa-bars fs-5 text-white"></i>
+      </div>
+      <!-- modals -->
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.bootstrap5.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.1.2/css/dataTables.bootstrap5.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let table = new DataTable("#myTable");
+      $(".truck_slide").slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+      });
+    </script>
+  </body>
+</html>
+<!-- 
+order, description, role, status,
+date
+-->

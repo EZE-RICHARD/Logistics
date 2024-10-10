@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./dist/Script/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="layout">
+      <div class="sidebar">
+        <header
+          class="px-4 pt-3 d-flex justify-content-between align-items-center"
+        >
+          <h1>Logo</h1>
+          <i class="fa-solid fa-xmark close_sidebar"></i>
+        </header>
+        <ul class="list-unstyled mt-3 navigations">
+          <a
+            href="./admin_dashboard.html"
+            class="navigation active_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-house"></i>Home
+          </a>
+          <a
+            href="./admin_location.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-location-dot"></i>Location
+          </a>
+          <a
+          href="./admin_order.html"
+          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+        >
+        <i class="fa-solid fa-table-list"></i>Orders
+        </a>
+          <a
+            href="./admin_truck.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+          <i class="fa-solid fa-truck"></i>Truck
+          </a>
+          <a
+          href="./admin_patners.html"
+          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+        >
+        <i class="fa-solid fa-handshake-simple"></i>Patners
+        </a>
+          <a
+            href="./admin_profile.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-user"></i>Profile
+          </a>
+        </ul>
+        <footer class="footer px-4">
+          <span
+            class="profile_preview d-flex gap-2 px-2 pt-1 pb-2 rounded shadow"
+          >
+            <img src="./dist/img/woman.jpg" alt="" />
+            <small class="d-flex flex-column">
+              <span class="fw-bold name">Iofeow Listra</span>
+              <span class="email">xys@example.com</span>
+            </small>
+          </span>
+        </footer>
+      </div>
+      <div class="body d-flex flex-column align-items-center px-2 px-md-5">
+        <section class="body_container">
+          <header class="body_header bg-white px-2 px-md-4 py-2 shadow">
+            <div
+              class="d-flex justify-content-between align-items-center gap-1 main_header"
+            >
+              <span class="search_bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="search"
+                  name="search"
+                  id=""
+                  class="rounded"
+                  placeholder="Search here..."
+                />
+              </span>
+
+              <span class="profile_menu">
+                <img src="./dist/img/woman.jpg" alt="" class="profile_img" />
+                <ul
+                  class="list-unstyled bg-white shadow pb-2 z-3 rounded hide_element action_list"
+                >
+                  <li class="d-flex gap-2 px-2 mt-3">
+                    <img src="./dist/img/woman.jpg" alt="" class="" />
+                    <span class="d-flex flex-column">
+                      <small>Iofeow Listra</small>
+                      <small class="gray_color2">Admin</small>
+                    </span>
+                  </li>
+                  <li class="line mt-3"></li>
+
+                  <a
+                    href="./admin_profile.html"
+                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
+                    ><i class="fa-solid fa-user"></i>My Profile</a
+                  >
+                  <a
+                    href="./admin_profile.html"
+                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
+                    ><i class="fa-solid fa-lock"></i>Change Password</a
+                  >
+                  <li class="line mt-3"></li>
+                  <li class="px-2 mt-2">
+                    <button class="logOut btn text-white">
+                      <i class="fa-solid fa-power-off"></i>Log Out
+                    </button>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </header>
+
+          <section class="metrics mt-4">
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_orange"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-piggy-bank h5 color_orange bg_orange_light p-2 rounded"
+                ></i>
+                <h4>$42M</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Monthly income</span>
+                <span
+                  ><span>+18.2% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_red"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-truck-fast h5 color_red bg_red_light rounded p-2"
+                ></i>
+                <h4>42</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Todays Order</span>
+                <span
+                  ><span>+62% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_blue"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-clock h5 color_blue bg_blue_light rounded p-2"
+                ></i>
+                <h4>8</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Previous Shipping</span>
+                <span
+                  ><span>-8.2% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+
+            <div
+              class="metric_card rounded bg-white px-4 py-3 shadow bottom_black"
+            >
+              <span class="d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-person-dots-from-line h5 color_black bg_black_light rounded p-2"
+                ></i>
+                <h4>27</h4>
+              </span>
+              <span class="d-flex flex-column">
+                <span>Daily Visitors</span>
+                <span
+                  ><span>+4% </span
+                  ><small class="gray_color2">than last week</small></span
+                >
+              </span>
+            </div>
+          </section>
+
+          <section
+            class="chart_container bg-white px-3 py-3 shadow rounded mt-5"
+          >
+            <div class="income_card">
+              <h5 class="title">Gross Income</h5>
+              <section id="chart_income" class="chart_income"></section>
+            </div>
+          </section>
+
+          <section class="income_orders mt-4">
+            <div class="income_card bg-white shadow rounded px-3 py-3">
+              <h5 class="title">Visitors</h5>
+              <div id="income_chart"></div>
+            </div>
+            <div
+              class="order_class bg-white shadow px-3 rounded py-3 mt-4 mt-md-0"
+            >
+              <h5 class="title">Your Earning</h5>
+              <div id="order" class="mt-4"></div>
+            </div>
+          </section>
+        </section>
+      </div>
+      <div
+        class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
+      >
+        <i class="fa-solid fa-bars fs-5 text-white"></i>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      var income_settings = {
+        series: [
+          {
+            name: "Inflation",
+            data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+          },
+        ],
+        chart: {
+          height: 350,
+          type: "bar",
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: "top", // top, center, bottom
+            },
+          },
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val + "%";
+          },
+          offsetY: -20,
+          style: {
+            fontSize: "12px",
+            colors: ["#000"],
+          },
+        },
+
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          position: "top",
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          crosshairs: {
+            fill: {
+              type: "gradient",
+              gradient: {
+                colorFrom: "#000",
+                colorTo: "#000",
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
+              },
+            },
+          },
+          tooltip: {
+            enabled: true,
+          },
+        },
+        yaxis: {
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: false,
+            formatter: function (val) {
+              return val + "%";
+            },
+          },
+        },
+        title: {
+          text: "Monthly Income",
+          floating: true,
+          offsetY: 330,
+          align: "center",
+          style: {
+            color: "#000",
+          },
+        },
+      };
+
+      var income_chart = new ApexCharts(
+        document.querySelector("#chart_income"),
+        income_settings
+      );
+
+      income_chart.render();
+
+      var Visitors = {
+        chart: {
+          type: "line",
+          height: 350,
+        },
+        series: [
+          {
+            name: "sales",
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+          },
+        ],
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+        },
+      };
+
+      var Visitors_chart = new ApexCharts(
+        document.querySelector("#income_chart"),
+        Visitors
+      );
+      Visitors_chart.render();
+
+      var options = {
+        series: [44, 55, 41, 17, 15],
+        chart: {
+          type: "donut",
+          height: 350,
+        },
+      };
+
+      var chart = new ApexCharts(document.querySelector("#order"), options);
+      chart.render();
+    </script>
+  </body>
+</html>

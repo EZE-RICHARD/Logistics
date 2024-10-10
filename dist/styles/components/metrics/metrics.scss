@@ -1,0 +1,10 @@
+@use'../global.config.scss' as *;
+.metrics{
+    width: 100%;
+    grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
+    display: grid;
+    gap: 1rem;
+    .metric_card{
+        height: fit-content;
+    }
+}

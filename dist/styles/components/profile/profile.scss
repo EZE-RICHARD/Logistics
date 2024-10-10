@@ -1,0 +1,110 @@
+@use'../global.config.scss' as *;
+
+
+.profile{
+    @include laptop{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    @include lg-screen{
+        flex-direction: row;
+    }
+    .layer_infromation{
+        @include laptop{
+            @include laptop{
+                width: 100%;
+            }
+            @include lg-screen{
+                width: 38%;
+            }
+        }
+        .profile_card{
+            width: 100%;
+
+            .backdrop{
+                width: 100%;
+                img{
+                    width: 100%;
+                    height: 15vh;
+                    object-fit: cover;
+                }
+            }
+
+            .meta_head{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: -3rem;
+                img{
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 3px solid #fff;
+                }
+
+                .dotter{
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    background-color: $grey_color
+                }
+                button{
+                    background-color: $brand_color; 
+                    width: 90%;
+                }
+            }
+        }
+    }
+
+    .registered_admins{
+        @include scrollbar;
+        height:50vh;
+        overflow: auto;
+        @include laptop{
+            height: 50vh;
+        }
+        .list_admins{
+            .admin{
+                &:hover{
+                    background-color: $grey_color;
+                }
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+                i{
+                    color: red;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .account_actions{
+        width: 100%;
+        @include laptop{
+            width: 100%;
+
+        }
+        @include lg-screen{
+            width: 60%;
+        }
+        .change_pwd{
+            width: 100%;
+        }
+
+
+        .btn_placeholder{
+            width: 100%;
+            display: flex;
+            justify-content: right;
+            button{
+                background-color: $brand_color;
+            }
+        }
+    }
+}

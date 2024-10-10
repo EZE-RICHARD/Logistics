@@ -1,0 +1,54 @@
+@use "../global.config.scss" as *;
+
+.sidebar {
+  position: relative;
+  height: 100vh;
+  transition: transform 0.5s ease-in-out;
+  .navigations {
+    .navigation {
+      width: 95%;
+      font-size: $normal_text;
+      border-radius: 0px 100px 100px 0px;
+    }
+  }
+
+  .footer {
+    position: absolute;
+    width: 100%;
+    bottom: 2rem;
+    .profile_preview {
+      background-color: $grey_color;
+      @include laptop{
+        display: none !important;
+      }
+      @include lg-screen{
+        display: flex !important;
+      }
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      small {
+        .name {
+          color: $grey_color2;
+          font-size: 13px;
+        }
+        .email {
+          color: $grey_color2;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.active_nav {
+  background-color: $grey_color;
+  color: #000;
+  // font-weight: 600;
+}
+.unactive_nav {
+  color: $grey_color2;
+}

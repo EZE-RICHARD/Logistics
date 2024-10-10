@@ -1,0 +1,111 @@
+@use "../global.config.scss" as *;
+
+.trucks {
+    // height: fit-content !important;
+    position: relative !important;
+  header {
+    .list_header_action {
+      width: 30%;
+    //   height: 5vh;
+      select {
+        width: 70%;
+        background-color: $grey_color;
+        border: none;
+        &:focus {
+          outline: 0;
+        }
+      }
+      button{
+        // height: fit-content;
+        font-size: 20px;
+      }
+    }
+  }
+  .trucks_list{
+    min-height: fit-content;
+    // height: 80vh;
+    .truck{
+        height: fit-content;
+        position: relative;
+        border: 2px solid $nuetral_color;
+        @include laptop(){
+            display: flex;
+        }
+
+        .truck_image_canvas{
+            width: 100%;
+            height: 30%;
+            position: relative;
+            @include laptop{
+                width: 30%;
+                height: 30%;
+            }
+            @include lg-screen{
+                width: 20%;
+                height: 30%;
+            }
+            .truck_slide{
+                width: 100%;
+                height: 100%;
+            }
+            .overlay_dimension{
+                position: absolute;
+                // top: 0;
+                right: 0;
+                // background-color: red;
+                z-index: 5;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .meta_details{
+            @include laptop(){
+                display: flex;
+            }
+            .main_description{
+                .truck_action{
+                    .delete{
+                        color: red;
+                            background-color: lighten(red, 45%);
+ 
+                    }
+                    .edit{
+                        color: green;
+                        background-color: lighten(green, 70%);
+                    }
+                }
+            }
+        }
+    }
+}
+}
+
+.select_status{
+    &:focus {
+        outline: 0;
+      }
+}
+
+
+/* modala */
+
+.add_truck_madal{
+    @include backdrop_modal;
+    form{
+        height: fit-content;
+        width: 95%;
+        @include laptop{
+            width: 50%;
+        }
+        @include lg-screen{
+            width:35%;
+        }
+        input{
+            &::placeholder{
+                color: $grey_color2;
+            }
+        }
+    }
+}

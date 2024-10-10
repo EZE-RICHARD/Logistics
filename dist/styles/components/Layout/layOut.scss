@@ -1,0 +1,41 @@
+@use "../global.config.scss" as *;
+.layout {
+  width: 100%;
+  padding-bottom: 3rem;
+  background-color: $nuetral_color;
+  min-height: 100vh;
+  height: fit-content;
+  @include laptop {
+    display: grid;
+    grid:
+      "sidebar body" 100%
+      / 20% 80%;
+  }
+  @include lg-screen{
+    grid:
+    "sidebar body" 100%
+    / 22% 78%;
+  }
+  .sidebar {
+    width: 90%;
+    grid-area: sidebar;
+    position: fixed;
+    background-color: $nuetral_color;
+    z-index: 5;
+    @include tablet{
+      width: 40%;
+    }
+    @include laptop {
+      width: 20%;
+      // transform: translateX(0);
+    }
+    @include lg-screen{
+      width: 22%;
+    }
+  }
+  .body {
+    width: 100%;
+    position: relative;
+    grid-area: body;
+  }
+}

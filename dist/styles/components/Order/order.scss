@@ -1,0 +1,13 @@
+@use '../global.config.scss' as *;
+
+.orders{
+    width: 100%;
+    overflow-x: auto;
+    @include scrollbar;
+    .table_section{
+        width: 70rem;
+        @include laptop{
+            width: 100%;
+        }
+    }
+}

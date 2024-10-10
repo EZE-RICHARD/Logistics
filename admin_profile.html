@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="./dist/Script/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="layout">
+      <div class="sidebar hide_sidebar">
+        <header
+          class="px-4 pt-3 d-flex align-items-center justify-content-between w-100"
+        >
+          <h1>Logo</h1>
+          <i class="fa-solid fa-xmark close_sidebar"></i>
+        </header>
+        <ul class="list-unstyled mt-3 navigations">
+          <a
+            href="./admin_dashboard.html"
+            class="navigation unactive_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-house"></i>Home
+          </a>
+          <a
+            href="./admin_location.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-location-dot"></i>Location
+          </a>
+          <a
+          href="./admin_order.html"
+          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+        >
+        <i class="fa-solid fa-table-list"></i>Orders
+        </a>
+          <a
+            href="./admin_truck.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+          <i class="fa-solid fa-truck"></i>Truck
+          </a>
+          <a
+          href="./admin_patners.html"
+          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+        >
+        <i class="fa-solid fa-handshake-simple"></i>Patners
+        </a>
+          <a
+            href="./admin_profile.html"
+            class="active_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-user"></i>Profile
+          </a>
+        </ul>
+        <footer class="footer px-4">
+          <span
+            class="profile_preview d-flex gap-2 px-2 pt-1 pb-2 rounded shadow"
+          >
+            <img src="./dist/img/woman.jpg" alt="" />
+            <small class="d-flex flex-column">
+              <span class="fw-bold name">Iofeow Listra</span>
+              <span class="email ">xys@example.com</span>
+            </small>
+          </span>
+        </footer>
+      </div>
+
+      <div
+        class="body d-flex flex-column align-items-center px-2 px-md-5 px-lg-3"
+      >
+        <section class="body_container">
+          <header class="body_header bg-white px-2 px-md-4 py-2 shadow">
+            <div
+              class="d-flex justify-content-between align-items-center gap-1 main_header"
+            >
+              <span class="search_bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="search"
+                  name="search"
+                  id=""
+                  class="rounded"
+                  placeholder="Search here..."
+                />
+              </span>
+
+              <span class="profile_menu">
+                <img src="./dist/img/woman.jpg" alt="" class="profile_img" />
+                <ul
+                  class="list-unstyled bg-white shadow pb-2 z-3 rounded hide_element action_list"
+                >
+                  <li class="d-flex gap-2 px-2 mt-3">
+                    <img src="./dist/img/woman.jpg" alt="" class="" />
+                    <span class="d-flex flex-column">
+                      <small>Iofeow Listra</small>
+                      <small class="gray_color2">Admin</small>
+                    </span>
+                  </li>
+                  <li class="line mt-3"></li>
+
+                  <a
+                    href="./admin_profile.html"
+                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
+                    ><i class="fa-solid fa-user"></i>My Profile</a
+                  >
+                  <a
+                    href="./admin_profile.html"
+                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
+                    ><i class="fa-solid fa-lock"></i>Change Password</a
+                  >
+                  <li class="line mt-3"></li>
+                  <li class="px-2 mt-2">
+                    <button class="logOut btn text-white">
+                      <i class="fa-solid fa-power-off"></i>Log Out
+                    </button>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </header>
+
+          <section class="profile mt-5">
+            <section class="layer_infromation">
+              <div class="profile_card shadow bg-white rounded pb-4">
+                <span class="backdrop">
+                  <img src="/dist/img/bg.jpg" alt="" class="rounded" />
+                </span>
+                <span class="meta_head">
+                  <img src="/dist/img/woman.jpg" alt="" />
+                  <span
+                    class="meta_head_text flex-column d-flex align-items-center"
+                  >
+                    <span class="fw-bold">Iofeow Listra</span>
+                    <small class="gray_color2">Iofeow Listra@gmail.com</small>
+
+                    <div
+                      class="d-flex align-items-center gap-1 mt-4 justify-content-center"
+                    >
+                      <small class="gray_color2 text-responsive">+234 901 4494 146</small>
+                      <small class="dotter"></small>
+                      <small class="text-capitalize gray_color2 text-responsive"
+                        >5 uga avenue, enugu</small
+                      >
+                    </div>
+                  </span>
+                  <button class="btn text-white mt-4">
+                    <i class="fa-solid fa-power-off"></i> Log out
+                  </button>
+                </span>
+              </div>
+
+              <div
+                class="registered_admins shadow bg-white rounded pb-4 mt-4 pt-3"
+              >
+                <h5 class="px-2">Registered Admins</h5>
+                <ul class="list_admins list-unstyled mt-4">
+                  <li class="admin">
+                    <span
+                      class="d-flex align-items-center justify-content-between px-3 py-3"
+                    >
+                      <span class="d-flex gap-2">
+                        <img src="./dist/img/mockuser.jpg" alt="" />
+                        <span class="d-flex flex-column">
+                          <small class="text-capitalize">Joke Daargo</small>
+                          <small class="gray_color2">Daargo@hotmail.com</small>
+                        </span>
+                      </span>
+                      <i class="fa-solid fa-trash"></i>
+                    </span>
+                  </li>
+
+                  <li class="admin">
+                    <span
+                      class="d-flex align-items-center justify-content-between px-3 py-3"
+                    >
+                      <span class="d-flex gap-2">
+                        <img src="./dist/img/mockuser.jpg" alt="" />
+                        <span class="d-flex flex-column">
+                          <small class="text-capitalize">Joke Daargo</small>
+                          <small class="gray_color2">Daargo@hotmail.com</small>
+                        </span>
+                      </span>
+                      <i class="fa-solid fa-trash"></i>
+                    </span>
+                  </li>
+
+                  <li class="admin">
+                    <span
+                      class="d-flex align-items-center justify-content-between px-3 py-3"
+                    >
+                      <span class="d-flex gap-2">
+                        <img src="./dist/img/mockuser.jpg" alt="" />
+                        <span class="d-flex flex-column">
+                          <small class="text-capitalize">Joke Daargo</small>
+                          <small class="gray_color2">Daargo@hotmail.com</small>
+                        </span>
+                      </span>
+                      <i class="fa-solid fa-trash"></i>
+                    </span>
+                  </li>
+
+                  <li class="admin">
+                    <span
+                      class="d-flex align-items-center justify-content-between px-3 py-3"
+                    >
+                      <span class="d-flex gap-2">
+                        <img src="./dist/img/mockuser.jpg" alt="" />
+                        <span class="d-flex flex-column">
+                          <small class="text-capitalize">Joke Daargo</small>
+                          <small class="gray_color2">Daargo@hotmail.com</small>
+                        </span>
+                      </span>
+                      <i class="fa-solid fa-trash"></i>
+                    </span>
+                  </li>
+
+                  <li class="admin">
+                    <span
+                      class="d-flex align-items-center justify-content-between px-3 py-3"
+                    >
+                      <span class="d-flex gap-2">
+                        <img src="./dist/img/mockuser.jpg" alt="" />
+                        <span class="d-flex flex-column">
+                          <small class="text-capitalize">Joke Daargo</small>
+                          <small class="gray_color2">Daargo@hotmail.com</small>
+                        </span>
+                      </span>
+                      <i class="fa-solid fa-trash"></i>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+            </section>
+
+            <section class="account_actions">
+              <form
+                action=""
+                class="bg-white shadow rounded pb-4 pt-3 change_pwd px-4 mt-4 mt-lg-0"
+              >
+                <h5>Change Password</h5>
+                <div
+                  class="form-group d-flex flex-md-row flex-column gap-2 mt-3"
+                >
+                  <input
+                    type="password"
+                    name="new_password"
+                    class="form-control"
+                    placeholder="New Password"
+                  />
+                  <input
+                    type="password"
+                    name="old_password"
+                    class="form-control"
+                    placeholder="Old Password"
+                  />
+                </div>
+                <div class="form-group btn_placeholder">
+                  <button class="btn text-white mt-4">Change</button>
+                </div>
+              </form>
+
+              <form
+                action=""
+                class="bg-white shadow rounded pb-4 pt-3 change_pwd px-4 mt-4"
+              >
+                <h5>Update Admin</h5>
+                <div
+                  class="form-group flex-column d-flex flex-md-row gap-2 mt-3"
+                >
+                  <input
+                    type="text"
+                    name="f_name"
+                    class="form-control"
+                    placeholder="First Name"
+                  />
+                  <input
+                    type="text"
+                    name="l_name"
+                    class="form-control"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div class="form-group mt-2 mt-md-4">
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group mt-2 mt-md-4">
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Your Password ***"
+                  />
+                </div>
+
+                <div
+                  class="form-group flex-column d-flex flex-md-row gap-2 mt-2 mt-md-3"
+                >
+                  <input
+                    type="text"
+                    name="address"
+                    class="form-control"
+                    placeholder="Your Address"
+                  />
+                  <input
+                    type="number"
+                    name="phone"
+                    class="form-control"
+                    placeholder="Your Phone Number"
+                  />
+                </div>
+                <div class="form-group mt-2 mt-md-3">
+                  <input
+                    type="file"
+                    name="profile_img"
+                    class="form-control"
+                    placeholder="Your Profile Image"
+                  />
+                </div>
+                <div class="form-group btn_placeholder">
+                  <button class="btn text-white mt-4">Update</button>
+                </div>
+              </form>
+
+              <form
+                action=""
+                class="bg-white shadow rounded pb-4 pt-3 change_pwd px-4 mt-4"
+              >
+                <h5>Register Admin</h5>
+                <div
+                  class="form-group flex-column d-flex flex-md-row gap-2 mt-3"
+                >
+                  <input
+                    type="text"
+                    name="f_name"
+                    class="form-control"
+                    placeholder="First Name"
+                  />
+                  <input
+                    type="text"
+                    name="l_name"
+                    class="form-control"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div class="form-group mt-2 mt-md-4">
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group mt-2 mt-md-4">
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Your Password ***"
+                  />
+                </div>
+
+                <div
+                  class="form-group flex-column d-flex flex-md-row gap-2 mt-2 mt-md-3"
+                >
+                  <input
+                    type="text"
+                    name="address"
+                    class="form-control"
+                    placeholder="Your Address"
+                  />
+                  <input
+                    type="number"
+                    name="phone"
+                    class="form-control"
+                    placeholder="Your Phone Number"
+                  />
+                </div>
+                <div class="form-group mt-2 mt-md-3">
+                  <input
+                    type="file"
+                    name="profile_img"
+                    class="form-control"
+                    placeholder="Your Profile Image"
+                  />
+                </div>
+                <div class="form-group btn_placeholder">
+                  <button class="btn text-white mt-4">Add</button>
+                </div>
+              </form>
+            </section>
+          </section>
+
+        </section>
+      </div>
+
+      <div
+        class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
+      >
+        <i class="fa-solid fa-bars fs-5 text-white"></i>
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.bootstrap5.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.1.2/css/dataTables.bootstrap5.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let table = new DataTable("#myTable");
+    </script>
+  </body>
+</html>

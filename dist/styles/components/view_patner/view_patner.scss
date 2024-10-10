@@ -1,0 +1,90 @@
+@use "../global.config.scss" as *;
+.view_patner {
+  .backdrop {
+    width: 100%;
+    height: 30vh;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .meta_head {
+    .meta_image {
+      width: 60px;
+      height: 60px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+  }
+  .meta_details {
+    width: 100%;
+  }
+  .meta_head {
+    /* From https://css.glass */
+    width: 96%;
+    background: rgba(255, 255, 255, 0.44);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    margin-top: -3rem;
+  }
+
+}
+
+.patner_activity{
+  @include laptop{
+    display: flex;
+    gap: 1rem;
+  }
+  .transaction_history{
+    height: 50vh;
+    overflow: auto;
+    @include scrollbar;
+    @include laptop{
+      width: 50%;
+    }
+    .list_container{
+      width: 100%;
+      li{
+        i{
+          // width: 50px;
+          // height: 50px;
+          padding: .8rem;
+          border-radius: 50%;
+        }
+        .transaction_detail{
+          border-bottom: 2px solid $grey_color;
+          width: 95%;
+        }
+      }
+    }
+  }
+  .withdrawal_request{
+    height: 50vh;
+    overflow: auto;
+    @include scrollbar;
+    @include laptop{
+     width: 50%;
+    }
+    .list_container{
+      width: 100%;
+      li{
+        i{
+          // width: 50px;
+          // height: 50px;
+          padding: .8rem;
+          height: fit-content;
+          border-radius: 50%;
+        }
+
+      }
+    }
+
+   }
+}
