@@ -255,25 +255,30 @@ body {
   background-color: #fca311;
 }
 
-.registered_patners .partners_card {
+.trucks_order_list {
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1rem;
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-@media (min-width: 770px) {
-  .registered_patners .partners_card {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
+.trucks_order_list li {
+  border: 2px solid #f4f5fa;
 }
-.registered_patners .partners_card .patner figure {
-  width: 50px;
-  height: 50px;
+.trucks_order_list li .truck_image_canvas {
+  position: relative;
 }
-.registered_patners .partners_card .patner figure img {
+.trucks_order_list li .truck_image_canvas .overlay_dimension {
+  position: absolute;
+  right: 0;
+  z-index: 5;
+}
+.trucks_order_list li .meta_details button {
+  display: flex;
+  justify-content: center;
+  color: #fca311;
+  background-color: #fff5e5;
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
 }
-.registered_patners .partners_card .patner .amount_card {
+.trucks_order_list li .meta_details button:hover {
   background-color: #fca311;
-}/*# sourceMappingURL=registered_patners.css.map */
+  color: #fff5e5;
+}/*# sourceMappingURL=trucks_order_list.css.map */

@@ -33,13 +33,13 @@
         <ul class="list-unstyled mt-3 navigations">
           <a
             href="./patner_dashboard.html"
-            class="navigation active_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+            class="navigation unactive_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
             <i class="fa-solid fa-house"></i>Home
           </a>
           <a
             href="./patner_order.html"
-            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+            class="active_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
             <i class="fa-solid fa-location-dot"></i>Order
           </a>
@@ -74,7 +74,6 @@
           </span>
         </footer>
       </div>
-      
       <div class="body d-flex flex-column align-items-center px-2 px-md-5">
         <section class="body_container">
           <header class="body_header bg-white px-2 px-md-4 py-2 shadow">
@@ -201,27 +200,48 @@
             </div>
           </section>
 
-          <section
-            class="chart_container bg-white px-3 py-3 shadow rounded mt-5"
-          >
-            <div class="income_card">
-              <h5 class="title">Credits</h5>
-              <section id="chart_income" class="chart_income"></section>
-            </div>
-          </section>
-
-          <section class="income_orders mt-4">
-            <div class="income_card bg-white shadow rounded px-3 py-3">
-              <h5 class="title">Orders</h5>
-              <div id="income_chart"></div>
-            </div>
-            <div
-              class="order_class bg-white shadow px-3 rounded py-3 mt-4 mt-md-0"
+          <div class="edit_location_modal mt-4">
+            <form
+              class="bg-white p-4 rounded shadow d-flex flex-column gap-3 location_form"
             >
-              <h5 class="title">Expenses</h5>
-              <div id="order" class="mt-4"></div>
-            </div>
-          </section>
+              <span class="d-flex justify-content-between align-items-start">
+                <h4>
+                    <i class="fa-solid fa-cart-plus"></i> Edit Order
+                </h4>
+                <!-- <i class="fa-solid fa-xmark close_edit_modal"></i> -->
+              </span>
+              <div class="form-group">
+                <label for="edit_location">From</label>
+                <input
+                  type="text"
+                  name="edit_location"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="edit_destination">Destination</label>
+                <input
+                  type="text"
+                  name="edit_destination"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="price">Price(₦)</label>
+                <input
+                  type="number"
+                  placeholder="₦20,330"
+                  name="price"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+              <button class="btn btn-warning text-white">
+                <i class="fa-solid fa-pen-nib"></i> Save Changes
+              </button>
+            </form>
+          </div>
+
         </section>
       </div>
       <div
@@ -230,158 +250,34 @@
         <i class="fa-solid fa-bars fs-5 text-white"></i>
       </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.bootstrap5.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.1.2/css/dataTables.bootstrap5.css"
+    />
     <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     ></script>
     <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
-      var income_settings = {
-        series: [
-          {
-            name: "Inflation",
-            data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
-          },
-        ],
-        chart: {
-          height: 350,
-          type: "bar",
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-            dataLabels: {
-              position: "top", // top, center, bottom
-            },
-          },
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function (val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: "12px",
-            colors: ["#000"],
-          },
-        },
-
-        xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          position: "top",
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          crosshairs: {
-            fill: {
-              type: "gradient",
-              gradient: {
-                colorFrom: "#000",
-                colorTo: "#000",
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5,
-              },
-            },
-          },
-          tooltip: {
-            enabled: true,
-          },
-        },
-        yaxis: {
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          labels: {
-            show: false,
-            formatter: function (val) {
-              return val + "%";
-            },
-          },
-        },
-        title: {
-          text: "Monthly Income",
-          floating: true,
-          offsetY: 330,
-          align: "center",
-          style: {
-            color: "#000",
-          },
-        },
-      };
-
-      var income_chart = new ApexCharts(
-        document.querySelector("#chart_income"),
-        income_settings
-      );
-
-      income_chart.render();
-
-      var Visitors = {
-        chart: {
-          type: "line",
-          height: 350,
-        },
-        series: [
-          {
-            name: "sales",
-            data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-          },
-        ],
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-        },
-      };
-
-      var Visitors_chart = new ApexCharts(
-        document.querySelector("#income_chart"),
-        Visitors
-      );
-      Visitors_chart.render();
-
-      var options = {
-        series: [60, 30, 10], // Replace these values with your actual data (Deposit, Withdrawal, Orders)
-        chart: {
-          type: "donut",
-          height: 350,
-        },
-        labels: ["Deposit", "Withdrawal", "Orders"], // Labels for each section
-        title: {
-          text: "Transaction Comparison", // Title for the chart
-          align: "center",
-        },
-
-        legend: {
-          position: "bottom",
-        },
-      };
-
-      var chart = new ApexCharts(document.querySelector("#order"), options);
-      chart.render();
+      let table = new DataTable("#myTable");
     </script>
   </body>
 </html>

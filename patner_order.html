@@ -17,54 +17,49 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
     <script src="./dist/Script/script.js" defer></script>
     <link rel="stylesheet" href="./dist/styles/main.css" />
     <title>Document</title>
   </head>
   <body>
     <section class="layout">
-      <div class="sidebar">
-        <header class="px-4 pt-3 d-flex justify-content-between align-items-center">
+      <div class="sidebar hide_sidebar">
+        <header
+          class="px-4 pt-3 d-flex justify-content-between align-items-center"
+        >
           <h1>Logo</h1>
           <i class="fa-solid fa-xmark close_sidebar"></i>
         </header>
         <ul class="list-unstyled mt-3 navigations">
           <a
-            href="./admin_dashboard.html"
+            href="./patner_dashboard.html"
             class="navigation unactive_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
             <i class="fa-solid fa-house"></i>Home
           </a>
           <a
-            href="./admin_location.html"
+            href="./patner_order.html"
             class="active_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
-            <i class="fa-solid fa-location-dot"></i>Location
+            <i class="fa-solid fa-location-dot"></i>Order
           </a>
           <a
-          href="./admin_order.html"
-          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
-        >
-        <i class="fa-solid fa-table-list"></i>Orders
-        </a>
-          <a
-            href="./admin_truck.html"
+            href="./patner_truck.html"
             class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
-          <i class="fa-solid fa-truck"></i>Truck
+            <i class="fa-solid fa-table-list"></i>Trucks
           </a>
           <a
-          href="./admin_patners.html"
-          class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
-        >
-        <i class="fa-solid fa-handshake-simple"></i>Patners
-        </a>
-          <a
-            href="./admin_profile.html"
+            href="./patner_actions.html"
             class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
-            <i class="fa-solid fa-user"></i>Profile
+            <i class="fa-solid fa-handshake-simple"></i>Actions
+          </a>
+          <a
+            href="./patner_profile.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-truck"></i>Profile
           </a>
         </ul>
         <footer class="footer px-4">
@@ -79,7 +74,6 @@
           </span>
         </footer>
       </div>
-
       <div class="body d-flex flex-column align-items-center px-2 px-md-5">
         <section class="body_container">
           <header class="body_header bg-white px-2 px-md-4 py-2 shadow">
@@ -106,18 +100,18 @@
                     <img src="./dist/img/woman.jpg" alt="" class="" />
                     <span class="d-flex flex-column">
                       <small>Iofeow Listra</small>
-                      <small class="gray_color2">Admin</small>
+                      <small class="gray_color2">Patner</small>
                     </span>
                   </li>
                   <li class="line mt-3"></li>
 
                   <a
-                    href="./admin_profile.html"
+                    href="./patner_profile.html"
                     class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
                     ><i class="fa-solid fa-user"></i>My Profile</a
                   >
                   <a
-                    href="./admin_profile.html"
+                    href="./patner_profile.html"
                     class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
                     ><i class="fa-solid fa-lock"></i>Change Password</a
                   >
@@ -131,6 +125,7 @@
               </span>
             </div>
           </header>
+
           <section class="metrics mt-4">
             <div
               class="metric_card rounded bg-white px-4 py-3 shadow bottom_orange"
@@ -142,7 +137,7 @@
                 <h4>$42M</h4>
               </span>
               <span class="d-flex flex-column">
-                <span>Monthly income</span>
+                <span>Total credits</span>
                 <span
                   ><span>+18.2% </span
                   ><small class="gray_color2">than last week</small></span
@@ -191,12 +186,12 @@
             >
               <span class="d-flex gap-2 align-items-center">
                 <i
-                  class="fa-solid fa-person-dots-from-line h5 color_black bg_black_light rounded p-2"
+                  class="fa-solid fa-money-bill-trend-up h5 color_black bg_black_light rounded p-2"
                 ></i>
-                <h4>27</h4>
+                <h4>$2M</h4>
               </span>
               <span class="d-flex flex-column">
-                <span>Daily Visitors</span>
+                <span>Withdrawal</span>
                 <span
                   ><span>+4% </span
                   ><small class="gray_color2">than last week</small></span
@@ -212,7 +207,7 @@
                 class="bg-white p-4 rounded shadow d-flex flex-column gap-3 location_form"
               >
                 <span class="d-flex justify-content-between align-items-start">
-                  <h4><i class="fa-solid fa-location-dot"></i> Add Location</h4>
+                  <h4><i class="fa-solid fa-cart-plus"></i>Place an Order</h4>
                   <!-- <i class="fa-solid fa-xmark close_location_modal"></i> -->
                 </span>
                 <div class="form-group">
@@ -238,17 +233,21 @@
                   <label for="price">Price(₦)</label>
                   <input
                     type="number"
-                    placeholder="Add Destination ..."
+                    placeholder="₦20,330"
                     name="price"
                     class="form-control"
+                    disabled
                   />
                 </div>
                 <button class="btn btn-warning text-white">
-                  <i class="fa-solid fa-plus"></i> Add
+                  <i class="fa-solid fa-plus"></i> Order
                 </button>
               </form>
             </div>
-            <article class="display_location bg-white shadow rounded p-4 mt-5 mt-md-0">
+            
+            <article
+              class="display_location bg-white shadow rounded p-4 mt-5 mt-md-0"
+            >
               <div class="timeline-container">
                 <ul class="list-unstyled tl">
                   <li class="place d-flex w-100">
@@ -274,11 +273,14 @@
                           <ul
                             class="list-unstyled location_action_list shadow rounded py-2 hide_element bg-white"
                           >
-                            <li
-                              class="px-2 py-2 edit d-flex gap-2 align-items-center"
+                            <a href="./patner_edit_order.html"
+                              class="px-2 py-2 edit d-flex gap-2 align-items-center text-decoration-none"
                             >
-                              <i class="fa-solid fa-pen-nib edit_location_btn"></i>Edit
-                            </li>
+                              <i
+                                class="fa-solid fa-pen-nib edit_location_btn"
+                              ></i
+                              >Edit
+                        </a>
                             <li
                               class="px-2 py-2 del d-flex gap-2 align-items-center"
                             >
@@ -313,11 +315,14 @@
                           <ul
                             class="list-unstyled location_action_list shadow rounded py-2 hide_element bg-white"
                           >
-                            <li
-                              class="px-2 py-2 edit d-flex gap-2 align-items-center"
+                            <a href="./patner_edit_order.html"
+                              class="px-2 py-2 edit d-flex gap-2 align-items-center text-decoration-none"
                             >
-                              <i class="fa-solid fa-pen-nib edit_location_btn"></i>Edit
-                            </li>
+                              <i
+                                class="fa-solid fa-pen-nib edit_location_btn"
+                              ></i
+                              >Edit
+                        </a>
                             <li
                               class="px-2 py-2 del d-flex gap-2 align-items-center"
                             >
@@ -328,135 +333,110 @@
                       </ul>
                     </article>
                   </li>
-
-
                 </ul>
               </div>
             </article>
           </section>
 
-          <section class="table_section">
-            <!--             <table id="myTable" class="display" style="width: 100%">
-              <thead>
-                <tr>
-                  <th>Location</th>
-                  <th>Email</th>
-                  <th>Account Number</th>
-                  <th>Registration Date</th>
-                  <th>Account Status</th>
-                  <th>Balance</th>
-                  <th>Fees Paid</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John Doe</td>
-                  <td>john.doe@example.com</td>
-                  <td>1000012345</td>
-                  <td>2nd june, 2021</td>
-                  <td>
-                    <a
-                      href="javascript:void(0)"
-                      class="text-decoration-none text-white bg-success text-center p-2 rounded"
-                      >Active</a
-                    >
-                  </td>
-                  <td>&#8358;320,800</td>
-                  <td>&#8358;1,000</td>
-                  <td>
-                    <a href="./userProfile.html" class="btn btn-default-subtle"
-                      >View Profile</a
-                    >
-                  </td>
-                </tr>
+          <section class="orders shadow bg-white rounded mt-4 px-3 py-3">
+            <header class="d-flex justify-content-between align-items-baseline">
+              <h5><i class="fa-solid fa-cart-shopping"></i> Orders</h5>
+              <p class="bg_red_light text-danger pointer py-2 px-3 rounded">
+                <i class="fa-solid fa-trash"></i> delete
+              </p>
+            </header>
+            <section class="table_section mt-4">
+              <table id="myTable" class="display" style="width: 100%">
+                <thead>
+                  <tr class="text-capitalize">
+                    <th>
+                      <input type="checkbox" name="select_all" id="selectAll" />
+                    </th>
+                    <th>order</th>
+                    <th>description</th>
+                    <th>status</th>
+                    <th>date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td>
+                      <input
+                        type="checkbox"
+                        name="select_ind"
+                        class="select_ind"
+                      />
+                    </td>
+                    <td>Mercedes Heavy duty</td>
+                    <td>20 tons, 34m X 34</td>
+                    <td>
+                      <input
+                        type="radio"
+                        name="1"
+                        title="canceled"
+                        class="cancled pointer"
+                        checked
+                      />
+                    </td>
 
-                <tr>
-                  <td>Emily Davis</td>
-                  <td>emily.davis@example.com</td>
-                  <td>1000012348</td>
-                  <td>3rd Dec, 2021</td>
-                  <td>
-                    <a
-                      href="javascript:void(0)"
-                      class="text-decoration-none text-white bg-secondary text-center p-2 rounded"
-                      >Inactive</a
-                    >
-                  </td>
-                  <td>&#8358;320,800</td>
-                  <td>&#8358;1,000</td>
-                  <td>
-                    <a href="./userProfile.html" class="btn btn-default-subtle"
-                      >View Profile</a
-                    >
-                  </td>
-                </tr>
+                    <td>23/09/24</td>
+                  </tr>
 
-                <tr>
-                  <td>Daniel White</td>
-                  <td>daniel.white@example.com</td>
-                  <td>1000012349</td>
-                  <td>9th Feb, 2021</td>
-                  <td>
-                    <a
-                      href="javascript:void(0)"
-                      class="text-decoration-none text-white bg-warning text-center p-2 rounded"
-                      >Suspend</a
-                    >
-                  </td>
-                  <td>&#8358;50,100</td>
-                  <td>&#8358;1,000</td>
-                  <td>
-                    <a href="./userProfile.html" class="btn btn-default-subtle"
-                      >View Profile</a
-                    >
-                  </td>
-                </tr>
+                  <tr class="">
+                    <td>
+                      <input
+                        type="checkbox"
+                        name="select_ind"
+                        class="select_ind"
+                      />
+                    </td>
+                    <td>Suzuki</td>
+                    <td>20 tons, 34m X 34</td>
+                    <td>
+                      <input
+                        type="radio"
+                        name="2"
+                        title="successful"
+                        class="success pointer"
+                        checked
+                      />
+                    </td>
 
-                <tr>
-                  <td>Ifeanyi Emmanuel</td>
-                  <td>Ifeanyiwhite@example.com</td>
-                  <td>1000012346</td>
-                  <td>3rd Oct, 2021</td>
-                  <td>
-                    <a
-                      href="javascript:void(0)"
-                      class="text-decoration-none text-white bg-danger text-center p-2 rounded"
-                      >Blocked</a
-                    >
-                  </td>
-                  <td>&#8358;50,100</td>
-                  <td>N/A</td>
-                  <td>
-                    <a href="./userProfile.html" class="btn btn-default-subtle"
-                      >View Profile</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Account Number</th>
-                  <th>Registration Date</th>
-                  <th>Account Status</th>
-                  <th>Balance</th>
-                  <th>Fees Paid</th>
-                  <th>Actions</th>
-                </tr>
-              </tfoot>
-            </table> -->
+                    <td>23/09/24</td>
+                  </tr>
+                  <tr class="">
+                    <td>
+                      <input
+                        type="checkbox"
+                        name="select_ind"
+                        class="select_ind"
+                      />
+                    </td>
+                    <td>Delivery</td>
+                    <td>Abuja - Portharcout</td>
+                    <td>
+                      <input
+                        type="radio"
+                        name="3"
+                        title="pending"
+                        class="pending pointer"
+                        checked
+                      />
+                    </td>
+
+                    <td>23/09/24</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
           </section>
         </section>
-
-      <div
-      class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
-    >
-      <i class="fa-solid fa-bars fs-5 text-white"></i>
-    </div>
       </div>
-      <!-- edit location  -->
+      <div
+        class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
+      >
+        <i class="fa-solid fa-bars fs-5 text-white"></i>
+      </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -469,6 +449,18 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
       integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>

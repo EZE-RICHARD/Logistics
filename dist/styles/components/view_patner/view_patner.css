@@ -96,13 +96,14 @@ body {
 .hide_sidebar {
   transform: translateX(-50rem);
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .hide_sidebar {
     transform: translateX(0);
   }
 }
 
 .mobile_menu_drawer {
+  z-index: 5;
   background-image: radial-gradient(circle, #fca311, #fca311, #fca311, #ffcc7e, #fff1da);
   width: 50px;
   height: 50px;
@@ -111,13 +112,13 @@ body {
   right: 1rem;
   bottom: 5rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .mobile_menu_drawer {
     display: none !important;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .close_sidebar {
     display: none !important;
   }
@@ -126,7 +127,7 @@ body {
 .mock_fs {
   font-size: 11px;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .mock_fs {
     font-size: 13px;
   }
@@ -229,6 +230,31 @@ body {
   border: 2px solid white;
 }
 
+.text-responsive {
+  font-size: 10px;
+}
+@media (min-width: 1024px) {
+  .text-responsive {
+    font-size: 13px;
+  }
+}
+
+.btn-light:hover {
+  background: transparent !important;
+  outline: none !important;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-warning-subtle {
+  background-color: #fff5e5 !important;
+  color: #fca311 !important;
+}
+.btn-warning-subtle:hover {
+  color: #fff5e5;
+  background-color: #fca311;
+}
+
 .view_patner .backdrop {
   width: 100%;
   height: 30vh;
@@ -262,7 +288,7 @@ body {
   margin-top: -3rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .patner_activity {
     display: flex;
     gap: 1rem;
@@ -274,11 +300,12 @@ body {
 }
 .patner_activity .transaction_history::-webkit-scrollbar {
   width: 1px;
+  height: 1px;
 }
 .patner_activity .transaction_history::-webkit-scrollbar-thumb {
   background-color: #fca311;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .patner_activity .transaction_history {
     width: 50%;
   }
@@ -300,11 +327,12 @@ body {
 }
 .patner_activity .withdrawal_request::-webkit-scrollbar {
   width: 1px;
+  height: 1px;
 }
 .patner_activity .withdrawal_request::-webkit-scrollbar-thumb {
   background-color: #fca311;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .patner_activity .withdrawal_request {
     width: 50%;
   }

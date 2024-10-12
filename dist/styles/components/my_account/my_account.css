@@ -255,25 +255,134 @@ body {
   background-color: #fca311;
 }
 
-.registered_patners .partners_card {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.my_account .transactions {
+  width: 100%;
 }
 @media (min-width: 770px) {
-  .registered_patners .partners_card {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  .my_account .transactions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
   }
 }
-.registered_patners .partners_card .patner figure {
-  width: 50px;
-  height: 50px;
-}
-.registered_patners .partners_card .patner figure img {
+.my_account .transactions .amount {
   width: 100%;
-  height: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  background-image: radial-gradient(circle, #fba23d, #fba237, #fca231, #fca329, #fca321, #fca01b, #fd9d14, #fd9a0b, #fe9308, #fe8d07, #ff8607, #ff7f08);
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 770px) {
+  .my_account .transactions .amount {
+    width: 45%;
+  }
+}
+.my_account .transactions .amount button {
+  border-radius: 100px !important;
+}
+.my_account .transactions .transaction_history {
+  height: 70vh;
+  overflow: auto;
+}
+.my_account .transactions .transaction_history::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+.my_account .transactions .transaction_history::-webkit-scrollbar-thumb {
+  background-color: #fca311;
+}
+@media (min-width: 770px) {
+  .my_account .transactions .transaction_history {
+    height: 50vh;
+    width: 55%;
+  }
+}
+.my_account .transactions .transaction_history .list_container {
+  width: 100%;
+}
+.my_account .transactions .transaction_history .list_container li i {
+  padding: 0.8rem;
   border-radius: 50%;
 }
-.registered_patners .partners_card .patner .amount_card {
-  background-color: #fca311;
-}/*# sourceMappingURL=registered_patners.css.map */
+.my_account .transactions .transaction_history .list_container li .transaction_detail {
+  border-bottom: 2px solid #e5e5eb;
+  width: 95%;
+}
+
+.deposit_modal {
+  background-color: rgba(0, 0, 0, 0.2392156863);
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.deposit_modal form {
+  width: 95%;
+}
+@media (min-width: 640px) {
+  .deposit_modal form {
+    width: 50%;
+  }
+}
+@media (min-width: 770px) {
+  .deposit_modal form {
+    width: 40%;
+  }
+}
+
+.withdraw_modal {
+  background-color: rgba(0, 0, 0, 0.2392156863);
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.withdraw_modal form {
+  width: 95%;
+}
+@media (min-width: 640px) {
+  .withdraw_modal form {
+    width: 60%;
+  }
+}
+@media (min-width: 770px) {
+  .withdraw_modal form {
+    width: 70%;
+  }
+}
+@media (min-width: 1024px) {
+  .withdraw_modal form {
+    width: 50%;
+  }
+}
+@media (min-width: 770px) {
+  .withdraw_modal form .form {
+    display: flex;
+  }
+}
+.withdraw_modal form .form article {
+  width: 100%;
+}
+@media (min-width: 770px) {
+  .withdraw_modal form .form article {
+    width: 50%;
+  }
+}
+.withdraw_modal form .form .form-group {
+  width: 100%;
+}
+@media (min-width: 770px) {
+  .withdraw_modal form .form .form-group {
+    width: 50%;
+  }
+}/*# sourceMappingURL=my_account.css.map */

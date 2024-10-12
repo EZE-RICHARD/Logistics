@@ -96,7 +96,7 @@ body {
 .hide_sidebar {
   transform: translateX(-50rem);
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .hide_sidebar {
     transform: translateX(0);
   }
@@ -112,13 +112,13 @@ body {
   right: 1rem;
   bottom: 5rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .mobile_menu_drawer {
     display: none !important;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .close_sidebar {
     display: none !important;
   }
@@ -127,7 +127,7 @@ body {
 .mock_fs {
   font-size: 11px;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .mock_fs {
     font-size: 13px;
   }
@@ -233,6 +233,27 @@ body {
 .text-responsive {
   font-size: 10px;
 }
+@media (min-width: 1024px) {
+  .text-responsive {
+    font-size: 13px;
+  }
+}
+
+.btn-light:hover {
+  background: transparent !important;
+  outline: none !important;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-warning-subtle {
+  background-color: #fff5e5 !important;
+  color: #fca311 !important;
+}
+.btn-warning-subtle:hover {
+  color: #fff5e5;
+  background-color: #fca311;
+}
 
 .layout {
   width: 100%;
@@ -242,7 +263,7 @@ body {
   height: -moz-fit-content;
   height: fit-content;
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .layout {
     display: grid;
     grid: "sidebar body" 100%/20% 80%;
@@ -265,7 +286,7 @@ body {
     width: 40%;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .layout .sidebar {
     width: 20%;
   }

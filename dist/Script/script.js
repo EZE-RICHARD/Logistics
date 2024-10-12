@@ -336,3 +336,16 @@ if (select_indicators) {
     });
   });
 }
+
+
+
+const desposit= document.querySelector('.deposit_modal')
+const withdraw = document.querySelector('.withdraw_modal')
+const withdrawBtn = document.querySelector('.withdraw')
+const DepositBtn = document.querySelector('.deposit')
+const btnclose_deposit = document.querySelector('.close_deposit')
+const btnwithdrawal_close = document.querySelector('.withdrawal_close')
+
+
+handleModals(desposit, DepositBtn, btnclose_deposit)
+handleModals(withdraw, withdrawBtn, btnwithdrawal_close)

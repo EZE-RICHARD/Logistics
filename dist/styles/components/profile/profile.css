@@ -233,6 +233,27 @@ body {
 .text-responsive {
   font-size: 10px;
 }
+@media (min-width: 1024px) {
+  .text-responsive {
+    font-size: 13px;
+  }
+}
+
+.btn-light:hover {
+  background: transparent !important;
+  outline: none !important;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-warning-subtle {
+  background-color: #fff5e5 !important;
+  color: #fca311 !important;
+}
+.btn-warning-subtle:hover {
+  color: #fff5e5;
+  background-color: #fca311;
+}
 
 @media (min-width: 770px) {
   .profile {
