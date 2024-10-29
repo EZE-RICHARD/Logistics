@@ -6,10 +6,17 @@ $xlarge: 1024px; //desktop
 $nuetral_color: #f4f5fa;
 $grey_color: #e5e5eb;
 $grey_color2: #7a7583;
-$brand_color: #fca311;
+$brand_color: #ff5d1c;
+$brown: rgb(102, 87, 87);
+// $brand_color: #fca311;
 $red: #ff4c51;
 $blue: #3abdff;
 $black: #000;
+
+/* new */
+$darker_blue: #343343;
+$dark_blue: #40404a;
+
 $normal_text: 16px;
 $small_text: 12px;
 
@@ -40,7 +47,13 @@ $small_text: 12px;
     background-color: $brand_color;
   }
 }
-
+@mixin liner {
+  width: 10%;
+  height: 3px;
+}
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "Inter", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
     "Helvetica Neue", sans-serif;
@@ -114,9 +127,11 @@ body {
 
 .btn-warning {
   background-color: $brand_color !important;
+  border: 0 !important;
 }
 
 .form-control {
+  height: 7vh !important;
   &:focus {
     box-shadow: none !important;
     outline: 1px solid $grey_color !important;
@@ -247,7 +262,6 @@ body {
   }
 }
 
-
 .cancled {
   &:after {
     width: 20px;
@@ -277,27 +291,60 @@ body {
   }
 }
 
-.text-responsive{
+.text-responsive {
   font-size: 10px;
-  @include lg-screen{
+  @include lg-screen {
     font-size: 13px;
   }
 }
-.btn-light{
-  &:hover{
+.btn-light {
+  &:hover {
     background: transparent !important;
-    outline:none!important;
+    outline: none !important;
     border: 1px solid #fff;
     color: #fff;
-
   }
 }
 
-.btn-warning-subtle{
+.btn-warning-subtle {
   background-color: lighten($brand_color, 42%) !important;
   color: $brand_color !important;
-  &:hover{
-   color: lighten($brand_color, 42%) !important;
-   background-color: $brand_color !important;
+  border: 0 !important;
+  &:hover {
+    color: lighten($brand_color, 42%) !important;
+    background-color: $brand_color !important;
+  }
+}
+.text-warning {
+  color: $brand_color !important;
+}
+
+.dark_blue_bg {
+  background-color: $dark_blue;
+}
+
+.darker_blue_bg {
+  background-color: $darker_blue;
+}
+.orange_bg {
+  background-color: $brand_color;
+}
+.border_orange {
+  border: 2px solid $brand_color;
+}
+.color_dark_blue{
+  color: $dark_blue;
+}
+.color_darker_blue{
+  color: $darker_blue;
+}
+
+.hide_drop{
+  // display: none;
+  // height: 0;
+  // position: relative;
+  transform: translateY(-30rem);
+  @include laptop(){
+    transform: translateY(0);
   }
 }

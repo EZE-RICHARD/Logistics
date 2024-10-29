@@ -1,0 +1,62 @@
+@use'../global.config.scss' as *;
+
+
+.contact_form{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include laptop{
+        height: 70vh;
+    }
+    .wrapper_ui{
+        width: 100%;
+        padding: .5rem;
+        @include laptop{
+            width: 70%;
+        }
+        .form_container{
+            @include laptop{
+                display: flex;
+                gap: 3rem;
+            }
+
+            article{
+                width: 100%;
+                background-size: cover;
+                position: relative;
+                img{
+                    position: absolute;
+                    top: 0;
+                    z-index: -2;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .overlay{
+                    position: absolute;
+                    top: 0;
+                    z-index: -1;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #40404aee;
+                }
+            }
+            form{
+                width: 100%;
+                input{
+                    height: 7vh;
+                    border: 1px solid $dark_blue
+                }
+                textarea{
+                    height: 9vh;
+                    border: 1px solid $dark_blue   
+                }
+            }
+        }
+    }
+}

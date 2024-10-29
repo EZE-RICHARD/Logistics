@@ -1,21 +1,25 @@
 const profile_action = document.querySelector(".profile_img");
 const profile_list = document.querySelector(".action_list");
 
-profile_action.addEventListener("click", () => {
-  profile_list.classList.toggle("hide_element");
-});
+if (profile_action) {
+  profile_action.addEventListener("click", () => {
+    profile_list.classList.toggle("hide_element");
+  });
+}
 
 const location_list = document.querySelectorAll(".location_action_btn");
 
 const handleModals = (modalBg, modalBtn, modalClose) => {
-  modalClose.addEventListener("click", () => {
-    modalBg.classList.remove("flex_show");
-    modalBg.classList.add("hide_element");
-  });
-  modalBtn.addEventListener("click", () => {
-    modalBg.classList.add("flex_show");
-    modalBg.classList.remove("hide_element");
-  });
+  if (modalClose) {
+    modalClose.addEventListener("click", () => {
+      modalBg.classList.remove("flex_show");
+      modalBg.classList.add("hide_element");
+    });
+    modalBtn.addEventListener("click", () => {
+      modalBg.classList.add("flex_show");
+      modalBg.classList.remove("hide_element");
+    });
+  }
 };
 const globalDropDown = (object) => {
   object.nextElementSibling.classList.toggle("hide_element");
@@ -33,18 +37,15 @@ const menu_drawer = document.querySelector(".mobile_menu_drawer");
 const menu_closer = document.querySelector(".close_sidebar");
 const sidebar = document.querySelector(".sidebar");
 
-// if (menu_drawer) {
-  
+if (menu_drawer) {
   menu_closer.addEventListener("click", () => {
     sidebar.classList.toggle("hide_sidebar");
   });
-  
+
   menu_drawer.addEventListener("click", () => {
     sidebar.classList.toggle("hide_sidebar");
   });
-// }
-
-
+}
 
 const addTruckModal = document.querySelector(".add_truck_madal");
 const modalTitle = document.getElementById("modalTitle");
@@ -234,7 +235,6 @@ function renderTrucks(filter) {
       arrows: false,
     });
   }
-
 }
 
 // Event delegation for handling clicks on edit buttons
@@ -337,15 +337,272 @@ if (select_indicators) {
   });
 }
 
+const desposit = document.querySelector(".deposit_modal");
+const withdraw = document.querySelector(".withdraw_modal");
+const withdrawBtn = document.querySelector(".withdraw");
+const DepositBtn = document.querySelector(".deposit");
+const btnclose_deposit = document.querySelector(".close_deposit");
+const btnwithdrawal_close = document.querySelector(".withdrawal_close");
+
+handleModals(desposit, DepositBtn, btnclose_deposit);
+handleModals(withdraw, withdrawBtn, btnwithdrawal_close);
+
+const menu_icon = document.querySelector(".menu");
+const mobile_menu = document.querySelector(".mb_dropdown");
+
+if (menu_icon) {
+  menu_icon.addEventListener("click", () => {
+    mobile_menu.classList.toggle("hide_drop");
+  });
+}
+
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".content");
+
+if (tabs) {
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active_tab"));
+      contents.forEach((c) => c.classList.remove("active_content"));
+
+      tab.classList.add("active_tab");
+      document
+        .getElementById(tab.getAttribute("data-tab"))
+        .classList.add("active_content");
+    });
+  });
+}
+
+const countrySelect = document.getElementById("country");
+const stateSelect = document.getElementById("state");
+const citySelect = document.getElementById("city");
+
+// Load countries from REST Countries API
+/* async function loadCountries() {
+  const response = await fetch("https://restcountries.com/v3.1/all");
+  const countries = await response.json();
+
+  countries.sort((a, b) => a.name.common.localeCompare(b.name.common)); // Sort alphabetically
+
+  countries.forEach((country) => {
+    const option = document.createElement("option");
+    option.value = country.cca2; // Use ISO country code
+    option.text = country.name.common;
+    countrySelect.add(option);
+  });
+}
+
+// Load states based on selected country
+async function loadStates() {
+  const country = countrySelect.value;
+  stateSelect.innerHTML =
+    '<option value="" disabled selected hidden>Select State</option>'; // Reset states
+  citySelect.innerHTML =
+    '<option value="" disabled selected hidden>Select City</option>'; // Reset cities
+  citySelect.disabled = true;
+  stateSelect.disabled = false;
+
+  // Fetch states from GeoDB Cities API
+  const response = await fetch(
+    `https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${country}/regions`,
+    {
+      headers: {
+        "X-RapidAPI-Key": "472e6c6f93mshd7c39d2fbf534b0p18b3eajsnd85fe10f01bd",
+        "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+      },
+    }
+  );
+  const data = await response.json();
+  const states = data.data;
+
+  states.forEach((state) => {
+    const option = document.createElement("option");
+    option.value = state.code;
+    option.text = state.name;
+    stateSelect.add(option);
+  });
+}
+
+const sstate = document.querySelector('.state_down')
+sstate.addEventListener('click',loadStates)
 
 
-const desposit= document.querySelector('.deposit_modal')
-const withdraw = document.querySelector('.withdraw_modal')
-const withdrawBtn = document.querySelector('.withdraw')
-const DepositBtn = document.querySelector('.deposit')
-const btnclose_deposit = document.querySelector('.close_deposit')
-const btnwithdrawal_close = document.querySelector('.withdrawal_close')
+
+// Load cities based on selected state
+async function loadCities() {
+  const country = countrySelect.value;
+  const state = stateSelect.value;
+  citySelect.innerHTML =
+    '<option value="" disabled selected hidden>Select City</option>';
+  citySelect.disabled = false;
+
+  // Fetch cities from GeoDB Cities API
+  const response = await fetch(
+    `https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${country}/regions/${state}/cities`,
+    {
+      headers: {
+        "X-RapidAPI-Key": "472e6c6f93mshd7c39d2fbf534b0p18b3eajsnd85fe10f01bd",
+        "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+      },
+    }
+  );
+  const data = await response.json();
+  const cities = data.data;
+
+  cities.forEach((city) => {
+    const option = document.createElement("option");
+    option.value = city.id;
+    option.text = city.name;
+    citySelect.add(option);
+  });
+}
+
+// Load countries on page load
+loadCountries(); */
 
 
-handleModals(desposit, DepositBtn, btnclose_deposit)
-handleModals(withdraw, withdrawBtn, btnwithdrawal_close)
+
+
+
+
+const apiKey = '472e6c6f93mshd7c39d2fbf534b0p18b3eajsnd85fe10f01bd'; // Replace with your API key
+
+// Function to fetch data from GeoDB Cities API
+async function fetchGeoData(url) {
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': apiKey,
+      'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+    },
+  });
+  return response.json();
+}
+
+// Load Countries on Page Load
+async function loadCountries() {
+  const url = 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries';
+  const data = await fetchGeoData(url);
+
+  const countrySelect = document.getElementById('country');
+  data.data.forEach((country) => {
+    const option = document.createElement('option');
+    option.value = country.code;
+    option.textContent = country.name;
+    countrySelect.appendChild(option);
+  });
+
+  // Enable the state select once a country is chosen
+  countrySelect.addEventListener('change', () => {
+    document.getElementById('state').disabled = false;
+    loadStates(countrySelect.value);
+  });
+}
+
+// Load States based on selected Country
+async function loadStates(countryCode) {
+  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${countryCode}/regions`;
+  const data = await fetchGeoData(url);
+
+  const stateSelect = document.getElementById('state');
+  stateSelect.innerHTML = `<option value="" disabled selected hidden>Select State</option>`;
+  
+  data.data.forEach((state) => {
+    const option = document.createElement('option');
+    option.value = state.code;
+    option.textContent = state.name;
+    stateSelect.appendChild(option);
+  });
+
+  // Enable the city select once a state is chosen
+  stateSelect.addEventListener('change', () => {
+    document.getElementById('city').disabled = false;
+    loadCities(countryCode, stateSelect.value);
+  });
+}
+
+// Load Cities based on selected State
+async function loadCities(countryCode, regionCode) {
+  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${countryCode}/regions/${regionCode}/cities`;
+  const data = await fetchGeoData(url);
+
+  const citySelect = document.getElementById('city');
+  citySelect.innerHTML = `<option value="" disabled selected hidden>Select City</option>`;
+  
+  data.data.forEach((city) => {
+    const option = document.createElement('option');
+    option.value = city.id;
+    option.textContent = city.name;
+    citySelect.appendChild(option);
+  });
+}
+
+// Call loadCountries when the page loads
+window.onload = loadCountries;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const formStep1btn = document.querySelector(".step1");
+const formStep = document.querySelector(".form-groups1");
+const formStep2 = document.querySelector(".form-groups2");
+
+if (formStep1btn) {
+  formStep1btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    formStep.classList.toggle("hid");
+    formStep2.classList.toggle("hid");
+  });
+}
+
+const num1btn = document.querySelector(".num1");
+
+if (num1btn) {
+  num1btn.addEventListener("click", () => {
+    formStep.classList.toggle("hid");
+    formStep2.classList.toggle("hid");
+  });
+}
+
+const num2btn = document.querySelector(".num2")
+
+if (num2btn) {
+  num2btn.addEventListener("click", () => {
+    formStep.classList.toggle("hid");
+    formStep2.classList.toggle("hid");
+  });
+}
+
+

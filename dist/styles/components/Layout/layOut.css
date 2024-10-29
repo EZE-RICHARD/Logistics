@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oxygen:wght@300;400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+/* new */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Inter", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   font-style: normal;
@@ -16,7 +21,7 @@ body {
 }
 
 .bottom_orange {
-  border-bottom: 2px solid #fca311;
+  border-bottom: 2px solid #ff5d1c;
 }
 
 .bottom_red {
@@ -32,7 +37,7 @@ body {
 }
 
 .color_orange {
-  color: #fca311;
+  color: #ff5d1c;
 }
 
 .color_red {
@@ -48,7 +53,7 @@ body {
 }
 
 .bg_orange_light {
-  background: #fff1da;
+  background: #ffefe8;
 }
 
 .bg_red_light {
@@ -84,9 +89,13 @@ body {
 }
 
 .btn-warning {
-  background-color: #fca311 !important;
+  background-color: #ff5d1c !important;
+  border: 0 !important;
 }
 
+.form-control {
+  height: 7vh !important;
+}
 .form-control:focus {
   box-shadow: none !important;
   outline: 1px solid #e5e5eb !important;
@@ -134,7 +143,7 @@ body {
 }
 
 .color_brand {
-  color: #fca311;
+  color: #ff5d1c;
 }
 
 .text-danger {
@@ -196,7 +205,7 @@ body {
   top: -2px;
   left: -1px;
   position: relative;
-  background-color: #fca311;
+  background-color: #ff5d1c;
   content: "";
   display: inline-block;
   visibility: visible;
@@ -247,12 +256,50 @@ body {
 }
 
 .btn-warning-subtle {
-  background-color: #fff5e5 !important;
-  color: #fca311 !important;
+  background-color: #fff6f2 !important;
+  color: #ff5d1c !important;
+  border: 0 !important;
 }
 .btn-warning-subtle:hover {
-  color: #fff5e5;
-  background-color: #fca311;
+  color: #fff6f2 !important;
+  background-color: #ff5d1c !important;
+}
+
+.text-warning {
+  color: #ff5d1c !important;
+}
+
+.dark_blue_bg {
+  background-color: #40404a;
+}
+
+.darker_blue_bg {
+  background-color: #343343;
+}
+
+.orange_bg {
+  background-color: #ff5d1c;
+}
+
+.border_orange {
+  border: 2px solid #ff5d1c;
+}
+
+.color_dark_blue {
+  color: #40404a;
+}
+
+.color_darker_blue {
+  color: #343343;
+}
+
+.hide_drop {
+  transform: translateY(-30rem);
+}
+@media (min-width: 770px) {
+  .hide_drop {
+    transform: translateY(0);
+  }
 }
 
 .layout {

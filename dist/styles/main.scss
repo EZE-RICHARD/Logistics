@@ -1,15 +1,28 @@
-@use'./components/global.config.scss';
-@use'./components/Layout/layOut.scss';
-@use'./components/Sidebar/sidebar.scss';
-@use'./components/body_header/body_header.scss';    
-@use'./components/metrics/metrics.scss';    
-@use'./components/chart_container/chart_container.scss';    
-@use'./components/add_location_modal/add_location_modal.scss';           
-@use'./components/profile/profile.scss';
-@use'./components/truck_listing/truck_listing.scss';
-@use'./components/registered_patners/registered_patners.scss';
-@use'./components/view_patner/view_patner.scss';    
-@use'./components/notification/notification.scss';  
-@use'./components/Order/order.scss';  
-@use'./components/trucks_order_list/trucks_order_list.scss';
-@use'./components/my_account/my_account.scss'
+@use "./components/global.config.scss";
+@use "./components/Layout/layOut.scss";     
+@use "./components/Sidebar/sidebar.scss";
+@use "./components/body_header/body_header.scss";
+@use "./components/metrics/metrics.scss";
+@use "./components/chart_container/chart_container.scss";
+@use "./components/add_location_modal/add_location_modal.scss";
+@use "./components/profile/profile.scss";
+@use "./components/truck_listing/truck_listing.scss";
+@use "./components/registered_patners/registered_patners.scss";
+@use "./components/view_patner/view_patner.scss";
+@use "./components/notification/notification.scss";
+@use "./components/Order/order.scss";
+@use "./components/trucks_order_list/trucks_order_list.scss";
+@use "./components/my_account/my_account.scss";
+@use "./components/sign_up/sign_up.scss";
+@use "./components/sign_in/sign_in.scss";
+@use "./components/home/home.scss";
+@use "./components/order_page/order_page.scss";
+@use"./components/form_tabs/form_tabs.scss"; 
+@use"./components/usp/usp.scss";
+@use"./components/contact/contact.scss";    
+
+
+/* 
+clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+*/
