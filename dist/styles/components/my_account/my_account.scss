@@ -1,0 +1,135 @@
+@use "../global.config.scss" as *;
+
+.my_account {
+  .transactions {
+    width: 100%;
+    @include laptop {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .amount {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      background-image: radial-gradient(
+        circle,
+        #fba23d,
+        #fba237,
+        #fca231,
+        #fca329,
+        #fca321,
+        #fca01b,
+        #fd9d14,
+        #fd9a0b,
+        #fe9308,
+        #fe8d07,
+        #ff8607,
+        #ff7f08
+      );
+      // background-image: radial-gradient(circle, #fbaa4e, #fca946, #fca73c, #fca633, #fca527, #fca11f, #fd9e17, #fd9a0b, #fe9308, #fe8d07, #ff8607, #ff7f08);
+      flex-direction: column;
+      gap: 2rem;
+      @include laptop{
+        width: 45%;
+      }
+
+      button {
+        border-radius: 100px !important;
+      }
+    }
+    .transaction_history {
+      // width: 50%;
+      height: 70vh;
+      overflow: auto;
+      @include scrollbar;
+      @include laptop {
+        height: 50vh;
+        width: 55%;
+      }
+      .list_container {
+        width: 100%;
+        li {
+          i {
+            // width: 50px;
+            // height: 50px;
+            padding: 0.8rem;
+            border-radius: 50%;
+          }
+          .transaction_detail {
+            border-bottom: 2px solid $grey_color;
+            width: 95%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.deposit_modal{
+  background-color: #0000003d;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  form{
+    width: 95%;
+    @include tablet{
+      width: 50%;
+    }
+    @include laptop{
+      width: 40%;
+    }
+  }
+}
+
+
+.withdraw_modal{
+    background-color: #0000003d;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    form{
+        width: 95%;
+        @include tablet{
+          width: 60%;
+        }
+        @include laptop{
+            width: 70%
+        }
+        @include lg-screen{
+          width: 50%;
+        }
+        .form{
+         @include laptop{
+            display: flex;
+         }
+         article{
+            width: 100%;
+            @include laptop{
+                width: 50%;
+            }
+         }
+         .form-group{
+            width: 100%;
+            @include laptop{
+                width: 50%;
+            }
+         }
+        }
+    }
+}
+
+
+
+

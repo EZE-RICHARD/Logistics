@@ -43,19 +43,12 @@
           position: relative;
           height: 80px;
           .item_icon {
-            background-image: radial-gradient(
-              circle,
-              #fca311,
-              #fca311,
-              #ffcc7e,
-              #ffdfab,
-              #fff1da
-            );
+            color: #000;
             width: 20px;
             height: 20px;
             border-radius: 50%;
             position: absolute;
-            left: -10px;
+            left: -15px;
             // top: -5px;
             content: " ";
           }

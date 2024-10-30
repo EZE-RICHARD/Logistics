@@ -355,7 +355,11 @@
           </section>
 
           <section class="orders shadow bg-white rounded mt-4 px-3 py-3">
-            <h5><i class="fa-solid fa-cart-shopping mt-4"></i> Orders</h5>
+            <header class="d-flex justify-content-between align-items-baseline">
+
+              <h5><i class="fa-solid fa-cart-shopping"></i> Orders</h5>
+              <p class="bg_red_light text-danger pointer py-2 px-3 rounded"><i class="fa-solid fa-trash"></i> delete</p>
+          </header>
             <section class="table_section mt-4">
               <table id="myTable" class="display" style="width: 100%">
                 <thead>
@@ -407,6 +411,22 @@
                       <input type="radio" name="2" title="successful" class="success pointer" />
                       <input type="radio" name="2" title="pending" class="pending pointer" checked />
                       <input type="radio" name="2" title="canceled" class="cancled pointer" />
+                    </td>
+                    <td>23/09/24</td>
+                  </tr>
+                  <tr class="">
+                    <td><input type="checkbox" name="select_ind" class="select_ind" /></td>
+                    <td>Delivery</td>
+                    <td>Abuja - Portharcout</td>
+                    <td><a href="javascript:void" class="text-decoration-none text-black">Partner</a></td>
+                    <td>oololo2341112@gmail.com</td>
+                    <td>0993 898 8933</td>
+                    <td>Ifeanyi Okoronkwo</td>
+                    <td class="d-flex gap-2">
+                      <i class="fa-solid fa-trash text-danger pointer"></i>
+                      <input type="radio" name="3" title="successful" class="success pointer" />
+                      <input type="radio" name="3" title="pending" class="pending pointer" checked />
+                      <input type="radio" name="3" title="canceled" class="cancled pointer" />
                     </td>
                     <td>23/09/24</td>
                   </tr>

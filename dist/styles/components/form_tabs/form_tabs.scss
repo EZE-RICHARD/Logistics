@@ -1,0 +1,129 @@
+@use "../global.config.scss" as *;
+
+.tab_contianer {
+  width: 96%;
+  margin-bottom: 5rem;
+  @include laptop {
+    width: 50%;
+  }
+  nav {
+    background-color: $dark_blue;
+    height: 9vh;
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+    display: flex;
+    @include laptop {
+      height: 7vh;
+    }
+
+    .tab {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: lighten($dark_blue, 50%);
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .active_tab {
+      background-color: #fff;
+      color: #000000;
+      border-top: 2px solid $brand_color;
+    }
+  }
+  main {
+    padding: 0.5rem 0.5rem 0.5rem;
+    .content {
+      display: none;
+      .timeline {
+        width: 100%;
+        .steps {
+          position: relative;
+          .line {
+            background-color: $dark_blue;
+            width: 100%;
+            height: 2px;
+          }
+          .meta_info {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            width: 100%;
+            top: -1.2rem;
+            .num {
+              background-color: #fff;
+              border: 3px solid $brand_color;
+              color: $brand_color;
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            .active_step {
+              color: #fff;
+              background-color: $brand_color;
+            }
+          }
+        }
+      }
+    }
+    .active_content {
+      display: block;
+    }
+  }
+}
+
+.bg_input {
+  background-color: #ebe9e9;
+  width: 100%;
+  height: 9vh;
+  border: none;
+  padding: 1px 5px 1px;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
+
+  
+  @include laptop {
+    height: 8vh;
+  }
+}
+
+.bg_area {
+  background-color: #ebe9e9;
+  width: 100%;
+  height: 13vh;
+  border: none;
+  padding: 1px 5px 1px;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
+  @include laptop {
+    height: 13vh;
+  }
+}
+.mini_place {
+    font-size: 14px;
+    color: red;
+}
+
+.hid{
+    display: none;
+}
+/* .form-groups2{
+  display:none;
+} */
+
+
+.puts{
+  position: relative;
+  i{
+    top: 30%;
+    right: 1rem;
+    position: absolute;
+    color: #b8adad;
+  }
+}
+
+

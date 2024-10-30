@@ -1,0 +1,82 @@
+@use'../global.config.scss' as *;
+
+.sign_in{
+    overflow: hidden;
+ 
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    .content_sign{
+        @include laptop{
+            width:90%;
+            display: flex;
+        }
+
+        .cta{
+            display: none;
+            width: 50%;
+            @include laptop{
+                display: block;
+            }
+
+
+        }
+        form{
+            width: 100%;
+            height: fit-content;
+            @include laptop{
+                width: 40%;
+            }
+            .form-group{
+                position: relative;
+                input{
+                    padding-left:2rem;
+                }
+                i{
+                    position: absolute;
+                    top: 35%;
+                    left: .5rem;
+                }
+            }
+            // background-color: red;
+            button{
+                height: 6vh;
+            }
+        }
+    }
+    
+}
+
+
+
+.illustration_img{
+    img{
+        width: 50%;
+    }
+}
+
+.orange_ring{
+    position: absolute;
+    top: -12rem;
+    right: -25rem;
+    width: 40rem;
+    z-index: -1;
+    @include laptop{
+        top: -8rem;
+        width: 55%;
+        right: -17rem;
+    }
+}
+.blue_ring{
+    position: absolute;
+    bottom: -9rem;
+    left: -13rem;
+    width: 20rem;
+    z-index: -1;
+    @include laptop{
+        bottom: -9rem;
+        left: -9rem;
+        width: 20%;
+        z-index: -1;
+    }
+}

@@ -1,0 +1,40 @@
+@use "../global.config.scss" as *;
+
+.verification {
+  width: 100%;
+  @include laptop {
+    display: flex;
+  }
+  .figure {
+      @include laptop{
+        min-height: 100vh;
+        width: 40%;
+        border-radius: 0px 32px 32px 0px;
+
+    }
+    .overlay_mirage {
+        @include laptop{
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.34);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-radius: 0px 32px 32px 0px;
+
+      }
+    }
+    img {
+      margin-top: 13rem;
+      margin-right: -10rem;
+    }
+  }
+  form {
+    width: 100%;
+  }
+}
+
+.light_orange {
+//   background-color: rgba(252, 162, 17, 0.5);
+background-color: $brand_color;
+}
