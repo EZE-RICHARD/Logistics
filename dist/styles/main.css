@@ -21,7 +21,7 @@ body {
 }
 
 .bottom_orange {
-  border-bottom: 2px solid #ff5d1c;
+  border-bottom: 2px solid #0049ac;
 }
 
 .bottom_red {
@@ -37,7 +37,7 @@ body {
 }
 
 .color_orange {
-  color: #ff5d1c;
+  color: #0049ac;
 }
 
 .color_red {
@@ -53,7 +53,7 @@ body {
 }
 
 .bg_orange_light {
-  background: #ffefe8;
+  background: #79b2ff;
 }
 
 .bg_red_light {
@@ -89,7 +89,7 @@ body {
 }
 
 .btn-warning {
-  background-color: #ff5d1c !important;
+  background-color: #0049ac !important;
   border: 0 !important;
 }
 
@@ -143,7 +143,7 @@ body {
 }
 
 .color_brand {
-  color: #ff5d1c;
+  color: #0049ac;
 }
 
 .text-danger {
@@ -205,7 +205,7 @@ body {
   top: -2px;
   left: -1px;
   position: relative;
-  background-color: #ff5d1c;
+  background-color: #0049ac;
   content: "";
   display: inline-block;
   visibility: visible;
@@ -256,17 +256,17 @@ body {
 }
 
 .btn-warning-subtle {
-  background-color: #fff6f2 !important;
-  color: #ff5d1c !important;
+  background-color: #83b8ff !important;
+  color: #0049ac !important;
   border: 0 !important;
 }
 .btn-warning-subtle:hover {
-  color: #fff6f2 !important;
-  background-color: #ff5d1c !important;
+  color: #83b8ff !important;
+  background-color: #0049ac !important;
 }
 
 .text-warning {
-  color: #ff5d1c !important;
+  color: #0049ac !important;
 }
 
 .dark_blue_bg {
@@ -278,11 +278,11 @@ body {
 }
 
 .orange_bg {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 
 .border_orange {
-  border: 2px solid #ff5d1c;
+  border: 2px solid #0049ac;
 }
 
 .color_dark_blue {
@@ -304,6 +304,10 @@ body {
 
 .accent1 {
   font-weight: bold;
+}
+
+.active_page {
+  color: #0049ac;
 }
 
 .w {
@@ -473,7 +477,7 @@ body {
 }
 .body_container .body_header .main_header .profile_menu ul .logOut {
   width: 100%;
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 
 .menu_list:hover {
@@ -573,7 +577,7 @@ body {
   width: 1px;
 }
 .location .display_location::-webkit-scrollbar-thumb {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 .location .display_location .timeline-container .tl .place {
   border-left: 2px solid #e5e5eb;
@@ -762,7 +766,7 @@ body {
   background-color: #e5e5eb;
 }
 .profile .layer_infromation .profile_card .meta_head button {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
   width: 90%;
 }
 .profile .registered_admins {
@@ -774,7 +778,7 @@ body {
   height: 1px;
 }
 .profile .registered_admins::-webkit-scrollbar-thumb {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 @media (min-width: 770px) {
   .profile .registered_admins {
@@ -815,7 +819,7 @@ body {
   justify-content: right;
 }
 .profile .account_actions .btn_placeholder button {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 
 .trucks {
@@ -951,7 +955,7 @@ body {
   border-radius: 50%;
 }
 .registered_patners .partners_card .patner .amount_card {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 
 .view_patner .backdrop {
@@ -1002,7 +1006,7 @@ body {
   height: 1px;
 }
 .patner_activity .transaction_history::-webkit-scrollbar-thumb {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 @media (min-width: 770px) {
   .patner_activity .transaction_history {
@@ -1029,7 +1033,7 @@ body {
   height: 1px;
 }
 .patner_activity .withdrawal_request::-webkit-scrollbar-thumb {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 @media (min-width: 770px) {
   .patner_activity .withdrawal_request {
@@ -1061,7 +1065,7 @@ body {
   height: 1px;
 }
 .orders::-webkit-scrollbar-thumb {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 .orders .table_section {
   width: 70rem;
@@ -1091,13 +1095,13 @@ body {
 .trucks_order_list li .meta_details button {
   display: flex;
   justify-content: center;
-  color: #ff5d1c;
-  background-color: #fff6f2;
+  color: #0049ac;
+  background-color: #83b8ff;
   width: 100%;
 }
 .trucks_order_list li .meta_details button:hover {
-  background-color: #ff5d1c;
-  color: #fff6f2;
+  background-color: #0049ac;
+  color: #83b8ff;
 }
 
 .my_account .transactions {
@@ -1136,7 +1140,7 @@ body {
   height: 1px;
 }
 .my_account .transactions .transaction_history::-webkit-scrollbar-thumb {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 @media (min-width: 770px) {
   .my_account .transactions .transaction_history {
@@ -1267,7 +1271,7 @@ body {
 }
 
 .light_orange {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 
 .sign_in {
@@ -1413,9 +1417,6 @@ body {
   top: 2.5rem;
   transition: transform 0.5s ease-in-out;
   box-shadow: 0 0 8px rgb(0, 0, 0);
-  /*         .unres{
-            padding-top: 1rem;
-          } */
 }
 @media (min-width: 770px) {
   .homePage .banner header nav {
@@ -1427,13 +1428,11 @@ body {
   }
 }
 .homePage .banner header nav a {
-  color: black;
   margin-top: 1rem;
   padding: 0rem 1rem 0rem;
 }
 @media (min-width: 770px) {
   .homePage .banner header nav a {
-    color: #fff;
     padding: 0;
     margin-top: 0;
   }
@@ -1460,6 +1459,9 @@ body {
 }
 .homePage .banner header .mb_head {
   width: 100%;
+}
+.homePage .banner header .mb_head img {
+  width: 100px;
 }
 @media (min-width: 770px) {
   .homePage .banner header .mb_head {
@@ -1541,7 +1543,6 @@ body {
   width: 100%;
   height: 100vh;
   position: relative;
-  background-color: red;
   z-index: -1;
 }
 @media (min-width: 770px) {
@@ -1613,7 +1614,7 @@ body {
 }
 .homePage .keyNotes .clients li i {
   font-size: 8px;
-  color: #ff5d1c;
+  color: #0049ac;
   font-weight: 900;
 }
 .homePage .keyNotes .patners {
@@ -1642,7 +1643,7 @@ body {
 }
 .homePage .keyNotes .patners li i {
   font-size: 8px;
-  color: #ff5d1c;
+  color: #0049ac;
   font-weight: 900;
 }
 .homePage .contacts {
@@ -1650,7 +1651,7 @@ body {
   height: 50vh;
 }
 .homePage .contacts .vrt {
-  color: #ff5d1c;
+  color: #0049ac;
 }
 .homePage .stats {
   height: -moz-fit-content;
@@ -1708,7 +1709,7 @@ body {
   }
 }
 .homePage .home_footer .foot header h3 {
-  color: #ff5d1c;
+  color: #0049ac;
 }
 .homePage .home_footer .foot header .liner {
   width: 10%;
@@ -1743,7 +1744,7 @@ body {
 }
 .homePage .home_footer .foot .media .gallery div .overlay i {
   cursor: pointer;
-  border: 2px solid #ff5d1c;
+  border: 2px solid #0049ac;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -1752,7 +1753,7 @@ body {
   align-items: center;
 }
 .homePage .home_footer .lincense {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -1793,14 +1794,14 @@ body {
 }
 .tab_container .tab_1 {
   width: 100%;
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 .tab_container .tab_2 {
   width: 100%;
   background-color: rgb(102, 87, 87);
 }
 .tab_container .tab_3 {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
   width: 100%;
 }
 
@@ -1836,7 +1837,7 @@ body {
   align-items: center;
 }
 .contents header span h2 {
-  color: #ff5d1c;
+  color: #0049ac;
 }
 .contents header span .liner {
   width: 10%;
@@ -1913,20 +1914,20 @@ body {
   }
 }
 .order_cat .order_opt_container .opt-1 {
-  box-shadow: 0 0 1px 0 #ff5d1c;
+  box-shadow: 0 0 1px 0 #0049ac;
 }
 .order_cat .order_opt_container .opt-1 .icon {
-  background-color: #ffefe8;
+  background-color: #79b2ff;
   border-radius: 50%;
   width: 70px;
   height: 70px;
 }
 .order_cat .order_opt_container .opt-1 .icon i {
-  color: #ff5d1c;
+  color: #0049ac;
 }
 .order_cat .order_opt_container .opt-1 a {
-  color: #ff5d1c;
-  background-color: #ffefe8;
+  color: #0049ac;
+  background-color: #79b2ff;
   border: 0 !important;
 }
 .order_cat .order_opt_container .opt_2 {
@@ -2005,7 +2006,7 @@ body {
   z-index: -2;
 }
 .how_it_works .instructions .info_card .v1 {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -2021,7 +2022,7 @@ body {
   width: 35px;
   display: block;
   border-radius: 50%;
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 .how_it_works .instructions .info_card .count h3 {
   width: -moz-fit-content;
@@ -2062,7 +2063,7 @@ body {
 .tab_contianer nav .active_tab {
   background-color: #fff;
   color: #000000;
-  border-top: 2px solid #ff5d1c;
+  border-top: 2px solid #0049ac;
 }
 .tab_contianer main {
   padding: 0.5rem 0.5rem 0.5rem;
@@ -2090,8 +2091,8 @@ body {
 }
 .tab_contianer main .content .timeline .steps .meta_info .num {
   background-color: #fff;
-  border: 3px solid #ff5d1c;
-  color: #ff5d1c;
+  border: 3px solid #0049ac;
+  color: #0049ac;
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -2099,7 +2100,7 @@ body {
 }
 .tab_contianer main .content .timeline .steps .meta_info .active_step {
   color: #fff;
-  background-color: #ff5d1c;
+  background-color: #0049ac;
 }
 .tab_contianer main .active_content {
   display: block;
@@ -2403,7 +2404,7 @@ body {
 }
 
 .input_tracking_id_btn {
-  background-color: #ff5d1c;
+  background-color: #0049ac;
   width: 50px;
   height: 50px;
   position: fixed;

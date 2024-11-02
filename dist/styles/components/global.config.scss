@@ -6,7 +6,9 @@ $xlarge: 1024px; //desktop
 $nuetral_color: #f4f5fa;
 $grey_color: #e5e5eb;
 $grey_color2: #7a7583;
-$brand_color: #ff5d1c;
+// $brand_color: #ff5d1c;
+$brand_color: #0049ac;
+// #0049AC
 $brown: rgb(102, 87, 87);
 // $brand_color: #fca311;
 $red: #ff4c51;
@@ -352,7 +354,9 @@ body {
   font-weight:bold;
 }
 
-
+.active_page{
+  color: $brand_color;
+}
 
 .w{
   width: 90%;
