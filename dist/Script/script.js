@@ -460,120 +460,200 @@ async function loadCities() {
 // Load countries on page load
 loadCountries(); */
 
+const del_modal = document.querySelector(".order_modal");
+const cancel_modal = document.querySelector(".cancel_modal");
+const submit_int_btn = document.querySelector(".submit_international_btn");
 
-
-
-
-
-const apiKey = '472e6c6f93mshd7c39d2fbf534b0p18b3eajsnd85fe10f01bd'; // Replace with your API key
-
-// Function to fetch data from GeoDB Cities API
-async function fetchGeoData(url) {
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': apiKey,
-      'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
-    },
-  });
-  return response.json();
-}
-
-// Load Countries on Page Load
-async function loadCountries() {
-  const url = 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries';
-  const data = await fetchGeoData(url);
-
-  const countrySelect = document.getElementById('country');
-  data.data.forEach((country) => {
-    const option = document.createElement('option');
-    option.value = country.code;
-    option.textContent = country.name;
-    countrySelect.appendChild(option);
-  });
-
-  // Enable the state select once a country is chosen
-  countrySelect.addEventListener('change', () => {
-    document.getElementById('state').disabled = false;
-    loadStates(countrySelect.value);
+if (cancel_modal) {
+  cancel_modal.addEventListener("click", () => {
+    del_modal.classList.toggle("d-none");
   });
 }
 
-// Load States based on selected Country
-async function loadStates(countryCode) {
-  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${countryCode}/regions`;
-  const data = await fetchGeoData(url);
+// inputs for international deliveries
 
-  const stateSelect = document.getElementById('state');
-  stateSelect.innerHTML = `<option value="" disabled selected hidden>Select State</option>`;
-  
-  data.data.forEach((state) => {
-    const option = document.createElement('option');
-    option.value = state.code;
-    option.textContent = state.name;
-    stateSelect.appendChild(option);
-  });
+const int_cat = document.querySelector(".int_cat");
 
-  // Enable the city select once a state is chosen
-  stateSelect.addEventListener('change', () => {
-    document.getElementById('city').disabled = false;
-    loadCities(countryCode, stateSelect.value);
+const int_item = document.querySelector(".int_item");
+const int_qty = document.querySelector(".int_qty");
+const int_price = document.querySelector(".int_price");
+const int_description = document.querySelector(".int_description");
+const int_number = document.querySelector(".int_number");
+const int_length = document.querySelector(".int_length");
+const int_width = document.querySelector(".int_width");
+const int_heigth = document.querySelector(".int_heigth");
+// from
+const from_int_location = document.querySelector(".from_int_location");
+const from_int_country = document.querySelector(".from_int_country");
+const from_int_state = document.querySelector(".from_int_state");
+const from_int_city = document.querySelector(".from_int_city");
+const from_int_post = document.querySelector(".from_int_post");
+// to
+const to_int_location = document.querySelector(".to_int_location");
+const to_int_country = document.querySelector(".to_int_country");
+const to_int_state = document.querySelector(".to_int_state");
+const to_int_city = document.querySelector(".to_int_city");
+const to_int_post = document.querySelector(".to_int_post");
+
+let int_payload;
+
+const int_submit_button = document.querySelector(".submit_international_btn");
+
+if (int_submit_button) {
+  int_submit_button.addEventListener("click", () => {
+    // Get the values of each input and select element
+    const formData = {
+      itemCategory: document.querySelector(".int_cat").value || false,
+      itemName: document.querySelector(".int_item").value || false,
+      itemQuantity: document.querySelector(".int_qty").value || false,
+      itemValue: document.querySelector(".int_price").value,
+      itemDescription:
+        document.querySelector(".int_description").value || false,
+      itemWeight: document.querySelector(".int_number").value || false,
+      itemDimensions: {
+        length: document.querySelector(".int_length").value || false,
+        width: document.querySelector(".int_width").value || false,
+        height: document.querySelector(".int_heigth").value || false,
+      },
+      fromLocation: {
+        location: document.querySelector(".from_int_location").value || false,
+        country: document.querySelector(".from_int_country").value || false,
+        state: document.querySelector(".from_int_state").value || false,
+        city: document.querySelector(".from_int_city").value,
+        postalCode: document.querySelector(".from_int_post").value || false,
+      },
+      toLocation: {
+        location: document.querySelector(".to_int_location").value || false,
+        country: document.querySelector(".to_int_country").value || false,
+        state: document.querySelector(".to_int_state").value || false,
+        city: document.querySelector(".to_int_city").value,
+        postalCode: document.querySelector(".to_int_post").value || false,
+      },
+    };
+
+    console.log(formData);
+
+    // Populate the modal with relevant information
+    const it_cat = document.querySelector(".order_modal .item_category");
+    const it_name = document.querySelector(".order_modal .item_name");
+    const it_weight = document.querySelector(".order_modal .item_weight");
+    const it_description = document.querySelector(
+      ".order_modal .item_description"
+    );
+    const it_flocatoin = document.querySelector(".order_modal .pickup_address");
+    const it_tlocation = document.querySelector(
+      ".order_modal .delivery_address"
+    );
+    document.querySelector(
+      ".order_modal .total_price"
+    ).textContent = `$340,000`; // Assuming a fixed price for now
+
+    if (!formData.itemName) {
+      const alerter = document.querySelector(".alert_info");
+      alerter.classList.remove("d-none");
+      setTimeout(() => {
+        alerter.classList.add("d-none");
+      }, 5000);
+    } else {
+      it_cat.textContent = formData.itemCategory;
+      it_name.textContent = formData.itemName;
+      it_weight.textContent = `${formData.itemWeight} kg`;
+      it_description.textContent = formData.itemDescription;
+      it_flocatoin.textContent = `${formData.fromLocation.location}, ${formData.fromLocation.city}, ${formData.fromLocation.state}, ${formData.fromLocation.country}, ${formData.fromLocation.postalCode}`;
+      it_tlocation.textContent = `${formData.toLocation.location}, ${formData.toLocation.city}, ${formData.toLocation.state}, ${formData.toLocation.country}, ${formData.toLocation.postalCode}`;
+      document.querySelector(".order_modal").classList.remove("d-none");
+    }
+
+    // Display the modal
   });
 }
 
-// Load Cities based on selected State
-async function loadCities(countryCode, regionCode) {
-  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${countryCode}/regions/${regionCode}/cities`;
-  const data = await fetchGeoData(url);
-
-  const citySelect = document.getElementById('city');
-  citySelect.innerHTML = `<option value="" disabled selected hidden>Select City</option>`;
-  
-  data.data.forEach((city) => {
-    const option = document.createElement('option');
-    option.value = city.id;
-    option.textContent = city.name;
-    citySelect.appendChild(option);
+// Hide the modal on clicking the cancel icon
+const cancelModal = document.querySelector(".cancel_modal");
+if (cancelModal) {
+  cancelModal.addEventListener("click", () => {
+    document.querySelector(".order_modal").classList.add("d-none");
   });
 }
 
-// Call loadCountries when the page loads
-window.onload = loadCountries;
+// Global array to store form data
+let formDataArray = [];
 
+// Toggle visibility of the weight input based on item type
+function toggleWeightInput() {
+  const itemType = document.getElementById("itemType").value;
+  const weightInput = document.getElementById("weightInput");
+  weightInput.classList.toggle("d-none", itemType === "parcel");
+}
 
+// Validate form and handle submission
+function submitForm() {
+  // Gather form data
+  const itemType = document.getElementById("itemType").value;
+  const weight = document.getElementById("weightInput").value;
+  const state = document.getElementById("stateSelect").value;
+  const pickupLocation = document.getElementById("pickupLocation").value;
+  const deliveryLocation = document.getElementById("deliveryLocation").value;
+  const receiverPhone = document.getElementById("receiverPhone").value;
+  const senderPhone = document.getElementById("senderPhone").value;
 
+  // Validate inputs
+  if (
+    !itemType ||
+    !pickupLocation ||
+    !deliveryLocation ||
+    !receiverPhone ||
+    !senderPhone ||
+    !state ||
+    (itemType === "other" && !weight)
+  ) {
+    const info = document.querySelector(".log_alert");
+    info.classList.remove("d-none");
 
+    setTimeout(() => {
+      info.classList.add("d-none");
+    }, 3000);
+    return;
+  }
 
+  // Create an object with the form data and save it to the array
+  const formData = {
+    itemType,
+    weight: itemType === "parcel" ? "N/A" : weight + "kg",
+    state,
+    pickupLocation,
+    deliveryLocation,
+    receiverPhone,
+    senderPhone,
+  };
+  formDataArray.push(formData);
 
+  // Update modal with the latest form data
+  injectDataIntoModal(formData);
 
+  // Show the modal
+  document.querySelector(".order_modal2").classList.remove("d-none");
+}
 
+// Inject data into the modal
+function injectDataIntoModal(data) {
+  document.querySelector(".card_modal2 .item-type").innerText = data.itemType;
+  document.querySelector(".card_modal2 .item-weight ").innerText = data.weight;
+  document.querySelector(".card_modal2 .state ").innerText = data.state;
+  document.querySelector(".card_modal2 .pickup-location ").innerText =
+    data.pickupLocation;
+  document.querySelector(".card_modal2 .delivery-location ").innerText =
+    data.deliveryLocation;
+  document.querySelector(".card_modal2 .receiver-phone ").innerText =
+    data.receiverPhone;
+  document.querySelector(".card_modal2 .sender-phone ").innerText =
+    data.senderPhone;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Close modal function
+document.querySelector(".cancel_modal2").addEventListener("click", () => {
+  document.querySelector(".order_modal2").classList.add("d-none");
+});
 
 const formStep1btn = document.querySelector(".step1");
 const formStep = document.querySelector(".form-groups1");
@@ -596,13 +676,56 @@ if (num1btn) {
   });
 }
 
-const num2btn = document.querySelector(".num2")
+const num2btn = document.querySelector(".num2");
 
 if (num2btn) {
   num2btn.addEventListener("click", () => {
     formStep.classList.toggle("hid");
     formStep2.classList.toggle("hid");
   });
+}
+
+// tracking modal
+
+// const modal_yz = document.querySelector('.unknwn')
+const tracking_btn = document.querySelector(".input_tracking_id_btn");
+const track_close = document.querySelector(".tracking_close");
+
+if (tracking_btn) {
+  tracking_btn.addEventListener("click", () => {
+    const tot = document.querySelector(".trackingId_modal");
+    tot.classList.toggle("d-none");
+  });
+}
+
+if (track_close) {
+  track_close.addEventListener("click", () => {
+    const tot = document.querySelector(".trackingId_modal");
+    tot.classList.toggle("d-none");
+  });
+}
+
+
+
+const closeVideo = document.querySelectorAll(".cancel_modal_video")
+const trigger_play =document.querySelectorAll(".trigger_play")
+
+
+if (closeVideo) {
+  closeVideo.forEach(close=>{
+    close.addEventListener("click",()=>{
+
+      document.querySelector('.media_modal').classList.add('d-none')
+    })
+  })
+}
+
+if (trigger_play) {
+  trigger_play.forEach(open=>{
+    open.addEventListener("click", ()=>{
+      document.querySelector('.media_modal').classList.remove('d-none')
+    })
+  })
 }
 
 

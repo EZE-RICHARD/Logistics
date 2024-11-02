@@ -1,0 +1,68 @@
+@use'../global.config.scss' as *;
+
+.order_modal, .order_modal2{
+    overflow-y: auto;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(64, 64, 74, 0.815);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include laptop{
+    }
+    .card_modal{
+        position: relative;
+        height:fit-content;
+        width: 95%;
+        height: 80vh;
+        overflow-y: auto;
+        @include laptop{
+            display: flex;
+            height: fit-content;
+            width: 70%;
+            gap: 1rem;
+        }
+        @include lg-screen{
+            width: 50%;
+        }
+    }
+    .card_modal2{
+        width: 98%;
+        position: relative;
+        @include laptop{
+            width: 40%;
+        }
+        @include lg-screen{
+            width: 30%;
+        }
+        .cancel_modal2{
+            position: absolute;
+            cursor: pointer;
+            top: 1rem;
+            right: 1rem;
+            @include laptop{
+                right: 2rem;
+            }
+        }
+    }
+    .cancel_modal{
+        position: absolute;
+        cursor: pointer;
+        top: 1rem;
+        right: 1rem;
+        @include laptop{
+            right: 2rem;
+        }
+    }
+}
+
+.alert_info{
+    color: red;
+}
+.log_alert{
+    color: red;
+}

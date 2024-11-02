@@ -1,7 +1,7 @@
 @use "../global.config.scss" as *;
 
 .order_height {
-  height: 50vh;
+  height: 50vh !important;
   // background-image: url('/dist/img/output_image.jpeg');
   background-size: cover;
   background-repeat: no-repeat;

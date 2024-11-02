@@ -1,0 +1,94 @@
+@use'../global.config.scss' as *;
+
+.input_tracking_id_btn{
+    background-color: $brand_color;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    z-index: 6 !important;
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    font-size: larger;
+    color: #fff;
+}
+
+.trackingId_modal{
+    background-color: rgba(52, 51, 67, 0.897);
+    position: fixed;
+    z-index: 7;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .id_card{
+        width: 95%;
+        @include laptop{
+            width:30%;
+        }
+    }
+}
+.input_tracking_id_btn, .tracking_close{
+    cursor: pointer;
+}
+
+.none{
+    display: none;
+}
+
+.media_modal{
+    background-color: rgba(52, 51, 67, 0.897);
+    position: fixed;
+    z-index: 7;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .media_canvas{
+        width: 98%;
+        height: 90vh;
+        @include laptop{
+            width: 50%;
+            height: 50vh;
+        }
+        div{
+            height: inherit;
+            video{
+                height: inherit;
+                width: 100%;
+            }
+        }
+        .video_bg{
+            position: relative;
+            img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -2;
+            }
+            .overlay{
+                background-color: rgba(52, 51, 67, 0.945);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+            .cancel_modal_video{
+                position: absolute;
+                cursor: pointer;
+                top:1rem;
+                right:2rem;
+            }
+        }
+    }
+}

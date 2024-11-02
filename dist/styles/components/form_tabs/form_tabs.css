@@ -302,6 +302,20 @@ body {
   }
 }
 
+.accent1 {
+  font-weight: bold;
+}
+
+.w {
+  width: 90%;
+}
+@media (min-width: 770px) {
+  .w {
+    background: #000;
+    width: 80%;
+  }
+}
+
 .tab_contianer {
   width: 96%;
   margin-bottom: 5rem;
@@ -383,7 +397,6 @@ body {
   height: 9vh;
   border: none;
   padding: 1px 5px 1px;
-  border-radius: 5px;
 }
 .bg_input:focus {
   outline: none;

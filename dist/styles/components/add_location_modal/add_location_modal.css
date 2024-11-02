@@ -302,6 +302,20 @@ body {
   }
 }
 
+.accent1 {
+  font-weight: bold;
+}
+
+.w {
+  width: 90%;
+}
+@media (min-width: 770px) {
+  .w {
+    background: #000;
+    width: 80%;
+  }
+}
+
 .add_location_modal {
   width: 100%;
 }

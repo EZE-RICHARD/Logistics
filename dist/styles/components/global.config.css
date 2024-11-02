@@ -300,4 +300,18 @@ body {
   .hide_drop {
     transform: translateY(0);
   }
+}
+
+.accent1 {
+  font-weight: bold;
+}
+
+.w {
+  width: 90%;
+}
+@media (min-width: 770px) {
+  .w {
+    background: #000;
+    width: 80%;
+  }
 }/*# sourceMappingURL=global.config.css.map */

@@ -108,22 +108,26 @@
             <p class="tab px-3" data-tab="international">International</p>
           </nav>
           <main>
+            <!-- local -->
             <div id="local" class="content active_content px-md-3 px-2">
               <form action="" class="pb-3">
                 <p class="mt-3 mt-md-4">Package Information</p>
                 <div class="form-group">
-                  <select id="" class="bg_input px-3">
+                  <select id="itemType" class="bg_input px-3" onchange="toggleWeightInput()">
                     <option value="" disabled selected hidden class="">
                       What are you delivering
                     </option>
+                    <option value="parcel">Parcel</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <select id="" class="bg_input mt-3 mt-md-4 px-3">
+                  <select id="stateSelect" class="bg_input mt-3 mt-md-4 px-3">
                     <option value="" disabled selected hidden class="">
                       State
                     </option>
+                    <option value="Abia">Abia State</option>
                   </select>
                 </div>
 
@@ -131,6 +135,7 @@
                   <div class="from-group puts">
                     <input
                       type="text"
+                      id="pickupLocation"
                       name="location"
                       class="bg_input px-3"
                       placeholder="Pickup Location"
@@ -143,6 +148,7 @@
                     <input
                       type="text"
                       name="location"
+                      id="deliveryLocation"
                       class="bg_input px-3"
                       placeholder="Delivery Location"
                     />
@@ -150,23 +156,35 @@
                   </div>
                 </div>
 
-                <div class="form-group mt-3 mt-md-4 d-flex gpa-3 gap-md-4">
+                <div class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4">
+                  <input
+                    type="number"
+                    id="weightInput"
+                    name="weight"
+                    placeholder="item Weight "
+                    class="bg_input px-3 d-none"
+                  />
+                </div>
+
+                <div class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4">
                   <input
                     type="number"
                     name="rec_phone"
+                    id="receiverPhone"
                     placeholder="Reciever's Phone"
                     class="bg_input px-3"
                   /><input
                     type="number"
                     name="send_phone"
+                    id="senderPhone"
                     placeholder="Sender's Phone"
                     class="bg_input px-3"
                   />
                 </div>
+                <p class="log_alert d-none">Please fill required field</p>
 
-               
                 <div class="form-group mt-4 d-flex justify-content-end">
-                  <button class="btn btn-warning text-white">Proceed</button>
+                  <span onclick="submitForm()" class="btn btn-warning text-white">Proceed</span>
                 </div>
               </form>
             </div>
@@ -197,9 +215,9 @@
                   </div>
 
                   <div class="form-group mt-5">
-                    <select class="bg_input mt-3 px-3">
+                    <select class="bg_input mt-3 px-3 int_cat">
                       <option
-                        value=""
+                        value="mi"
                         disabled
                         selected
                         hidden
@@ -207,15 +225,15 @@
                       >
                         Select Item Category
                       </option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                      <option value="optme">Option 1</option>
+                      <option value="err">Option 2</option>
+                      <option value="erg">Option 3</option>
                     </select>
                     <input
                       type="text"
                       name="item_name"
                       placeholder="Item Name"
-                      class="bg_input mt-3 mt-md-4 px-3"
+                      class="bg_input mt-3 mt-md-4 px-3 int_item"
                     />
                   </div>
 
@@ -226,13 +244,13 @@
                       type="number"
                       name="item_qty"
                       placeholder="Qauntity"
-                      class="bg_input px-3"
+                      class="bg_input px-3 int_qty"
                     />
                     <input
                       type="text"
                       name="item_val"
                       placeholder="Item Value (NGN)"
-                      class="bg_input px-3"
+                      class="bg_input px-3 int_price"
                     />
                   </div>
                   <div class="form-group mt-3 mt-md-4">
@@ -240,7 +258,7 @@
                       name="description"
                       id=""
                       placeholder="Brief Description of Item e.g colour, uses"
-                      class="p-2 bg_area px-3"
+                      class="p-2 bg_area px-3 int_description"
                     ></textarea>
                   </div>
                   <div class="form-group mt-3 mt-md-4">
@@ -248,7 +266,7 @@
                       type="number"
                       name="weight"
                       placeholder="Weight(KG)"
-                      class="px-3 bg_input"
+                      class="px-3 bg_input int_number"
                     />
                   </div>
                   <div class="form-group mt-3 d-flex gap-md-4 gap-1 mt-md-4">
@@ -256,19 +274,19 @@
                       type="number"
                       name="length"
                       placeholder="Length(CM)"
-                      class="px-3 bg_input"
+                      class="px-3 bg_input int_length"
                     />
                     <input
                       type="number"
                       name="width"
                       placeholder="Width(CM)"
-                      class="px-3 bg_input"
+                      class="px-3 bg_input int_width"
                     />
                     <input
                       type="number"
                       name="height"
                       placeholder="Height(CM)"
-                      class="px-3 bg_input"
+                      class="px-3 bg_input int_heigth"
                     />
                   </div>
                   <div class="form-group mt-4 d-flex justify-content-end">
@@ -307,7 +325,7 @@
                       <input
                         type="text"
                         name="location"
-                        class="bg_input px-3"
+                        class="bg_input px-3 from_int_location"
                         placeholder="Pickup Location"
                       />
                       <i class="fa-solid fa-location-dot h4"></i>
@@ -315,8 +333,7 @@
 
                     <select
                       id=" "
-                      class="bg_input mt-3 mt-md-4 px-3"
- 
+                      class="bg_input mt-3 mt-md-4 px-3 from_int_country"
                     >
                       <option
                         value=""
@@ -327,16 +344,13 @@
                       >
                         Select Country
                       </option>
+                      <option value="Nigeria">Nigeria</option>
                     </select>
                   </div>
                   <div
                     class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4 align-items-center justify-contents-center"
                   >
-                    <select
-                    id=" "
-                      class="bg_input px-3"
-                      disabled
-                    >
+                    <select id=" " class="bg_input px-3 from_int_state">
                       <option
                         value=""
                         disabled
@@ -346,8 +360,9 @@
                       >
                         Select State
                       </option>
+                      <option value="abia">Abia</option>
                     </select>
-                    <select id=" " disabled class="bg_input px-3">
+                    <select id=" " class="bg_input px-3 from_int_city">
                       <option
                         value=""
                         disabled
@@ -357,6 +372,7 @@
                       >
                         Select City
                       </option>
+                      <option value="Abakaliki">Abakaliki</option>
                     </select>
                   </div>
                   <div class="form-group mt-3 mt-md-4">
@@ -364,7 +380,7 @@
                       type="text"
                       name="postal"
                       placeholder="Postal Code"
-                      class="bg_input px-3"
+                      class="bg_input px-3 from_int_post"
                     />
                   </div>
 
@@ -376,7 +392,7 @@
                       <input
                         type="text"
                         name="location"
-                        class="bg_input px-3"
+                        class="bg_input px-3 to_int_location"
                         placeholder="Pickup Location"
                       />
                       <i class="fa-solid fa-location-dot h4"></i>
@@ -384,7 +400,7 @@
 
                     <select
                       id="country"
-                      class="bg_input mt-3 mt-md-4 px-3"
+                      class="bg_input mt-3 mt-md-4 px-3 to_int_country"
                     >
                       <option
                         value=""
@@ -395,6 +411,7 @@
                       >
                         Select Country
                       </option>
+                      <option value="kogi">Kogi</option>
                     </select>
                   </div>
                   <div
@@ -402,9 +419,7 @@
                   >
                     <select
                       id="state"
-                      class="bg_input px-3 state_down"
-                      
-                      
+                      class="bg_input px-3 state_down to_int_state"
                     >
                       <option
                         value=""
@@ -415,8 +430,9 @@
                       >
                         Select State
                       </option>
+                      <option value="abuja">Abuja</option>
                     </select>
-                    <select id="city" disabled class="bg_input">
+                    <select id="" class="bg_input to_int_city">
                       <option
                         value=""
                         disabled
@@ -426,24 +442,161 @@
                       >
                         Select City
                       </option>
+                      <option value="niger">Niger</option>
                     </select>
                   </div>
-                  <div class="form-group mt-3 mt-md-4">
+                  <div class="form-group mt-3 mt-md-4 to_int_post">
                     <input
                       type="text"
                       name="postal"
                       placeholder="Postal Code"
                       class="bg_input px-3"
+                      required
                     />
                   </div>
+                  <p class="alert_info d-none">
+                    Ensure all input fields are completed
+                  </p>
                   <div class="form-group mt-4 d-flex justify-content-end">
-                    <button class="btn btn-warning text-white">Proceed</button>
+                    <span
+                      class="btn btn-warning text-white submit_international_btn"
+                      >Proceed</span
+                    >
                   </div>
                 </div>
               </form>
             </div>
           </main>
         </section>
+      </div>
+
+      <div class="order_modal d-none">
+        <div class="card_modal bg-white px-2 px-md-4 py-5">
+          <section class="w-100 shadow py-3 px-2">
+            <h3>Item Summary</h3>
+            <main class="mt-3">
+              <div class="d-flex">
+                <p class="w-100 accent1">Item Category :</p>
+                <p class="w-100 item_category">Parcel</p>
+              </div>
+              <div class="d-flex">
+                <p class="w-100 accent1">Item Name :</p>
+                <p class="w-100 item_name">Music Box</p>
+              </div>
+              <div class="d-flex">
+                <p class="w-100 accent1">Weight :</p>
+                <p class="w-100 item_weight">56kg</p>
+              </div>
+              <div class="mt-3 d-flex flex-column">
+                <span class="accent1">Description</span>
+                <small class="border p-2 mt-1 item_description">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A
+                  necessitatibus unde adipisci! Cum, necessitatibus possimus,
+                  repellat commodi optio praesentium eos doloribus fugit quae
+                  ipsa dolores! Dolores.
+                </small>
+              </div>
+            </main>
+          </section>
+
+          <section class="w-100 d-flex flex-column gap-3 mt-3 mt-md-0">
+            <section class="address shadow py-3 px-2">
+              <h3>Address Info</h3>
+              <main class="mt-3">
+                <div class="d-flex flex-column">
+                  <span class="accent1 color_brand"
+                    ><i class="fa-solid fa-location-dot"></i> Pick Up
+                    Address</span
+                  >
+                  <small class="pickup_address"
+                    >894 fargiton pass, Picasso Italy</small
+                  >
+                </div>
+                <div class="d-flex flex-column mt-3">
+                  <span class="accent1 color_brand"
+                    ><i class="fa-solid fa-location-dot"></i> Delivery
+                    Address</span
+                  >
+                  <small class="delivery_address"
+                    >894 fargiton pass, Picasso Italy</small
+                  >
+                </div>
+              </main>
+            </section>
+            <section class="shadow py-3 px-2">
+              <div class="d-flex justify-content-between">
+                <h5>Total</h5>
+                <h5 class="total_price">$340,000</h5>
+              </div>
+              <button class="p-2 mt-2 btn-warning text-white w-100">
+                Proceed To Payment
+              </button>
+              <i class="fa-solid fa-xmark cancel_modal"></i>
+            </section>
+          </section>
+        </div>
+      </div>
+
+      <div class="order_modal2 d-none">
+        <div class="card_modal2 bg-white px-2 px-md-4 py-5">
+          <h4>Item Information</h4>
+          <div class="d-flex mt-3">
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-box"></i> Item Type</span>
+              <span class="item-type">Parcel</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"> <i class="fa-solid fa-weight-scale"></i> Item Weight</span>
+              <span class="item-weight">30kg</span>
+            </p>
+            
+          </div>
+          <div class="d-flex">
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-map"></i> State</span>
+              <span class="state">Abia State</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-map-pin"></i> Pick Up address</span>
+              <span class="pickup-location">20 ojeowerri</span>
+            </p>
+            
+          </div>
+
+          <div class="d-flex">
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-map-pin"></i> Delivery Up address</span>
+              <span class="delivery-location">20 ojeowerri</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-phone"></i> Sender's Phone</span>
+              <span class="sender-phone">090 144 590 56</span>
+            </p>
+            
+          </div>
+
+          <div class="d-flex">
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-phone"></i> Reciever's Phone</span>
+              <span class="receiver-phone">090 144 590 56</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1 text-warning"><i class="fa-solid fa-tag"></i> Price</span>
+              <span>$56</span>
+            </p>
+            
+          </div>
+          <div class="mt-3">
+            <a href="javascript:void(0)" class="btn-warning w-100 btn text-white">Proceed to Payment</a>
+          </div>
+          <i class="fa-solid fa-xmark cancel_modal2"></i>
+        </div>
       </div>
 
       <footer class="home_footer text-white p-2">

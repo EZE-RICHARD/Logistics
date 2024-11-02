@@ -1,0 +1,77 @@
+@use "../global.config.scss" as *;
+
+.tracking_info {
+  min-height: 100vh;
+  .track_card {
+    width: 98%;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    @include laptop {
+      margin-top: 0;
+      margin-bottom: 0;
+      width: 50%;
+    }
+    header {
+      border-bottom: 2px solid $nuetral_color;
+      .status {
+        background-color: lighten($dark_blue, 65%);
+        border: 3px solid lighten($dark_blue, 40%);
+        color: $dark_blue;
+        border-radius: 100px;
+        height: fit-content;
+        padding: 3px 6px 3px;
+      }
+    }
+    .meta{
+      border-bottom: 2px solid $nuetral_color;
+      display: flex;
+      flex-direction: column;
+      gap:2rem;
+      @include laptop{
+        gap: 0;
+        flex-direction: row;
+      }
+      .meta_help{
+        line-height: 4px;
+      }
+    }
+    .meta_package{
+      display: grid;
+      grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+      border-bottom: 2px solid $nuetral_color;
+      gap: 1rem;
+      @include laptop{
+        gap: 0;
+      }
+    }
+    .meta_history{
+      .meta_card{
+        border-left: 1px solid $grey_color2;
+        margin-left: 1rem;
+        li{
+          margin-left: -.65rem;
+          .stamp{
+            width: 20px;
+            height: 20px;
+            position: relative;
+            border-radius: 50%;
+            border:1px solid $grey_color2 ;
+            div{
+              width:70%;
+              height:70%;
+              border-radius: 50%;
+              
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.done{
+  background-color: green;
+}
+.on{
+  background-color: $grey_color2;
+}

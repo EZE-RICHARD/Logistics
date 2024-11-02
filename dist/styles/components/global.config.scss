@@ -340,11 +340,24 @@ body {
 }
 
 .hide_drop{
-  // display: none;
-  // height: 0;
-  // position: relative;
   transform: translateY(-30rem);
   @include laptop(){
     transform: translateY(0);
+  }
+}
+
+
+
+.accent1{
+  font-weight:bold;
+}
+
+
+
+.w{
+  width: 90%;
+  @include laptop(){
+    background: #000;
+    width: 80%;
   }
 }
