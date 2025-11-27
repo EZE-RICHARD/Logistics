@@ -651,9 +651,13 @@ function injectDataIntoModal(data) {
 }
 
 // Close modal function
-document.querySelector(".cancel_modal2").addEventListener("click", () => {
-  document.querySelector(".order_modal2").classList.add("d-none");
-});
+const closer = document.querySelector(".cancel_modal2")
+if (closer) {
+
+  closer.addEventListener("click", () => {
+    document.querySelector(".order_modal2").classList.add("d-none");
+  });
+}
 
 const formStep1btn = document.querySelector(".step1");
 const formStep = document.querySelector(".form-groups1");

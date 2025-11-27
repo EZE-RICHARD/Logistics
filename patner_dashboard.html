@@ -22,8 +22,8 @@
     <title>Document</title>
   </head>
   <body>
-    <section class="layout">
-      <div class="sidebar hide_sidebar">
+    <section class="layout_v2">
+      <div class="sidebar hide_sidebar shadow-sm">
         <header
           class="px-4 pt-3 d-flex justify-content-between align-items-center"
         >
@@ -33,7 +33,7 @@
         <ul class="list-unstyled mt-3 navigations">
           <a
             href="./patner_dashboard.html"
-            class="navigation active_nav d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+            class="navigation active_nav2 d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
           >
             <i class="fa-solid fa-house"></i>Home
           </a>
@@ -64,7 +64,7 @@
         </ul>
         <footer class="footer px-4">
           <span
-            class="profile_preview d-flex gap-2 px-2 pt-1 pb-2 rounded shadow"
+            class="profile_preview d-sm-flex d-none gap-2 px-2 pt-1 pb-2 rounded shadow"
           >
             <img src="./dist/img/woman.jpg" alt="" />
             <small class="d-flex flex-column">
@@ -74,10 +74,11 @@
           </span>
         </footer>
       </div>
-      
-      <div class="body d-flex flex-column align-items-center px-2 px-md-5">
+
+      <div class="body d-flex flex-column align-items-center px-2 px-md-3">
         <section class="body_container">
-          <header class="body_header bg-white px-2 px-md-4 py-2 shadow">
+          <!-- <header class="body_header px-2 px-md-4 py-2"> -->
+          <header class="body_header px-2 py-2 shadow-sm bg-white">
             <div
               class="d-flex justify-content-between align-items-center gap-1 main_header"
             >
@@ -87,143 +88,193 @@
                   type="search"
                   name="search"
                   id=""
-                  class="rounded"
+                  class="rounded offWhite_bg"
                   placeholder="Search here..."
                 />
               </span>
 
-              <span class="profile_menu">
-                <img src="./dist/img/woman.jpg" alt="" class="profile_img" />
-                <ul
-                  class="list-unstyled bg-white shadow pb-2 z-3 rounded hide_element action_list"
-                >
-                  <li class="d-flex gap-2 px-2 mt-3">
-                    <img src="./dist/img/woman.jpg" alt="" class="" />
-                    <span class="d-flex flex-column">
-                      <small>Iofeow Listra</small>
-                      <small class="gray_color2">Patner</small>
-                    </span>
-                  </li>
-                  <li class="line mt-3"></li>
+              <div class="flex_responsive align-items-center gap-3">
+                <a class="new_cta_button">Book Shipment</a>
+                <a class="new_cta_button2">Track Shipment</a>
+                <span class="profile_menu">
+                  <img src="./dist/img/woman.jpg" alt="" class="profile_img" />
+                  <ul
+                    class="list-unstyled bg-white shadow pb-2 z-3 rounded hide_element action_list"
+                  >
+                    <li class="d-flex gap-2 px-2 mt-3">
+                      <img src="./dist/img/woman.jpg" alt="" class="" />
+                      <span class="d-flex flex-column">
+                        <small>Iofeow Listra</small>
+                        <small class="gray_color2">Patner</small>
+                      </span>
+                    </li>
+                    <li class="line mt-3"></li>
 
-                  <a
-                    href="./patner_profile.html"
-                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
-                    ><i class="fa-solid fa-user"></i>My Profile</a
-                  >
-                  <a
-                    href="./patner_profile.html"
-                    class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
-                    ><i class="fa-solid fa-lock"></i>Change Password</a
-                  >
-                  <li class="line mt-3"></li>
-                  <li class="px-2 mt-2">
-                    <button class="logOut btn text-white">
-                      <i class="fa-solid fa-power-off"></i>Log Out
-                    </button>
-                  </li>
-                </ul>
-              </span>
+                    <a
+                      href="./patner_profile.html"
+                      class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
+                      ><i class="fa-solid fa-user"></i>My Profile</a
+                    >
+                    <a
+                      href="./patner_profile.html"
+                      class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
+                      ><i class="fa-solid fa-lock"></i>Change Password</a
+                    >
+                    <li class="line mt-3"></li>
+                    <li class="px-2 mt-2">
+                      <button class="logOut btn text-white">
+                        <i class="fa-solid fa-power-off"></i>Log Out
+                      </button>
+                    </li>
+                  </ul>
+                </span>
+              </div>
             </div>
           </header>
 
-          <section class="metrics mt-4">
-            <div
-              class="metric_card rounded bg-white px-4 py-3 shadow bottom_orange"
-            >
-              <span class="d-flex gap-2 align-items-center">
-                <i
-                  class="fa-solid fa-piggy-bank h5 color_orange bg_orange_light p-2 rounded"
-                ></i>
-                <h4>$42M</h4>
-              </span>
-              <span class="d-flex flex-column">
-                <span>Total credits</span>
-                <span
-                  ><span>+18.2% </span
-                  ><small class="gray_color2">than last week</small></span
-                >
-              </span>
+          <section class="welcome_section mt-5">
+            <div class="welcome_text">
+              <h2>Welcome, Oracle</h2>
+              <p>Your wish? Already taken care of</p>
             </div>
+            <div class="wallet_card">
+              <!-- <i class="fa-solid fa-wallet fa-2xl"></i> -->
 
-            <div
-              class="metric_card rounded bg-white px-4 py-3 shadow bottom_red"
-            >
-              <span class="d-flex gap-2 align-items-center">
-                <i
-                  class="fa-solid fa-truck-fast h5 color_red bg_red_light rounded p-2"
-                ></i>
-                <h4>42</h4>
-              </span>
-              <span class="d-flex flex-column">
-                <span>Todays Order</span>
-                <span
-                  ><span>+62% </span
-                  ><small class="gray_color2">than last week</small></span
-                >
-              </span>
-            </div>
-
-            <div
-              class="metric_card rounded bg-white px-4 py-3 shadow bottom_blue"
-            >
-              <span class="d-flex gap-2 align-items-center">
-                <i
-                  class="fa-solid fa-clock h5 color_blue bg_blue_light rounded p-2"
-                ></i>
-                <h4>8</h4>
-              </span>
-              <span class="d-flex flex-column">
-                <span>Previous Shipping</span>
-                <span
-                  ><span>-8.2% </span
-                  ><small class="gray_color2">than last week</small></span
-                >
-              </span>
-            </div>
-
-            <div
-              class="metric_card rounded bg-white px-4 py-3 shadow bottom_black"
-            >
-              <span class="d-flex gap-2 align-items-center">
-                <i
-                  class="fa-solid fa-money-bill-trend-up h5 color_black bg_black_light rounded p-2"
-                ></i>
-                <h4>$2M</h4>
-              </span>
-              <span class="d-flex flex-column">
-                <span>Withdrawal</span>
-                <span
-                  ><span>+4% </span
-                  ><small class="gray_color2">than last week</small></span
-                >
-              </span>
+              <span>Wallet Balance</span>
+              <div class="justify-content-between mt-2">
+                <h4 class="d-block">₦6,391.19</h4>
+                <a class="d-block">Top Up</a>
+              </div>
             </div>
           </section>
 
-          <section
-            class="chart_container bg-white px-3 py-3 shadow rounded mt-5"
-          >
-            <div class="income_card">
-              <h5 class="title">Credits</h5>
-              <section id="chart_income" class="chart_income"></section>
+          <section class="metrics_v2 mt-5">
+            <div class="metric bg-white p-3 rounded-3 color_var1">
+              <span>
+                <i class="fa-solid fa-truck text_var1"></i>
+                Total Orders
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">8</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+            <div class="metric bg-white p-3 rounded-3 color_var2">
+              <span>
+                <i class="fa-solid fa-clock text_var2"></i>
+                Shipments in Transit
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">81</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+            <div class="metric bg-white p-3 rounded-3 color_var3">
+              <span>
+                <i class="fa-solid fa-clipboard-check text_var3"></i>
+                Delivered Shipments
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">45</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+            <div class="metric bg-white p-3 rounded-3 color_var4">
+              <span>
+                <i class="fa-solid fa-calendar-xmark text_var4"></i>
+                Canceled Shipments
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">7</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
             </div>
           </section>
 
-          <section class="income_orders mt-4">
-            <div class="income_card bg-white shadow rounded px-3 py-3">
-              <h5 class="title">Orders</h5>
-              <div id="income_chart"></div>
-            </div>
-            <div
-              class="order_class bg-white shadow px-3 rounded py-3 mt-4 mt-md-0"
-            >
-              <h5 class="title">Expenses</h5>
-              <div id="order" class="mt-4"></div>
-            </div>
+          <section class="spacing_top">
+            <span class="d-flex justify-content-between align-items-center">
+              <h6>Shipments</h6>
+              <a href="">
+                <small>See more</small>
+              </a>
+            </span>
+            <main class="metrics_v2 mt-2">
+              <div class="add_shipment">
+                <span>+</span>
+              </div>
+
+              <div class="shipment">
+                <span class="">
+                  <img src="./dist/img/logo.png" alt="" />
+                  <p class="status draft">Draft</p>
+                </span>
+                <div>
+                  <h5 class="title">Ifeanyi Okoronkwo</h5>
+                  <p class="tracking_Id">Tracking ID: 123456789</p>
+                  <p class="address">1122121 Parkview ln. Apt D</p>
+                  <p class="price pt-3">₦6,391</p>
+                </div>
+              </div>
+
+              <div class="shipment">
+                <span class="">
+                  <img src="./dist/img/logo.png" alt="" />
+                  <p class="status del">Delivered</p>
+                </span>
+                <div>
+                  <h5 class="title">Ifeanyi Okoronkwo</h5>
+                  <p class="tracking_Id">Tracking ID: 123456789</p>
+                  <p class="address">1122121 Parkview ln. Apt D</p>
+                  <p class="price pt-3">₦6,391</p>
+                </div>
+              </div>
+
+              <div class="shipment">
+                <span class="">
+                  <img src="./dist/img/logo.png" alt="" />
+                  <p class="status con">Confirmed</p>
+                </span>
+                <div>
+                  <h5 class="title">Ifeanyi Okoronkwo</h5>
+                  <p class="tracking_Id">Tracking ID: 123456789</p>
+                  <p class="address">1122121 Parkview ln. Apt D</p>
+                  <p class="price pt-3">₦6,391</p>
+                </div>
+              </div>
+            </main>
           </section>
+
+          <section class="spacing_top">
+            <h6>Flyme unlocks more</h6>
+
+            <section class="metrics_v3">
+              <a class="do_more1">
+                <small>Fund your Wallet</small>
+                <i class="fa-solid fa-money-bill"></i>
+              </a>
+              <a class="do_more2">
+                <small>Fund your Wallet</small>
+              </a>
+              <a class="do_more3">
+                <small>Fund your Wallet</small>
+              </a>
+              <a class="do_more4">
+                <small>Fund your Wallet</small>
+              </a>
+              <a class="do_more5">
+                <small>Fund your Wallet</small>
+              </a>
+            </section>
+          </section>
+
+          <!--   <section class="ads">
+            <div class="w-100 ">
+              <img src="./dist/img/newUpdate/Ad1.png" alt="" class="w-100 h-100">
+            </div>
+          </section> -->
         </section>
       </div>
+
       <div
         class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
       >

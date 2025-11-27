@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipment Wizard</title>
+
+    <!-- Bootstrap 5 (only for grid/utilities if you want, optional) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+  </head>
+  <body class="bg-light">
+    <div class="wizard-layout">
+      <!-- Left Ad (Desktop only) -->
+      <aside class="wizard-ad">
+        <div class="ad-content">
+          <!-- <h2>Ship Faster.<br />Worry Less.</h2>
+          <p>Real-time tracking • Insurance included • 200+ carriers</p> -->
+        </div>
+      </aside>
+
+      <!-- Main Form Area -->
+      <main class="wizard-main">
+        <!-- Mobile Step Indicator -->
+        <div class="mobile-steps">
+          <div class="step active"><span>1</span> Sender</div>
+          <div class="step"><span>2</span> Receiver</div>
+          <div class="step"><span>3</span> Items</div>
+          <div class="step"><span>4</span> Carrier</div>
+          <div class="step"><span>5</span> Review</div>
+        </div>
+
+        <div class="form-wrapper">
+          <form class="wizard-form">
+            <section class="sender_address_detail active">
+              <h3 >Sender Details</h3>
+              <p class="mt-4">How do you want to add an address?</p>
+
+              <span class="choose_address_opt">
+                <span class="option_address active_address">
+                  <span> Use Address Book </span>
+                  <i class="fa-solid fa-circle-check"></i>
+                </span>
+                <span class="option_address">
+                  <span> Enter Address </span>
+                </span>
+              </span>
+            </section>
+          </form>
+        </div>
+
+        <!-- Next / Prev buttons (example) -->
+        <div class="form-actions">
+          <button type="button" class="btn_prev">Back</button>
+          <button type="button" class="btn_next ms-auto">Next</button>
+        </div>
+      </main>
+
+      <!-- Desktop Vertical Timeline -->
+      <nav class="desktop-timeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-step active" data-step="1">
+          <div class="circle">1</div>
+          <span class="label">Sender</span>
+        </div>
+        <div class="timeline-step" data-step="2">
+          <div class="circle">2</div>
+          <span class="label">Receiver</span>
+        </div>
+        <div class="timeline-step" data-step="3">
+          <div class="circle">3</div>
+          <span class="label">Items</span>
+        </div>
+        <div class="timeline-step" data-step="4">
+          <div class="circle">4</div>
+          <span class="label">Carrier</span>
+        </div>
+        <div class="timeline-step" data-step="5">
+          <div class="circle">5</div>
+          <span class="label">Review</span>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

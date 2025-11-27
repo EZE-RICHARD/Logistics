@@ -4,10 +4,11 @@
   position: relative;
   height: 100vh;
   transition: transform 0.5s ease-in-out;
+   
   .navigations {
     .navigation {
       width: 95%;
-      font-size: $normal_text;
+      font-size: 14px !important;
       border-radius: 0px 100px 100px 0px;
     }
   }
@@ -18,11 +19,11 @@
     bottom: 2rem;
     .profile_preview {
       background-color: $grey_color;
+      display: flex !important;
       @include laptop{
         display: none !important;
       }
       @include lg-screen{
-        display: flex !important;
       }
       img {
         width: 40px;
@@ -52,3 +53,12 @@
 .unactive_nav {
   color: $grey_color2;
 }
+
+.active_nav2 {
+  background-color: #000;
+  color: #fff;
+ 
+  // font-weight: 600;
+}
+
+

@@ -21,7 +21,7 @@ body {
 }
 
 .bottom_orange {
-  border-bottom: 2px solid #ff5d1c;
+  border-bottom: 2px solid #0761e0;
 }
 
 .bottom_red {
@@ -37,7 +37,7 @@ body {
 }
 
 .color_orange {
-  color: #ff5d1c;
+  color: #0761e0;
 }
 
 .color_red {
@@ -53,19 +53,19 @@ body {
 }
 
 .bg_orange_light {
-  background: #ffefe8;
+  background: rgb(182.2727272727, 211.4935064935, 252.7272727273);
 }
 
 .bg_red_light {
-  background-color: #ffe5e6;
+  background-color: rgb(255, 229, 229.7262569832);
 }
 
 .bg_blue_light {
-  background-color: #d3f0ff;
+  background-color: rgb(211, 240.2588832487, 255);
 }
 
 .bg_black_light {
-  background-color: #b3b3b3;
+  background-color: rgb(178.5, 178.5, 178.5);
 }
 
 .bg_gray {
@@ -89,7 +89,7 @@ body {
 }
 
 .btn-warning {
-  background-color: #ff5d1c !important;
+  background-color: #0761e0 !important;
   border: 0 !important;
 }
 
@@ -143,7 +143,7 @@ body {
 }
 
 .color_brand {
-  color: #ff5d1c;
+  color: #0761e0;
 }
 
 .text-danger {
@@ -205,7 +205,7 @@ body {
   top: -2px;
   left: -1px;
   position: relative;
-  background-color: #ff5d1c;
+  background-color: #0761e0;
   content: "";
   display: inline-block;
   visibility: visible;
@@ -256,17 +256,17 @@ body {
 }
 
 .btn-warning-subtle {
-  background-color: #fff6f2 !important;
-  color: #ff5d1c !important;
+  background-color: rgb(192.1636363636, 217.4103896104, 253.0363636364) !important;
+  color: #0761e0 !important;
   border: 0 !important;
 }
 .btn-warning-subtle:hover {
-  color: #fff6f2 !important;
-  background-color: #ff5d1c !important;
+  color: rgb(192.1636363636, 217.4103896104, 253.0363636364) !important;
+  background-color: #0761e0 !important;
 }
 
 .text-warning {
-  color: #ff5d1c !important;
+  color: #0761e0 !important;
 }
 
 .dark_blue_bg {
@@ -278,11 +278,11 @@ body {
 }
 
 .orange_bg {
-  background-color: #ff5d1c;
+  background-color: #0761e0;
 }
 
 .border_orange {
-  border: 2px solid #ff5d1c;
+  border: 2px solid #0761e0;
 }
 
 .color_dark_blue {
@@ -306,6 +306,10 @@ body {
   font-weight: bold;
 }
 
+.active_page {
+  color: #0761e0;
+}
+
 .w {
   width: 90%;
 }
@@ -316,7 +320,7 @@ body {
   }
 }
 
-.order_modal, .order_modal2 {
+.mymy {
   overflow-y: auto;
   position: fixed;
   z-index: 5;
@@ -329,61 +333,46 @@ body {
   justify-content: center;
   align-items: center;
 }
-.order_modal .card_modal, .order_modal2 .card_modal {
+.mymy .card_modal {
+  background-color: #E3E2E9;
   position: relative;
   height: -moz-fit-content;
   height: fit-content;
   width: 95%;
   height: 80vh;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+@media (min-width: 640px) {
+  .mymy .card_modal {
+    width: 50%;
+  }
 }
 @media (min-width: 770px) {
-  .order_modal .card_modal, .order_modal2 .card_modal {
-    display: flex;
+  .mymy .card_modal {
     height: -moz-fit-content;
     height: fit-content;
     width: 70%;
     gap: 1rem;
+    flex-direction: row;
   }
 }
 @media (min-width: 1024px) {
-  .order_modal .card_modal, .order_modal2 .card_modal {
+  .mymy .card_modal {
     width: 50%;
   }
 }
-.order_modal .card_modal2, .order_modal2 .card_modal2 {
-  width: 98%;
-  position: relative;
-}
-@media (min-width: 770px) {
-  .order_modal .card_modal2, .order_modal2 .card_modal2 {
-    width: 40%;
-  }
-}
-@media (min-width: 1024px) {
-  .order_modal .card_modal2, .order_modal2 .card_modal2 {
-    width: 30%;
-  }
-}
-.order_modal .card_modal2 .cancel_modal2, .order_modal2 .card_modal2 .cancel_modal2 {
+.mymy .cancel_modal {
   position: absolute;
   cursor: pointer;
   top: 1rem;
   right: 1rem;
 }
 @media (min-width: 770px) {
-  .order_modal .card_modal2 .cancel_modal2, .order_modal2 .card_modal2 .cancel_modal2 {
-    right: 2rem;
-  }
-}
-.order_modal .cancel_modal, .order_modal2 .cancel_modal {
-  position: absolute;
-  cursor: pointer;
-  top: 1rem;
-  right: 1rem;
-}
-@media (min-width: 770px) {
-  .order_modal .cancel_modal, .order_modal2 .cancel_modal {
+  .mymy .cancel_modal {
     right: 2rem;
   }
 }
@@ -394,4 +383,103 @@ body {
 
 .log_alert {
   color: red;
-}/*# sourceMappingURL=order_modal.css.map */
+}
+
+.flex_sum {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 15px;
+  line-height: 3px;
+}
+
+.ln_h {
+  line-height: 5px;
+}
+
+.fs_fif {
+  font-size: 15px;
+}
+
+.line_dvd {
+  margin: 1rem 0;
+  height: 5px;
+  width: 100%;
+  display: block;
+}
+@media (min-width: 770px) {
+  .line_dvd {
+    width: 5px;
+    height: auto;
+  }
+}
+
+/* 
+@use'../global.config.scss' as *;
+
+.order_modal, .order_modal2{
+    overflow-y: auto;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(64, 64, 74, 0.815);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include laptop{
+    }
+    .card_modal{
+        position: relative;
+        height:fit-content;
+        width: 95%;
+        height: 80vh;
+        overflow-y: auto;
+        @include laptop{
+            display: flex;
+            height: fit-content;
+            width: 70%;
+            gap: 1rem;
+        }
+        @include lg-screen{
+            width: 50%;
+        }
+    }
+    .card_modal2{
+        width: 98%;
+        position: relative;
+        @include laptop{
+            width: 40%;
+        }
+        @include lg-screen{
+            width: 30%;
+        }
+        .cancel_modal2{
+            position: absolute;
+            cursor: pointer;
+            top: 1rem;
+            right: 1rem;
+            @include laptop{
+                right: 2rem;
+            }
+        }
+    }
+    .cancel_modal{
+        position: absolute;
+        cursor: pointer;
+        top: 1rem;
+        right: 1rem;
+        @include laptop{
+            right: 2rem;
+        }
+    }
+}
+
+.alert_info{
+    color: red;
+}
+.log_alert{
+    color: red;
+} *//*# sourceMappingURL=order_modal.css.map */
