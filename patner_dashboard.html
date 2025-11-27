@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./dist/Script/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="layout_v2">
+      <div class="sidebar hide_sidebar shadow-sm">
+        <header
+          class="px-4 pt-3 d-flex justify-content-between align-items-center"
+        >
+          <h1>Logo</h1>
+          <i class="fa-solid fa-xmark close_sidebar"></i>
+        </header>
+        <ul class="list-unstyled mt-3 navigations">
+          <a
+            href="./patner_dashboard.html"
+            class="navigation active_nav2 d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-house"></i>Home
+          </a>
+          <a
+            href="./patner_order.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-location-dot"></i>Order
+          </a>
+          <a
+            href="./patner_truck.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-table-list"></i>Trucks
+          </a>
+          <a
+            href="./patner_actions.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-handshake-simple"></i>Actions
+          </a>
+          <a
+            href="./patner_profile.html"
+            class="unactive_nav navigation d-flex px-4 py-2 align-items-center gap-2 text-decoration-none"
+          >
+            <i class="fa-solid fa-truck"></i>Profile
+          </a>
+        </ul>
+        <footer class="footer px-4">
+          <span
+            class="profile_preview d-sm-flex d-none gap-2 px-2 pt-1 pb-2 rounded shadow"
+          >
+            <img src="./dist/img/woman.jpg" alt="" />
+            <small class="d-flex flex-column">
+              <span class="fw-bold name">Iofeow Listra</span>
+              <span class="email">xys@example.com</span>
+            </small>
+          </span>
+        </footer>
+      </div>
+
+      <div class="body d-flex flex-column align-items-center px-2 px-md-3">
+        <section class="body_container">
+          <!-- <header class="body_header px-2 px-md-4 py-2"> -->
+          <header class="body_header px-2 py-2 shadow-sm bg-white">
+            <div
+              class="d-flex justify-content-between align-items-center gap-1 main_header"
+            >
+              <span class="search_bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="search"
+                  name="search"
+                  id=""
+                  class="rounded offWhite_bg"
+                  placeholder="Search here..."
+                />
+              </span>
+
+              <div class="flex_responsive align-items-center gap-3">
+                <a class="new_cta_button">Book Shipment</a>
+                <a class="new_cta_button2">Track Shipment</a>
+                <span class="profile_menu">
+                  <img src="./dist/img/woman.jpg" alt="" class="profile_img" />
+                  <ul
+                    class="list-unstyled bg-white shadow pb-2 z-3 rounded hide_element action_list"
+                  >
+                    <li class="d-flex gap-2 px-2 mt-3">
+                      <img src="./dist/img/woman.jpg" alt="" class="" />
+                      <span class="d-flex flex-column">
+                        <small>Iofeow Listra</small>
+                        <small class="gray_color2">Patner</small>
+                      </span>
+                    </li>
+                    <li class="line mt-3"></li>
+
+                    <a
+                      href="./patner_profile.html"
+                      class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 mt-2 d-flex gap-2 align-items-center"
+                      ><i class="fa-solid fa-user"></i>My Profile</a
+                    >
+                    <a
+                      href="./patner_profile.html"
+                      class="px-2 text-decoration-none d-block small_text text-black menu_list py-2 d-flex gap-2 align-items-center"
+                      ><i class="fa-solid fa-lock"></i>Change Password</a
+                    >
+                    <li class="line mt-3"></li>
+                    <li class="px-2 mt-2">
+                      <button class="logOut btn text-white">
+                        <i class="fa-solid fa-power-off"></i>Log Out
+                      </button>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+            </div>
+          </header>
+
+          <section class="welcome_section mt-5">
+            <div class="welcome_text">
+              <h2>Welcome, Oracle</h2>
+              <p>Your wish? Already taken care of</p>
+            </div>
+            <div class="wallet_card">
+              <!-- <i class="fa-solid fa-wallet fa-2xl"></i> -->
+
+              <span>Wallet Balance</span>
+              <div class="justify-content-between mt-2">
+                <h4 class="d-block">₦6,391.19</h4>
+                <a class="d-block">Top Up</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="metrics_v2 mt-5">
+            <div class="metric bg-white p-3 rounded-3 color_var1">
+              <span>
+                <i class="fa-solid fa-truck text_var1"></i>
+                Total Orders
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">8</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+            <div class="metric bg-white p-3 rounded-3 color_var2">
+              <span>
+                <i class="fa-solid fa-clock text_var2"></i>
+                Shipments in Transit
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">81</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+            <div class="metric bg-white p-3 rounded-3 color_var3">
+              <span>
+                <i class="fa-solid fa-clipboard-check text_var3"></i>
+                Delivered Shipments
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">45</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+            <div class="metric bg-white p-3 rounded-3 color_var4">
+              <span>
+                <i class="fa-solid fa-calendar-xmark text_var4"></i>
+                Canceled Shipments
+              </span>
+              <div class="d-flex justify-content-between mt-3">
+                <h5 class="d-block">7</h5>
+                <a href="#" class="py-1 px-3 rounded-1">View</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="spacing_top">
+            <span class="d-flex justify-content-between align-items-center">
+              <h6>Shipments</h6>
+              <a href="">
+                <small>See more</small>
+              </a>
+            </span>
+            <main class="metrics_v2 mt-2">
+              <div class="add_shipment">
+                <span>+</span>
+              </div>
+
+              <div class="shipment">
+                <span class="">
+                  <img src="./dist/img/logo.png" alt="" />
+                  <p class="status draft">Draft</p>
+                </span>
+                <div>
+                  <h5 class="title">Ifeanyi Okoronkwo</h5>
+                  <p class="tracking_Id">Tracking ID: 123456789</p>
+                  <p class="address">1122121 Parkview ln. Apt D</p>
+                  <p class="price pt-3">₦6,391</p>
+                </div>
+              </div>
+
+              <div class="shipment">
+                <span class="">
+                  <img src="./dist/img/logo.png" alt="" />
+                  <p class="status del">Delivered</p>
+                </span>
+                <div>
+                  <h5 class="title">Ifeanyi Okoronkwo</h5>
+                  <p class="tracking_Id">Tracking ID: 123456789</p>
+                  <p class="address">1122121 Parkview ln. Apt D</p>
+                  <p class="price pt-3">₦6,391</p>
+                </div>
+              </div>
+
+              <div class="shipment">
+                <span class="">
+                  <img src="./dist/img/logo.png" alt="" />
+                  <p class="status con">Confirmed</p>
+                </span>
+                <div>
+                  <h5 class="title">Ifeanyi Okoronkwo</h5>
+                  <p class="tracking_Id">Tracking ID: 123456789</p>
+                  <p class="address">1122121 Parkview ln. Apt D</p>
+                  <p class="price pt-3">₦6,391</p>
+                </div>
+              </div>
+            </main>
+          </section>
+
+          <section class="spacing_top">
+            <h6>Flyme unlocks more</h6>
+
+            <section class="metrics_v3">
+              <a class="do_more1">
+                <small>Fund your Wallet</small>
+                <i class="fa-solid fa-money-bill"></i>
+              </a>
+              <a class="do_more2">
+                <small>Fund your Wallet</small>
+              </a>
+              <a class="do_more3">
+                <small>Fund your Wallet</small>
+              </a>
+              <a class="do_more4">
+                <small>Fund your Wallet</small>
+              </a>
+              <a class="do_more5">
+                <small>Fund your Wallet</small>
+              </a>
+            </section>
+          </section>
+
+          <!--   <section class="ads">
+            <div class="w-100 ">
+              <img src="./dist/img/newUpdate/Ad1.png" alt="" class="w-100 h-100">
+            </div>
+          </section> -->
+        </section>
+      </div>
+
+      <div
+        class="mobile_menu_drawer d-flex d-md-flex justify-content-center align-items-center"
+      >
+        <i class="fa-solid fa-bars fs-5 text-white"></i>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      var income_settings = {
+        series: [
+          {
+            name: "Inflation",
+            data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+          },
+        ],
+        chart: {
+          height: 350,
+          type: "bar",
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: "top", // top, center, bottom
+            },
+          },
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val + "%";
+          },
+          offsetY: -20,
+          style: {
+            fontSize: "12px",
+            colors: ["#000"],
+          },
+        },
+
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          position: "top",
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          crosshairs: {
+            fill: {
+              type: "gradient",
+              gradient: {
+                colorFrom: "#000",
+                colorTo: "#000",
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
+              },
+            },
+          },
+          tooltip: {
+            enabled: true,
+          },
+        },
+        yaxis: {
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: false,
+            formatter: function (val) {
+              return val + "%";
+            },
+          },
+        },
+        title: {
+          text: "Monthly Income",
+          floating: true,
+          offsetY: 330,
+          align: "center",
+          style: {
+            color: "#000",
+          },
+        },
+      };
+
+      var income_chart = new ApexCharts(
+        document.querySelector("#chart_income"),
+        income_settings
+      );
+
+      income_chart.render();
+
+      var Visitors = {
+        chart: {
+          type: "line",
+          height: 350,
+        },
+        series: [
+          {
+            name: "sales",
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+          },
+        ],
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+        },
+      };
+
+      var Visitors_chart = new ApexCharts(
+        document.querySelector("#income_chart"),
+        Visitors
+      );
+      Visitors_chart.render();
+
+      var options = {
+        series: [60, 30, 10], // Replace these values with your actual data (Deposit, Withdrawal, Orders)
+        chart: {
+          type: "donut",
+          height: 350,
+        },
+        labels: ["Deposit", "Withdrawal", "Orders"], // Labels for each section
+        title: {
+          text: "Transaction Comparison", // Title for the chart
+          align: "center",
+        },
+
+        legend: {
+          position: "bottom",
+        },
+      };
+
+      var chart = new ApexCharts(document.querySelector("#order"), options);
+      chart.render();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+@use'../global.config.scss' as *;
+
+// style for address the boilerplate can be found in contact.html
+
+
+
+
+
+.addresses{
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card_cont{
+        width: 90%;
+        @include laptop{
+            width: 80%;
+        }
+    }
+    .address_book{
+        
+        display: grid;
+        // margin-top: 5rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+
+        .el{
+            width: 100%;
+            
+            position: relative;
+            .top{
+                height: 10vh;
+                img{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -2;
+                    object-fit: cover;
+                }
+                .overlay{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.685);
+                    z-index: -1;
+                }
+            }
+            .meta_info{
+                background-color: $dark_blue;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,33 @@
+@use'../global.config.scss' as *;
+
+.trucks_order_list{
+    grid-template-columns: repeat( auto-fill, minmax(270px, 1fr) );
+    gap: 1rem;
+    display: grid;
+    li{
+        border: 2px solid $nuetral_color;
+        .truck_image_canvas{
+            position: relative;
+            .overlay_dimension{
+                position: absolute;
+                // top: 0;
+                right: 0;
+                // background-color: red;
+                z-index: 5;
+            }
+        }
+        .meta_details{
+            button{
+                display: flex;
+                justify-content: center;
+                color: $brand_color;
+                background-color: lighten($brand_color, 42%);
+                width: 100%;
+                &:hover{
+                    background-color: $brand_color;
+                    color: lighten($brand_color, 42%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,154 @@
+@use'../global.config.scss' as *;
+// -----------------------------  order_modal style------------------------------------
+.mymy{
+    overflow-y: auto;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(64, 64, 74, 0.815);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include laptop{
+    }
+    .card_modal{
+        background-color: #E3E2E9;
+        position: relative;
+        height:fit-content;
+        width: 95%;
+        height: 80vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        @include tablet{
+            width: 50%;
+        }
+        @include laptop{
+            height: fit-content;
+            width: 70%;
+            gap: 1rem;
+            flex-direction: row;
+        }
+        @include lg-screen{
+            width: 50%;
+        }
+    }
+    .cancel_modal{
+        position: absolute;
+        cursor: pointer;
+        top: 1rem;
+        right: 1rem;
+        @include laptop{
+            right: 2rem;
+        }
+    }
+}
+
+.alert_info{
+    color: red;
+}
+.log_alert{
+    color: red;
+}
+
+// ------------------------------ text utilities ------------------------------
+
+.flex_sum{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 15px;
+    line-height: 3px;
+}
+.ln_h{
+    line-height: 5px;
+}
+.fs_fif{
+    font-size: 15px;
+}
+
+.line_dvd{
+     margin: 1rem 0;
+    // background-color: red;
+    height: 5px;
+    width: 100%;
+    display: block;
+    @include laptop{
+        width: 5px;
+        height: auto
+    }
+}
+/* 
+@use'../global.config.scss' as *;
+
+.order_modal, .order_modal2{
+    overflow-y: auto;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(64, 64, 74, 0.815);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include laptop{
+    }
+    .card_modal{
+        position: relative;
+        height:fit-content;
+        width: 95%;
+        height: 80vh;
+        overflow-y: auto;
+        @include laptop{
+            display: flex;
+            height: fit-content;
+            width: 70%;
+            gap: 1rem;
+        }
+        @include lg-screen{
+            width: 50%;
+        }
+    }
+    .card_modal2{
+        width: 98%;
+        position: relative;
+        @include laptop{
+            width: 40%;
+        }
+        @include lg-screen{
+            width: 30%;
+        }
+        .cancel_modal2{
+            position: absolute;
+            cursor: pointer;
+            top: 1rem;
+            right: 1rem;
+            @include laptop{
+                right: 2rem;
+            }
+        }
+    }
+    .cancel_modal{
+        position: absolute;
+        cursor: pointer;
+        top: 1rem;
+        right: 1rem;
+        @include laptop{
+            right: 2rem;
+        }
+    }
+}
+
+.alert_info{
+    color: red;
+}
+.log_alert{
+    color: red;
+} */

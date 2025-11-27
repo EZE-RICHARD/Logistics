@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+      integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+      integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="./dist/Script/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="homePage">
+      <section class="banner order_height">
+        <section class="d-flex justify-content-center">
+          <header class="">
+            <span
+              class="d-flex align-items-center justify-content-between mb_head"
+            >
+              <h1 class="text-white">logo</h1>
+              <span class="text-white menu"
+                ><i class="fa-solid fa-bars"></i
+              ></span>
+            </span>
+            <nav
+              class="gap-5 align-items-center mb_dropdown hide_drop justify-content-end"
+            >
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none d-block unres"
+                >About</a
+              >
+              <a href="javascript:void(0)" class="text-decoration-none d-block"
+                >Services</a
+              >
+              <a href="javascript:void(0)" class="text-decoration-none d-block"
+                >Contact us</a
+              >
+              <div class="separator"></div>
+              <button class="btn btn-warning text-white">Patners</button>
+            </nav>
+          </header>
+        </section>
+        <img src="./dist/img/banner1.jpg" alt="" class="backdrop" />
+        <div class="overlay"></div>
+
+        <div
+          class="path w-100 d-flex justify-content-center flex-column align-items-center mt-5"
+        >
+          <h2 class="text-warning fw-bolder">Order Now</h2>
+          <span class="d-flex text-white gap-2">
+            <a
+              href="javascript:void(0)"
+              class="text-decoration-none text-white fw-bold"
+              >Home</a
+            >
+            <span class="fw-bold">></span>
+            <a
+              href="javascript:void(0)"
+              class="text-decoration-none text-white fw-bold"
+              >Order</a
+            >
+            <span class="fw-bold">></span>
+            <a
+              href="javascript:void(0)"
+              class="text-decoration-none text-white fw-bold"
+              >Delivery</a
+            >
+          </span>
+        </div>
+      </section>
+
+      <div class="order_cat d-flex align-items-center flex-column w-100 mt-5">
+        <header class="d-flex flex-column align-items-center">
+          <h2>Order Now</h2>
+          <div class="liner"></div>
+        </header>
+        <section class="tab_contianer mt-4 shadow">
+          <nav class="tabs">
+            <p class="tab px-3 active_tab" data-tab="local">Local</p>
+            <p class="tab px-3" data-tab="international">International</p>
+          </nav>
+          <main>
+            <!-- local -->
+            <div id="local" class="content active_content px-md-3 px-2">
+              <form action="" class="pb-3">
+                <p class="mt-3 mt-md-4">Package Information</p>
+                <div class="form-group">
+                  <select
+                    id="itemType"
+                    class="bg_input px-3"
+                    onchange="toggleWeightInput()"
+                  >
+                    <option value="" disabled selected hidden class="">
+                      What are you delivering
+                    </option>
+                    <option value="parcel">Parcel</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <select id="stateSelect" class="bg_input mt-3 mt-md-4 px-3">
+                    <option value="" disabled selected hidden class="">
+                      State
+                    </option>
+                    <option value="Abia">Abia State</option>
+                  </select>
+                </div>
+
+                <div class="form-group mt-3 mt-md-4">
+                  <div class="from-group puts">
+                    <input
+                      type="text"
+                      id="pickupLocation"
+                      name="location"
+                      class="bg_input px-3"
+                      placeholder="Pickup Location"
+                    />
+                    <i class="fa-solid fa-location-dot h4"></i>
+                  </div>
+                </div>
+                <div class="form-group mt-3 mt-md-4">
+                  <div class="from-group puts">
+                    <input
+                      type="text"
+                      name="location"
+                      id="deliveryLocation"
+                      class="bg_input px-3"
+                      placeholder="Delivery Location"
+                    />
+                    <i class="fa-solid fa-location-dot h4"></i>
+                  </div>
+                </div>
+
+                <div class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4">
+                  <input
+                    type="number"
+                    id="weightInput"
+                    name="weight"
+                    placeholder="item Weight "
+                    class="bg_input px-3 d-none"
+                  />
+                </div>
+
+                <div class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4">
+                  <input
+                    type="number"
+                    name="rec_phone"
+                    id="receiverPhone"
+                    placeholder="Reciever's Phone"
+                    class="bg_input px-3"
+                  /><input
+                    type="number"
+                    name="send_phone"
+                    id="senderPhone"
+                    placeholder="Sender's Phone"
+                    class="bg_input px-3"
+                  />
+                </div>
+                <p class="log_alert d-none">Please fill required field</p>
+
+                <div class="form-group mt-4 d-flex justify-content-end">
+                  <span
+                    onclick="submitForm()"
+                    class="btn btn-warning text-white"
+                    >Proceed</span
+                  >
+                </div>
+              </form>
+            </div>
+
+            <div id="international" class="content px-md-4 px-2">
+              <form action="" class="py-4">
+                <div class="form-groups1">
+                  <div class="timeline mt-5">
+                    <span class="steps">
+                      <div class="line"></div>
+                      <div class="meta_info">
+                        <span class="d-flex flex-column align-items-center">
+                          <span
+                            class="num d-flex justify-content-center align-items-center active_step"
+                            >1</span
+                          >
+                          <span>Details</span>
+                        </span>
+                        <span class="d-flex flex-column align-items-center">
+                          <span
+                            class="num num2 d-flex justify-content-center align-items-center"
+                            >2</span
+                          >
+                          <span>Location</span>
+                        </span>
+                      </div>
+                    </span>
+                  </div>
+
+                  <div class="form-group mt-5">
+                    <select class="bg_input mt-3 px-3 int_cat">
+                      <option
+                        value="mi"
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place"
+                      >
+                        Select Item Category
+                      </option>
+                      <option value="optme">Option 1</option>
+                      <option value="err">Option 2</option>
+                      <option value="erg">Option 3</option>
+                    </select>
+                    <input
+                      type="text"
+                      name="item_name"
+                      placeholder="Item Name"
+                      class="bg_input mt-3 mt-md-4 px-3 int_item"
+                    />
+                  </div>
+
+                  <div
+                    class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4 align-items-center justify-contents-center"
+                  >
+                    <input
+                      type="number"
+                      name="item_qty"
+                      placeholder="Qauntity"
+                      class="bg_input px-3 int_qty"
+                    />
+                    <input
+                      type="text"
+                      name="item_val"
+                      placeholder="Item Value (NGN)"
+                      class="bg_input px-3 int_price"
+                    />
+                  </div>
+                  <div class="form-group mt-3 mt-md-4">
+                    <textarea
+                      name="description"
+                      id=""
+                      placeholder="Brief Description of Item e.g colour, uses"
+                      class="p-2 bg_area px-3 int_description"
+                    ></textarea>
+                  </div>
+                  <div class="form-group mt-3 mt-md-4">
+                    <input
+                      type="number"
+                      name="weight"
+                      placeholder="Weight(KG)"
+                      class="px-3 bg_input int_number"
+                    />
+                  </div>
+                  <div class="form-group mt-3 d-flex gap-md-4 gap-1 mt-md-4">
+                    <input
+                      type="number"
+                      name="length"
+                      placeholder="Length(CM)"
+                      class="px-3 bg_input int_length"
+                    />
+                    <input
+                      type="number"
+                      name="width"
+                      placeholder="Width(CM)"
+                      class="px-3 bg_input int_width"
+                    />
+                    <input
+                      type="number"
+                      name="height"
+                      placeholder="Height(CM)"
+                      class="px-3 bg_input int_heigth"
+                    />
+                  </div>
+                  <div class="form-group mt-4 d-flex justify-content-end">
+                    <button class="btn btn-warning text-white step1">
+                      Proceed
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-groups2 hid">
+                  <div class="timeline mt-5">
+                    <span class="steps">
+                      <div class="line"></div>
+                      <div class="meta_info">
+                        <span class="d-flex flex-column align-items-center">
+                          <span
+                            class="num num1 d-flex justify-content-center align-items-center active_step"
+                            >1</span
+                          >
+                          <span>Details</span>
+                        </span>
+                        <span class="d-flex flex-column align-items-center">
+                          <span
+                            class="num d-flex justify-content-center align-items-center active_step"
+                            >2</span
+                          >
+                          <span>Location</span>
+                        </span>
+                      </div>
+                    </span>
+                  </div>
+
+                  <div class="form-group mt-5">
+                    <p class="pt-3">From</p>
+                    <div class="from-group puts">
+                      <input
+                        type="text"
+                        name="location"
+                        class="bg_input px-3 from_int_location"
+                        placeholder="Pickup Location"
+                      />
+                      <i class="fa-solid fa-location-dot h4"></i>
+                    </div>
+
+                    <select
+                      id=" "
+                      class="bg_input mt-3 mt-md-4 px-3 from_int_country"
+                    >
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place"
+                      >
+                        Select Country
+                      </option>
+                      <option value="Nigeria">Nigeria</option>
+                    </select>
+                  </div>
+                  <div
+                    class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4 align-items-center justify-contents-center"
+                  >
+                    <select id=" " class="bg_input px-3 from_int_state">
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place"
+                      >
+                        Select State
+                      </option>
+                      <option value="abia">Abia</option>
+                    </select>
+                    <select id=" " class="bg_input px-3 from_int_city">
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place"
+                      >
+                        Select City
+                      </option>
+                      <option value="Abakaliki">Abakaliki</option>
+                    </select>
+                  </div>
+                  <div class="form-group mt-3 mt-md-4">
+                    <input
+                      type="text"
+                      name="postal"
+                      placeholder="Postal Code"
+                      class="bg_input px-3 from_int_post"
+                    />
+                  </div>
+
+                  <!-- to -->
+
+                  <div class="form-group mt-5">
+                    <p class="">To</p>
+                    <div class="from-group puts">
+                      <input
+                        type="text"
+                        name="location"
+                        class="bg_input px-3 to_int_location"
+                        placeholder="Pickup Location"
+                      />
+                      <i class="fa-solid fa-location-dot h4"></i>
+                    </div>
+
+                    <select
+                      id="country"
+                      class="bg_input mt-3 mt-md-4 px-3 to_int_country"
+                    >
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place"
+                      >
+                        Select Country
+                      </option>
+                      <option value="kogi">Kogi</option>
+                    </select>
+                  </div>
+                  <div
+                    class="form-group mt-3 mt-md-4 d-flex gap-3 gap-md-4 align-items-center justify-contents-center"
+                  >
+                    <select
+                      id="state"
+                      class="bg_input px-3 state_down to_int_state"
+                    >
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place"
+                      >
+                        Select State
+                      </option>
+                      <option value="abuja">Abuja</option>
+                    </select>
+                    <select id="" class="bg_input to_int_city">
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        class="mini_place px-3"
+                      >
+                        Select City
+                      </option>
+                      <option value="niger">Niger</option>
+                    </select>
+                  </div>
+                  <div class="form-group mt-3 mt-md-4 to_int_post">
+                    <input
+                      type="text"
+                      name="postal"
+                      placeholder="Postal Code"
+                      class="bg_input px-3"
+                      required
+                    />
+                  </div>
+                  <p class="alert_info d-none">
+                    Ensure all input fields are completed
+                  </p>
+                  <div class="form-group mt-4 d-flex justify-content-end">
+                    <span
+                      class="btn btn-warning text-white submit_international_btn"
+                      >Proceed</span
+                    >
+                  </div>
+                </div>
+              </form>
+            </div>
+          </main>
+        </section>
+      </div>
+
+      <div class="mymy">
+        <div class="card_modal bg-white px-2 px-md-4 py-5">
+          <section class="w-100">
+            <h5>Summary</h5>
+            <main class="flex_sum mt-3">
+              <div class="d-flex justify-content-between">
+                <p>Item names</p>
+                <p class="item_name">$340,000</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>Total Items</p>
+                <p class="order_count">$340,000</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>Total weight</p>
+                <p class="item_weight">$340,000</p>
+              </div>
+            </main>
+            <section class="address mt-md-3">
+              <h5>Address Info</h5>
+              <main class="mt-2">
+                <div class="d-flex flex-column">
+                  <span class="fw-medium"
+                    ><i class="fa-solid fa-location-dot"></i> Pick Up
+                    Address</span
+                  >
+                  <small class="pickup_address"
+                    >894 fargiton pass, Picasso Italy</small
+                  >
+                </div>
+                <div class="d-flex flex-column mt-2">
+                  <span class="fw-medium"
+                    ><i class="fa-solid fa-location-dot"></i> Delivery
+                    Address</span
+                  >
+                  <small class="delivery_address"
+                    >894 fargiton pass, Picasso Italy</small
+                  >
+                </div>
+              </main>
+            </section>
+          </section>
+
+          <section class="w-100 d-flex flex-column mt-md-0">
+            <div class="fs_fif">
+              <h5>Select Payment Method</h5>
+              <label>
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="paystack"
+                  checked
+                />
+                Pay with Paystack
+              </label>
+              <label>
+                <input type="radio" name="paymentMethod" value="direct" />
+                Pay via Direct Bank Transfer
+              </label>
+            </div>
+            <section class="py-3 mt-md-3">
+              <section class="ln_h fs_fif">
+                <div class="d-flex justify-content-between">
+                  <p>Shipping</p>
+                  <p class="shipping_price">$340,000</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <p>Charges</p>
+                  <p class="charge_price">$340,000</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <h6>Total</h6>
+                  <h6 class="total_price">$340,000</h6>
+                </div>
+              </section>
+              <button id="proceedToIntPaymentBtn" class="p-2 mt-2 btn-warning text-white w-100">
+                Proceed To Payment
+              </button>
+              <i class="fa-solid fa-xmark cancel_modal"></i>
+            </section>
+          </section>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="order_modal2 d-none">
+        <div class="card_modal2 bg-white px-2 px-md-4 py-5">
+          <h4>Item Information</h4>
+          <div class="d-flex mt-3">
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"
+                ><i class="fa-solid fa-box"></i> Item Type</span
+              >
+              <span class="item-type">Parcel</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1">
+                <i class="fa-solid fa-weight-scale"></i> Item Weight</span
+              >
+              <span class="item-weight">30kg</span>
+            </p>
+          </div>
+          <div class="d-flex">
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"><i class="fa-solid fa-map"></i> State</span>
+              <span class="state">Abia State</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"
+                ><i class="fa-solid fa-map-pin"></i> Pick Up address</span
+              >
+              <span class="pickup-location">20 ojeowerri</span>
+            </p>
+          </div>
+
+          <div class="d-flex">
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"
+                ><i class="fa-solid fa-map-pin"></i> Delivery Up address</span
+              >
+              <span class="delivery-location">20 ojeowerri</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"
+                ><i class="fa-solid fa-phone"></i> Sender's Phone</span
+              >
+              <span class="sender-phone">090 144 590 56</span>
+            </p>
+          </div>
+
+          <div class="d-flex">
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1"
+                ><i class="fa-solid fa-phone"></i> Reciever's Phone</span
+              >
+              <span class="receiver-phone">090 144 590 56</span>
+            </p>
+
+            <p class="w-100 d-flex flex-column">
+              <span class="accent1 text-warning"
+                ><i class="fa-solid fa-tag"></i> Price</span
+              >
+              <span>$56</span>
+            </p>
+          </div>
+          <div class="mt-3">
+            <a
+              href="javascript:void(0)"
+              class="btn-warning w-100 btn text-white"
+              >Proceed to Payment</a
+            >
+          </div>
+          <i class="fa-solid fa-xmark cancel_modal2"></i>
+        </div>
+      </div>
+
+      <footer class="home_footer text-white p-2">
+        <main class="foot py-5">
+          <div class="info">
+            <div>
+              <h1>Logo</h1>
+              <p class="mt-3">
+                At FlyMeExpress, we believe in more than just moving goods. We
+                believe in moving forward, hand-in-hand with our partners,
+                customers, and the world. Together, we create pathways where
+                efficiency meets grace, and every delivery tells a story.
+              </p>
+            </div>
+
+            <div>
+              <header>
+                <h3>Services</h3>
+                <div class="liner"></div>
+              </header>
+              <ul class="list-unstyled mt-3">
+                <li>
+                  <span>Mon- Fri..............8am - 5pm</span>
+                </li>
+                <li>
+                  <span>Sat - Sun.............12pm - 5pm</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="service">
+            <header>
+              <h3>Services</h3>
+              <div class="liner"></div>
+            </header>
+            <ul class="list-unstyled d-flex flex-column gap-2 mt-3">
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> Logistics</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> International
+                Shipping</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> Truck Booking</a
+              >
+            </ul>
+          </div>
+          <div class="active_link">
+            <header>
+              <h3>Quick Links</h3>
+              <div class="liner"></div>
+            </header>
+            <ul class="d-flex flex-column gap-2 list-unstyled mt-3">
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> About</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> Services</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> Contact Us</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> Patner With us</a
+              >
+              <a
+                href="jaavascript:void(0)"
+                class="text-decoration-none text-white"
+                ><i class="fa-solid fa-angle-right"></i> Book Truck</a
+              >
+            </ul>
+          </div>
+          <div class="media">
+            <header>
+              <h3>Media</h3>
+              <div class="liner"></div>
+            </header>
+            <div class="gallery mt-3"></div>
+          </div>
+        </main>
+        <div class="lincense text-center">
+          copyright 2018 Logistics. All rights reserved
+        </div>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      $(".instructions").slick({
+        infinite: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        autoplaySpeed: 2000,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true,
+            },
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>

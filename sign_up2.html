@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./dist/img/lo" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+      integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+      integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="./dist/Script/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="sign_in p-2">
+      <header>
+        <img src="./dist/img/logo.png" width="100px" alt="">
+      </header>
+      <section class="d-flex justify-content-center mt-3">
+        <img src="./dist/img/4.png" alt="" class="orange_ring" />
+        <img src="./dist/img/5.png" alt="" class="blue_ring" />
+        <main class="content_sign justify-content-between mt-lg-5">
+          <section class="cta">
+            <span class="text-center">
+              <h4>lorem</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae mollitia ex amet ea quae rem autem eveniet unde eos
+                illo, ut sed, qui porro! Provident ipsam deserunt a dignissimos
+                corrupti voluptas magni amet!
+              </p>
+              <div class="your_class">
+                <div class="illustration_img d-flex justify-content-center">
+                  <img src="./dist/img/Delivery-bro.svg" alt="" class="" />
+                </div>
+                <div class="illustration_img d-flex justify-content-center">
+                  <img src="./dist/img/In no time-cuate.svg" alt="" class="" />
+                </div>
+                <div class="illustration_img d-flex justify-content-center">
+                  <img
+                    src="./dist/img/Drone Delivery-rafiki.svg"
+                    alt=""
+                    class=""
+                  />
+                </div>
+              </div>
+            </span>
+          </section>
+          <form action="" class="text-center px-4 pt-4 pb-3 shadow bg-white">
+            <h4>Login</h4>
+            <!-- fisrt and last name -->
+            <div class="form-groups mt-3 d-flex gap-1">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="first"
+                  placeholder="First name"
+                  class="form-control"
+                />
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Last name"
+                  class="form-control"
+                  name="last"
+                />
+                <i class="fa-solid fa-id-badge"></i>
+              </div>
+            </div>
+
+            <!-- middle name and email -->
+            <div class="form-groups d-flex gap-1 mt-3">
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Middle Name"
+                  class="form-control"
+                  name="middle"
+                />
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Email" class="form-control" name="email"/>
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+            </div>
+
+            <!-- password -->
+            <div class="form-groups mt-3">
+              <div class="form-group">
+                <input
+                  type="password"
+                  placeholder="Set Password"
+                  class="form-control"
+                  name="pwd"
+                />
+                <i class="fa-solid fa-lock"></i>
+              </div>
+            </div>
+
+            <!-- phone and address -->
+            <div class="form-groups d-flex gap-1 mt-3">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Your Address"
+                  name="phone"
+                  class="form-control"
+                />
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="form-group">
+                <input type="tel" placeholder="Phone" class="form-control" name="address" />
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+            </div>
+
+            <!-- gender and occupation -->
+            <div class="form-groups d-flex gap-1 mt-3">
+              <div class="form-group">
+                <select name="gender" id="" class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="form-group w-100">
+                <input
+                  type="text"
+                  placeholder="Your Occupation"
+                  class="form-control"
+                  name="occupation"
+                />
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+            </div>
+
+            <div class="form-group mt-4">
+              <button class="btn btn-warning text-white w-100">Login</button>
+            </div>
+            <span class="mt-2 d-block"
+              >Don't have an account ?
+              <a href="" class="text-decoration-none">create account</a></span
+            >
+          </form>
+        </main>
+      </section>
+    </section>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      // $(".your_class").slick();
+      $(".your_class").slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,505 @@
+@use "../global.config.scss" as *;
+
+.homePage {
+  .btn{
+    border-radius: 0 !important;
+  }
+  width: 100%;
+  .banner {
+    width: 100%;
+    height: 80vh;
+    @include laptop{
+      height: 100vh;
+    }
+    .backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: inherit;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: inherit;
+      background-color: rgba(0, 0, 0, 0.616);
+      object-fit: contain;
+      z-index: -1;
+      @include tablet{
+        object-fit: cover;
+      }
+    }
+    header {
+      display:block;
+      width: 95%;
+      position: relative;
+      @include laptop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+      }
+      nav {
+        background-color: white;
+        width: 100%;
+        position: absolute;
+        top: 2.5rem;
+        transition: transform .5s ease-in-out;
+        box-shadow: 0 0 8px rgba(0, 0, 0);
+       
+        @include laptop {
+          display: flex;
+          box-shadow: none;
+          width: 50%;
+          position: static;
+          background: none;
+        }
+        a{
+  
+          margin-top: 1rem;
+          padding: 0rem 1rem 0rem;
+          @include laptop{
+            
+            padding: 0;
+            margin-top: 0;
+          }
+        }
+        button{
+          margin:1rem 1rem .5rem;
+          @include laptop{
+            margin: 0;
+          
+          }
+        }
+        .separator{
+          width: 100%;
+          height: 1px;
+          display: block;
+          margin: 1rem 0 0;
+          background: #f1f1f1;;
+          @include laptop{
+            display: none;
+          }
+        }
+
+      }
+      .mb_head {
+        width: 100%;
+        img{
+          width: 100px;
+        }
+        @include laptop {
+          width: 20%;
+        }
+      }
+      .menu {
+        @include laptop {
+          display: none;
+        }
+      }
+    }
+  }
+  .features {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    // align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    // background-color: red;
+    margin-top: 17rem;
+    @include laptop {
+      margin-top: 0rem;
+    }
+
+    section {
+      @include laptop {
+        display: flex;
+      }
+    }
+    .description {
+      width: 100%;
+      @include laptop {
+        width: 50%;
+      }
+      span {
+        width: 95%;
+        @include laptop {
+          width: 70%;
+        }
+      }
+      .article {
+        .article_header {
+          .liner {
+            @include liner;
+            background-color: $brown;
+          }
+        }
+      }
+    }
+    figure {
+      width: 100%;
+      @include laptop {
+        width: 50%;
+      }
+      img {
+        width: 100%;
+        @include laptop {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 13rem;
+    @include laptop {
+      margin-top: 0;
+    }
+
+    .backdrop {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      z-index: -1;
+      @include laptop {
+        height: 50vh;
+      }
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100vh;
+        @include laptop {
+          height: 50vh;
+        }
+      }
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.418);
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        @include laptop {
+          height: 50vh;
+        }
+      }
+    }
+
+  }
+
+  .keyNotes {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin-top: 10rem;
+    @include laptop {
+      flex-direction: row;
+      height: 50vh;
+    }
+    .clients {
+      background-image: url("/dist/img/banner1.jpg");
+      background-size: cover;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+      height: 100%;
+      @include laptop {
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+        width: 100%;
+      }
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.466);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      li {
+        i {
+          font-size: 8px;
+          color: $brand_color;
+          font-weight: 900;
+        }
+      }
+    }
+    // .stroke{
+    //   width: 6rem;
+    //   background-color: rgb(255, 0, 0);
+    //   transform: rotateY('45');
+    //   position: absolute;
+    //   left: 50%;
+    //   transform: translateX(-50%, -50%);
+    // }
+    .patners {
+      background-image: url("/dist/img/banner1.jpg");
+      background-size: cover;
+      clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+      position: relative;
+      height: 100%;
+      @include laptop {
+        width: 100%;
+        clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+      }
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.466);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      li {
+        i {
+          font-size: 8px;
+          color: $brand_color;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+
+  .contacts {
+    // margin-top: 10rem;
+    background-color: rgb(238, 238, 238);
+    height: 50vh;
+    .vrt {
+      color: $brand_color;
+    }
+  }
+
+  .stats {
+    height: fit-content;
+    width: 100%;
+    @include laptop {
+      height: 50vh;
+    }
+    .grider {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      width: 100%;
+      gap: 4rem;
+      @include laptop {
+        width: 80%;
+        gap: 0;
+      }
+      // .card_holder{
+      .edges {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        div {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+        }
+      }
+
+      // }
+    }
+  }
+
+  .home_footer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #40404a;
+    height: fit-content;
+    @include laptop {
+      height: 60vh;
+    }
+    .foot {
+      display: grid;
+      // padding:5rem 0 14rem;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      @include laptop {
+        width: 80%;
+      }
+      header {
+        h3 {
+          color: $brand_color;
+        }
+        .liner {
+          @include liner;
+          background-color: white;
+        }
+      }
+      .media {
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          gap: .5rem;
+          div{
+            position: relative;
+            img{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+            .overlay{
+              position: absolute;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(52, 51, 67, 0.849);
+              i{
+                cursor: pointer;
+                border: 2px solid $brand_color;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .lincense {
+      background-color: $brand_color;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      font-size: 12px;
+    }
+  }
+}
+
+.tab_container {
+  width: 100%;
+
+  .tabs {
+    width: 95%;
+    background-color: red;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    margin-top: -20rem;
+    // position: absolute;
+    @include tablet {
+      margin-top: -25rem;
+      width: 60%;
+    }
+
+    @include laptop {
+      flex-direction: row;
+      width: 80%;
+      // flex-direction: column;
+      margin-top: -15rem;
+      // display: flex;
+      // bottom: -5rem;
+    }
+    i {
+      font-size: 3rem;
+    }
+    .tab_head {
+      .underliner {
+        background-color: white;
+        @include liner;
+      }
+    }
+  }
+  .tab_1 {
+    width: 100%;
+    background-color: $brand_color;
+  }
+  .tab_2 {
+    width: 100%;
+    background-color: rgb(102, 87, 87);
+  }
+  .tab_3 {
+    background-color: $brand_color;
+    width: 100%;
+  }
+}
+
+.home_height {
+  height: 100vh;
+}
+
+
+.service_mg{ 
+  margin-top: -30rem;
+ 
+  @include laptop {
+    margin-top: -20rem;
+  
+  }}
+
+.contents {
+  // margin-top: -30rem;
+  width: 95%;
+  @include laptop {
+    // margin-top: -20rem;
+    width: 80%;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h2 {
+        color: $brand_color;
+      }
+      .liner {
+        @include liner;
+        background-color: #fff;
+      }
+      .liner_2 {
+        @include liner;
+        background-color: $dark_blue;
+      }
+    }
+    p {
+      width: 95%;
+      @include laptop {
+        width: 70%;
+      }
+    }
+  }
+  .service_grid {
+    display: grid;
+    gap: 8px;
+    @include tablet {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+    .service_tile {
+      i {
+        font-size: 3rem;
+      }
+      .tab_head {
+        .underliner {
+          @include liner;
+          background-color: grey;
+        }
+      }
+    }
+  }
+}
+
+.services_page{
+  margin-top:-27rem;
+}

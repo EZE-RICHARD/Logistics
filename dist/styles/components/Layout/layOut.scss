@@ -39,3 +39,47 @@
     grid-area: body;
   }
 }
+
+
+
+
+.layout_v2 {
+  width: 100%;
+  padding-bottom: 3rem;
+  background-color: #faf9f6;
+  min-height: 100vh;
+  height: fit-content;
+  @include laptop {
+    display: grid;
+    grid:
+      "sidebar body" 100%
+      / 15% 85%;
+  }
+  /* @include lg-screen{
+    grid:
+    "sidebar body" 100%
+    / 22% 78%;
+  } */
+  .sidebar {
+    width: 90%;
+    grid-area: sidebar;
+    position: fixed;
+    background-color: #faf9f6;
+    z-index: 5;
+    @include tablet{
+      width: 40%;
+    }
+    @include laptop {
+      width: 15%;
+      // transform: translateX(0);
+    }
+   /*  @include lg-screen{
+      width: 22%;
+    } */
+  }
+  .body {
+    width: 100%;
+    position: relative;
+    grid-area: body;
+  }
+}
