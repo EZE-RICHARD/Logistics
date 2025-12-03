@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipment Wizard</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/your-kit-id.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <style>
+      /* Loading spinner styles */
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 10px;
+        color: #6366f1;
+      }
+      .loading.active {
+        display: block;
+      }
+      .loading::after {
+        content: "";
+        display: inline-block;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #6366f1;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Validation Styles */
+      .is-invalid {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+      }
+      .invalid-feedback {
+        display: none;
+        color: #dc3545;
+        font-size: 0.875em;
+        margin-top: 0.25rem;
+      }
+      .is-invalid ~ .invalid-feedback,
+      .is-invalid + .invalid-feedback {
+        display: block;
+      }
+
+      /* Drag & Drop Zone */
+      .upload-dropzone {
+        border: 2px dashed #dee2e6;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        background: #f8f9fa;
+      }
+      .upload-dropzone.dragover {
+        border-color: #6366f1;
+        background: #e0e7ff;
+      }
+      .upload-dropzone.is-invalid {
+        border-color: #dc3545;
+        background: #ffe6e6;
+      }
+      .preview-item img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="wizard-layout">
+      <aside class="wizard-ad">
+        <div class="ad-content">
+          <h2>Ship Faster.<br />Worry Less.</h2>
+          <p>Real-time tracking • Insurance included • 200+ carriers</p>
+        </div>
+      </aside>
+
+      <main class="wizard-main">
+        <div class="mobile-steps" id="mobileSteps">
+          <div class="step active"><span>1</span></div>
+          <div class="step"><span>2</span></div>
+          <div class="step"><span>3</span></div>
+          <div class="step"><span>4</span></div>
+          <div class="step"><span>5</span></div>
+        </div>
+
+        <div class="form-wrapper">
+          <form class="wizard-form" id="shipmentForm" novalidate>
+            <!-- ==================== STEP 1: SENDER ==================== -->
+            <section
+              class="step-section sender_address_detail active"
+              data-step="1"
+            >
+              <h3>Sender Details</h3>
+              <p class="mt-4">How do you want to add an address?</p>
+              <div class="choose_address_opt">
+                <div
+                  class="option_address active_address"
+                  data-target="use-book"
+                >
+                  <span>Use Address Book</span>
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="option_address" data-target="enter-manually">
+                  <span>Enter Address</span>
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+              </div>
+
+              <!-- Use Address Book -->
+              <div id="use-book" class="address-content active">
+                <div class="selected-header">
+                  <div class="avatar">EP</div>
+                  <div class="name-title">
+                    <h4>Emmanuel Paschal</h4>
+                    <p>Default Sender Address</p>
+                  </div>
+                </div>
+                <ul>
+                  <li>oraclelogistics101@gmail.com</li>
+                  <li>+234 903 903 807 7866</li>
+                  <li>
+                    NO 9 Chris Okafor, Ago Palace Way, Amuwo-Odofin, Lagos, NG
+                    100263
+                  </li>
+                </ul>
+                <div class="address-actions">
+                  <span onclick="openModal('editAddressModal')">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit Address
+                  </span>
+                  <span onclick="openModal('addressBookModal')">
+                    <i class="fa-solid fa-book-open"></i> Use Another Address
+                  </span>
+                </div>
+                <!-- Hidden field to confirm sender selected -->
+                <input type="hidden" id="senderSelected" value="true" />
+              </div>
+
+              <!-- Enter Manually -->
+              <div id="enter-manually" class="address-content">
+                <div class="mt-5">
+                  <form id="addressForm">
+                    <div class="row g-3">
+                      <div class="col-12 col-md-6">
+                        <label class="form-label"
+                          >First Name <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="senderFirstName"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          First name is required
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label"
+                          >Last Name <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="senderLastName"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          Last name is required
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label"
+                          >Address Line 1
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="senderAddress1"
+                          minlength="10"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          Must be at least 10 characters
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label">Address Line 2</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="senderAddress2"
+                        />
+                      </div>
+                      <!-- Country/State/City/ZIP -->
+                      <div class="row g-3 align-items-end">
+                        <div class="col-12 col-md-6 col-lg-3 position-relative">
+                          <label class="form-label"
+                            >Country <span class="text-danger">*</span></label
+                          >
+                          <select
+                            class="form-select country-select"
+                            name="senderCountry"
+                            required
+                          >
+                            <option value="" selected>
+                              Loading countries...
+                            </option>
+                          </select>
+                          <div class="loading" id="countryLoadingSender"></div>
+                          <div class="invalid-feedback">Country required</div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 position-relative">
+                          <label class="form-label"
+                            >State / Province
+                            <span class="text-danger">*</span></label
+                          >
+                          <select
+                            class="form-select state-select"
+                            name="senderState"
+                            required
+                          >
+                            <option value="">Select country first</option>
+                          </select>
+                          <div class="loading" id="stateLoadingSender"></div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 position-relative">
+                          <label class="form-label"
+                            >City <span class="text-danger">*</span></label
+                          >
+                          <select
+                            class="form-select city-select"
+                            name="senderCity"
+                            required
+                          >
+                            <option value="">Select state first</option>
+                          </select>
+                          <div class="loading" id="cityLoadingSender"></div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                          <label class="form-label"
+                            >ZIP / Postal Code
+                            <span class="text-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="senderZip"
+                            required
+                          />
+                          <div class="invalid-feedback">ZIP required</div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label"
+                          >Phone Number
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name="senderPhone"
+                          required
+                        />
+                        <div class="invalid-feedback">Phone required</div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label"
+                          >Email Address
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="senderEmail"
+                          required
+                        />
+                        <div class="invalid-feedback">Valid email required</div>
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label"
+                          >Alternate Phone (Optional)</label
+                        >
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name="senderAltPhone"
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==================== STEP 2: RECEIVER (MUST USE ADDRESS BOOK) ==================== -->
+            <section class="step-section receiver_address_detail" data-step="2">
+              <h3>Receiver Details</h3>
+              <p class="mt-4 text-danger fw-bold">
+                You must select a receiver from your address book
+              </p>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="openModal('addressBookModalReceiver')"
+              >
+                <i class="fa-solid fa-book-open"></i> Open Address Book
+              </button>
+
+              <input
+                type="hidden"
+                name="selectedReceiverId"
+                id="selectedReceiverId"
+                required
+              />
+              <div
+                class="invalid-feedback d-block mt-2"
+                id="receiverError"
+                style="display: none"
+              >
+                Please select a receiver from the address book
+              </div>
+
+              <div
+                id="selectedReceiverPreview"
+                class="mt-4"
+                style="display: none"
+              >
+                <div class="selected-header">
+                  <div class="avatar bg-success" id="receiverAvatar">CH</div>
+                  <div class="name-title">
+                    <h4 id="receiverName">Not selected yet</h4>
+                    <p>Click button above</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==================== STEP 3: PACKAGE ITEMS ==================== -->
+            <section class="step-section package-step" data-step="3">
+              <h3 class="mb-3">Package Details</h3>
+              <p class="text-muted fs-15 mb-5">Tell us what you're shipping</p>
+
+              <div class="purpose-field mb-5">
+                <label class="form-label"
+                  >Purpose of Shipment <span class="text-danger">*</span></label
+                >
+                <div class="custom-select">
+                  <select id="shippingPurpose" name="shippingPurpose" required>
+                    <option value="" disabled selected>Select purpose</option>
+                    <option value="sale">Sale / Commercial</option>
+                    <option value="gift">Gift</option>
+                    <option value="personal">Personal Use</option>
+                    <option value="return">Return</option>
+                    <option value="sample">Sample</option>
+                    <option value="repair">Repair / Warranty</option>
+                    <option value="documents">Documents Only</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="invalid-feedback">Please select a purpose</div>
+              </div>
+
+              <div id="parcelsAccordion">
+                <div class="parcel-accordion-item active">
+                  <div class="parcel-header" onclick="toggleParcel(this)">
+                    <div class="parcel-title">
+                      <i class="fa-solid fa-box-open me-3 text-indigo"></i>
+                      <span>Parcel #1</span>
+                      <small class="text-muted ms-3">0 items • 0kg</small>
+                    </div>
+                    <div class="parcel-actions">
+                      <button
+                        type="button"
+                        class="btn-icon"
+                        onclick="event.stopPropagation(); deleteParcel(this)"
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                      <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                    </div>
+                  </div>
+                  <div class="parcel-body">
+                    <!-- Proof of Purchase -->
+                    <div class="upload-section">
+                      <label class="upload-label">
+                        <i class="fa-solid fa-receipt"></i> Proof of Purchase
+                      </label>
+                      <div class="upload-dropzone" id="purchaseDropzone">
+                        <input
+                          type="file"
+                          name="proofPurchase[]"
+                          accept="image/*"
+                          multiple
+                          required
+                          hidden
+                        />
+                        <i class="fa-solid fa-cloud-arrow-up fa-2x"></i>
+                        <p>Click to upload or drag & drop</p>
+                        <small>Invoice, receipt, etc.</small>
+                      </div>
+                      <div class="upload-preview" id="purchasePreview"></div>
+                      <div class="invalid-feedback">
+                        Proof of purchase is required
+                      </div>
+                    </div>
+
+                    <!-- Proof of Weight -->
+                    <div class="upload-section">
+                      <label class="upload-label">
+                        <i class="fa-solid fa-weight-scale"></i> Proof of Weight
+                      </label>
+                      <div class="upload-dropzone" id="weightDropzone">
+                        <input
+                          type="file"
+                          name="proofWeight[]"
+                          accept="image/*"
+                          multiple
+                          required
+                          hidden
+                        />
+                        <i class="fa-solid fa-weight-scale fa-2x"></i>
+                        <p>Photo of parcel on scale</p>
+                        <small>Required for accurate pricing</small>
+                      </div>
+                      <div class="upload-preview" id="weightPreview"></div>
+                      <div class="invalid-feedback">
+                        Weight proof is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ==================== STEP 4 & 5 (unchanged) ==================== -->
+            <section class="step-section" data-step="4">
+              <!-- Your full courier selection code here -->
+              <h3 class="mb-3">Choose Your Courier</h3>
+              <!-- ... your existing courier cards ... -->
+            </section>
+
+            <section class="step-section insurance-step" data-step="5">
+              <!-- Your full insurance + coupon code section -->
+              <h3 class="mb-3">Protect Your Shipment</h3>
+              <!-- ... your existing insurance card, coupon box, summary ... -->
+            </section>
+          </form>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn_prev" id="btnPrev">Back</button>
+          <button type="button" class="btn_next" id="btnNext">Next</button>
+        </div>
+      </main>
+
+      <!-- Desktop Timeline -->
+      <nav class="desktop-timeline" id="desktopTimeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-step active" data-step="1">
+          <div class="circle">1</div>
+          <span class="label">Sender</span>
+        </div>
+        <div class="timeline-step" data-step="2">
+          <div class="circle">2</div>
+          <span class="label">Receiver</span>
+        </div>
+        <div class="timeline-step" data-step="3">
+          <div class="circle">3</div>
+          <span class="label">Items</span>
+        </div>
+        <div class="timeline-step" data-step="4">
+          <div class="circle">4</div>
+          <span class="label">Carrier</span>
+        </div>
+        <div class="timeline-step" data-step="5">
+          <div class="circle">5</div>
+          <span class="label">Review</span>
+        </div>
+      </nav>
+    </div>
+
+    <!-- RECEIVER ADDRESS BOOK MODAL (Required) -->
+    <div class="modal-backdrop" id="addressBookModalReceiver">
+      <div class="modal-box" style="max-width: 640px">
+        <div class="modal-header">
+          <h3>Choose Receiver from Address Book</h3>
+          <button
+            class="modal-close"
+            onclick="closeModal('addressBookModalReceiver')"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="position-relative">
+            <input
+              type="text"
+              class="search-input ps-5"
+              placeholder="Search by name, email, phone..."
+              onkeyup="filterReceiverAddressBook(this.value)"
+            />
+          </div>
+          <div
+            id="receiverAddressBookList"
+            style="max-height: 45vh; overflow-y: auto"
+          >
+            <div
+              class="address-card"
+              data-id="101"
+              data-name="Chioma Okeke"
+              data-avatar="CH"
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">Chioma Okeke</div>
+              <div class="address-details">
+                chioma@business.ng<br />+234 812 345 6789<br />12 Admiralty Way,
+                Lekki Phase 1, Lagos
+              </div>
+            </div>
+            <div
+              class="address-card"
+              data-id="102"
+              data-name="David Adebayo"
+              data-avatar="DA"
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">David Adebayo</div>
+              <div class="address-details">
+                david.adebayo@gmail.com<br />+234 907 654 3210<br />25 Bode
+                Thomas, Surulere
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn_closeModal"
+            onclick="closeModal('addressBookModalReceiver')"
+          >
+            Cancel
+          </button>
+          <button class="btn_progress" onclick="confirmReceiverSelection()">
+            Use Selected
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- All your other modals remain exactly as you had them -->
+    <!-- editAddressModal, addressBookModal, itemModal, pickupModal, reviewModal, etc. -->
+
+    <script>
+      const totalSteps = 5;
+      let currentStep = 1;
+      let selectedReceiver = null;
+
+      const sections = document.querySelectorAll(".step-section");
+      const mobileSteps = document.querySelectorAll("#mobileSteps .step");
+      const desktopSteps = document.querySelectorAll(
+        "#desktopTimeline .timeline-step"
+      );
+      const timelineLine = document.querySelector(".timeline-line");
+      const btnNext = document.getElementById("btnNext");
+      const btnPrev = document.getElementById("btnPrev");
+
+      function goToStep(step) {
+        if (step < 1 || step > totalSteps) return;
+        currentStep = step;
+
+        sections.forEach((sec) => sec.classList.remove("active"));
+        document
+          .querySelector(`.step-section[data-step="${step}"]`)
+          .classList.add("active");
+
+        mobileSteps.forEach((s, i) => {
+          const n = i + 1;
+          s.classList.toggle("active", n === step);
+          s.classList.toggle("completed", n < step);
+        });
+
+        desktopSteps.forEach((s, i) => {
+          const n = i + 1;
+          s.classList.toggle("active", n === step);
+          s.classList.toggle("completed", n < step);
+        });
+
+        if (timelineLine) {
+          const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          timelineLine.style.background = `linear-gradient(to bottom, #6366f1 ${progress}%, #e2e8f0 ${progress}%)`;
+        }
+
+        btnPrev.disabled = currentStep === 1;
+        btnNext.innerHTML =
+          currentStep === 5
+            ? `<i class="fas fa-sparkles me-2"></i> Review & Create Label`
+            : "Next";
+      }
+
+      // ============= VALIDATE CURRENT STEP BEFORE NEXT =============
+      function validateCurrentStep() {
+        document
+          .querySelectorAll(".is-invalid")
+          .forEach((el) => el.classList.remove("is-invalid"));
+        document
+          .querySelectorAll(".invalid-feedback")
+          .forEach((el) => (el.style.display = "none"));
+
+        const currentSection = document.querySelector(
+          `.step-section[data-step="${currentStep}"]`
+        );
+
+        // Step 1: Sender
+        if (currentStep === 1) {
+          const isManual = currentSection
+            .querySelector("#enter-manually")
+            .classList.contains("active");
+          if (isManual) {
+            let valid = true;
+            currentSection
+              .querySelectorAll("#enter-manually [required]")
+              .forEach((field) => {
+                if (!field.value.trim()) {
+                  field.classList.add("is-invalid");
+                  valid = false;
+                }
+              });
+            const addr1 = currentSection.querySelector(
+              '[name="senderAddress1"]'
+            );
+            if (addr1 && addr1.value.trim().length < 10) {
+              addr1.classList.add("is-invalid");
+              valid = false;
+            }
+            return valid;
+          }
+          return true; // Address book = valid
+        }
+
+        // Step 2: Receiver
+        if (currentStep === 2) {
+          if (!document.getElementById("selectedReceiverId").value) {
+            document.getElementById("receiverError").style.display = "block";
+            return false;
+          }
+          return true;
+        }
+
+        // Step 3: Package
+        if (currentStep === 3) {
+          const purpose = document.getElementById("shippingPurpose");
+          if (!purpose.value) {
+            purpose.closest(".custom-select").classList.add("is-invalid");
+            purpose
+              .closest(".purpose-field")
+              .querySelector(".invalid-feedback").style.display = "block";
+            return false;
+          }
+
+          const purchaseInput = document.querySelector(
+            'input[name="proofPurchase[]"]'
+          );
+          const weightInput = document.querySelector(
+            'input[name="proofWeight[]"]'
+          );
+
+          let valid = true;
+          if (!purchaseInput.files.length) {
+            purchaseInput
+              .closest(".upload-section")
+              .querySelector(".upload-dropzone")
+              .classList.add("is-invalid");
+            purchaseInput
+              .closest(".upload-section")
+              .querySelector(".invalid-feedback").style.display = "block";
+            valid = false;
+          }
+          if (!weightInput.files.length) {
+            weightInput
+              .closest(".upload-section")
+              .querySelector(".upload-dropzone")
+              .classList.add("is-invalid");
+            weightInput
+              .closest(".upload-section")
+              .querySelector(".invalid-feedback").style.display = "block";
+            valid = false;
+          }
+          return valid;
+        }
+
+        return true;
+      }
+
+      // ============= NEXT BUTTON WITH BLOCKING =============
+      btnNext.addEventListener("click", () => {
+        if (!validateCurrentStep()) {
+          alert("Please complete all required fields in this step");
+          return;
+        }
+
+        if (currentStep === 4) {
+          openPickupModal();
+        } else if (currentStep === 5) {
+          openReviewModal();
+        } else if (currentStep < totalSteps) {
+          goToStep(currentStep + 1);
+        }
+      });
+
+      // ============= RECEIVER SELECTION =============
+      document
+        .querySelectorAll("#receiverAddressBookList .address-card")
+        .forEach((card) => {
+          card.addEventListener("click", function () {
+            document
+              .querySelectorAll("#receiverAddressBookList .address-card")
+              .forEach((c) => c.classList.remove("selected"));
+            this.classList.add("selected");
+            selectedReceiver = {
+              id: this.dataset.id,
+              name: this.dataset.name,
+              avatar: this.dataset.avatar,
+            };
+          });
+        });
+
+      function confirmReceiverSelection() {
+        if (!selectedReceiver) {
+          alert("Please select a receiver");
+          return;
+        }
+        document.getElementById("selectedReceiverId").value =
+          selectedReceiver.id;
+        document.getElementById("receiverName").textContent =
+          selectedReceiver.name;
+        document.getElementById("receiverAvatar").textContent =
+          selectedReceiver.avatar;
+        document.getElementById("selectedReceiverPreview").style.display =
+          "block";
+        document.getElementById("receiverError").style.display = "none";
+        closeModal("addressBookModalReceiver");
+      }
+
+      // ============= DRAG & DROP FIXED =============
+      function setupDropzone(dropzoneId, previewId) {
+        const dropzone = document.getElementById(dropzoneId);
+        const input = dropzone.querySelector('input[type="file"]');
+        const preview = document.getElementById(previewId);
+
+        dropzone.addEventListener("click", () => input.click());
+        dropzone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropzone.classList.add("dragover");
+        });
+        dropzone.addEventListener("dragleave", () =>
+          dropzone.classList.remove("dragover")
+        );
+        dropzone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          dropzone.classList.remove("dragover");
+          if (e.dataTransfer.files.length) {
+            input.files = e.dataTransfer.files;
+            previewFiles(e.dataTransfer.files, preview);
+          }
+        });
+
+        input.addEventListener("change", () =>
+          previewFiles(input.files, preview)
+        );
+      }
+
+      function previewFiles(files, previewEl) {
+        previewEl.innerHTML = "";
+        Array.from(files).forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewEl.innerHTML += `<div class="preview-item d-inline-block me-2 mb-2 position-relative">
+              <img src="${e.target.result}">
+            </div>`;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      setupDropzone("purchaseDropzone", "purchasePreview");
+      setupDropzone("weightDropzone", "weightPreview");
+
+      // ============= FINAL SUBMIT - LOG ALL FORM DATA =============
+      function openReviewModal() {
+        document.getElementById("reviewModal").classList.add("show");
+
+        // Collect and log FormData
+        const formData = new FormData(document.getElementById("shipmentForm"));
+        console.clear();
+        console.log(
+          "%cFINAL FORM DATA (All Steps)",
+          "font-size:18px; font-weight:bold; color:#6366f1"
+        );
+        for (let [key, value] of formData.entries()) {
+          if (value instanceof File) {
+            console.log(key, "→", value.name || "No file name");
+          } else {
+            console.log(key, "→", value);
+          }
+        }
+      }
+
+      // All your existing functions (openModal, closeModal, toggleParcel, etc.) remain unchanged
+      // Address toggle
+      document.querySelectorAll(".option_address").forEach((option) => {
+        option.addEventListener("click", function () {
+          const container =
+            this.closest(".sender_address_detail") ||
+            this.closest(".receiver_address_detail");
+          container
+            .querySelectorAll(".option_address")
+            .forEach((el) => el.classList.remove("active_address"));
+          this.classList.add("active_address");
+          const target = this.dataset.target;
+          container
+            .querySelectorAll(".address-content")
+            .forEach((c) => c.classList.remove("active"));
+          document.getElementById(target)?.classList.add("active");
+        });
+      });
+
+      // Initialize
+      goToStep(1);
+    </script>
+  </body>
+</html>
