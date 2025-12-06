@@ -68,8 +68,8 @@
           <div class="step active"><span>1</span></div>
           <div class="step"><span>2</span></div>
           <div class="step"><span>3</span></div>
-          <div class="step"><span>4</span></div>
-          <div class="step"><span>5</span></div>
+         <!--  <div class="step"><span>4</span></div>
+          <div class="step"><span>5</span></div> -->
         </div>
         <div class="form-wrapper">
           <form class="wizard-form" novalidate>
@@ -112,7 +112,7 @@
                 </ul>
                 <!-- FIXED: Direct onclick + icons visible -->
                 <div class="address-actions">
-                  <span onclick="openModal('editAddressModal')">
+                  <span onclick="openEditSenderModal()">
                     <i class="fa-solid fa-pen-to-square"></i> Edit Address
                   </span>
                   <span onclick="openModal('addressBookModal')">
@@ -134,9 +134,13 @@
                           type="text"
                           class="form-control"
                           id="firstName"
-                          value="Emmanuel"
+                          value=" "
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="firstNameError"
+                        ></small>
                       </div>
                       <div class="col-12 col-md-6">
                         <label class="form-label"
@@ -146,9 +150,13 @@
                           type="text"
                           class="form-control"
                           id="lastName"
-                          value="Paschal"
+                          value=" "
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="lastName"
+                        ></small>
                       </div>
                       <!-- Address Lines -->
                       <div class="col-12">
@@ -160,9 +168,13 @@
                           type="text"
                           class="form-control"
                           id="address1"
-                          value="NO 9 Chris Okafor Ago Palace Way"
+                          value=" "
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="address1"
+                        ></small>
                       </div>
                       <div class="col-12">
                         <label class="form-label">Address Line 2</label>
@@ -188,6 +200,10 @@
                               Loading countries...
                             </option>
                           </select>
+                          <small
+                            class="text-danger error-msg"
+                            id="country"
+                          ></small>
                           <div class="loading" id="countryLoadingSender"></div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 position-relative">
@@ -204,6 +220,10 @@
                               Select country first
                             </option>
                           </select>
+                          <small
+                            class="text-danger error-msg"
+                            id="state"
+                          ></small>
                           <div class="loading" id="stateLoadingSender"></div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 position-relative">
@@ -219,6 +239,10 @@
                               Select state first
                             </option>
                           </select>
+                          <small
+                            class="text-danger error-msg"
+                            id="city"
+                          ></small>
                           <div class="loading" id="cityLoadingSender"></div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
@@ -230,9 +254,13 @@
                             type="text"
                             class="form-control"
                             id="zipCode"
-                            value="100263"
+                            value=" "
                             required
                           />
+                          <small
+                            class="text-danger error-msg"
+                            id="zipCode"
+                          ></small>
                         </div>
                       </div>
                       <!-- Phone & Email -->
@@ -245,9 +273,10 @@
                           type="tel"
                           class="form-control"
                           id="phone"
-                          value="+2349038077866"
+                          value=""
                           required
                         />
+                        <small class="text-danger error-msg" id="phone"></small>
                       </div>
                       <div class="col-12 col-md-6">
                         <label class="form-label"
@@ -258,9 +287,10 @@
                           type="email"
                           class="form-control"
                           id="email"
-                          value="oraclelogistics101@gmail.com"
+                          value=""
                           required
                         />
+                        <small class="text-danger error-msg" id="email"></small>
                       </div>
                       <div class="col-12">
                         <label class="form-label"
@@ -286,6 +316,7 @@
                 </div>
               </div>
             </section>
+
             <!-- Step 2: Receiver -->
             <section class="step-section receiver_address_detail" data-step="2">
               <h3>Receiver Details</h3>
@@ -310,25 +341,37 @@
               </div>
               <!-- Content: Use Address Book (Receiver) -->
               <div id="use-book-receiver" class="address-content active">
-                <div class="selected-header">
-                  <div class="avatar bg-success">CH</div>
+                <div class="selected-header" id="receiverSelectedHeader">
+                  <div class="avatar bg-success">NA</div>
                   <div class="name-title">
-                    <h4>Chioma Okeke</h4>
-                    <p>Frequently Used Receiver</p>
+                    <h4>No Address Selected</h4>
+                    <p>Please select or enter an address</p>
                   </div>
                 </div>
-                <ul>
-                  <li>chioma@business.ng</li>
-                  <li>+234 812 345 6789</li>
-                  <li>12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</li>
+                <ul id="receiverDetailsList" style="display: none">
+                  <li id="receiverEmailLi"></li>
+                  <li id="receiverPhoneLi"></li>
+                  <li id="receiverAddressLi"></li>
                 </ul>
-                <div class="address-actions">
-                  <span onclick="openModal('editAddressModalReceiver')">
+                <div
+                  class="address-actions"
+                  id="receiverActions"
+                  style="display: none"
+                >
+                  <span onclick="openEditReceiverModal()">
                     <i class="fa-solid fa-pen-to-square"></i> Edit Address
                   </span>
                   <span onclick="openModal('addressBookModalReceiver')">
-                    <i class="fa-solid fa-book-open"></i> Use Another Address
+                    <i class="fa-solid fa-book-open"></i> Choose Another Address
                   </span>
+                </div>
+                <div id="noAddressMessage" class="text-center mt-3">
+                  <button
+                    class="btn btn-primary"
+                    onclick="openModal('addressBookModalReceiver')"
+                  >
+                    Select from Address Book
+                  </button>
                 </div>
               </div>
               <!-- Content: Enter Manually (Receiver) -->
@@ -347,6 +390,10 @@
                           id="receiverFirstName"
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="receiverFirstNameError"
+                        ></small>
                       </div>
                       <div class="col-12 col-md-6">
                         <label class="form-label"
@@ -358,6 +405,10 @@
                           id="receiverLastName"
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="receiverLastNameError"
+                        ></small>
                       </div>
                       <!-- Address Lines -->
                       <div class="col-12">
@@ -371,6 +422,10 @@
                           id="receiverAddress1"
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="receiverAddress1Error"
+                        ></small>
                       </div>
                       <div class="col-12">
                         <label class="form-label">Address Line 2</label>
@@ -400,6 +455,10 @@
                             class="loading"
                             id="countryLoadingReceiver"
                           ></div>
+                          <small
+                            class="text-danger error-msg"
+                            id="receiverCountryError"
+                          ></small>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 position-relative">
                           <label class="form-label"
@@ -416,6 +475,10 @@
                             </option>
                           </select>
                           <div class="loading" id="stateLoadingReceiver"></div>
+                          <small
+                            class="text-danger error-msg"
+                            id="receiverStateError"
+                          ></small>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 position-relative">
                           <label class="form-label"
@@ -431,6 +494,10 @@
                             </option>
                           </select>
                           <div class="loading" id="cityLoadingReceiver"></div>
+                          <small
+                            class="text-danger error-msg"
+                            id="receiverCityError"
+                          ></small>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
                           <label class="form-label"
@@ -443,6 +510,10 @@
                             id="receiverZipCode"
                             required
                           />
+                          <small
+                            class="text-danger error-msg"
+                            id="receiverZipCodeError"
+                          ></small>
                         </div>
                       </div>
                       <!-- Phone & Email -->
@@ -457,6 +528,10 @@
                           id="receiverPhone"
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="receiverPhoneError"
+                        ></small>
                       </div>
                       <div class="col-12 col-md-6">
                         <label class="form-label"
@@ -469,6 +544,10 @@
                           id="receiverEmail"
                           required
                         />
+                        <small
+                          class="text-danger error-msg"
+                          id="receiverEmailError"
+                        ></small>
                       </div>
                       <div class="col-12">
                         <label class="form-label"
@@ -497,318 +576,157 @@
                 </div>
               </div>
             </section>
+
             <!-- STEP 3: PACKAGE ITEMS -->
             <section class="step-section package-step" data-step="3">
-              <h3 class="mb-3">Package Details</h3>
-              <p class="text-muted fs-15 mb-5">Tell us what you're shipping</p>
-              <!-- Purpose of Shipment -->
-              <div class="purpose-field mb-5">
-                <label class="form-label"
-                  >Purpose of Shipment <span class="text-danger">*</span></label
-                >
-                <div class="custom-select">
-                  <select id="shippingPurpose" required>
-                    <option value="" disabled selected>Select purpose</option>
-                    <option value="sale">Sale / Commercial</option>
-                    <option value="gift">Gift</option>
-                    <option value="personal">Personal Use</option>
-                    <option value="return">Return</option>
-                    <option value="sample">Sample</option>
-                    <option value="repair">Repair / Warranty</option>
-                    <option value="documents">Documents Only</option>
-                  </select>
-                  <i class="fa-solid fa-chevron-down"></i>
-                </div>
-              </div>
-              <!-- Parcels Accordion -->
-              <div id="parcelsAccordion">
-                <!-- Parcel 1 -->
-                <div class="parcel-accordion-item active">
-                  <div class="parcel-header" onclick="toggleParcel(this)">
-                    <div class="parcel-title">
-                      <i class="fa-solid fa-box-open me-3 text-indigo"></i>
-                      <span>Parcel #1</span>
-                      <small class="text-muted ms-3">0 items • 0kg</small>
-                    </div>
-                    <div class="parcel-actions">
-                      <button
-                        type="button"
-                        class="btn-icon"
-                        onclick="event.stopPropagation(); deleteParcel(this)"
-                      >
-                        <i class="fa-solid fa-trash"></i>
-                      </button>
-                      <i class="fa-solid fa-chevron-down accordion-icon"></i>
-                    </div>
-                  </div>
-                  <div class="parcel-body">
-                    <div class="grid-2 mb-4">
-                      <div class="dropd">
-                        <label>Select Packaging</label>
-                        <div class="custom-select">
-                          <select>
-                            <option>Box</option>
-                            <option>Envelope</option>
-                            <option>Your Packaging</option>
-                          </select>
-                          <i class="fa-solid fa-chevron-down"></i>
-                        </div>
+              <div class="step-container">
+                <div class="step-header">Step 3 - Delivery Details</div>
+                <div class="step-body">
+                  <form id="step3Form">
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label>Delivery Type *</label>
+                        <select name="deliveryType" required>
+                          <option value="">Select...</option>
+                          <option value="Hub to Door">Hub to Door</option>
+                          <option value="Hub to Hub">Hub to Hub</option>
+                        </select>
                       </div>
-                      <div class="dropd">
-                        <label>Currency</label>
-                        <div class="custom-select">
-                          <select>
-                            <option>NGN - Nigerian Naira</option>
-                            <option>USD - US Dollar</option>
-                          </select>
-                          <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      class="btn-outline mb-4"
-                      onclick="openItemModal(this.closest('.parcel-accordion-item'))"
-                    >
-                      <i class="fa-solid fa-plus"></i> Add Item
-                    </button>
-                    <div class="items-list"></div>
-                    <!-- Proof of Purchase -->
-                    <div class="upload-section">
-                      <label class="upload-label">
-                        <i class="fa-solid fa-receipt"></i> Proof of Purchase
-                      </label>
-                      <div
-                        class="upload-dropzone"
-                        onclick="this.querySelector('input').click()"
-                      >
-                        <input
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          hidden
-                          onchange="handleUpload(this,'purchase')"
-                        />
-                        <i class="fa-solid fa-cloud-arrow-up fa-2x"></i>
-                        <p>Click to upload or drag & drop</p>
-                        <small>Invoice, receipt, etc.</small>
-                      </div>
-                      <div class="upload-preview"></div>
-                    </div>
-                    <!-- Proof of Weight -->
-                    <div class="upload-section">
-                      <label class="upload-label">
-                        <i class="fa-solid fa-weight-scale"></i> Proof of Weight
-                      </label>
-                      <div
-                        class="upload-dropzone"
-                        onclick="this.querySelector('input').click()"
-                      >
-                        <input
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          hidden
-                          onchange="handleUpload(this,'weight')"
-                        />
-                        <i class="fa-solid fa-weight-scale fa-2x"></i>
-                        <p>Photo of parcel on scale</p>
-                        <small>Required for accurate pricing</small>
-                      </div>
-                      <div class="upload-preview"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button class="btn-primary mt-4" onclick="addNewParcel()">
-                <i class="fa-solid fa-plus"></i> Add Another Parcel
-              </button>
-            </section>
-            <!-- STEP 4: COURIER / CARRIER SELECTION -->
-            <section class="step-section" data-step="4">
-              <h3 class="mb-3">Choose Your Courier</h3>
-              <p class="text-muted mb-5">
-                Fastest and most reliable options for your shipment
-              </p>
-              <div class="couriers-grid">
-                <!-- Courier Card 1 -->
-                <div class="courier-card">
-                  <div class="courier-header">
-                    <img
-                      src="./dist/img/newUpdate/dhl.png"
-                      alt="DHL"
-                      class="courier-logo"
-                    />
-                    <div>
-                      <div class="courier-name">DHL Express</div>
-                      <div class="courier-type">DOMESTIC</div>
-                    </div>
-                  </div>
-                  <div class="courier-details">
-                    <div class="detail-item">
-                      <!-- <i class="fas fa-truck-loading text-indigo"></i> -->
-                      <div>
-                        <small class="text-muted">Pickup</small>
-                        <strong>Within 2 days</strong>
-                      </div>
-                    </div>
-                    <div class="detail-item">
-                      <!-- <i class="fas fa-shipping-fast text-indigo"></i> -->
-                      <div>
-                        <small class="text-muted">Delivery</small>
-                        <strong>Within 5 days</strong>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="courier-footer">
-                    <div class="courier-price">₦12,190.26</div>
-                    <button class="btn-select-courier">
-                      <i class="fas fa-check"></i> Select
-                    </button>
-                  </div>
-                </div>
-                <!-- Courier Card 2 - Example 2 -->
-                <div class="courier-card">
-                  <div class="courier-header">
-                    <img
-                      src="./dist/img/newUpdate/dhl.png"
-                      alt="NIPOST"
-                      class="courier-logo"
-                    />
-                    <div>
-                      <div class="courier-name">NIPOST EMS</div>
-                      <div class="courier-type">DOMESTIC • ECONOMY</div>
-                    </div>
-                  </div>
-                  <div class="courier-details">
-                    <div class="detail-item">
-                      <!-- <i class="fas fa-truck-loading text-green-600"></i> -->
-                      <div>
-                        <small class="text-muted">Pickup</small>
-                        <strong>Next day</strong>
-                      </div>
-                    </div>
-                    <div class="detail-item">
-                      <!-- <i class="fas fa-shipping-fast text-green-600"></i> -->
-                      <div>
-                        <small class="text-muted">Delivery</small>
-                        <strong>3–7 days</strong>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="courier-footer">
-                    <div class="courier-price">₦4,800.00</div>
-                    <button class="btn-select-courier">
-                      <i class="fas fa-check"></i> Select
-                    </button>
-                  </div>
-                </div>
-                <!-- Add more cards as needed -->
-              </div>
-            </section>
-            <!-- STEP 5: PURCHASE INSURANCE -->
-            <section class="step-section insurance-step" data-step="5">
-              <div class="mb-6">
-                <h3 class="mb-3">Protect Your Shipment</h3>
-                <p class="text-muted max-w-600">
-                  Add insurance for peace of mind. Your items are valuable —
-                  let’s keep them safe.
-                </p>
-              </div>
-              <div class="max-w-700">
-                <label
-                  class="insurance-card-redesigned"
-                  id="insuranceCardLabel"
-                >
-                  <input type="checkbox" id="insuranceToggle" class="d-none" />
-                  <div class="insurance-card-content">
-                    <div
-                      class="d-lg-flex align-items-center justify-content-between"
-                    >
-                      <!-- Left side -->
-                      <div class="d-flex align-items-center gap-4">
-                        <div>
-                          <div class="ins_title">
-                            <img src="./dist/img/newUpdate/dhl.png" alt="" />
-                            <div class="title_text_ins">
-                              <div class="upstream">
-                                <span>Terminal</span>
-                                <small class="badge-recommended"
-                                  >Recommended</small
-                                >
-                              </div>
-                              <p class="text-success desp_ins">
-                                <i class="fas fa-shield-alt"></i> Up to
-                                ₦5,000,000 coverage
-                              </p>
-                            </div>
-                          </div>
-                          <ul class="insurance-features">
-                            <li>Full coverage for loss & damage</li>
-                            <li>Fast claims in 48 hours</li>
-                            <li>Covers theft, fire, accident</li>
-                            <li>No deductible</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <!-- Right side -->
-                      <div class="mt-3 mt-sm-0">
-                        <div class="insurance-price">₦2,400.00</div>
-                        <div class="check-circle">
-                          <i class="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </label>
-                <!-- Coupon trigger -->
-                <div class="mt-4">
-                  <button
-                    type="button"
-                    class="btn-coupon-link"
-                    onclick="document.getElementById('couponBox').classList.toggle('d-none')"
-                  >
-                    <i class="fas fa-tag fa-flip-horizontal"></i>
-                    I have a coupon code
-                  </button>
-                </div>
-                <!-- Coupon box (hidden by default) -->
-                <div
-                  class="coupon-box p-4 bg-light border rounded-3 mt-3 d-none"
-                  id="couponBox"
-                >
-                  <div class="d-flex flex-column flex-md-row gap-3">
-                    <input
-                      type="text"
-                      class=" "
-                      id="couponInput"
-                      placeholder="Enter coupon code"
-                    />
 
-                    <button class="btn" onclick="applyCoupon()">
-                      Apply Coupon
-                    </button>
-                  </div>
-                  <div id="couponMessage" class="mt-3"></div>
-                </div>
-              </div>
-              <!-- Summary Box (unchanged from your original) -->
-              <div
-                class="insurance-summary mt-5 p-4 bg-gradient border border-indigo-100 rounded-3 max-w-700 mx-auto"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <strong>Total Shipment Value:</strong> ₦850,000.00<br />
-                    <small class="text-muted">1 Parcel • 8.5kg • 3 items</small>
-                  </div>
-                  <div class="text-end">
-                    <div
-                      class="h4 mb-0 text-indigo fw-bold"
-                      id="finalInsurancePrice"
-                    >
-                      Free
+                      <div class="form-group">
+                        <label>Service Type *</label>
+                        <select name="serviceType" required>
+                          <option value="">Select...</option>
+                          <option>Express</option>
+                          <option>Standard</option>
+                          <option>Economy</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Departure State *</label>
+                        <select name="departureState" required>
+                          <option value="">Select...</option>
+                          <option value="Lagos">Lagos</option>
+                          <option value="Lagos">Abuja</option>
+                          <option value="Lagos">Rivers</option>
+                          <!-- Add more states -->
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Departure Hub *</label>
+                        <select name="departureHub" required>
+                          <option value="">Select...</option>
+                          <option value="lagos">lagos</option>
+                          <!-- Populate dynamically if needed -->
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Arrival State *</label>
+                        <select name="arrivalState" required>
+                          <option value="">Select...</option>
+                          <option>Lagos</option>
+                          <option>Abuja</option>
+                          <option>Rivers</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Arrival Hub *</label>
+                        <select name="arrivalHub" required>
+                          <option value="">Select...</option>
+                          <option value="lagos">lagos</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group full-width">
+                        <label>Business Name (Optional)</label>
+                        <input type="text" name="businessName" />
+                      </div>
                     </div>
-                    <small class="text-muted">Insurance cost</small>
-                  </div>
+
+                    <!-- Items Section -->
+                    <div class="items-section">
+                      <h3 style="margin-bottom: 1rem">Item Details</h3>
+                      <div id="itemsContainer">
+                        <div class="item-row">
+                          <div class="form-group">
+                            <label>Shipment Type</label>
+                            <select class="shipmentType" required>
+                              <option value="">Select...</option>
+                              <option>Document</option>
+                              <option>Parcel</option>
+                              <option>Fragile</option>
+                              <option>Perishable</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>Declared Value (₦)</label>
+                            <select class="declaredValue" required>
+                              <option value="">Select...</option>
+                              <option>0 - 50,000</option>
+                              <option>50,001 - 200,000</option>
+                              <option>200,001 - 500,000</option>
+                              <option>Above 500,000</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <select class="weight" required>
+                              <option value="">Select...</option>
+                              <option>0 - 1</option>
+                              <option>1 - 5</option>
+                              <option>5 - 10</option>
+                              <option>10 - 20</option>
+                              <option>Above 20</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>Quantity</label>
+                            <input
+                              type="number"
+                              class="quantity"
+                              min="1"
+                              value="1"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label>Description</label>
+                            <input
+                              type="text"
+                              class="description"
+                              placeholder="e.g. Electronics, Clothes..."
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-grid" style="margin-top: 2rem">
+                      <div class="form-group">
+                        <label>Payment Option *</label>
+                        <select name="paymentOption" required>
+                          <option value="">Select...</option>
+                          <option>Pay Now</option>
+                          <option>Pay on Delivery</option>
+                          <option>Wallet</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Coupon Code (Optional)</label>
+                        <input
+                          type="text"
+                          name="couponCode"
+                          placeholder="Enter code"
+                        />
+                      </div>
+                    </div>
+
+                  </form>
                 </div>
               </div>
             </section>
@@ -835,14 +753,14 @@
           <div class="circle">3</div>
           <span class="label">Items</span>
         </div>
-        <div class="timeline-step" data-step="4">
+<!--         <div class="timeline-step" data-step="4">
           <div class="circle">4</div>
           <span class="label">Carrier</span>
         </div>
         <div class="timeline-step" data-step="5">
           <div class="circle">5</div>
           <span class="label">Review</span>
-        </div>
+        </div> -->
       </nav>
     </div>
     <!-- EDIT / ADD ADDRESS MODAL -->
@@ -868,6 +786,10 @@
                   id="firstName"
                   required
                 />
+                <small
+                  class="text-danger error-msg"
+                  id="firstNameError"
+                ></small>
               </div>
               <div class="col-12 col-md-6">
                 <label class="form-label"
@@ -879,6 +801,7 @@
                   id="lastName"
                   required
                 />
+                <small class="text-danger error-msg" id="lastNameError"></small>
               </div>
               <!-- Address Lines -->
               <div class="col-12">
@@ -892,6 +815,7 @@
                   placeholder="Street address, P.O. box, company name"
                   required
                 />
+                <small class="text-danger error-msg" id="address1Error"></small>
               </div>
               <div class="col-12">
                 <label class="form-label">Address Line 2</label>
@@ -914,6 +838,7 @@
                 >
                   <option value="" selected>Loading countries...</option>
                 </select>
+                <small class="text-danger error-msg" id="countryError"></small>
                 <div class="loading" id="countryLoadingEditSender"></div>
               </div>
               <!-- State / Province -->
@@ -924,6 +849,7 @@
                 <select class="form-select state-select" id="state" required>
                   <option value="" selected>Select country first</option>
                 </select>
+                <small class="text-danger error-msg" id="stateError"></small>
                 <div class="loading" id="stateLoadingEditSender"></div>
               </div>
               <!-- City -->
@@ -934,6 +860,7 @@
                 <select class="form-select city-select" id="city" required>
                   <option value="" selected>Select state first</option>
                 </select>
+                <small class="text-danger error-msg" id="cityError"></small>
                 <div class="loading" id="cityLoadingEditSender"></div>
               </div>
               <!-- ZIP / Postal Code -->
@@ -948,6 +875,7 @@
                   value="100263"
                   required
                 />
+                <small class="text-danger error-msg" id="zipCodeError"></small>
               </div>
               <!-- Phone & Email -->
               <div class="col-12 col-md-6">
@@ -961,6 +889,7 @@
                   value="+2349038077866"
                   required
                 />
+                <small class="text-danger error-msg" id="phoneError"></small>
               </div>
               <div class="col-12 col-md-6">
                 <label class="form-label"
@@ -973,6 +902,7 @@
                   value="oraclelogistics101@gmail.com"
                   required
                 />
+                <small class="text-danger error-msg" id="emailError"></small>
               </div>
               <!-- Alternate Phone -->
               <div class="col-12">
@@ -1283,13 +1213,24 @@
             id="receiverAddressBookList"
             style="max-height: 45vh; overflow-y: auto"
           >
+            <!--
+          select-address-email").textContent; // Assume .address-email class in address-card HTML
+        const phone = selected.querySelector(".address-phone").textContent; // Assume .address-phone
+        const address = selected.querySelector(".select-address-details").textContent;  
+           -->
             <!-- Same cards as sender, but for receivers -->
             <div class="address-card selected" data-id="101">
               <div class="radio-custom"></div>
               <div class="address-name">Chioma Okeke</div>
               <div class="address-details">
-                chioma@business.ng<br />+234 812 345 6789<br />12 Admiralty Way,
-                Lekki Phase 1, Lagos, Nigeria
+                <span class="address-email select-address-email"
+                  >chioma@gmail.com</span
+                ><br />
+                <span class="select-address-phone">+234 812 345 6789</span
+                ><br />
+                <span class="select-address-details"
+                  >12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</span
+                >
               </div>
             </div>
             <!-- Add more receiver cards as needed -->
@@ -1308,301 +1249,81 @@
         </div>
       </div>
     </div>
-    <!-- ITEM / DOCUMENT MODAL - PURE SCSS + VANILLA JS -->
-    <div class="modal-backdrop" id="itemModal">
-      <div class="modal-box item-modal-modern">
+
+    <!-- SUMMARY MODAL - DISPLAYS ALL COLLECTED DATA -->
+    <div class="modal-backdrop" id="summaryModal">
+      <div class="modal-box item-modal-modern review-modal">
         <!-- Header -->
         <div class="modal-header-gradient">
-          <h3>Add Item or Document</h3>
-          <button class="modal-close-btn" onclick="closeModal('itemModal')">
+          <h3>Order Summary</h3>
+          <button class="modal-close-btn" onclick="closeSummaryModal()">
             <i class="fas fa-times"></i>
           </button>
         </div>
-        <div class="modal-body-modern">
-          <!-- Tabs -->
-          <div class="modern-tabs">
-            <button class="modern-tab active" data-tab="items">
-              <i class="fas fa-box"></i> Items
-            </button>
-            <button class="modern-tab" data-tab="documents">
-              <i class="fas fa-file-alt"></i> Documents
-            </button>
-          </div>
-          <!-- Content Area -->
-          <div class="tab-content-wrapper">
-            <!-- === ITEMS TAB === -->
-            <div class="tab-pane active" id="items-panel">
-              <div class="searchable-select">
-                <label>Search Item by Name or HS Code</label>
-                <div class="select-wrapper">
-                  <input
-                    type="text"
-                    id="hsSearch"
-                    placeholder="e.g. Laptop, T-Shirt, 8471.30..."
-                    autocomplete="off"
-                  />
-                  <i class="fas fa-search"></i>
-                </div>
-                <div class="hs-dropdown" id="hsDropdown">
-                  <div class="loading" id="hsLoading"></div>
-                  <!-- Hardcoded fallback options -->
-                  <div
-                    class="hs-option"
-                    data-value="8471.30"
-                    data-name="Laptop"
-                  >
-                    Laptop <span>(8471.30)</span>
-                  </div>
-                  <div
-                    class="hs-option"
-                    data-value="8517.12"
-                    data-name="Mobile Phone"
-                  >
-                    Mobile Phone <span>(8517.12)</span>
-                  </div>
-                  <div
-                    class="hs-option"
-                    data-value="4202.92"
-                    data-name="Backpack"
-                  >
-                    Backpack <span>(4202.92)</span>
-                  </div>
-                  <div
-                    class="hs-option"
-                    data-value="6109.10"
-                    data-name="T-Shirt"
-                  >
-                    T-Shirt <span>(6109.10)</span>
-                  </div>
-                  <div class="hs-option" data-value="6403.99" data-name="Shoes">
-                    Shoes <span>(6403.99)</span>
-                  </div>
-                  <div
-                    class="hs-option"
-                    data-value="4202.21"
-                    data-name="Handbag"
-                  >
-                    Handbag <span>(4202.21)</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Selected Item Card -->
-              <div id="selectedItemCard" class="selected-item-card hidden">
-                <div class="item-thumb">
-                  <i class="fas fa-box-open"></i>
-                </div>
-                <div class="item-details">
-                  <strong id="selectedItemName">Laptop</strong>
-                  <div class="hs-code">
-                    HS Code: <span id="selectedHS">8471.30</span>
-                  </div>
-                </div>
-                <button class="remove-btn" onclick="removeSelectedItem()">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <!-- Item Form Fields -->
-              <div id="itemFields" class="item-form-grid hidden">
-                <div class="input-group">
-                  <label>Weight (kg)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    placeholder="1.50"
-                    id="itemWeight"
-                  />
-                </div>
-                <div class="input-group">
-                  <label>Quantity</label>
-                  <input type="number" min="1" value="1" id="itemQty" />
-                </div>
-                <div class="input-group">
-                  <label>Value (NGN)</label>
-                  <input type="number" placeholder="450,000" id="itemValue" />
-                </div>
-                <div class="input-group full">
-                  <label>Country of Origin</label>
-                  <select id="itemOrigin">
-                    <option>China</option>
-                    <option>United States</option>
-                    <option>Turkey</option>
-                    <option>Vietnam</option>
-                    <option>India</option>
-                    <option>Germany</option>
-                    <option>Nigeria</option>
-                  </select>
-                </div>
-              </div>
+        <!-- Scrollable Summary Body -->
+        <div class="modal-body-modern review-summary custom-scrollbar">
+          <!-- Sender Info -->
+          <div class="summary-section">
+            <div class="summary-header">
+              <h4><i class="fas fa-user"></i> Sender</h4>
+              <button class="btn-edit" onclick="goToStep(1); closeSummaryModal()">
+                <i class="fas fa-edit"></i> Edit
+              </button>
             </div>
-            <!-- === DOCUMENTS TAB === -->
-            <div class="tab-pane" id="documents-panel">
-              <div class="document-form">
-                <div class="input-group full">
-                  <label>Document Description</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Commercial Invoice, Packing List, Certificate of Origin"
-                    id="docDesc"
-                  />
-                </div>
-                <div class="input-group">
-                  <label>Weight (kg)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value="0.10"
-                    id="docWeight"
-                  />
-                </div>
-                <div class="input-group">
-                  <label>Quantity</label>
-                  <input type="number" min="1" value="1" id="docQty" />
-                </div>
-                <div class="input-group">
-                  <label>Value (NGN)</label>
-                  <input
-                    type="number"
-                    value="0"
-                    placeholder="Usually 0"
-                    id="docValue"
-                  />
-                </div>
-              </div>
+            <div class="summary-content" id="summaryShippedFrom">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Receiver Info -->
+          <div class="summary-section">
+            <div class="summary-header">
+              <h4><i class="fas fa-map-marker-alt"></i> Receiver</h4>
+              <button class="btn-edit" onclick="goToStep(2); closeSummaryModal()">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+            </div>
+            <div class="summary-content" id="summaryShippedTo">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Delivery Details -->
+          <div class="summary-section">
+            <div class="summary-header">
+              <h4><i class="fas fa-box"></i> Delivery Details</h4>
+              <button class="btn-edit" onclick="goToStep(3); closeSummaryModal()">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+            </div>
+            <div class="summary-content" id="summaryDelivery">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Item Details -->
+          <div class="summary-section">
+            <div class="summary-header">
+              <h4><i class="fas fa-cube"></i> Item Details</h4>
+            </div>
+            <div class="summary-content" id="summaryItems">
+              <!-- Filled by JS -->
             </div>
           </div>
         </div>
+
         <!-- Footer -->
         <div class="modal-footer-modern">
-          <button class="btn-secondary" onclick="closeModal('itemModal')">
-            Cancel
+          <button class="btn-secondary" onclick="closeSummaryModal(); goToStep(3)">
+            Back to Edit
           </button>
-          <button class="btn-primary-gradient" onclick="saveItemToParcel()">
-            <i class="fas fa-plus"></i> Add to Parcel
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- PICKUP / DROP-OFF MODAL - FULLY FIXED & BEAUTIFUL -->
-    <div class="modal-backdrop" id="pickupModal">
-      <div class="modal-box item-modal-modern pickup-modal-fixed">
-        <!-- Gradient Header -->
-        <div class="modal-header-gradient d-flex justify-content-end">
-          <!-- <h3>Drop off your package</h3> -->
-          <button class="modal-close-btn" onclick="closePickupModal()">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <!-- Scrollable Body -->
-        <div
-          class="modal-body-modern custom-scrollbar"
-          style="max-height: 70vh; overflow-y: auto"
-        >
-          <h3 class="pickup-question-head">Drop off your package</h3>
-          <p class="pickup-question-large">
-            Would you like to pick up your shipment?
-          </p>
-          <div class="pickup-options-modern">
-            <!-- Pickup Option -->
-            <label class="pickup-option-modern active" data-choice="pickup">
-              <input type="radio" name="pickupType" value="pickup" checked />
-              <!-- <div class="option-icon">
-                <i class="fas fa-truck fa-2x"></i>
-              </div> -->
-              <div class="option-text">
-                <strong
-                  >No, I want my shipment picked up from my address.</strong
-                ><br />
-                <small class=" ">Free pickup • We'll come to you</small>
-              </div>
-              <div class="check-circle">
-                <i class="fas fa-check"></i>
-              </div>
-            </label>
-            <!-- Drop-off Option -->
-            <label class="pickup-option-modern" data-choice="dropoff">
-              <input type="radio" name="pickupType" value="dropoff" />
-              <!-- <div class="option-icon text-indigo">
-                <i class="fas fa-map-marker-alt fa-2x"></i>
-              </div> -->
-              <div class="option-text">
-                <strong
-                  >Yes. I would like to drop-off at a nearby location.</strong
-                ><br />
-                <small>Save time • Choose any drop-off point</small>
-              </div>
-              <div class="check-circle">
-                <i class="fas fa-check"></i>
-              </div>
-            </label>
-          </div>
-          <!-- Drop-off Locations (Hidden by default) -->
-          <div class="dropoff-locations-modern hidden" id="dropoffLocations">
-            <h4 class="mt-5 mb-3" style="font-size: 1.25rem; font-weight: 600">
-              Choose a drop-off location
-            </h4>
-            <p class="text-muted mb-4" style="font-size: 0.95rem">
-              3 locations near Ago Palace Way, Lagos
-            </p>
-            <div class="locations-grid">
-              <label class="location-card-modern">
-                <input type="radio" name="dropoffLocation" value="1" checked />
-                <div class="location-content">
-                  <div class="location-name">Oracle Logistics Office</div>
-                  <div class="location-address">
-                    NO 9 Chris Okafor, Ago Palace Way, Amuwo-Odofin
-                  </div>
-                  <div class="location-meta">
-                    <span class="badge-open">Open today • 8AM – 6PM</span>
-                    <span class="distance">0.2 km away</span>
-                  </div>
-                </div>
-                <div class="location-check"><i class="fas fa-check"></i></div>
-              </label>
-              <label class="location-card-modern">
-                <input type="radio" name="dropoffLocation" value="2" />
-                <div class="location-content">
-                  <div class="location-name">DHL Service Point - Okota</div>
-                  <div class="location-address">
-                    123 Ago Palace Way, Opposite First Bank
-                  </div>
-                  <div class="location-meta">
-                    <span class="badge-open">Open today • 8AM – 5PM</span>
-                    <span class="distance">1.8 km away</span>
-                  </div>
-                </div>
-                <div class="location-check"><i class="fas fa-check"></i></div>
-              </label>
-              <label class="location-card-modern">
-                <input type="radio" name="dropoffLocation" value="3" />
-                <div class="location-content">
-                  <div class="location-name">NIPOST Post Office - Ago</div>
-                  <div class="location-address">
-                    45 Cele Express Road, Ago Palace Way
-                  </div>
-                  <div class="location-meta">
-                    <span class="badge-closed">Open today • 8AM – 4PM</span>
-                    <span class="distance">2.5 km away</span>
-                  </div>
-                </div>
-                <div class="location-check"><i class="fas fa-check"></i></div>
-              </label>
-            </div>
-          </div>
-        </div>
-        <!-- Fixed Footer - Always at Bottom -->
-        <div
-          class="modal-footer-modern"
-          style="border-top: 1px solid #e2e8f0; margin-top: auto"
-        >
-          <button class="btn-secondary" onclick="closePickupModal()">
-            Back
-          </button>
-          <button class="btn-primary-gradient" id="confirmPickupBtn">
-            Continue to Review
+          <button class="btn-primary-gradient" onclick="submitShipment()">
+            <i class="fas fa-check-circle"></i> Confirm & Submit
           </button>
         </div>
       </div>
     </div>
+
     <!-- REVIEW & CONFIRM MODAL - STUNNING SUMMARY WITH EDIT BUTTONS -->
     <div class="modal-backdrop" id="reviewModal">
       <div class="modal-box item-modal-modern review-modal">
@@ -1716,6 +1437,7 @@
       </div>
     </div>
     <script>
+      window.deliveryData = window.deliveryData || {};
       const totalSteps = 5;
       let currentStep = 1;
       let currentParcelElement = null;
@@ -1728,6 +1450,14 @@
       const timelineLine = document.querySelector(".timeline-line");
       const btnNext = document.getElementById("btnNext");
       const btnPrev = document.getElementById("btnPrev");
+
+      // === GLOBAL OBJECT TO STORE FINAL FORM DATA ===
+      let shipmentData = {
+        sender: {},
+        receiver: {},
+        parcels: [],
+      };
+
       // === WIZARD NAVIGATION ===
       function goToStep(step) {
         if (step < 1 || step > totalSteps) return;
@@ -1764,19 +1494,48 @@
           btnNext.textContent = "Next";
         }
       }
+      //  end
       // === SINGLE UNIFIED NEXT BUTTON HANDLER (THIS FIXES THE BUG) ===
+      // === SINGLE UNIFIED NEXT BUTTON HANDLER (NOW WITH VALIDATION) ===
       btnNext.addEventListener("click", function () {
-        if (currentStep === 4) {
-          // Step 4 → Show Pickup/Drop-off Modal
-          // openPickupModal();
+        if (currentStep === 1) {
+          if (!validateSenderAddress()) {
+            alert("Please fill in all required sender fields correctly.");
+            return;
+          }
+          collectSenderData();
+        } else if (currentStep === 2) {
+          if (!validateReceiverAddress()) {
+            alert(
+              "Please fill in all required receiver fields correctly or select an address."
+            );
+            return;
+          }
+          collectReceiverData();
+        }
+        // STEP 3: Delivery Details validation
+        else if (currentStep === 3) {
+          if (!validateStep3()) {
+            return;
+          }
+          const step3Data = collectStep3Data();
+          shipmentData.delivery = step3Data;
+          console.log("SHIPMENT DATA WITH STEP 3:", shipmentData);
+        }
+
+        if (currentStep === 3) {
+          // After Step 3, show summary modal
+          showSummaryModal();
+        } else if (currentStep === 4) {
+          openPickupModal();
         } else if (currentStep === 5) {
-          // Step 5 → Show Review & Confirm Modal
           document.getElementById("reviewModal").classList.add("show");
+          console.log("FINAL SHIPMENT DATA:", shipmentData);
         } else if (currentStep < totalSteps) {
-          // Normal forward navigation
           goToStep(currentStep + 1);
         }
       });
+      // eed
       btnPrev.addEventListener("click", () => {
         if (currentStep > 1) goToStep(currentStep - 1);
       });
@@ -1789,14 +1548,15 @@
         });
       });
       // === PICKUP / DROP-OFF MODAL ===
-      
-      // Confirm pickup → go to Insurance step (Step 5)
-      document
-        .getElementById("confirmPickupBtn")
-        .addEventListener("click", () => {
-          // closePickupModal();
-          goToStep(5); // This correctly updates button to "Review & Create Label"
-        });
+      function openPickupModal() {
+        document.getElementById("pickupModal").classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+      function closePickupModal() {
+        document.getElementById("pickupModal").classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+   
       // === REVIEW MODAL ===
       function closeReviewModal() {
         document.getElementById("reviewModal").classList.remove("show");
@@ -1867,18 +1627,45 @@
           name;
         closeModal("addressBookModal");
       }
-      function useSelectedReceiverAddress() {
-        const selected = document.querySelector(
-          "#receiverAddressBookList .address-card.selected"
-        );
-        if (!selected) return alert("Please select a receiver");
-        const name = selected.querySelector(".address-name").textContent;
-        document.querySelector(
-          "#use-book-receiver .selected-header h4"
-        ).textContent = name;
-        closeModal("addressBookModalReceiver");
+
+      // === PARCEL ACCORDION ===
+      function toggleParcel(header) {
+        const item = header.parentElement;
+        item.classList.toggle("active");
+        item.querySelector(".parcel-body").classList.toggle("open");
       }
      
+       
+
+      
+    
+
+      
+       
+      
+ 
+
+     
+        
+
+      
+ 
+
+   // === TAB SWITCHING IN ITEM MODAL ===
+      document.querySelectorAll(".modern-tab").forEach((tab) => {
+        tab.addEventListener("click", function () {
+          document
+            .querySelectorAll(".modern-tab")
+            .forEach((t) => t.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-pane")
+            .forEach((p) => p.classList.remove("active"));
+          this.classList.add("active");
+          document
+            .getElementById(this.dataset.tab + "-panel")
+            .classList.add("active");
+        });
+      });
       // New: Address Book Filter
       function filterAddressBook(query) {
         query = query.toLowerCase();
@@ -2009,129 +1796,739 @@
           populateCities(country, state, citySelect, cityLoading);
         });
       });
+
+      function validateSenderAddress() {
+        let isValid = true;
+        const mode = document.querySelector(".option_address.active_address")
+          ?.dataset.target;
+
+        // Reset all errors
+        document
+          .querySelectorAll("#enter-manually .error-msg")
+          .forEach((el) => {
+            el.textContent = "";
+          });
+        document
+          .querySelectorAll(
+            "#enter-manually .form-control, #enter-manually .form-select"
+          )
+          .forEach((el) => {
+            el.classList.remove("is-invalid");
+          });
+
+        // Only validate manual entry if that's active
+        if (mode !== "enter-manually") {
+          return true; // Address book or edited address is always considered valid
+        }
+
+        const fields = [
+          { id: "firstName", msg: "First name is required" },
+          { id: "lastName", msg: "Last name is required" },
+          {
+            id: "address1",
+            validate: (val) => val.length >= 5,
+            msg: "Address Line 1 is required",
+            shortMsg: "Address must be at least 5 characters",
+          },
+          { id: "country", msg: "Please select a country" },
+          { id: "state", msg: "Please select a state" },
+          { id: "city", msg: "Please select a city" },
+          { id: "zipCode", msg: "ZIP/Postal code is required" },
+          { id: "phone", msg: "Phone number is required" },
+          { id: "email", msg: "Valid email is required" },
+        ];
+
+        fields.forEach((field) => {
+          const el = document.getElementById(field.id);
+          const errorEl = document.getElementById(field.id + "Error");
+          let value = el.value.trim();
+
+          // Special handling for address1 length
+          if (field.id === "address1") {
+            if (!value) {
+              el.classList.add("is-invalid");
+              if (errorEl) errorEl.textContent = field.msg;
+              isValid = false;
+            } else if (value.length < 5) {
+              el.classList.add("is-invalid");
+              if (errorEl) errorEl.textContent = field.shortMsg;
+              isValid = false;
+            }
+            return; // skip default checks below
+          }
+
+          // Default required check
+          if (!value || (el.tagName === "SELECT" && value === "")) {
+            el.classList.add("is-invalid");
+            if (errorEl) errorEl.textContent = field.msg;
+            isValid = false;
+          }
+          // Email validation
+          else if (field.id === "email" && !/^\S+@\S+\.\S+$/.test(value)) {
+            el.classList.add("is-invalid");
+            if (errorEl) errorEl.textContent = "Please enter a valid email";
+            isValid = false;
+          }
+          // Phone validation (minimum 10 digits, allows + spaces - ())
+          else if (
+            field.id === "phone" &&
+            !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)
+          ) {
+            el.classList.add("is-invalid");
+            if (errorEl)
+              errorEl.textContent = "Please enter a valid phone number";
+            isValid = false;
+          }
+        });
+
+        return isValid;
+      }
+
+      // Validate Sender Edit Modal before saving
+      function validateSenderEditModal() {
+        const modal = document.getElementById("editAddressModal");
+        let isValid = true;
+
+        const requiredFields = [
+          { id: "firstName", label: "First Name" },
+          { id: "lastName", label: "Last Name" },
+          { id: "address1", label: "Address Line 1", minLength: 5 },
+          { id: "country", label: "Country" },
+          { id: "state", label: "State" },
+          { id: "city", label: "City" },
+          { id: "zipCode", label: "ZIP / Postal Code" },
+          { id: "phone", label: "Phone Number" },
+          { id: "email", label: "Email Address" },
+        ];
+
+        // Reset previous errors
+        modal
+          .querySelectorAll(".error-msg")
+          .forEach((el) => (el.textContent = ""));
+        modal
+          .querySelectorAll(".form-control, .form-select")
+          .forEach((el) => el.classList.remove("is-invalid"));
+
+        requiredFields.forEach((field) => {
+          const el = modal.querySelector(`#${field.id}`);
+          const errorEl =
+            modal.querySelector(`#${field.id}Error`) ||
+            document.createElement("small");
+          if (!errorEl.id) {
+            errorEl.className = "text-danger error-msg";
+            errorEl.id = field.id + "Error";
+            el.parentNode.appendChild(errorEl);
+          }
+
+          const value = el.value.trim();
+
+          if (!value || (el.tagName === "SELECT" && value === "")) {
+            el.classList.add("is-invalid");
+            errorEl.textContent = `${field.label} is required`;
+            isValid = false;
+          } else if (field.minLength && value.length < field.minLength) {
+            el.classList.add("is-invalid");
+            errorEl.textContent = `${field.label} must be at least ${field.minLength} characters`;
+            isValid = false;
+          } else if (field.id === "email" && !/^\S+@\S+\.\S+$/.test(value)) {
+            el.classList.add("is-invalid");
+            errorEl.textContent = "Please enter a valid email";
+            isValid = false;
+          } else if (
+            field.id === "phone" &&
+            !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)
+          ) {
+            el.classList.add("is-invalid");
+            errorEl.textContent = "Please enter a valid phone number";
+            isValid = false;
+          }
+        });
+
+        return isValid;
+      }
+
+      // === RECEIVER ADDRESS VALIDATION SYSTEM ===
+      function validateReceiverAddress() {
+        let isValid = true;
+        const mode = document.querySelector(
+          ".receiver_address_detail .option_address.active_address"
+        )?.dataset.target;
+
+        // Reset all errors
+        document
+          .querySelectorAll("#enter-manually-receiver .error-msg")
+          .forEach((el) => {
+            el.textContent = "";
+          });
+        document
+          .querySelectorAll(
+            "#enter-manually-receiver .form-control, #enter-manually-receiver .form-select"
+          )
+          .forEach((el) => {
+            el.classList.remove("is-invalid");
+          });
+
+        // If using address book, check if an address is selected
+        if (mode === "use-book-receiver") {
+          const headerText = document
+            .querySelector("#use-book-receiver .selected-header h4")
+            .textContent.trim();
+          if (headerText === "No Address Selected") {
+            alert("Please select a receiver address from the book.");
+            return false;
+          }
+          return true; // Selected address is valid
+        }
+
+        // Validate manual entry
+        const fields = [
+          { id: "receiverFirstName", msg: "First name is required" },
+          { id: "receiverLastName", msg: "Last name is required" },
+          {
+            id: "receiverAddress1",
+            validate: (val) => val.length >= 5,
+            msg: "Address Line 1 is required",
+            shortMsg: "Address must be at least 5 characters",
+          },
+          { id: "receiverCountry", msg: "Please select a country" },
+          { id: "receiverState", msg: "Please select a state" },
+          { id: "receiverCity", msg: "Please select a city" },
+          { id: "receiverZipCode", msg: "ZIP/Postal code is required" },
+          { id: "receiverPhone", msg: "Phone number is required" },
+          { id: "receiverEmail", msg: "Valid email is required" },
+        ];
+
+        fields.forEach((field) => {
+          const el = document.getElementById(field.id);
+          const errorEl = document.getElementById(field.id + "Error");
+          let value = el.value.trim();
+
+          if (field.validate) {
+            if (!value) {
+              el.classList.add("is-invalid");
+              if (errorEl) errorEl.textContent = field.msg;
+              isValid = false;
+            } else if (!field.validate(value)) {
+              el.classList.add("is-invalid");
+              if (errorEl) errorEl.textContent = field.shortMsg;
+              isValid = false;
+            }
+            return;
+          }
+
+          if (!value || (el.tagName === "SELECT" && value === "")) {
+            el.classList.add("is-invalid");
+            if (errorEl) errorEl.textContent = field.msg;
+            isValid = false;
+          } else if (
+            field.id === "receiverEmail" &&
+            !/^\S+@\S+\.\S+$/.test(value)
+          ) {
+            el.classList.add("is-invalid");
+            if (errorEl) errorEl.textContent = "Please enter a valid email";
+            isValid = false;
+          } else if (
+            field.id === "receiverPhone" &&
+            !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)
+          ) {
+            el.classList.add("is-invalid");
+            if (errorEl)
+              errorEl.textContent = "Please enter a valid phone number";
+            isValid = false;
+          }
+        });
+
+        return isValid;
+      }
+
+      // Collect Sender Data (runs on Next from Step 1)
+      function collectSenderData() {
+        const mode = document.querySelector(
+          ".sender_address_detail .option_address.active_address"
+        )?.dataset.target;
+
+        if (mode === "use-book") {
+          // From Address Book
+          const name = document
+            .querySelector("#use-book .selected-header h4")
+            .textContent.trim();
+          const email = document
+            .querySelector("#use-book ul li:nth-child(1)")
+            .textContent.trim();
+          const phone = document
+            .querySelector("#use-book ul li:nth-child(2)")
+            .textContent.trim();
+          const address = document
+            .querySelector("#use-book ul li:nth-child(3)")
+            .textContent.trim();
+
+          shipmentData.sender = {
+            name,
+            email,
+            phone,
+            address,
+            source: "address_book",
+          };
+        } else {
+          // Manual Entry
+          const form = document.getElementById("addressForm");
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          data.source = "manual";
+          data.name = `${data.firstName} ${data.lastName}`;
+          delete data.firstName;
+          delete data.lastName;
+          shipmentData.sender = data;
+        }
+
+        console.log("SENDER DATA COLLECTED:", shipmentData.sender);
+      }
+
+      // Prefill Sender Edit Modal from Selected Card
+      // Open Edit Modal for Sender – pulls exact data from the displayed card
+      function openEditSenderModal() {
+        const headerName = document
+          .querySelector("#use-book .selected-header h4")
+          .textContent.trim();
+        const email = document
+          .querySelector("#use-book ul li:nth-child(1)")
+          .textContent.trim();
+        const phone = document
+          .querySelector("#use-book ul li:nth-child(2)")
+          .textContent.trim();
+        const fullAddressLine = document
+          .querySelector("#use-book ul li:nth-child(3)")
+          .textContent.trim();
+
+        // Parse name
+        const nameParts = headerName.split(" ");
+        const firstName = nameParts[0] || "";
+        const lastName = nameParts.slice(1).join(" ") || "";
+
+        // Parse address line (example: "NO 9 Chris Okafor Ago Palace Way, Amuwo-Odofin, Lagos, Nigeria 100263")
+        const addressParts = fullAddressLine.split(", ");
+        const address1 = addressParts[0] || ""; // Everything before first comma
+        const city = addressParts[1] || "";
+        const state = addressParts[2] || "";
+        const countryZip = addressParts[3] || "";
+        const [country = "", zipCode = ""] = countryZip.split(" ");
+
+        // Fill the edit modal inputs
+        const modal = document.getElementById("editAddressModal");
+        modal.querySelector("#firstName").value = firstName;
+        modal.querySelector("#lastName").value = lastName;
+        modal.querySelector("#address1").value = address1;
+        modal.querySelector("#address2").value = ""; // optional
+        modal.querySelector("#country").value = country;
+        modal.querySelector("#state").value = state;
+        modal.querySelector("#city").value = city;
+        modal.querySelector("#zipCode").value = zipCode;
+        modal.querySelector("#phone").value = phone;
+        modal.querySelector("#email").value = email;
+        modal.querySelector("#altPhone").value = ""; // optional
+
+        openModal("editAddressModal");
+      }
+
+      function saveAddressFromForm() {
+        if (!validateSenderEditModal()) {
+          alert("Please fill all required fields correctly.");
+          return;
+        }
+
+        const form = document.querySelector("#editAddressModal form");
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const fullName = `${data.firstName} ${data.lastName}`.trim();
+        const fullAddress = `${data.address1}, ${data.city}, ${data.state}, ${data.country} ${data.zipCode}`;
+
+        // Update the card display
+        document.querySelector(
+          "#use-book .selected-header .avatar"
+        ).textContent = fullName
+          .split(" ")
+          .map((n) => n[0])
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
+
+        document.querySelector("#use-book .selected-header h4").textContent =
+          fullName;
+        document.querySelector("#use-book .selected-header p").textContent =
+          "Default Sender Address";
+
+        document.querySelector("#use-book ul li:nth-child(1)").textContent =
+          data.email;
+        document.querySelector("#use-book ul li:nth-child(2)").textContent =
+          data.phone;
+        document.querySelector("#use-book ul li:nth-child(3)").textContent =
+          fullAddress;
+
+        // Update global data
+        shipmentData.sender = {
+          ...data,
+          name: fullName,
+          address: fullAddress,
+          source: "address_book_edited",
+        };
+
+        console.log("SENDER EDITED & SAVED:", shipmentData.sender);
+        closeModal("editAddressModal");
+      }
+
+      // Collect Receiver Data (runs on Next from Step 2)
+      function collectReceiverData() {
+        const mode = document.querySelector(
+          ".receiver_address_detail .option_address.active_address"
+        )?.dataset.target;
+
+        if (mode === "use-book-receiver") {
+          const name = document
+            .querySelector("#use-book-receiver .selected-header h4")
+            .textContent.trim();
+          const email = document
+            .getElementById("receiverEmailLi")
+            .textContent.trim();
+          const phone = document
+            .getElementById("receiverPhoneLi")
+            .textContent.trim();
+          const address = document
+            .getElementById("receiverAddressLi")
+            .textContent.trim();
+
+          shipmentData.receiver = {
+            name,
+            email,
+            phone,
+            address,
+            source: "address_book",
+          };
+        } else {
+          const form = document.getElementById("receiverAddressForm");
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          data.source = "manual";
+          data.name = `${data.receiverFirstName} ${data.receiverLastName}`;
+          delete data.receiverFirstName;
+          delete data.receiverLastName;
+          shipmentData.receiver = data;
+        }
+
+        console.log("RECEIVER DATA COLLECTED:", shipmentData.receiver);
+      }
+
+       
+      // Updated: Select from Address Book → Full Data + UI Update
+      function useSelectedReceiverAddress() {
+        const selected = document.querySelector(
+          "#receiverAddressBookList .address-card.selected"
+        );
+        if (!selected) return alert("Please select a receiver");
+
+        const name = selected.querySelector(".address-name").textContent.trim();
+        const email =
+          selected.querySelector(".address-email")?.textContent.trim() || "";
+        const phone =
+          selected.querySelector(".address-phone")?.textContent.trim() || "";
+        const address =
+          selected.querySelector(".address-location")?.textContent.trim() || "";
+
+        // Update card
+        const avatar = document.querySelector("#use-book-receiver .avatar");
+        avatar.textContent = name
+          .split(" ")
+          .map((n) => n[0])
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
+        avatar.classList.remove("bg-success");
+        avatar.classList.add("bg-primary");
+
+        document.querySelector(
+          "#use-book-receiver .selected-header h4"
+        ).textContent = name;
+        document.querySelector(
+          "#use-book-receiver .selected-header p"
+        ).textContent = "From Address Book";
+
+        document.getElementById("receiverEmailLi").textContent = email;
+        document.getElementById("receiverPhoneLi").textContent = phone;
+        document.getElementById("receiverAddressLi").textContent = address;
+
+        document.getElementById("receiverDetailsList").style.display = "block";
+        document.getElementById("receiverActions").style.display = "flex";
+        document.getElementById("noAddressMessage").style.display = "none";
+
+        // Store in global
+        shipmentData.receiver = {
+          name,
+          email,
+          phone,
+          address,
+          source: "address_book",
+        };
+        console.log("RECEIVER SELECTED FROM BOOK:", shipmentData.receiver);
+
+        closeModal("addressBookModalReceiver");
+      }
+
+      // Edit Receiver → Prefill Modal
+      function openEditReceiverModal() {
+        const name = document
+          .querySelector("#use-book-receiver .selected-header h4")
+          .textContent.trim();
+        const [firstName = "", ...lastParts] = name.split(" ");
+        const lastName = lastParts.join(" ");
+
+        const email = document.getElementById("receiverEmailLi").textContent;
+        const phone = document.getElementById("receiverPhoneLi").textContent;
+        const fullAddress =
+          document.getElementById("receiverAddressLi").textContent;
+
+        const parts = fullAddress.split(", ");
+        const address1 = parts[0] || "";
+        const city = parts[1] || "";
+        const state = parts[2] || "";
+        const countryZip = parts[3] || "";
+        const [country = "", zipCode = ""] = countryZip.split(" ");
+
+        // Fill modal
+        const modal = document.getElementById("editAddressModalReceiver");
+        modal.querySelector("#firstName").value = firstName;
+        modal.querySelector("#lastName").value = lastName;
+        modal.querySelector("#address1").value = address1;
+        modal.querySelector("#city").value = city;
+        modal.querySelector("#state").value = state;
+        modal.querySelector("#country").value = country;
+        modal.querySelector("#zipCode").value = zipCode;
+        modal.querySelector("#phone").value = phone;
+        modal.querySelector("#email").value = email;
+
+        openModal("editAddressModalReceiver");
+      }
+
+      // Save Edited Receiver
+      function saveReceiverAddressFromForm() {
+        const form = document.querySelector("#editAddressModalReceiver form");
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const fullName = `${data.firstName} ${data.lastName}`.trim();
+        const fullAddress = `${data.address1}, ${data.city}, ${data.state}, ${data.country} ${data.zipCode}`;
+
+        // Update card
+        document.querySelector(
+          "#use-book-receiver .selected-header h4"
+        ).textContent = fullName;
+        document.querySelector("#use-book-receiver .avatar").textContent =
+          fullName
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .slice(0, 2)
+            .toUpperCase();
+
+        document.getElementById("receiverEmailLi").textContent = data.email;
+        document.getElementById("receiverPhoneLi").textContent = data.phone;
+        document.getElementById("receiverAddressLi").textContent = fullAddress;
+
+        // Update global
+        shipmentData.receiver = {
+          ...data,
+          name: fullName,
+          address: fullAddress,
+          source: "address_book_edited",
+        };
+
+        console.log("RECEIVER ADDRESS UPDATED:", shipmentData.receiver);
+        closeModal("editAddressModalReceiver");
+      }
+
+       
+     
+
       
+
       
+
+       
+      // === STEP 3: VALIDATION & DATA COLLECTION ===
       
-      
-      
-      
-      
-      // =============================================
-// INTERSTATE DELIVERY - STEP 3 LOGIC (Integrated)
-// =============================================
+      /**
+       * Validate Step 3 - Collect form data and show errors
+       */
+      function validateStep3() {
+        const form = document.getElementById("step3Form");
+        if (!form) return false;
 
-// Global data storage (used across all steps)
-window.deliveryData = window.deliveryData || {};
+        let errors = [];
+        
+        // Validate delivery details
+        const deliveryType = form.querySelector("select[name='deliveryType']")?.value;
+        if (!deliveryType) errors.push("Please select Delivery Type");
+        
+        const serviceType = form.querySelector("select[name='serviceType']")?.value;
+        if (!serviceType) errors.push("Please select Service Type");
+        
+        const departureState = form.querySelector("select[name='departureState']")?.value;
+        if (!departureState) errors.push("Please select Departure State");
+        
+        const departureHub = form.querySelector("select[name='departureHub']")?.value;
+        if (!departureHub) errors.push("Please select Departure Hub");
+        
+        const arrivalState = form.querySelector("select[name='arrivalState']")?.value;
+        if (!arrivalState) errors.push("Please select Arrival State");
+        
+        const arrivalHub = form.querySelector("select[name='arrivalHub']")?.value;
+        if (!arrivalHub) errors.push("Please select Arrival Hub");
+        
+        const paymentOption = form.querySelector("select[name='paymentOption']")?.value;
+        if (!paymentOption) errors.push("Please select Payment Option");
 
-// Add new item row
-document.getElementById("addItemBtn")?.addEventListener("click", () => {
-  const container = document.getElementById("itemsContainer");
-  const template = container.querySelector(".item-row");
-  const clone = template.cloneNode(true);
-  clone.querySelectorAll("select, input").forEach((el) => {
-    if (el.type === "number") el.value = 1;
-    else el.value = "";
-  });
-  clone.querySelectorAll("select").forEach((s) => (s.selectedIndex = 0));
-  container.appendChild(clone);
-});
+        // Validate item details
+        const itemRow = form.querySelector(".item-row");
+        if (itemRow) {
+          const shipmentType = itemRow.querySelector(".shipmentType")?.value;
+          if (!shipmentType) errors.push("Please select Shipment Type");
+          
+          const declaredValue = itemRow.querySelector(".declaredValue")?.value;
+          if (!declaredValue) errors.push("Please select Declared Value");
+          
+          const weight = itemRow.querySelector(".weight")?.value;
+          if (!weight) errors.push("Please select Weight");
+          
+          const quantity = itemRow.querySelector(".quantity")?.value;
+          if (!quantity || parseInt(quantity) < 1) errors.push("Please enter valid Quantity (minimum 1)");
+          
+          const description = itemRow.querySelector(".description")?.value?.trim();
+          if (!description) errors.push("Please enter Item Description");
+        }
 
-// Collect all Step 3 data into global object
-function collectInterstateData() {
-  const form = document.getElementById("interstateForm");
-  if (!form) return;
+        // Show errors if any
+        if (errors.length > 0) {
+          alert(errors.join("\n"));
+          return false;
+        }
 
-  const fd = new FormData(form);
-  const items = [];
+        return true;
+      }
 
-  document.querySelectorAll("#itemsContainer .item-row").forEach((row) => {
-    items.push({
-      shipmentType: row.querySelector(".shipmentType").value,
-      declaredValue: row.querySelector(".declaredValue").value,
-      weight: row.querySelector(".weight").value,
-      quantity: parseInt(row.querySelector(".quantity").value) || 1,
-      description: row.querySelector(".description").value.trim(),
-    });
-  });
+      /**
+       * Collect Step 3 Data
+       */
+      function collectStep3Data() {
+        const form = document.getElementById("step3Form");
+        if (!form) return null;
 
-  Object.assign(window.deliveryData, {
-    deliveryType: fd.get("deliveryType"),
-    serviceType: fd.get("serviceType"),
-    departureState: fd.get("departureState"),
-    departureHub: fd.get("departureHub"),
-    arrivalState: fd.get("arrivalState"),
-    arrivalHub: fd.get("arrivalHub"),
-    businessName: fd.get("businessName")?.trim() || null,
-    items: items,
-    paymentOption: fd.get("paymentOption"),
-    couponCode: fd.get("couponCode")?.trim() || null,
-  });
-}
+        const itemRow = form.querySelector(".item-row");
+        
+        const step3Data = {
+          deliveryType: form.querySelector("select[name='deliveryType']")?.value,
+          serviceType: form.querySelector("select[name='serviceType']")?.value,
+          departureState: form.querySelector("select[name='departureState']")?.value,
+          departureHub: form.querySelector("select[name='departureHub']")?.value,
+          arrivalState: form.querySelector("select[name='arrivalState']")?.value,
+          arrivalHub: form.querySelector("select[name='arrivalHub']")?.value,
+          businessName: form.querySelector("input[name='businessName']")?.value || "",
+          paymentOption: form.querySelector("select[name='paymentOption']")?.value,
+          couponCode: form.querySelector("input[name='couponCode']")?.value || "",
+          item: {
+            shipmentType: itemRow?.querySelector(".shipmentType")?.value || "",
+            declaredValue: itemRow?.querySelector(".declaredValue")?.value || "",
+            weight: itemRow?.querySelector(".weight")?.value || "",
+            quantity: parseInt(itemRow?.querySelector(".quantity")?.value) || 1,
+            description: itemRow?.querySelector(".description")?.value || ""
+          }
+        };
 
-// Override the main Next button for Step 3 → Step 4
-const originalNextHandler = btnNext.onclick;
-btnNext.addEventListener("click", function (e) {
-  if (currentStep === 3) {
-    // Validate and collect Step 3 data before moving forward
-    const form = document.getElementById("interstateForm");
-    if (form.checkValidity()) {
-      collectInterstateData();
-      goToStep(4); // Proceed to next step
-    } else {
-      alert("Please fill all required fields in Step 3.");
-      form.reportValidity();
-    }
-    return;
-  }
+        return step3Data;
+      }
 
-  // For all other steps, use your original logic
-  if (originalNextHandler) originalNextHandler.call(this, e);
-  else if (currentStep === 4) {
-    // Keep your existing pickup modal logic
-  } else if (currentStep === 5) {
-    document.getElementById("reviewModal").classList.add("show");
-  } else if (currentStep < totalSteps) {
-    goToStep(currentStep + 1);
-  }
-});
-
-// Populate Review Modal Summary when Step 5 is reached
-document.getElementById("reviewModal")?.addEventListener("shown", () => {
-  collectInterstateData(); // Final collect
-
-  const data = window.deliveryData;
-  const content = document.getElementById("reviewModalContent"); // assume you have this
-  if (!content) return;
-
-  let itemsHtml = "";
-  data.items?.forEach((item, i) => {
-    itemsHtml += `
-      <div class="border-l-4 border-indigo-500 pl-4 py-2">
-        <strong>Item ${i + 1}:</strong> ${item.description}<br>
-        <small>${item.shipmentType} • ${item.weight}kg • Qty: ${item.quantity} • ${item.declaredValue}</small>
-      </div>`;
-  });
-
-  content.innerHTML = `
-    <div class="space-y-4 text-gray-700">
-      <div><strong>Delivery:</strong> ${data.deliveryType} • ${data.serviceType}</div>
-      <div><strong>From:</strong> ${data.departureState} → ${data.departureHub}</div>
-      <div><strong>To:</strong> ${data.arrivalState} → ${data.arrivalHub}</div>
-      ${data.businessName ? `<div><strong>Business:</strong> ${data.businessName}</div>` : ""}
-      <div><strong>Payment:</strong> ${data.paymentOption} ${data.couponCode ? `• Coupon: ${data.couponCode}` : ""}</div>
-      <div class="mt-6">
-        <h4 class="font-semibold text-lg mb-3">Items</h4>
-        ${itemsHtml || "<p>No items added</p>"}
-      </div>
-    </div>
-  `;
-});
-      
-      
-      
-      
       // === INITIALIZE ===
       goToStep(1);
+        // === SUMMARY MODAL LOGIC ===
+        function showSummaryModal() {
+          // Fill Sender
+          const sender = shipmentData.sender || {};
+          document.getElementById("summaryShippedFrom").innerHTML = `
+            <div><strong>Name:</strong> ${sender.name || "-"}</div>
+            <div><strong>Email:</strong> ${sender.email || "-"}</div>
+            <div><strong>Phone:</strong> ${sender.phone || "-"}</div>
+            <div><strong>Address:</strong> ${sender.address || "-"}</div>
+          `;
+
+          // Fill Receiver
+          const receiver = shipmentData.receiver || {};
+          document.getElementById("summaryShippedTo").innerHTML = `
+            <div><strong>Name:</strong> ${receiver.name || "-"}</div>
+            <div><strong>Email:</strong> ${receiver.email || "-"}</div>
+            <div><strong>Phone:</strong> ${receiver.phone || "-"}</div>
+            <div><strong>Address:</strong> ${receiver.address || "-"}</div>
+          `;
+
+          // Fill Delivery Details
+          const delivery = shipmentData.delivery || {};
+          document.getElementById("summaryDelivery").innerHTML = `
+            <div><strong>Delivery Type:</strong> ${delivery.deliveryType || "-"}</div>
+            <div><strong>Service Type:</strong> ${delivery.serviceType || "-"}</div>
+            <div><strong>Departure State:</strong> ${delivery.departureState || "-"}</div>
+            <div><strong>Departure Hub:</strong> ${delivery.departureHub || "-"}</div>
+            <div><strong>Arrival State:</strong> ${delivery.arrivalState || "-"}</div>
+            <div><strong>Arrival Hub:</strong> ${delivery.arrivalHub || "-"}</div>
+            <div><strong>Business Name:</strong> ${delivery.businessName || "-"}</div>
+            <div><strong>Payment Option:</strong> ${delivery.paymentOption || "-"}</div>
+            <div><strong>Coupon Code:</strong> ${delivery.couponCode || "-"}</div>
+          `;
+
+          // Fill Item Details
+          const item = delivery.item || {};
+          document.getElementById("summaryItems").innerHTML = `
+            <div><strong>Shipment Type:</strong> ${item.shipmentType || "-"}</div>
+            <div><strong>Declared Value:</strong> ${item.declaredValue || "-"}</div>
+            <div><strong>Weight:</strong> ${item.weight || "-"}</div>
+            <div><strong>Quantity:</strong> ${item.quantity || "-"}</div>
+            <div><strong>Description:</strong> ${item.description || "-"}</div>
+          `;
+
+          // Show modal
+          document.getElementById("summaryModal").classList.add("show");
+        }
+
+        function closeSummaryModal() {
+          document.getElementById("summaryModal").classList.remove("show");
+        }
+
+        // === FINAL API SUBMISSION ===
+        function submitShipment() {
+          // Example API endpoint
+          const apiUrl = "/api/submit-shipment";
+          // Prepare data
+          const payload = JSON.stringify(shipmentData);
+          // Disable button, show loading (optional)
+          const btn = document.querySelector("#summaryModal .btn-primary-gradient");
+          btn.disabled = true;
+          btn.textContent = "Submitting...";
+          // Send request
+          fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: payload,
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              btn.disabled = false;
+              btn.textContent = "Confirm & Submit";
+              closeSummaryModal();
+              alert("Shipment submitted successfully!");
+              // Optionally, reset form or redirect
+            })
+            .catch((err) => {
+              btn.disabled = false;
+              btn.textContent = "Confirm & Submit";
+              alert("Error submitting shipment. Please try again.");
+            });
+        }
     </script>
   </body>
 </html>
