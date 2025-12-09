@@ -57,12 +57,64 @@
     <div class="wizard-layout">
       <aside class="wizard-ad">
         <div class="ad-content">
+          <div class="ad_card ">
+            <img src="./dist/img/newUpdate/svg/stacked-steps.png" alt="" />
+            <div class="content_card ">
+              <p class="card_title">SHIPPING TIPS</p>
+              <p class="card_h1">
+                Properly package fragile items & use stickers to indcate.
+              </p>
+              <p class="card_pg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+
+           <div class="ad_card">
+            <img src="./dist/img/newUpdate/svg/dddepth-226.jpg" alt="" />
+            <div class="content_card ">
+              <p class="card_title">SHIPPING TIPS</p>
+              <p class="card_h1">
+                Properly package fragile items & use stickers to indcate.
+              </p>
+              <p class="card_pg ">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+
           <div class="ad_card">
-            <small>SHIPPING TIPS</small>
-            <h4>Properly package fragile items & use stickers to indcate</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, repellat!</p>
+            <img src="./dist/img/newUpdate/svg/circle-scatter-haikei.png" alt="" />
+            <div class="content_card2 ">
+              <!-- <p class="card_title">SHIPPING TIPS</p> -->
+              <p class="card_h1">
+               Drop off items with ShipShop.
+              </p>
+              <p class="card_pg ">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+
+          <div class="ad_card">
+            <img src="./dist/img/newUpdate/svg/gggrain.svg" alt="" />
+            <div class="content_card ">
+              <p class="card_title">SHIPPING TIPS</p>
+              <p class="card_h1">
+                Properly package fragile items & use stickers to indcate.
+              </p>
+              <p class="card_pg ">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
           </div>
         </div>
+
+        
       </aside>
       <!-- Main Form Area -->
       <main class="wizard-main">
@@ -5421,6 +5473,41 @@
         /* ignore if missing */
       }
       goToStep(1);
+    </script>
+    <!-- Ad rotation: show two ad cards per page load and rotate on refresh -->
+    <script>
+      (function rotateAdCards() {
+        try {
+          const adCards = Array.from(document.querySelectorAll('.ad-content .ad_card'));
+          if (!adCards || adCards.length <= 2) return; // nothing to rotate
+
+          const pairs = Math.ceil(adCards.length / 2);
+          let idx = parseInt(localStorage.getItem('adCardPairIndex') || '0', 10);
+          if (Number.isNaN(idx) || idx < 0 || idx >= pairs) idx = 0;
+
+          // hide all, then show the current pair
+          adCards.forEach((el) => {
+            el.style.display = 'none';
+            el.classList.remove('ad-visible');
+          });
+
+          const start = idx * 2;
+          for (let i = 0; i < 2; i++) {
+            const el = adCards[start + i];
+            if (el) {
+              el.style.display = '';
+              el.classList.add('ad-visible');
+            }
+          }
+
+          // advance index for next load
+          const next = (idx + 1) % pairs;
+          localStorage.setItem('adCardPairIndex', String(next));
+        } catch (e) {
+          // fail silently
+          console.warn('ad rotation failed', e);
+        }
+      })();
     </script>
   </body>
 </html>
