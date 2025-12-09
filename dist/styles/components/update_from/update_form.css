@@ -675,6 +675,12 @@ body {
 .address-content {
   display: none;
   font-size: 14px;
+  padding: 12px !important;
+}
+@media (min-width: 640px) {
+  .address-content {
+    padding: 18px !important;
+  }
 }
 .address-content.active {
   display: block;
@@ -2813,34 +2819,40 @@ body {
    REUSABLE PREMIUM SCROLLBAR CLASS
    Just add class="custom-scrollbar" 
    ─────────────────────────────── */
-.custom-scrollbar, .custom-scrollbar-soft {
+.custom-scrollbar, #addressBookModal #addressBookList,
+#addressBookModalReceiver #receiverAddressBookList, .custom-scrollbar-soft {
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #a78bfa #f8faff;
   /* WebKit (Chrome, Safari, Edge) */
 }
-.custom-scrollbar::-webkit-scrollbar, .custom-scrollbar-soft::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar, #addressBookModal #addressBookList::-webkit-scrollbar,
+#addressBookModalReceiver #receiverAddressBookList::-webkit-scrollbar, .custom-scrollbar-soft::-webkit-scrollbar {
   width: 9px;
   height: 9px;
 }
-.custom-scrollbar::-webkit-scrollbar-track, .custom-scrollbar-soft::-webkit-scrollbar-track {
+.custom-scrollbar::-webkit-scrollbar-track, #addressBookModal #addressBookList::-webkit-scrollbar-track,
+#addressBookModalReceiver #receiverAddressBookList::-webkit-scrollbar-track, .custom-scrollbar-soft::-webkit-scrollbar-track {
   background: #f1f5f9;
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.06);
 }
-.custom-scrollbar::-webkit-scrollbar-thumb, .custom-scrollbar-soft::-webkit-scrollbar-thumb {
+.custom-scrollbar::-webkit-scrollbar-thumb, #addressBookModal #addressBookList::-webkit-scrollbar-thumb,
+#addressBookModalReceiver #receiverAddressBookList::-webkit-scrollbar-thumb, .custom-scrollbar-soft::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
   border-radius: 10px;
   border: 2px solid #f8faff;
   -webkit-transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover, .custom-scrollbar-soft::-webkit-scrollbar-thumb:hover {
+.custom-scrollbar::-webkit-scrollbar-thumb:hover, #addressBookModal #addressBookList::-webkit-scrollbar-thumb:hover,
+#addressBookModalReceiver #receiverAddressBookList::-webkit-scrollbar-thumb:hover, .custom-scrollbar-soft::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
   box-shadow: 0 0 18px rgba(139, 92, 246, 0.5);
   transform: scale(1.08);
 }
-.custom-scrollbar::-webkit-scrollbar-corner, .custom-scrollbar-soft::-webkit-scrollbar-corner {
+.custom-scrollbar::-webkit-scrollbar-corner, #addressBookModal #addressBookList::-webkit-scrollbar-corner,
+#addressBookModalReceiver #receiverAddressBookList::-webkit-scrollbar-corner, .custom-scrollbar-soft::-webkit-scrollbar-corner {
   background: transparent;
 }
 
@@ -2864,6 +2876,237 @@ body {
 .custom-scrollbar-soft::-webkit-scrollbar-track {
   background: #fafafa;
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Apply custom scrollbar and sticky footer behavior to modal bodies
+   so long forms on small screens scroll inside the modal and
+   the action buttons/footer remain visible. This mirrors the
+   `.custom-scrollbar` styles across modal content areas. */
+.modern-item-modal .tab-content,
+.modern-item-modal .tab-content-area,
+.modern-item-modal .modal-body,
+.item-modal-modern .modal-body-modern,
+.modern-modal .tab-content,
+.modern-modal .tab-content-area,
+.review-modal .review-summary,
+.pickup-modal-fixed .modal-body-modern,
+.modal-body,
+.modal-body-modern {
+  /* scrolling behavior */
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4.25rem; /* keep space for sticky footer */
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #a78bfa #f8faff;
+  /* WebKit (Chrome, Safari, Edge) */
+}
+.modern-item-modal .tab-content::-webkit-scrollbar,
+.modern-item-modal .tab-content-area::-webkit-scrollbar,
+.modern-item-modal .modal-body::-webkit-scrollbar,
+.item-modal-modern .modal-body-modern::-webkit-scrollbar,
+.modern-modal .tab-content::-webkit-scrollbar,
+.modern-modal .tab-content-area::-webkit-scrollbar,
+.review-modal .review-summary::-webkit-scrollbar,
+.pickup-modal-fixed .modal-body-modern::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar,
+.modal-body-modern::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.modern-item-modal .tab-content::-webkit-scrollbar-track,
+.modern-item-modal .tab-content-area::-webkit-scrollbar-track,
+.modern-item-modal .modal-body::-webkit-scrollbar-track,
+.item-modal-modern .modal-body-modern::-webkit-scrollbar-track,
+.modern-modal .tab-content::-webkit-scrollbar-track,
+.modern-modal .tab-content-area::-webkit-scrollbar-track,
+.review-modal .review-summary::-webkit-scrollbar-track,
+.pickup-modal-fixed .modal-body-modern::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track,
+.modal-body-modern::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.06);
+}
+.modern-item-modal .tab-content::-webkit-scrollbar-thumb,
+.modern-item-modal .tab-content-area::-webkit-scrollbar-thumb,
+.modern-item-modal .modal-body::-webkit-scrollbar-thumb,
+.item-modal-modern .modal-body-modern::-webkit-scrollbar-thumb,
+.modern-modal .tab-content::-webkit-scrollbar-thumb,
+.modern-modal .tab-content-area::-webkit-scrollbar-thumb,
+.review-modal .review-summary::-webkit-scrollbar-thumb,
+.pickup-modal-fixed .modal-body-modern::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb,
+.modal-body-modern::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  border-radius: 10px;
+  border: 2px solid #f8faff;
+  -webkit-transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.modern-item-modal .tab-content::-webkit-scrollbar-thumb:hover,
+.modern-item-modal .tab-content-area::-webkit-scrollbar-thumb:hover,
+.modern-item-modal .modal-body::-webkit-scrollbar-thumb:hover,
+.item-modal-modern .modal-body-modern::-webkit-scrollbar-thumb:hover,
+.modern-modal .tab-content::-webkit-scrollbar-thumb:hover,
+.modern-modal .tab-content-area::-webkit-scrollbar-thumb:hover,
+.review-modal .review-summary::-webkit-scrollbar-thumb:hover,
+.pickup-modal-fixed .modal-body-modern::-webkit-scrollbar-thumb:hover,
+.modal-body::-webkit-scrollbar-thumb:hover,
+.modal-body-modern::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.5);
+  transform: scale(1.08);
+}
+.modern-item-modal .tab-content::-webkit-scrollbar-corner,
+.modern-item-modal .tab-content-area::-webkit-scrollbar-corner,
+.modern-item-modal .modal-body::-webkit-scrollbar-corner,
+.item-modal-modern .modal-body-modern::-webkit-scrollbar-corner,
+.modern-modal .tab-content::-webkit-scrollbar-corner,
+.modern-modal .tab-content-area::-webkit-scrollbar-corner,
+.review-modal .review-summary::-webkit-scrollbar-corner,
+.pickup-modal-fixed .modal-body-modern::-webkit-scrollbar-corner,
+.modal-body::-webkit-scrollbar-corner,
+.modal-body-modern::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Ensure modal containers use a column layout so footer can stick */
+.modern-item-modal,
+.item-modal-modern,
+.review-modal,
+.modern-modal,
+.pickup-modal-fixed {
+  display: flex;
+  flex-direction: column;
+  max-height: 92vh;
+}
+
+/* Make modal footers sticky/always visible above the scrollable area */
+.modal-footer,
+.modal-footer-modern,
+.review-modal .modal-footer,
+.modern-item-modal .modal-footer,
+.item-modal-modern .modal-footer-modern {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  background: inherit;
+  /* ensure a subtle separation */
+  box-shadow: 0 -6px 18px rgba(6, 8, 15, 0.04);
+}
+
+/* Safety: ensure modal bodies don't go under the footer on very small screens */
+.modal-body,
+.modal-body-modern,
+.tab-content-area,
+.tab-content,
+.review-summary {
+  min-height: 0; /* allow flexbox to shrink properly */
+}
+
+/* Ensure item modals always show footer at the bottom: use positioned footer with body padding */
+.modal-box.item-modal-modern {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 92vh;
+}
+
+:root {
+  --modal-footer-height: 72px;
+}
+
+.modal-box.item-modal-modern .modal-body-modern {
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(var(--modal-footer-height) + 0.5rem);
+}
+
+.modal-box.item-modal-modern .modal-footer-modern {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--modal-footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  z-index: 80;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+  box-shadow: 0 -8px 20px rgba(6, 8, 15, 0.06);
+}
+
+/* Slightly reduce primary button width on very small screens so it fits */
+@media (max-width: 420px) {
+  .modal-box.item-modal-modern .modal-footer-modern .btn-primary-gradient {
+    min-width: 92px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+/* Address book modal specific fixes: ensure the inner list scrolls while footer stays visible */
+#addressBookModal .modal-box,
+#addressBookModalReceiver .modal-box {
+  display: flex;
+  flex-direction: column;
+  max-height: 92vh;
+}
+
+#addressBookModal .modal-body,
+#addressBookModalReceiver .modal-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding-bottom: 0.5rem; /* preserve small gap above footer */
+}
+
+#addressBookModal #addressBookList,
+#addressBookModalReceiver #receiverAddressBookList {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 6px; /* avoid content under custom scrollbar */
+}
+
+/* Ensure footer remains visible on these modals */
+#addressBookModal .modal-footer,
+#addressBookModalReceiver .modal-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 60;
+  background: inherit;
+  box-shadow: 0 -6px 18px rgba(6, 8, 15, 0.04);
+}
+
+/* Keep footer buttons in a horizontal row on all screen sizes */
+#addressBookModal .modal-footer,
+#addressBookModalReceiver .modal-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Ensure buttons don't wrap or stretch into full-width on small screens */
+#addressBookModal .modal-footer .btn_closeModal,
+#addressBookModalReceiver .modal-footer .btn_closeModal,
+#addressBookModal .modal-footer .btn_progress,
+#addressBookModalReceiver .modal-footer .btn_progress {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  min-width: 110px;
+}
+
+/* If content still overflows, allow the footer to horizontally scroll rather than wrap */
+#addressBookModal .modal-footer,
+#addressBookModalReceiver .modal-footer {
+  overflow-x: auto;
 }
 
 :root {

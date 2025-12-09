@@ -57,8 +57,11 @@
     <div class="wizard-layout">
       <aside class="wizard-ad">
         <div class="ad-content">
-          <h2>Ship Faster.<br />Worry Less.</h2>
-          <p>Real-time tracking • Insurance included • 200+ carriers</p>
+          <div class="ad_card">
+            <small>SHIPPING TIPS</small>
+            <h4>Properly package fragile items & use stickers to indcate</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, repellat!</p>
+          </div>
         </div>
       </aside>
       <!-- Main Form Area -->
@@ -367,7 +370,7 @@
                 </div>
                 <div id="noAddressMessage" class="text-center mt-3">
                   <button
-                    class="btn btn-primary"
+                    class="btn"
                     onclick="openModal('addressBookModalReceiver')"
                   >
                     Select from Address Book
@@ -628,9 +631,11 @@
                         <div class="custom-select">
                           <select name="parcelPackaging">
                             <option value="">-- Select Packaging --</option>
-                            <option>Box</option>
-                            <option>Envelope</option>
-                            <option>Your Packaging</option>
+                            <option value="Box">Box</option>
+                            <option value="Envelope">Envelope</option>
+                            <option value="Your Packaging">
+                              Your Packaging
+                            </option>
                           </select>
                           <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -641,8 +646,8 @@
                         <div class="custom-select">
                           <select name="parcelCurrency">
                             <option value="">-- Select Currency --</option>
-                            <option>NGN - Nigerian Naira</option>
-                            <option>USD - US Dollar</option>
+                            <option value="NGN">NGN - Nigerian Naira</option>
+                            <option value="USD">USD - US Dollar</option>
                           </select>
                           <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -672,7 +677,7 @@
                           onchange="handleUpload(this,'purchase')"
                         />
                         <i class="fa-solid fa-cloud-arrow-up fa-2x"></i>
-                        <p>Click to upload or drag & drop</p>
+                        <p>Click to upload</p>
                         <small>Invoice, receipt, etc.</small>
                       </div>
                       <div class="upload-preview"></div>
@@ -1131,7 +1136,21 @@
           <!-- Address List -->
           <div id="addressBookList" style="max-height: 45vh; overflow-y: auto">
             <!-- Sample Address Cards -->
-            <div class="address-card selected" data-id="1">
+            <div
+              class="address-card selected"
+              data-id="1"
+              data-firstname="Emmanuel"
+              data-lastname="Paschal"
+              data-email="oraclelogistics101@gmail.com"
+              data-phone="+234 903 807 7866"
+              data-address1="NO 9 Chris Okafor"
+              data-address2="Ago Palace Way, Amuwo-Odofin"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100263"
+              data-altphone=""
+            >
               <div class="default-badge">DEFAULT</div>
               <div class="radio-custom"></div>
               <div class="address-name">Emmanuel Paschal</div>
@@ -1142,31 +1161,73 @@
                 100263
               </div>
             </div>
-            <div class="address-card" data-id="2">
+            <div
+              class="address-card"
+              data-id="2"
+              data-firstname="Chioma"
+              data-lastname="Okeke"
+              data-email="chioma@business.ng"
+              data-phone="+234 812 345 6789"
+              data-address1="12 Admiralty Way"
+              data-address2="Lekki Phase 1"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100001"
+              data-altphone=""
+            >
               <div class="radio-custom"></div>
               <div class="address-name">Chioma Okeke</div>
               <div class="address-details">
                 chioma@business.ng<br />
                 +234 812 345 6789<br />
-                12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria
+                12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria 100001
               </div>
             </div>
-            <div class="address-card" data-id="3">
+            <div
+              class="address-card"
+              data-id="3"
+              data-firstname="Warehouse"
+              data-lastname="Lagos"
+              data-email="warehouse@oraclelogistics.com"
+              data-phone="+234 701 234 5678"
+              data-address1="Plot 45, Industrial Estate"
+              data-address2=""
+              data-city="Ikeja"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100002"
+              data-altphone=""
+            >
               <div class="radio-custom"></div>
               <div class="address-name">Warehouse Lagos</div>
               <div class="address-details">
                 warehouse@oraclelogistics.com<br />
                 +234 701 234 5678<br />
-                Plot 45, Industrial Estate, Ikeja, Lagos, Nigeria
+                Plot 45, Industrial Estate, Ikeja, Lagos, Nigeria 100002
               </div>
             </div>
-            <div class="address-card" data-id="4">
+            <div
+              class="address-card"
+              data-id="4"
+              data-firstname="David"
+              data-lastname="Adebayo"
+              data-email="david.adebayo@gmail.com"
+              data-phone="+234 907 654 3210"
+              data-address1="25 Bode Thomas Street"
+              data-address2=""
+              data-city="Surulere"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100003"
+              data-altphone=""
+            >
               <div class="radio-custom"></div>
               <div class="address-name">David Adebayo</div>
               <div class="address-details">
                 david.adebayo@gmail.com<br />
                 +234 907 654 3210<br />
-                25 Bode Thomas Street, Surulere, Lagos, Nigeria
+                25 Bode Thomas Street, Surulere, Lagos, Nigeria 100003
               </div>
             </div>
           </div>
@@ -1389,7 +1450,21 @@
         const address = selected.querySelector(".select-address-details").textContent;  
            -->
             <!-- Same cards as sender, but for receivers -->
-            <div class="address-card selected" data-id="101">
+            <div
+              class="address-card selected"
+              data-id="101"
+              data-firstname="Chioma"
+              data-lastname="Okeke"
+              data-email="chioma@gmail.com"
+              data-phone="+234 812 345 6789"
+              data-address1="12 Admiralty Way"
+              data-address2="Lekki Phase 1"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100001"
+              data-altphone=""
+            >
               <div class="radio-custom"></div>
               <div class="address-name">Chioma Okeke</div>
               <div class="address-details">
@@ -1399,11 +1474,68 @@
                 <span class="select-address-phone">+234 812 345 6789</span
                 ><br />
                 <span class="select-address-details"
-                  >12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</span
+                  >12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria 100001</span
                 >
               </div>
             </div>
-            <!-- Add more receiver cards as needed -->
+            <div
+              class="address-card"
+              data-id="102"
+              data-firstname="Adekunle"
+              data-lastname="Okafor"
+              data-email="adekunle.okafor@gmail.com"
+              data-phone="+234 906 789 1234"
+              data-address1="Block 5, Lekki Road"
+              data-address2="Ikoyi Crescent"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100004"
+              data-altphone="+234 807 654 3210"
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">Adekunle Okafor</div>
+              <div class="address-details">
+                <span class="address-email select-address-email"
+                  >adekunle.okafor@gmail.com</span
+                ><br />
+                <span class="select-address-phone">+234 906 789 1234</span
+                ><br />
+                <span class="select-address-details"
+                  >Block 5, Lekki Road, Ikoyi Crescent, Lagos, Nigeria
+                  100004</span
+                >
+              </div>
+            </div>
+            <div
+              class="address-card"
+              data-id="103"
+              data-firstname="Princess"
+              data-lastname="Ejiro"
+              data-email="princess.ejiro@business.ng"
+              data-phone="+234 915 234 5678"
+              data-address1="No. 7, Victoria Island"
+              data-address2="Oniru Estate"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100005"
+              data-altphone=""
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">Princess Ejiro</div>
+              <div class="address-details">
+                <span class="address-email select-address-email"
+                  >princess.ejiro@business.ng</span
+                ><br />
+                <span class="select-address-phone">+234 915 234 5678</span
+                ><br />
+                <span class="select-address-details"
+                  >No. 7, Victoria Island, Oniru Estate, Lagos, Nigeria
+                  100005</span
+                >
+              </div>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -1594,6 +1726,141 @@
         </div>
       </div>
     </div>
+    <!-- SENDER ADDRESS PICKER FOR PICKUP MODAL -->
+    <div class="modal-backdrop" id="senderAddressPickupModal">
+      <div class="modal-box" style="max-width: 640px">
+        <div class="modal-header">
+          <h3>Select Pickup Address</h3>
+          <button
+            class="modal-close"
+            onclick="closeModal('senderAddressPickupModal')"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="position-relative">
+            <input
+              type="text"
+              class="search-input ps-5"
+              placeholder="Search by name, email, phone or address..."
+              onkeyup="filterPickupAddressBook(this.value)"
+            />
+          </div>
+          <div
+            id="pickupAddressBookList"
+            style="max-height: 45vh; overflow-y: auto"
+          >
+            <!-- Same sender addresses for pickup selection -->
+            <div
+              class="address-card selected"
+              data-id="1"
+              data-firstname="Emmanuel"
+              data-lastname="Paschal"
+              data-email="oraclelogistics101@gmail.com"
+              data-phone="+234 903 807 7866"
+              data-address1="NO 9 Chris Okafor"
+              data-address2="Ago Palace Way, Amuwo-Odofin"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100263"
+              data-altphone=""
+            >
+              <div class="default-badge">DEFAULT</div>
+              <div class="radio-custom"></div>
+              <div class="address-name">Emmanuel Paschal</div>
+              <div class="address-details">
+                oraclelogistics101@gmail.com<br />
+                +234 903 807 7866<br />
+                NO 9 Chris Okafor, Ago Palace Way, Amuwo-Odofin, Lagos, Nigeria
+                100263
+              </div>
+            </div>
+            <div
+              class="address-card"
+              data-id="2"
+              data-firstname="Chioma"
+              data-lastname="Okeke"
+              data-email="chioma@business.ng"
+              data-phone="+234 812 345 6789"
+              data-address1="12 Admiralty Way"
+              data-address2="Lekki Phase 1"
+              data-city="Lagos"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100001"
+              data-altphone=""
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">Chioma Okeke</div>
+              <div class="address-details">
+                chioma@business.ng<br />
+                +234 812 345 6789<br />
+                12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria 100001
+              </div>
+            </div>
+            <div
+              class="address-card"
+              data-id="3"
+              data-firstname="Warehouse"
+              data-lastname="Lagos"
+              data-email="warehouse@oraclelogistics.com"
+              data-phone="+234 701 234 5678"
+              data-address1="Plot 45, Industrial Estate"
+              data-address2=""
+              data-city="Ikeja"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100002"
+              data-altphone=""
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">Warehouse Lagos</div>
+              <div class="address-details">
+                warehouse@oraclelogistics.com<br />
+                +234 701 234 5678<br />
+                Plot 45, Industrial Estate, Ikeja, Lagos, Nigeria 100002
+              </div>
+            </div>
+            <div
+              class="address-card"
+              data-id="4"
+              data-firstname="David"
+              data-lastname="Adebayo"
+              data-email="david.adebayo@gmail.com"
+              data-phone="+234 907 654 3210"
+              data-address1="25 Bode Thomas Street"
+              data-address2=""
+              data-city="Surulere"
+              data-state="Lagos"
+              data-country="Nigeria"
+              data-zipcode="100003"
+              data-altphone=""
+            >
+              <div class="radio-custom"></div>
+              <div class="address-name">David Adebayo</div>
+              <div class="address-details">
+                david.adebayo@gmail.com<br />
+                +234 907 654 3210<br />
+                25 Bode Thomas Street, Surulere, Lagos, Nigeria 100003
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn_closeModal"
+            onclick="closeModal('senderAddressPickupModal')"
+          >
+            Cancel
+          </button>
+          <button class="btn_progress" onclick="useSelectedPickupAddress()">
+            Use This Address
+          </button>
+        </div>
+      </div>
+    </div>
     <!-- PICKUP / DROP-OFF MODAL - FULLY FIXED & BEAUTIFUL -->
     <div class="modal-backdrop" id="pickupModal">
       <div class="modal-box item-modal-modern pickup-modal-fixed">
@@ -1736,14 +2003,31 @@
               </button>
             </div>
             <div class="summary-content">
-              <p><strong>Name:</strong> Emmanuel Paschal</p>
-              <p>
-                <strong>Address:</strong> NO 9 Chris Okafor, Ago Palace Way,
-                Amuwo-Odofin, Lagos, NG 100263
+              <p><strong>Name:</strong> <span id="reviewSenderName">-</span></p>
+              <p
+                id="reviewSenderDefaultLabel"
+                style="
+                  margin: 0;
+                  padding: 0;
+                  color: #6b7280;
+                  font-size: 0.95rem;
+                "
+              >
+                -
               </p>
-              <p><strong>Phone:</strong> +234 903 807 7866</p>
+              <p style="margin-top: 6px">
+                <span id="reviewSenderEmail">-</span>
+              </p>
+              <p>
+                <strong>Phone:</strong> <span id="reviewSenderPhone">-</span>
+              </p>
+              <p style="margin-top: 6px">
+                <strong>Address:</strong>
+                <span id="reviewSenderAddress">-</span>
+              </p>
             </div>
           </div>
+
           <!-- Step 2: Receiver -->
           <div class="summary-section">
             <div class="summary-header">
@@ -1753,11 +2037,19 @@
               </button>
             </div>
             <div class="summary-content">
-              <p><strong>Name:</strong> Chioma Okeke</p>
               <p>
-                <strong>Address:</strong> 12 Admiralty Way, Lekki Phase 1, Lagos
+                <strong>Name:</strong> <span id="reviewReceiverName">-</span>
               </p>
-              <p><strong>Phone:</strong> +234 812 345 6789</p>
+              <p style="margin-top: 6px">
+                <span id="reviewReceiverEmail">-</span>
+              </p>
+              <p>
+                <strong>Phone:</strong> <span id="reviewReceiverPhone">-</span>
+              </p>
+              <p style="margin-top: 6px">
+                <strong>Address:</strong>
+                <span id="reviewReceiverAddress">-</span>
+              </p>
             </div>
           </div>
           <!-- Step 3: Items -->
@@ -1815,6 +2107,42 @@
             </div>
             <small class="text-muted">Includes shipping + insurance</small>
           </div>
+          <!-- Payment Option (Required) -->
+          <div class="summary-section mt-3">
+            <div class="summary-header">
+              <h4>Payment</h4>
+            </div>
+            <div class="summary-content">
+              <label for="paymentOptionSelect"
+                ><strong>Payment Option</strong></label
+              >
+              <div style="margin: 8px 0">
+                <select id="paymentOptionSelect" class="form-select">
+                  <option value="">-- Select Payment Option --</option>
+                  <option value="paystack">Paystack</option>
+                  <option value="wallet">Wallet</option>
+                  <option value="bank_transfer">Bank Transfer</option>
+                </select>
+              </div>
+
+              <div
+                id="bankTransferDetails"
+                style="display: none; margin-top: 10px"
+              >
+                <p style="margin: 0">
+                  <strong>Account Name:</strong> Terminal Africa
+                </p>
+                <p style="margin: 0">
+                  <strong>Account Number:</strong> 0123456789
+                </p>
+                <p style="margin: 0"><strong>Bank:</strong> Zenith Bank</p>
+                <div class="form-check" style="margin-top: 8px">
+                  <input type="checkbox" id="bankPaidCheckbox" />
+                  <label for="bankPaidCheckbox"> I have paid</label>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- Footer -->
         <div class="modal-footer-modern">
@@ -1841,11 +2169,120 @@
       const btnNext = document.getElementById("btnNext");
       const btnPrev = document.getElementById("btnPrev");
 
-      // === GLOBAL OBJECT TO STORE FINAL FORM DATA ===
+      // ========================================
+      // === ENHANCED GLOBAL SHIPMENT DATA OBJECT ===
+      // ========================================
       let shipmentData = {
-        sender: {},
-        receiver: {},
-        parcels: [],
+        // METADATA
+        metadata: {
+          formStartedAt: new Date().toISOString(),
+          lastUpdatedAt: null,
+          currentStep: 1,
+          completedSteps: [],
+          isValid: false,
+          validationErrors: [],
+        },
+
+        // STEP 1: SENDER ADDRESS
+        sender: {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          altPhone: "",
+          address1: "",
+          address2: "",
+          city: "",
+          state: "",
+          country: "",
+          zipCode: "",
+          isDefault: false,
+          source: null, // "address_book", "manual", "address_book_edited"
+        },
+
+        // STEP 2: RECEIVER ADDRESS
+        receiver: {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          altPhone: "",
+          address1: "",
+          address2: "",
+          city: "",
+          state: "",
+          country: "",
+          zipCode: "",
+          saveToBook: false,
+          source: null, // "address_book", "manual", "address_book_edited"
+        },
+
+        // STEP 3: PACKAGE DETAILS
+        shipment: {
+          purpose: "", // "sale", "gift", "personal", "return", "sample", "repair", "documents"
+          totalParcels: 0,
+          totalItems: 0,
+          totalWeight: 0, // in kg
+          totalValue: 0, // in NGN
+          currency: "NGN",
+          parcels: [],
+        },
+
+        // STEP 4: COURIER/CARRIER SELECTION
+        courier: {
+          name: "", // "DHL Express", "NIPOST EMS", etc.
+          type: "", // "DOMESTIC", "INTERNATIONAL", etc.
+          pickupTime: "", // "Within 2 days", "Next day", etc.
+          deliveryTime: "", // "Within 5 days", "3–7 days", etc.
+          cost: 0, // in NGN
+          estimatedDelivery: "", // ISO date
+        },
+
+        // STEP 5: INSURANCE & PRICING
+        insurance: {
+          selected: false,
+          provider: "", // "Terminal Africa Protection", etc.
+          coverage: 0, // max coverage amount in NGN
+          cost: 0, // insurance premium in NGN
+          coupon: {
+            code: "",
+            discount: 0,
+            applied: false,
+          },
+        },
+
+        // PICKUP PREFERENCE
+        pickup: {
+          type: "pickup", // "pickup" or "dropoff"
+          locationId: null, // if dropoff selected
+          locationName: "", // if dropoff selected
+          locationAddress: "", // if dropoff selected
+          cost: 0, // if applicable
+        },
+
+        // FINAL TOTALS & SUMMARY
+        totals: {
+          shippingCost: 0,
+          insuranceCost: 0,
+          pickupCost: 0,
+          discount: 0,
+          tax: 0,
+          grandTotal: 0,
+          currency: "NGN",
+          breakdown: {
+            items: 0,
+            courier: 0,
+            insurance: 0,
+            pickup: 0,
+          },
+        },
+
+        // UPLOADS
+        uploads: {
+          proofOfPurchase: [], // array of base64 or file objects
+          proofOfWeight: [],
+          packagingPhotos: [],
+        },
       };
 
       // === WIZARD NAVIGATION ===
@@ -1890,13 +2327,15 @@
       btnNext.addEventListener("click", function () {
         if (currentStep === 1) {
           if (!validateSenderAddress()) {
-            alert("Please fill in all required sender fields correctly.");
+            showGlobalMessage(
+              "Please fill in all required sender fields correctly."
+            );
             return;
           }
           collectSenderData();
         } else if (currentStep === 2) {
           if (!validateReceiverAddress()) {
-            alert(
+            showGlobalMessage(
               "Please fill in all required receiver fields correctly or select an address."
             );
             return;
@@ -1906,7 +2345,9 @@
         // STEP 3: Package Items validation (NEW)
         else if (currentStep === 3) {
           if (!validateStep3()) {
-            alert("Please complete all package items information correctly.");
+            showGlobalMessage(
+              "Please complete all package items information correctly."
+            );
             return;
           }
 
@@ -1920,19 +2361,60 @@
           });
 
           if (parcelErrors.length > 0) {
-            alert(parcelErrors.join("\n"));
+            showGlobalMessage(parcelErrors.join(" · "));
             return; // STOP here if errors exist
           }
 
           collectParcelsData(); // Collect and store parcels data
         }
-
-        if (currentStep === 4) {
+        // STEP 4: Courier Selection & Pickup
+        else if (currentStep === 4) {
+          // Collect courier before opening pickup modal
+          const selectedCourier = document.querySelector(
+            ".courier-card.selected"
+          );
+          if (!selectedCourier) {
+            showGlobalMessage(
+              "Please select a courier/carrier before continuing."
+            );
+            return;
+          }
+          collectCourierData();
           openPickupModal();
-        } else if (currentStep === 5) {
+          return; // Don't proceed to next step yet
+        }
+        // STEP 5: Insurance & Final Review
+        else if (currentStep === 5) {
+          collectInsuranceData();
+          collectPickupPreference();
+          calculateFinalTotals();
+
+          // Ensure latest sender/receiver values are captured (defensive)
+          try {
+            collectSenderData();
+          } catch (e) {
+            console.warn("collectSenderData() failed during final gather", e);
+          }
+          try {
+            collectReceiverData();
+          } catch (e) {
+            console.warn("collectReceiverData() failed during final gather", e);
+          }
+
+          // Validate shipment completeness
+          if (!validateShipmentComplete()) {
+            showGlobalMessage("Please fill in all required information.");
+            return;
+          }
+
+          // Populate review modal and open it
+          if (typeof populateReviewModal === "function") populateReviewModal();
           document.getElementById("reviewModal").classList.add("show");
-          console.log("FINAL SHIPMENT DATA:", shipmentData);
-        } else if (currentStep < totalSteps) {
+          console.log("🎉 FINAL SHIPMENT DATA READY FOR REVIEW:");
+          logShipmentData();
+        }
+
+        if (currentStep < totalSteps) {
           goToStep(currentStep + 1);
         }
       });
@@ -1961,6 +2443,9 @@
       document
         .getElementById("confirmPickupBtn")
         .addEventListener("click", () => {
+          console.log(
+            "✅ Pickup preference confirmed, proceeding to Insurance step"
+          );
           closePickupModal();
           goToStep(5); // This correctly updates button to "Review & Create Label"
         });
@@ -1968,12 +2453,301 @@
       function closeReviewModal() {
         document.getElementById("reviewModal").classList.remove("show");
       }
+      function populateReviewModal() {
+        // Sender
+        const s = shipmentData.sender || {};
+        const senderName =
+          `${s.firstName || ""} ${s.lastName || ""}`.trim() || "-";
+        document.getElementById("reviewSenderName").textContent = senderName;
+        document.getElementById("reviewSenderDefaultLabel").textContent =
+          s.isDefault ? "Default Sender Address" : "";
+        document.getElementById("reviewSenderEmail").textContent =
+          s.email || "-";
+        document.getElementById("reviewSenderPhone").textContent =
+          s.phone || "-";
+        const senderAddress = s.address1
+          ? `${s.address1}${s.address2 ? ", " + s.address2 : ""}, ${
+              s.city || ""
+            }${s.state ? ", " + s.state : ""}${
+              s.country ? ", " + s.country : ""
+            } ${s.zipCode || ""}`
+          : "-";
+        document.getElementById("reviewSenderAddress").textContent =
+          senderAddress;
+
+        // Receiver
+        const r = shipmentData.receiver || {};
+        const receiverName =
+          `${r.firstName || ""} ${r.lastName || ""}`.trim() || "-";
+        document.getElementById("reviewReceiverName").textContent =
+          receiverName;
+        document.getElementById("reviewReceiverEmail").textContent =
+          r.email || "-";
+        document.getElementById("reviewReceiverPhone").textContent =
+          r.phone || "-";
+        // If address1 is missing in shipmentData but present in the UI (address book), pull it from DOM
+        let receiverAddress = r.address1 || "";
+        if (
+          (!receiverAddress || receiverAddress.trim() === "") &&
+          document.getElementById("receiverAddressLi")
+        ) {
+          receiverAddress = document
+            .getElementById("receiverAddressLi")
+            .textContent.trim();
+          // Also update shipmentData.receiver.address1 so validation sees it
+          if (!shipmentData.receiver) shipmentData.receiver = {};
+          shipmentData.receiver.address1 = receiverAddress;
+        }
+        receiverAddress = receiverAddress ? receiverAddress : "-";
+        document.getElementById("reviewReceiverAddress").textContent =
+          receiverAddress;
+        // Populate payment UI if present
+        const paymentSelect = document.getElementById("paymentOptionSelect");
+        if (paymentSelect) {
+          const method = shipmentData.payment?.method || "";
+          paymentSelect.value = method;
+          const bankDetails = document.getElementById("bankTransferDetails");
+          const paidCheckbox = document.getElementById("bankPaidCheckbox");
+          if (bankDetails)
+            bankDetails.style.display =
+              method === "bank_transfer" ? "block" : "none";
+          if (paidCheckbox)
+            paidCheckbox.checked = shipmentData.payment?.bankPaid
+              ? true
+              : false;
+        }
+      }
+
+      // Collect payment selection from review modal into shipmentData
+      function collectPaymentOption() {
+        const sel = document.getElementById("paymentOptionSelect");
+        if (!sel) return;
+        const method = sel.value || "";
+        const bankPaid =
+          document.getElementById("bankPaidCheckbox")?.checked || false;
+        shipmentData.payment = {
+          method: method,
+          bankPaid: bankPaid,
+        };
+        console.log("✅ Payment collected:", shipmentData.payment);
+      }
+
+      // Validate payment selection (called from Review modal when creating label)
+      function validatePaymentOption() {
+        console.group("🔒 VALIDATING PAYMENT SELECTION");
+        if (!shipmentData.payment || !shipmentData.payment.method) {
+          console.warn("Payment option not selected");
+          console.groupEnd();
+          return false;
+        }
+        if (
+          shipmentData.payment.method === "bank_transfer" &&
+          !shipmentData.payment.bankPaid
+        ) {
+          console.warn("Bank transfer selected but not confirmed by user");
+          console.groupEnd();
+          return false;
+        }
+        console.log("Payment selection valid:", shipmentData.payment);
+        console.groupEnd();
+        return true;
+      }
+
+      // Simple global notification (non-blocking) for errors/success messages.
+      function showGlobalMessage(message, type = "error", timeout = 4000) {
+        let banner = document.getElementById("globalErrorBanner");
+        if (!banner) {
+          banner = document.createElement("div");
+          banner.id = "globalErrorBanner";
+          banner.style.position = "fixed";
+          banner.style.top = "20px";
+          banner.style.left = "50%";
+          banner.style.transform = "translateX(-50%)";
+          banner.style.zIndex = "9999";
+          banner.style.padding = "10px 16px";
+          banner.style.borderRadius = "6px";
+          banner.style.boxShadow = "0 6px 18px rgba(0,0,0,0.12)";
+          banner.style.fontSize = "14px";
+          banner.style.display = "none";
+          banner.style.opacity = "0";
+          banner.style.transition = "opacity 0.25s ease";
+          document.body.appendChild(banner);
+        }
+
+        banner.textContent = message;
+        if (type === "success") {
+          banner.style.background = "#16a34a"; // green
+          banner.style.color = "#fff";
+        } else {
+          banner.style.background = "#ef4444"; // red
+          banner.style.color = "#fff";
+        }
+
+        banner.style.display = "block";
+        // force repaint for transition
+        void banner.offsetWidth;
+        banner.style.opacity = "1";
+
+        if (banner._timeout) clearTimeout(banner._timeout);
+        if (timeout && timeout > 0) {
+          banner._timeout = setTimeout(() => {
+            banner.style.opacity = "0";
+            setTimeout(() => (banner.style.display = "none"), 250);
+          }, timeout);
+        }
+      }
+
+      function clearGlobalMessage() {
+        const banner = document.getElementById("globalErrorBanner");
+        if (!banner) return;
+        if (banner._timeout) clearTimeout(banner._timeout);
+        banner.style.opacity = "0";
+        setTimeout(() => (banner.style.display = "none"), 250);
+      }
+
+      // Show/hide bank details when payment option changes
+      document.addEventListener("change", function (e) {
+        if (e.target && e.target.id === "paymentOptionSelect") {
+          const val = e.target.value;
+          const bankDetails = document.getElementById("bankTransferDetails");
+          if (bankDetails)
+            bankDetails.style.display =
+              val === "bank_transfer" ? "block" : "none";
+        }
+      });
+
+      // Attach focus handlers to show error/help elements
+      function attachFocusErrorHandlers() {
+        document.querySelectorAll("input, select, textarea").forEach((el) => {
+          el.addEventListener("focus", () => {
+            if (!el.id) return;
+            const err = document.getElementById(el.id + "Error");
+            if (err && err.textContent && err.textContent.trim()) {
+              err.style.display = "block";
+            }
+          });
+          el.addEventListener("blur", () => {
+            if (!el.id) return;
+            const err = document.getElementById(el.id + "Error");
+            if (err) err.style.display = "";
+          });
+        });
+      }
+
+      // Simple address suggestion system (local fallback). Replace fetchAddressSuggestions
+      // with a Google Places API call if you have an API key and want remote suggestions.
+      function fetchAddressSuggestions(query) {
+        if (!query || query.length < 2) return [];
+        // Static sample suggestions — replace this with real API call
+        const samples = [
+          "12 Admiralty Way, Lekki Phase 1, Lagos",
+          "Block 5, Lekki Road, Ikoyi, Lagos",
+          "Ikeja GRA, Ikeja, Lagos",
+          "Victoria Island, Lagos",
+          "7B, Allen Avenue, Ikeja, Lagos",
+        ];
+        return samples
+          .filter((s) => s.toLowerCase().includes(query.toLowerCase()))
+          .slice(0, 5);
+      }
+
+      function setupAddressSuggestions() {
+        ["address1", "receiverAddress1"].forEach((id) => {
+          const input = document.getElementById(id);
+          if (!input) return;
+          // create suggestion box
+          const box = document.createElement("div");
+          box.className = "address-suggestions-box";
+          box.style.position = "absolute";
+          box.style.background = "#fff";
+          box.style.border = "1px solid #e5e7eb";
+          box.style.zIndex = 9999;
+          box.style.display = "none";
+          box.style.maxHeight = "160px";
+          box.style.overflowY = "auto";
+          box.style.width = input.offsetWidth + "px";
+          input.parentNode.style.position = "relative";
+          input.parentNode.appendChild(box);
+
+          input.addEventListener("input", function () {
+            const q = this.value.trim();
+            const suggestions = fetchAddressSuggestions(q);
+            box.innerHTML = "";
+            if (suggestions.length === 0) {
+              box.style.display = "none";
+              return;
+            }
+            suggestions.forEach((s) => {
+              const item = document.createElement("div");
+              item.style.padding = "8px";
+              item.style.cursor = "pointer";
+              item.textContent = s;
+              item.addEventListener("click", () => {
+                input.value = s;
+                box.style.display = "none";
+              });
+              box.appendChild(item);
+            });
+            box.style.display = "block";
+          });
+
+          // hide on outside click
+          document.addEventListener("click", (ev) => {
+            if (!box.contains(ev.target) && ev.target !== input)
+              box.style.display = "none";
+          });
+        });
+      }
       function editStep(step) {
+        console.log(`📝 Editing step ${step}`);
         closeReviewModal();
         goToStep(step);
       }
       function createLabel() {
-        alert("Shipment label created successfully!");
+        console.group("🚀 CREATING LABEL");
+
+        // Collect payment option from review modal (if any)
+        try {
+          collectPaymentOption();
+        } catch (e) {
+          console.warn("collectPaymentOption() failed", e);
+        }
+
+        // Final validation (core fields)
+        if (!validateShipmentComplete()) {
+          // alert("Please complete all required fields before creating the label.");
+          console.groupEnd();
+          return;
+        }
+
+        // Payment validation happens here (after the Review modal is shown
+        // and the user makes a choice). collectPaymentOption() was called
+        // earlier to populate shipmentData.payment — validate it now.
+        if (!validatePaymentOption()) {
+          showGlobalMessage(
+            "Please select a payment option in the Review modal. If you choose Bank Transfer, please confirm the payment."
+          );
+          console.groupEnd();
+          return;
+        }
+
+        // Export and log final data
+        const finalData = exportShipmentDataJSON();
+
+        // Here you can:
+        // 1. Send to backend: fetch('/api/shipments', { method: 'POST', body: JSON.stringify(finalData) })
+        // 2. Generate label PDF
+        // 3. Show confirmation
+
+        console.log("✅ Label would be created with this data:");
+        console.table(finalData);
+
+        showGlobalMessage("Shipment label created successfully!", "success");
+        console.log("📊 Complete export ready for backend:");
+        console.log(JSON.stringify(finalData, null, 2));
+
+        console.groupEnd();
+
         // Replace with actual label creation / redirect
       }
       // === MODAL SYSTEM (Generic) ===
@@ -2024,33 +2798,287 @@
             this.classList.add("selected");
           });
         });
+
+      // EDIT SENDER ADDRESS MODAL
+      function openEditSenderModal() {
+        const headerName = document
+          .querySelector("#use-book .selected-header h4")
+          .textContent.trim();
+        const email = document
+          .querySelector("#use-book ul li:nth-child(1)")
+          .textContent.trim();
+        const phone = document
+          .querySelector("#use-book ul li:nth-child(2)")
+          .textContent.trim();
+        const fullAddressLine = document
+          .querySelector("#use-book ul li:nth-child(3)")
+          .textContent.trim();
+
+        // Parse name
+        const nameParts = headerName.split(" ");
+        const firstName = nameParts[0] || "";
+        const lastName = nameParts.slice(1).join(" ") || "";
+
+        // Parse address from shipmentData for complete info
+        const senderData = shipmentData.sender;
+
+        // Fill the edit modal inputs
+        const modal = document.getElementById("editAddressModal");
+        modal.querySelector("#firstName").value =
+          senderData.firstName || firstName;
+        modal.querySelector("#lastName").value =
+          senderData.lastName || lastName;
+        modal.querySelector("#address1").value = senderData.address1 || "";
+        modal.querySelector("#address2").value = senderData.address2 || "";
+        modal.querySelector("#country").value = senderData.country || "";
+        modal.querySelector("#state").value = senderData.state || "";
+        modal.querySelector("#city").value = senderData.city || "";
+        modal.querySelector("#zipCode").value = senderData.zipCode || "";
+        modal.querySelector("#phone").value = senderData.phone || phone;
+        modal.querySelector("#email").value = senderData.email || email;
+        modal.querySelector("#altPhone").value = senderData.altPhone || "";
+
+        openModal("editAddressModal");
+      }
+
+      function saveAddressFromForm() {
+        const modal = document.getElementById("editAddressModal");
+        const firstName = modal.querySelector("#firstName").value.trim();
+        const lastName = modal.querySelector("#lastName").value.trim();
+        const email = modal.querySelector("#email").value.trim();
+        const phone = modal.querySelector("#phone").value.trim();
+        const address1 = modal.querySelector("#address1").value.trim();
+        const address2 = modal.querySelector("#address2").value.trim();
+        const city = modal.querySelector("#city").value.trim();
+        const state = modal.querySelector("#state").value.trim();
+        const country = modal.querySelector("#country").value.trim();
+        const zipCode = modal.querySelector("#zipCode").value.trim();
+        const altPhone = modal.querySelector("#altPhone").value.trim();
+
+        // Validate required fields
+        if (
+          !firstName ||
+          !lastName ||
+          !email ||
+          !phone ||
+          !address1 ||
+          !country
+        ) {
+          showGlobalMessage("Please fill in all required fields");
+          return;
+        }
+
+        // Update shipmentData
+        shipmentData.sender = {
+          firstName,
+          lastName,
+          email,
+          phone,
+          altPhone,
+          address1,
+          address2,
+          city,
+          state,
+          country,
+          zipCode,
+          isDefault: false,
+          source: "address_book_edited",
+        };
+
+        // Update display
+        const fullName = `${firstName} ${lastName}`;
+        document.querySelector("#use-book .selected-header h4").textContent =
+          fullName;
+        document.querySelector("#use-book ul li:nth-child(1)").textContent =
+          email;
+        document.querySelector("#use-book ul li:nth-child(2)").textContent =
+          phone;
+        document.querySelector(
+          "#use-book ul li:nth-child(3)"
+        ).textContent = `${address1}${
+          address2 ? ", " + address2 : ""
+        }, ${city}, ${state}, ${country} ${zipCode}`;
+
+        console.log("✅ Sender address updated:", shipmentData.sender);
+        closeModal("editAddressModal");
+      }
+
+      // EDIT RECEIVER ADDRESS MODAL
+      function openEditReceiverModal() {
+        const headerName = document
+          .querySelector("#use-book-receiver .selected-header h4")
+          .textContent.trim();
+
+        // Parse address from shipmentData for complete info
+        const receiverData = shipmentData.receiver;
+
+        // Fill the edit modal inputs
+        const modal = document.getElementById("editAddressModalReceiver");
+        modal.querySelector("#firstName").value = receiverData.firstName || "";
+        modal.querySelector("#lastName").value = receiverData.lastName || "";
+        modal.querySelector("#address1").value = receiverData.address1 || "";
+        modal.querySelector("#address2").value = receiverData.address2 || "";
+        modal.querySelector("#country").value = receiverData.country || "";
+        modal.querySelector("#state").value = receiverData.state || "";
+        modal.querySelector("#city").value = receiverData.city || "";
+        modal.querySelector("#zipCode").value = receiverData.zipCode || "";
+        modal.querySelector("#phone").value = receiverData.phone || "";
+        modal.querySelector("#email").value = receiverData.email || "";
+        modal.querySelector("#altPhone").value = receiverData.altPhone || "";
+
+        openModal("editAddressModalReceiver");
+      }
+
+      function saveReceiverAddressFromForm() {
+        const modal = document.getElementById("editAddressModalReceiver");
+        const firstName = modal.querySelector("#firstName").value.trim();
+        const lastName = modal.querySelector("#lastName").value.trim();
+        const email = modal.querySelector("#email").value.trim();
+        const phone = modal.querySelector("#phone").value.trim();
+        const address1 = modal.querySelector("#address1").value.trim();
+        const address2 = modal.querySelector("#address2").value.trim();
+        const city = modal.querySelector("#city").value.trim();
+        const state = modal.querySelector("#state").value.trim();
+        const country = modal.querySelector("#country").value.trim();
+        const zipCode = modal.querySelector("#zipCode").value.trim();
+        const altPhone = modal.querySelector("#altPhone").value.trim();
+
+        // Validate required fields
+        if (
+          !firstName ||
+          !lastName ||
+          !email ||
+          !phone ||
+          !address1 ||
+          !country
+        ) {
+          showGlobalMessage("Please fill in all required fields");
+          return;
+        }
+
+        // Update shipmentData
+        shipmentData.receiver = {
+          firstName,
+          lastName,
+          email,
+          phone,
+          altPhone,
+          address1,
+          address2,
+          city,
+          state,
+          country,
+          zipCode,
+          saveToBook: false,
+          source: "address_book_edited",
+        };
+
+        // Update display
+        const fullName = `${firstName} ${lastName}`;
+        const avatar =
+          fullName.charAt(0) + fullName.split(" ")[1]?.charAt(0) || "";
+        document.querySelector(
+          "#use-book-receiver .selected-header .avatar"
+        ).textContent = avatar;
+        document.querySelector(
+          "#use-book-receiver .selected-header h4"
+        ).textContent = fullName;
+        // Render details as a 3-item <ul> (email, phone, address) to match sender card
+        const detailsEl = document.getElementById("receiverDetailsList");
+        if (detailsEl) {
+          detailsEl.className = "address-details"; // match styling
+          detailsEl.innerHTML = `
+            <li id="receiverEmailLi">${email || "-"}</li>
+            <li id="receiverPhoneLi">${phone || "-"}</li>
+            <li id="receiverAddressLi">${
+              address1
+                ? `${address1}${address2 ? ", " + address2 : ""}, ${
+                    city || ""
+                  }${state ? ", " + state : ""}${
+                    country ? ", " + country : ""
+                  } ${zipCode || ""}`
+                : "-"
+            }</li>
+          `;
+        }
+
+        console.log("✅ Receiver address updated:", shipmentData.receiver);
+        closeModal("editAddressModalReceiver");
+      }
+
       function useSelectedAddress() {
         const selected = document.querySelector(
           "#addressBookList .address-card.selected"
         );
-        if (!selected) return alert("Please select an address");
-        const name = selected.querySelector(".address-name").textContent;
+        if (!selected) {
+          showGlobalMessage("Please select an address from the address book");
+          return;
+        }
+
+        // Extract complete address data from data attributes
+        const firstName = selected.dataset.firstname || "";
+        const lastName = selected.dataset.lastname || "";
+        const email = selected.dataset.email || "";
+        const phone = selected.dataset.phone || "";
+        const address1 = selected.dataset.address1 || "";
+        const address2 = selected.dataset.address2 || "";
+        const city = selected.dataset.city || "";
+        const state = selected.dataset.state || "";
+        const country = selected.dataset.country || "";
+        const zipCode = selected.dataset.zipcode || "";
+        const altPhone = selected.dataset.altphone || "";
+        const name = `${firstName} ${lastName}`.trim();
+
+        // Update display card
         document.querySelector("#use-book .selected-header h4").textContent =
           name;
+
+        // Also update the shipmentData immediately so validation passes
+        shipmentData.sender = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          altPhone: altPhone,
+          address1: address1,
+          address2: address2,
+          city: city,
+          state: state,
+          country: country,
+          zipCode: zipCode,
+          isDefault: false,
+          source: "address_book",
+        };
+
+        console.log(
+          "✅ Sender address selected from book:",
+          shipmentData.sender
+        );
         closeModal("addressBookModal");
       }
 
-      /*   function useSelectedReceiverAddress() {
+      function useSelectedReceiverAddress() {
         const selected = document.querySelector(
           "#receiverAddressBookList .address-card.selected"
         );
-        if (!selected) return alert("Please select a receiver");
+        if (!selected) {
+          showGlobalMessage("Please select a receiver from the address book");
+          return;
+        }
 
-        const name = selected.querySelector(".address-name").textContent;
-        const email = selected.querySelector(
-          ".select-address-email"
-        ).textContent; // Assume .address-email class in address-card HTML
-        const phone = selected.querySelector(
-          ".select-address-phone"
-        ).textContent; // Assume .address-phone
-        const address = selected.querySelector(
-          ".select-address-details"
-        ).textContent; // Assume .address-location
+        // Extract complete address data from data attributes
+        const firstName = selected.dataset.firstname || "";
+        const lastName = selected.dataset.lastname || "";
+        const email = selected.dataset.email || "";
+        const phone = selected.dataset.phone || "";
+        const address1 = selected.dataset.address1 || "";
+        const address2 = selected.dataset.address2 || "";
+        const city = selected.dataset.city || "";
+        const state = selected.dataset.state || "";
+        const country = selected.dataset.country || "";
+        const zipCode = selected.dataset.zipcode || "";
+        const altPhone = selected.dataset.altphone || "";
+        const name = `${firstName} ${lastName}`.trim();
 
         // Update display
         document.querySelector(
@@ -2064,7 +3092,28 @@
         ).textContent = "Selected Receiver";
         document.getElementById("receiverEmailLi").textContent = email;
         document.getElementById("receiverPhoneLi").textContent = phone;
-        document.getElementById("receiverAddressLi").textContent = address;
+        document.getElementById(
+          "receiverAddressLi"
+        ).textContent = `${address1}${
+          address2 ? ", " + address2 : ""
+        }, ${city}, ${state}, ${country} ${zipCode}`;
+
+        // Update shipmentData immediately so validation passes
+        shipmentData.receiver = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          altPhone: altPhone,
+          address1: address1,
+          address2: address2,
+          city: city,
+          state: state,
+          country: country,
+          zipCode: zipCode,
+          saveToBook: false,
+          source: "address_book",
+        };
 
         // Show details and actions, hide message
         document.getElementById("receiverDetailsList").style.display = "block";
@@ -2073,14 +3122,101 @@
 
         closeModal("addressBookModalReceiver");
 
-        // Log collected data
-        console.log("Receiver selected from book:", {
-          name,
-          email,
-          phone,
-          address,
+        // Log collected data with enhanced details
+        console.group("✅ RECEIVER DATA COLLECTED");
+        console.table({
+          firstName: shipmentData.receiver.firstName,
+          lastName: shipmentData.receiver.lastName,
+          email: shipmentData.receiver.email,
+          phone: shipmentData.receiver.phone,
+          address1: shipmentData.receiver.address1,
+          address2: shipmentData.receiver.address2,
+          city: shipmentData.receiver.city,
+          state: shipmentData.receiver.state,
+          country: shipmentData.receiver.country,
+          zipCode: shipmentData.receiver.zipCode,
+          altPhone: shipmentData.receiver.altPhone,
+          source: shipmentData.receiver.source,
         });
-      } */
+        console.groupEnd();
+      }
+
+      // === PICKUP ADDRESS SELECTION ===
+      // Setup address card selection for pickup modal
+      document
+        .querySelectorAll("#pickupAddressBookList .address-card")
+        .forEach((card) => {
+          card.addEventListener("click", function () {
+            this.parentElement
+              .querySelectorAll(".address-card")
+              .forEach((c) => c.classList.remove("selected"));
+            this.classList.add("selected");
+          });
+        });
+
+      function useSelectedPickupAddress() {
+        const selected = document.querySelector(
+          "#pickupAddressBookList .address-card.selected"
+        );
+        if (!selected) {
+          showGlobalMessage(
+            "Please select a pickup address from the pickup list"
+          );
+          return;
+        }
+
+        // Extract complete address data from data attributes
+        const firstName = selected.dataset.firstname || "";
+        const lastName = selected.dataset.lastname || "";
+        const email = selected.dataset.email || "";
+        const phone = selected.dataset.phone || "";
+        const address1 = selected.dataset.address1 || "";
+        const address2 = selected.dataset.address2 || "";
+        const city = selected.dataset.city || "";
+        const state = selected.dataset.state || "";
+        const country = selected.dataset.country || "";
+        const zipCode = selected.dataset.zipcode || "";
+        const name = `${firstName} ${lastName}`.trim();
+
+        // Update the pickup address display in the modal
+        document.getElementById("pickupName").textContent = name;
+        document.getElementById("pickupPhone").textContent = phone;
+        document.getElementById("pickupAddress").textContent = `${address1}${
+          address2 ? ", " + address2 : ""
+        }, ${city}, ${state}, ${country} ${zipCode}`;
+
+        // Update shipmentData with pickup address
+        shipmentData.pickup = {
+          type: "pickup",
+          locationId: selected.dataset.id,
+          locationName: name,
+          locationAddress: `${address1}${
+            address2 ? ", " + address2 : ""
+          }, ${city}, ${state}, ${country} ${zipCode}`,
+          cost: 0, // Free pickup
+        };
+
+        console.log("✅ Pickup address selected:", shipmentData.pickup);
+        closeModal("senderAddressPickupModal");
+      }
+
+      function filterPickupAddressBook(searchTerm) {
+        const cards = document.querySelectorAll(
+          "#pickupAddressBookList .address-card"
+        );
+        const term = searchTerm.toLowerCase();
+
+        cards.forEach((card) => {
+          const name = card
+            .querySelector(".address-name")
+            .textContent.toLowerCase();
+          const details = card
+            .querySelector(".address-details")
+            .textContent.toLowerCase();
+          const matches = name.includes(term) || details.includes(term);
+          card.style.display = matches ? "block" : "none";
+        });
+      }
 
       // === PARCEL ACCORDION ===
       function toggleParcel(header) {
@@ -2117,7 +3253,7 @@
 
       function deleteParcel(btn) {
         if (document.querySelectorAll(".parcel-accordion-item").length === 1) {
-          alert("You must have at least one parcel");
+          // alert("You must have at least one parcel");
           return;
         }
         btn.closest(".parcel-accordion-item").remove();
@@ -2162,25 +3298,93 @@
           searchTimeout = setTimeout(() => {
             fetchHS(query, dropdown, loading);
           }, 300);
+
+          // Allow the user to press Enter to accept their typed value as the HS option
+          // (useful when API is down or user knows the code/name)
+          const inputEl = this;
+          inputEl.onkeydown = function (ev) {
+            if (ev.key === "Enter") {
+              ev.preventDefault();
+              const val = inputEl.value.trim();
+              if (!val) return;
+
+              // Try to extract numeric HS code (4-10 digits) from the input
+              const codeMatch = val.match(/(\d{4,10})/);
+              if (codeMatch) {
+                selectedHSCode = codeMatch[1];
+                selectedItemName = val.replace(codeMatch[1], "").trim() || val;
+              } else {
+                // No numeric code — store typed value as name, code left blank
+                selectedHSCode = "";
+                selectedItemName = val;
+              }
+
+              // Update UI exactly like a selection
+              document.getElementById("selectedItemName").textContent =
+                selectedItemName;
+              document.getElementById("selectedHS").textContent =
+                selectedHSCode || "(manual)";
+              const selectedCard = document.getElementById("selectedItemCard");
+              if (selectedCard) selectedCard.classList.remove("hidden");
+              const itemFields = document.getElementById("itemFields");
+              if (itemFields) itemFields.classList.remove("hidden");
+              document.getElementById("hsDropdown").classList.remove("show");
+              inputEl.value = "";
+            }
+          };
         });
 
       async function fetchHS(query, dropdown, loading) {
+        const controller = new AbortController();
+        const timeout = 8000; // ms
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
         try {
           const url = `https://www.trade-tariff.service.gov.uk/api/v1/commodities?filter[search]=${encodeURIComponent(
             query
           )}`;
-          const response = await fetch(url);
-          console.log("TradeTariff Status:", response.status); // Debug: 200 OK
+          console.log("Fetching HS from TradeTariff:", url);
+          const response = await fetch(url, { signal: controller.signal });
+          console.log("TradeTariff Status:", response.status); // Debug
 
-          if (!response.ok) throw new Error("API error");
+          if (!response.ok) {
+            let text = "";
+            try {
+              text = await response.text();
+            } catch (e) {
+              text = "<no-body>";
+            }
+            console.error(
+              "TradeTariff non-OK response:",
+              response.status,
+              text
+            );
+            loading.classList.remove("active");
+            showFallbackOptions(dropdown, query);
+            showGlobalMessage(
+              "HS code lookup temporarily unavailable — using fallback options."
+            );
+            return;
+          }
 
-          const data = await response.json();
+          let data = null;
+          try {
+            data = await response.json();
+          } catch (e) {
+            console.error("Failed to parse HS JSON:", e);
+            loading.classList.remove("active");
+            showFallbackOptions(dropdown, query);
+            showGlobalMessage(
+              "HS code lookup returned unexpected data — using fallback."
+            );
+            return;
+          }
+
           loading.classList.remove("active");
           dropdown
             .querySelectorAll(".hs-option.dynamic")
             .forEach((opt) => opt.remove());
 
-          if (data.data && data.data.length > 0) {
+          if (data && data.data && data.data.length > 0) {
             data.data.slice(0, 10).forEach((item) => {
               // Top 10
               const code = item.id || "N/A"; // 10-digit, trim to 6 if needed: code.slice(0,6)
@@ -2201,9 +3405,17 @@
             showFallbackOptions(dropdown, query);
           }
         } catch (err) {
-          console.error("TradeTariff error:", err);
+          if (err.name === "AbortError") {
+            console.error("TradeTariff fetch aborted (timeout)");
+            showGlobalMessage("HS lookup timed out — using fallback options.");
+          } else {
+            console.error("TradeTariff error:", err);
+            showGlobalMessage("HS lookup failed — using fallback options.");
+          }
           loading.classList.remove("active");
           showFallbackOptions(dropdown, query);
+        } finally {
+          clearTimeout(timeoutId);
         }
       }
 
@@ -2257,7 +3469,7 @@
         }
 
         if (!parcelEl) {
-          alert("Unable to determine which parcel to add the item to.");
+          // alert("Unable to determine which parcel to add the item to.");
           return;
         }
 
@@ -2304,13 +3516,51 @@
         document.body.style.overflow = "hidden";
       }
 
+      function closeItemModal() {
+        document.getElementById("itemModal").classList.remove("show");
+        document.body.style.overflow = "auto";
+
+        // Reset modal state
+        selectedHSCode = "";
+        selectedItemName = "";
+        currentParcel = null;
+
+        // Clear inputs
+        document
+          .querySelectorAll(
+            "#itemModal input, #itemModal select, #itemModal textarea"
+          )
+          .forEach((input) => {
+            if (input.type === "radio" || input.type === "checkbox") {
+              input.checked = false;
+            } else {
+              input.value = "";
+            }
+            input.style.border = "";
+          });
+
+        // Reset display elements
+        const selectedCard = document.getElementById("selectedItemCard");
+        if (selectedCard) selectedCard.classList.add("hidden");
+        const itemFields = document.getElementById("itemFields");
+        if (itemFields) itemFields.classList.add("hidden");
+        const hsSearch = document.getElementById("hsSearch");
+        if (hsSearch) hsSearch.value = "";
+        const hsDropdown = document.getElementById("hsDropdown");
+        if (hsDropdown) hsDropdown.classList.remove("show");
+
+        // Clear error messages
+        const errorContainer = document.getElementById("item-modal-errors");
+        if (errorContainer) errorContainer.innerHTML = "";
+      }
+
       function saveItemToParcel() {
         if (!validateItemModal()) return;
 
         if (!currentParcel) {
-          alert(
+          /* alert(
             "Internal error: no parcel selected. Please re-open the Add Item modal from the parcel you want to add to."
-          );
+          ); */
           return;
         }
 
@@ -2335,7 +3585,7 @@
 
         const itemsList = currentParcel.querySelector(".items-list");
         if (!itemsList) {
-          alert("Internal error: parcel DOM structure missing .items-list");
+          // alert("Internal error: parcel DOM structure missing .items-list");
           closeItemModal();
           return;
         }
@@ -2366,9 +3616,9 @@
             const div = document.createElement("div");
             div.className = "preview-item position-relative d-inline-block m-2";
             div.innerHTML = `
-          <img src="${e.target.result}" style="width: 90px; height: 90px; object-fit: cover; border-radius: 4px;">
+          <img src="${e.target.result}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
           <button type="button" class="btn-close position-absolute top-0 end-0 bg-dark text-white rounded-circle"
-                  onclick="this.parentElement.remove()" style="width:20px;height:20px;font-size:10px"></button>
+                  onclick="this.parentElement.remove()" style="width:20px;height:20px;font-size:10px"><i class="fa-solid fa-x"></i></button>
         `;
             preview.appendChild(div);
           };
@@ -2400,15 +3650,20 @@
         updateInsurancePrice();
       });
       function updateInsurancePrice() {
+        if (!finalPriceEl) return; // Safe guard if element doesn't exist yet
         if (insuranceApplied) {
           finalPriceEl.textContent = `₦${currentPrice.toLocaleString()}.00`;
           finalPriceEl.classList.add("text-indigo");
-          discountBadge.style.display =
-            currentPrice < 2400 ? "inline-block" : "none";
+          if (discountBadge) {
+            discountBadge.style.display =
+              currentPrice < 2400 ? "inline-block" : "none";
+          }
         } else {
           finalPriceEl.textContent = "Free";
           finalPriceEl.classList.remove("text-indigo");
-          discountBadge.style.display = "none";
+          if (discountBadge) {
+            discountBadge.style.display = "none";
+          }
         }
       }
       function toggleCoupon(show) {
@@ -2419,15 +3674,12 @@
         }
       }
       function applyCoupon() {
+        // Removed insurance-required validation: coupons can be applied regardless
         const code = document
           .getElementById("couponInput")
           .value.trim()
           .toUpperCase();
         couponMessage.innerHTML = "";
-        if (!insuranceApplied) {
-          couponMessage.innerHTML = `<small class="text-warning">Please select insurance first</small>`;
-          return;
-        }
         const validCoupons = {
           SAVE500: 500,
           INSURE50: 1200,
@@ -2444,6 +3696,7 @@
           couponMessage.innerHTML = `<small class="text-danger"><i class="fas fa-times-circle"></i> Invalid coupon code</small>`;
         }
       }
+
       // === PICKUP OPTIONS & DROP-OFF LOCATIONS ===
       document.querySelectorAll(".pickup-option-modern").forEach((option) => {
         option.addEventListener("click", function () {
@@ -2853,7 +4106,7 @@
             .querySelector("#use-book-receiver .selected-header h4")
             .textContent.trim();
           if (headerText === "No Address Selected") {
-            alert("Please select a receiver address from the book.");
+            // alert("Please select a receiver address from the book.");
             return false;
           }
           return true; // Selected address is valid
@@ -2922,12 +4175,18 @@
 
       // Collect Sender Data (runs on Next from Step 1)
       function collectSenderData() {
+        console.group("🚀 COLLECTING SENDER DATA (Step 1)");
+        console.log("📍 Mode detection...");
+
         const mode = document.querySelector(
           ".sender_address_detail .option_address.active_address"
         )?.dataset.target;
 
+        console.log(`Mode selected: ${mode}`);
+
         if (mode === "use-book") {
           // From Address Book
+          console.log("✅ Using address book selection");
           const name = document
             .querySelector("#use-book .selected-header h4")
             .textContent.trim();
@@ -2941,128 +4200,75 @@
             .querySelector("#use-book ul li:nth-child(3)")
             .textContent.trim();
 
+          const [firstName, ...lastParts] = name.split(" ");
+          const lastName = lastParts.join(" ");
+
           shipmentData.sender = {
-            name,
-            email,
-            phone,
-            address,
+            firstName: firstName || "",
+            lastName: lastName || "",
+            email: email || "",
+            phone: phone || "",
+            altPhone: "",
+            address1: address || "",
+            address2: "",
+            city: "",
+            state: "",
+            country: "",
+            zipCode: "",
+            isDefault: true,
             source: "address_book",
           };
         } else {
           // Manual Entry
+          console.log("✅ Using manual entry form");
           const form = document.getElementById("addressForm");
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
-          data.source = "manual";
-          data.name = `${data.firstName} ${data.lastName}`;
-          delete data.firstName;
-          delete data.lastName;
-          shipmentData.sender = data;
+
+          shipmentData.sender = {
+            firstName: data.firstName || "",
+            lastName: data.lastName || "",
+            email: data.email || "",
+            phone: data.phone || "",
+            altPhone: data.altPhone || "",
+            address1: data.address1 || "",
+            address2: data.address2 || "",
+            city: data.city || "",
+            state: data.state || "",
+            country: data.country || "",
+            zipCode: data.zipCode || "",
+            isDefault: document.getElementById("setDefault")?.checked || false,
+            source: "manual",
+          };
         }
 
-        console.log("SENDER DATA COLLECTED:", shipmentData.sender);
-      }
-
-      // Prefill Sender Edit Modal from Selected Card
-      // Open Edit Modal for Sender – pulls exact data from the displayed card
-      function openEditSenderModal() {
-        const headerName = document
-          .querySelector("#use-book .selected-header h4")
-          .textContent.trim();
-        const email = document
-          .querySelector("#use-book ul li:nth-child(1)")
-          .textContent.trim();
-        const phone = document
-          .querySelector("#use-book ul li:nth-child(2)")
-          .textContent.trim();
-        const fullAddressLine = document
-          .querySelector("#use-book ul li:nth-child(3)")
-          .textContent.trim();
-
-        // Parse name
-        const nameParts = headerName.split(" ");
-        const firstName = nameParts[0] || "";
-        const lastName = nameParts.slice(1).join(" ") || "";
-
-        // Parse address line (example: "NO 9 Chris Okafor Ago Palace Way, Amuwo-Odofin, Lagos, Nigeria 100263")
-        const addressParts = fullAddressLine.split(", ");
-        const address1 = addressParts[0] || ""; // Everything before first comma
-        const city = addressParts[1] || "";
-        const state = addressParts[2] || "";
-        const countryZip = addressParts[3] || "";
-        const [country = "", zipCode = ""] = countryZip.split(" ");
-
-        // Fill the edit modal inputs
-        const modal = document.getElementById("editAddressModal");
-        modal.querySelector("#firstName").value = firstName;
-        modal.querySelector("#lastName").value = lastName;
-        modal.querySelector("#address1").value = address1;
-        modal.querySelector("#address2").value = ""; // optional
-        modal.querySelector("#country").value = country;
-        modal.querySelector("#state").value = state;
-        modal.querySelector("#city").value = city;
-        modal.querySelector("#zipCode").value = zipCode;
-        modal.querySelector("#phone").value = phone;
-        modal.querySelector("#email").value = email;
-        modal.querySelector("#altPhone").value = ""; // optional
-
-        openModal("editAddressModal");
-      }
-
-      function saveAddressFromForm() {
-        if (!validateSenderEditModal()) {
-          alert("Please fill all required fields correctly.");
-          return;
+        // Update metadata
+        shipmentData.metadata.lastUpdatedAt = new Date().toISOString();
+        if (!shipmentData.metadata.completedSteps.includes(1)) {
+          shipmentData.metadata.completedSteps.push(1);
         }
 
-        const form = document.querySelector("#editAddressModal form");
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        const fullName = `${data.firstName} ${data.lastName}`.trim();
-        const fullAddress = `${data.address1}, ${data.city}, ${data.state}, ${data.country} ${data.zipCode}`;
-
-        // Update the card display
-        document.querySelector(
-          "#use-book .selected-header .avatar"
-        ).textContent = fullName
-          .split(" ")
-          .map((n) => n[0])
-          .join("")
-          .slice(0, 2)
-          .toUpperCase();
-
-        document.querySelector("#use-book .selected-header h4").textContent =
-          fullName;
-        document.querySelector("#use-book .selected-header p").textContent =
-          "Default Sender Address";
-
-        document.querySelector("#use-book ul li:nth-child(1)").textContent =
-          data.email;
-        document.querySelector("#use-book ul li:nth-child(2)").textContent =
-          data.phone;
-        document.querySelector("#use-book ul li:nth-child(3)").textContent =
-          fullAddress;
-
-        // Update global data
-        shipmentData.sender = {
-          ...data,
-          name: fullName,
-          address: fullAddress,
-          source: "address_book_edited",
-        };
-
-        console.log("SENDER EDITED & SAVED:", shipmentData.sender);
-        closeModal("editAddressModal");
+        console.table(shipmentData.sender);
+        console.log(
+          "✅ Sender data collected successfully",
+          shipmentData.sender
+        );
+        console.groupEnd();
       }
 
-      // Collect Receiver Data (runs on Next from Step 2)
       function collectReceiverData() {
+        console.group("🚀 COLLECTING RECEIVER DATA (Step 2)");
+        console.log("📍 Mode detection...");
+
         const mode = document.querySelector(
           ".receiver_address_detail .option_address.active_address"
         )?.dataset.target;
 
+        console.log(`Mode selected: ${mode}`);
+
         if (mode === "use-book-receiver") {
+          // From Address Book
+          console.log("✅ Using receiver address book selection");
           const name = document
             .querySelector("#use-book-receiver .selected-header h4")
             .textContent.trim();
@@ -3076,96 +4282,244 @@
             .getElementById("receiverAddressLi")
             .textContent.trim();
 
+          const [firstName, ...lastParts] = name.split(" ");
+          const lastName = lastParts.join(" ");
+
           shipmentData.receiver = {
-            name,
-            email,
-            phone,
-            address,
+            firstName: firstName || "",
+            lastName: lastName || "",
+            email: email || "",
+            phone: phone || "",
+            altPhone: "",
+            address1: address || "",
+            address2: "",
+            city: "",
+            state: "",
+            country: "",
+            zipCode: "",
+            saveToBook: document.getElementById("saveToBook")?.checked || false,
             source: "address_book",
           };
         } else {
+          // Manual Entry
+          console.log("✅ Using receiver manual entry form");
           const form = document.getElementById("receiverAddressForm");
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
-          data.source = "manual";
-          data.name = `${data.receiverFirstName} ${data.receiverLastName}`;
-          delete data.receiverFirstName;
-          delete data.receiverLastName;
-          shipmentData.receiver = data;
+
+          shipmentData.receiver = {
+            firstName: data.receiverFirstName || "",
+            lastName: data.receiverLastName || "",
+            email: data.receiverEmail || "",
+            phone: data.receiverPhone || "",
+            altPhone: data.receiverAltPhone || "",
+            address1: data.receiverAddress1 || "",
+            address2: data.receiverAddress2 || "",
+            city: data.receiverCity || "",
+            state: data.receiverState || "",
+            country: data.receiverCountry || "",
+            zipCode: data.receiverZipCode || "",
+            saveToBook: document.getElementById("saveToBook")?.checked || false,
+            source: "manual",
+          };
         }
 
-        console.log("RECEIVER DATA COLLECTED:", shipmentData.receiver);
+        // Update metadata
+        shipmentData.metadata.lastUpdatedAt = new Date().toISOString();
+        if (!shipmentData.metadata.completedSteps.includes(2)) {
+          shipmentData.metadata.completedSteps.push(2);
+        }
+
+        console.table(shipmentData.receiver);
+        console.log(
+          "✅ Receiver data collected successfully",
+          shipmentData.receiver
+        );
+        console.groupEnd();
+      }
+
+      function collectShipmentPurpose() {
+        const purpose = document.getElementById("shippingPurpose")?.value || "";
+        shipmentData.shipment.purpose = purpose;
+        console.log("✅ Shipment purpose:", purpose);
       }
 
       function collectParcelsData() {
-        parcelsData = [];
+        console.group("🚀 COLLECTING PARCELS DATA (Step 3)");
+
+        collectShipmentPurpose();
+
+        const parcelsData = [];
         const parcels = document.querySelectorAll(".parcel-accordion-item");
 
-        parcels.forEach((parcel, index) => {
-          const parcelData = {
-            parcelNumber: index + 1,
-            purpose: document.getElementById("shippingPurpose").value,
+        console.log(`📦 Total parcels found: ${parcels.length}`);
 
-            // 🔥 FIXED: Correct way to get packaging + currency
+        parcels.forEach((parcel, index) => {
+          console.log(`\n📍 Processing Parcel #${index + 1}...`);
+
+          const parcelData = {
+            parcelId: index + 1,
             packaging:
               parcel.querySelector('select[name="parcelPackaging"]')?.value ||
               "",
-
             currency:
               parcel.querySelector('select[name="parcelCurrency"]')?.value ||
               "",
-
             items: [],
-            proofPurchase: [],
-            proofWeight: [],
+            proofOfPurchase: [],
+            proofOfWeight: [],
+            totalWeight: 0,
+            totalValue: 0,
+            itemCount: 0,
           };
 
-          // === STRUCTURED ITEMS ===
-          const itemCards = parcel.querySelectorAll(".items-list .item-card");
+          console.log(`  📦 Packaging: ${parcelData.packaging}`);
+          console.log(`  💵 Currency: ${parcelData.currency}`);
 
-          itemCards.forEach((card) => {
-            const text = card.textContent;
+          // === COLLECT ITEMS WITH DETAILED PARSING ===
+          const itemCards = parcel.querySelectorAll(".items-list .item-card");
+          console.log(`  📦 Items in parcel: ${itemCards.length}`);
+
+          itemCards.forEach((card, itemIndex) => {
+            const cardText = card.textContent;
+            console.log(`    Item ${itemIndex + 1} raw text:`, cardText);
+
+            // Extract item details using improved parsing
             const item = {
-              name: text.match(/^(.*?)(?=\n|\s*[\d.]+kg)/)?.[1]?.trim() || text,
-              weight: parseFloat(text.match(/([\d.]+)kg/)?.[1] || 0),
-              quantity: parseInt(text.match(/Qty:\s*(\d+)/)?.[1] || 1),
-              value: parseFloat(
-                text.match(/₦?([\d,]+)/)?.[1]?.replace(/,/g, "") || 0
-              ),
-              hsCode: text.match(/HS:\s*([\d.]+)/)?.[1] || "",
+              itemId: itemIndex + 1,
+              name: "",
+              type: "item", // "item" or "document"
+              weight: 0,
+              quantity: 1,
+              value: 0,
+              hsCode: "",
+              origin: "",
             };
 
+            // Parse item name (first part before weight)
+            const nameMatch = cardText.match(/^(.*?)(?=\n|\s*[\d.]+kg|Qty:)/);
+            if (nameMatch) {
+              item.name = nameMatch[1].trim();
+            }
+
+            // Parse weight
+            const weightMatch = cardText.match(/([\d.]+)kg/);
+            if (weightMatch) {
+              item.weight = parseFloat(weightMatch[1]);
+            }
+
+            // Parse quantity
+            const qtyMatch = cardText.match(/Qty:\s*(\d+)/);
+            if (qtyMatch) {
+              item.quantity = parseInt(qtyMatch[1]);
+            }
+
+            // Parse value
+            const valueMatch = cardText.match(/₦?([\d,]+(?:\.\d{2})?)/);
+            if (valueMatch) {
+              item.value = parseFloat(valueMatch[1].replace(/,/g, ""));
+            }
+
+            // Parse HS Code
+            const hsMatch = cardText.match(/HS:\s*([\d.]+)/);
+            if (hsMatch) {
+              item.hsCode = hsMatch[1];
+            }
+
+            // Check if document type (if "Document" appears in text)
+            if (cardText.toLowerCase().includes("document")) {
+              item.type = "document";
+            }
+
             parcelData.items.push(item);
+            parcelData.totalWeight += item.weight;
+            parcelData.totalValue += item.value;
+            parcelData.itemCount += item.quantity;
+
+            console.table(item);
           });
 
-          // === PROOF UPLOADS ===
+          // === COLLECT PROOFS (Uploads) ===
           const uploadSections = parcel.querySelectorAll(".upload-section");
+          console.log(`  📸 Upload sections found: ${uploadSections.length}`);
 
           uploadSections.forEach((section, secIndex) => {
             const preview = section.querySelector(".upload-preview");
             const imgs = preview?.querySelectorAll("img");
+            const label =
+              section.querySelector(".upload-label")?.textContent || "Unknown";
+
+            console.log(`    Section ${secIndex}: ${label}`);
+            console.log(`    Images found: ${imgs?.length || 0}`);
 
             if (imgs?.length > 0) {
-              imgs.forEach((img) => {
+              imgs.forEach((img, imgIndex) => {
                 if (secIndex === 0) {
-                  parcelData.proofPurchase.push(img.src);
-                } else {
-                  parcelData.proofWeight.push(img.src);
+                  // Proof of Purchase
+                  parcelData.proofOfPurchase.push({
+                    index: imgIndex,
+                    src: img.src.substring(0, 50) + "...", // Truncate for logging
+                  });
+                } else if (secIndex === 1) {
+                  // Proof of Weight
+                  parcelData.proofOfWeight.push({
+                    index: imgIndex,
+                    src: img.src.substring(0, 50) + "...", // Truncate for logging
+                  });
                 }
               });
             }
           });
 
+          console.log(`  ✅ Parcel #${index + 1} Summary:`, {
+            items: parcelData.itemCount,
+            weight: `${parcelData.totalWeight}kg`,
+            value: `₦${parcelData.totalValue.toLocaleString()}`,
+            proofs: {
+              purchase: parcelData.proofOfPurchase.length,
+              weight: parcelData.proofOfWeight.length,
+            },
+          });
+
           parcelsData.push(parcelData);
         });
 
-        shipmentData.parcels = parcelsData;
+        // Update shipment data
+        shipmentData.shipment.parcels = parcelsData;
+        shipmentData.shipment.totalParcels = parcels.length;
+        shipmentData.shipment.totalItems = parcelsData.reduce(
+          (sum, p) => sum + p.itemCount,
+          0
+        );
+        shipmentData.shipment.totalWeight = parcelsData.reduce(
+          (sum, p) => sum + p.totalWeight,
+          0
+        );
+        shipmentData.shipment.totalValue = parcelsData.reduce(
+          (sum, p) => sum + p.totalValue,
+          0
+        );
 
-        console.table(parcelsData);
+        // Update metadata
+        shipmentData.metadata.lastUpdatedAt = new Date().toISOString();
+        if (!shipmentData.metadata.completedSteps.includes(3)) {
+          shipmentData.metadata.completedSteps.push(3);
+        }
+
+        console.log("\n📊 SHIPMENT TOTALS:");
+        console.table({
+          "Total Parcels": shipmentData.shipment.totalParcels,
+          "Total Items": shipmentData.shipment.totalItems,
+          "Total Weight": `${shipmentData.shipment.totalWeight}kg`,
+          "Total Value": `₦${shipmentData.shipment.totalValue.toLocaleString()}`,
+        });
+
+        console.log("✅ All parcels collected successfully");
         console.log(
-          "✅ STRUCTURED PARCELS DATA:",
+          "📦 Complete Parcels Data:",
           JSON.stringify(parcelsData, null, 2)
         );
+        console.groupEnd();
       }
 
       // Updated: Select from Address Book → Full Data + UI Update
@@ -3173,15 +4527,32 @@
         const selected = document.querySelector(
           "#receiverAddressBookList .address-card.selected"
         );
-        if (!selected) return alert("Please select a receiver");
+        if (!selected) return; // alert("Please select a receiver");
 
         const name = selected.querySelector(".address-name").textContent.trim();
+        // Address card markup uses a few class variants (select-address-details, select-address-phone, address-email)
+        const emailEl =
+          selected.querySelector(".address-email") ||
+          selected.querySelector(".select-address-email");
+        const phoneEl =
+          selected.querySelector(".select-address-phone") ||
+          selected.querySelector(".address-phone");
+        const addressEl =
+          selected.querySelector(".select-address-details") ||
+          selected.querySelector(".address-location");
+
         const email =
-          selected.querySelector(".address-email")?.textContent.trim() || "";
+          emailEl && emailEl.textContent && emailEl.textContent.trim()
+            ? emailEl.textContent.trim()
+            : "";
         const phone =
-          selected.querySelector(".address-phone")?.textContent.trim() || "";
+          phoneEl && phoneEl.textContent && phoneEl.textContent.trim()
+            ? phoneEl.textContent.trim()
+            : "";
         const address =
-          selected.querySelector(".address-location")?.textContent.trim() || "";
+          addressEl && addressEl.textContent && addressEl.textContent.trim()
+            ? addressEl.textContent.trim()
+            : "";
 
         // Update card
         const avatar = document.querySelector("#use-book-receiver .avatar");
@@ -3209,12 +4580,23 @@
         document.getElementById("receiverActions").style.display = "flex";
         document.getElementById("noAddressMessage").style.display = "none";
 
-        // Store in global
+        // Store in global with full field names expected by validation
+        const [firstName = "", ...lastParts] = name.split(" ");
+        const lastName = lastParts.join(" ");
+
         shipmentData.receiver = {
-          name,
-          email,
-          phone,
-          address,
+          firstName: firstName || "",
+          lastName: lastName || "",
+          email: email || "",
+          phone: phone || "",
+          altPhone: "",
+          address1: address || "",
+          address2: "",
+          city: "",
+          state: "",
+          country: "",
+          zipCode: "",
+          saveToBook: false,
           source: "address_book",
         };
         console.log("RECEIVER SELECTED FROM BOOK:", shipmentData.receiver);
@@ -3324,12 +4706,12 @@
           let hasValidParcel = false;
 
           parcelContainers.forEach((parcel, index) => {
-            // CORRECT SELECTORS - target selects INSIDE custom-select
+            // Corrected selectors to find selects by name attribute
             const packagingSelect = parcel.querySelector(
-              ".grid-2 .dropd select:first-of-type"
+              'select[name="parcelPackaging"]'
             );
             const currencySelect = parcel.querySelector(
-              ".grid-2 .dropd select:nth-of-type(2)"
+              'select[name="parcelCurrency"]'
             );
 
             // SAFE VALIDATION with null checks
@@ -3358,15 +4740,8 @@
             }
           });
 
-          /*   console.log("Parcel", index + 1);
-          console.log("Packaging:", packagingSelect);
-          console.log("Currency:", currencySelect); */
-
-          if (!hasValidParcel) {
-            errors.push(
-              "Each parcel needs items + proof of purchase OR weight"
-            );
-          }
+          // Item and proof validation is now handled by validateParcel() function
+          // which provides more detailed error messages
         }
 
         // Debug logging
@@ -3420,9 +4795,9 @@
   <div class="custom-select">
     <select name="parcelPackaging">
       <option value="">-- Select Packaging --</option>
-      <option>Box</option>
-      <option>Envelope</option>
-      <option>Your Packaging</option>
+      <option value="Box">Box</option>
+      <option value="Envelope">Envelope</option>
+      <option value="Your Packaging">Your Packaging</option>
     </select>
     <i class="fa-solid fa-chevron-down"></i>
   </div>
@@ -3433,8 +4808,8 @@
   <div class="custom-select">
     <select name="parcelCurrency">
       <option value="">-- Select Currency --</option>
-      <option>NGN - Nigerian Naira</option>
-      <option>USD - US Dollar</option>
+      <option value="NGN">NGN - Nigerian Naira</option>
+      <option value="USD">USD - US Dollar</option>
     </select>
     <i class="fa-solid fa-chevron-down"></i>
   </div>
@@ -3551,9 +4926,16 @@
         const modal = document.getElementById("itemModal"); // Use actual modal id
         if (!modal) return false;
 
-        const itemType =
-          modal.querySelector('input[name="step3ItemType"]:checked')?.value ||
-          "item";
+        // Determine which type is active. Prefer explicit radio (if present),
+        // otherwise infer from the active tab pane (items vs documents).
+        let itemType = modal.querySelector(
+          'input[name="step3ItemType"]:checked'
+        )?.value;
+        if (!itemType) {
+          const activePane = modal.querySelector(".tab-pane.active");
+          const paneId = activePane?.id || "items-panel";
+          itemType = paneId === "documents-panel" ? "document" : "item";
+        }
 
         let valid = true;
         // Clear previous validation styles
@@ -3620,32 +5002,424 @@
         // 3. ITEMS EXIST?
         const itemsList = parcelEl.querySelector(".items-list");
         const itemCards = itemsList ? itemsList.children.length : 0;
-
         const hasItem = itemCards > 0;
 
+        console.log(`📦 Parcel ${parcelIndex} - Items found: ${itemCards}`);
+
         // 4. PROOF OF PURCHASE (uploaded images)
-        const popPreview = parcelEl.querySelectorAll(
-          ".upload-section:nth-of-type(1) .upload-preview img"
-        );
+        const uploadSections = parcelEl.querySelectorAll(".upload-section");
+        const popPreview =
+          uploadSections.length > 0
+            ? uploadSections[0].querySelectorAll(
+                ".upload-preview .preview-item img"
+              )
+            : [];
         const hasProofOfPurchase = popPreview.length > 0;
 
-        // 5. PROOF OF WEIGHT (uploaded images)
-        const weightPreview = parcelEl.querySelectorAll(
-          ".upload-section:nth-of-type(2) .upload-preview img"
+        console.log(
+          `📦 Parcel ${parcelIndex} - Proof of Purchase images: ${popPreview.length}`
         );
+
+        // 5. PROOF OF WEIGHT (uploaded images)
+        const weightPreview =
+          uploadSections.length > 1
+            ? uploadSections[1].querySelectorAll(
+                ".upload-preview .preview-item img"
+              )
+            : [];
         const hasProofOfWeight = weightPreview.length > 0;
 
-        // 6. FINAL CONDITION
-        if (!hasItem || (!hasProofOfPurchase && !hasProofOfWeight)) {
+        console.log(
+          `📦 Parcel ${parcelIndex} - Proof of Weight images: ${weightPreview.length}`
+        );
+
+        // 6. VALIDATION LOGIC: Need items AND (proof of purchase OR proof of weight)
+        if (!hasItem) {
+          errors.push(`Parcel ${parcelIndex}: Please add at least one item`);
+        }
+
+        if (!hasProofOfPurchase && !hasProofOfWeight) {
           errors.push(
-            `Parcel ${parcelIndex}: Each parcel needs items + proof of purchase OR weight`
+            `Parcel ${parcelIndex}: Please upload proof of purchase OR proof of weight`
           );
         }
+
+        console.log(
+          `✅ Parcel ${parcelIndex} validation complete. Errors: ${errors.length}`
+        );
 
         return errors;
       }
 
+      // ========================================
+      // === COLLECT STEP 4: COURIER/CARRIER ===
+      // ========================================
+      function collectCourierData() {
+        console.group("🚀 COLLECTING COURIER DATA (Step 4)");
+
+        const selectedCourier = document.querySelector(
+          ".courier-card.selected"
+        );
+
+        if (!selectedCourier) {
+          console.warn("⚠️  No courier selected!");
+          console.groupEnd();
+          return;
+        }
+
+        const courierName =
+          selectedCourier.querySelector(".courier-name")?.textContent || "";
+        const courierType =
+          selectedCourier.querySelector(".courier-type")?.textContent || "";
+        const pickupTime =
+          selectedCourier.querySelector(".detail-item:nth-child(1) strong")
+            ?.textContent || "";
+        const deliveryTime =
+          selectedCourier.querySelector(".detail-item:nth-child(2) strong")
+            ?.textContent || "";
+        const costText =
+          selectedCourier.querySelector(".courier-price")?.textContent || "";
+        const cost = parseFloat(costText.replace(/[₦,]/g, "")) || 0;
+
+        shipmentData.courier = {
+          name: courierName,
+          type: courierType,
+          pickupTime: pickupTime,
+          deliveryTime: deliveryTime,
+          cost: cost,
+          estimatedDelivery: "", // Can be calculated later if needed
+        };
+
+        // Update totals
+        shipmentData.totals.shippingCost = cost;
+        shipmentData.totals.breakdown.courier = cost;
+
+        // Update metadata
+        shipmentData.metadata.lastUpdatedAt = new Date().toISOString();
+        if (!shipmentData.metadata.completedSteps.includes(4)) {
+          shipmentData.metadata.completedSteps.push(4);
+        }
+
+        console.table(shipmentData.courier);
+        console.log(
+          "✅ Courier data collected successfully",
+          shipmentData.courier
+        );
+        console.groupEnd();
+      }
+
+      // ========================================
+      // === COLLECT STEP 5: INSURANCE ===
+      // ========================================
+      function collectInsuranceData() {
+        console.group("🚀 COLLECTING INSURANCE DATA (Step 5)");
+
+        const insuranceToggle = document.getElementById("insuranceToggle");
+        const isSelected = insuranceToggle?.checked || false;
+
+        console.log(`Insurance selected: ${isSelected}`);
+
+        if (isSelected) {
+          const insuranceCard = document.querySelector(
+            ".insurance-card-redesigned"
+          );
+          const providerName =
+            insuranceCard?.querySelector(".upstream span")?.textContent ||
+            "Terminal Africa Protection";
+          const coverageText =
+            insuranceCard?.querySelector(".desp_ins")?.textContent || "";
+          const coverageMatch = coverageText.match(/₦([\d,]+)/);
+          const coverage = coverageMatch
+            ? parseFloat(coverageMatch[1].replace(/,/g, ""))
+            : 5000000;
+          const costText =
+            document.getElementById("finalInsurancePrice")?.textContent || "0";
+          const cost =
+            costText.toLowerCase() === "free"
+              ? 0
+              : parseFloat(costText.replace(/[₦,]/g, "")) || 0;
+
+          shipmentData.insurance = {
+            selected: true,
+            provider: providerName,
+            coverage: coverage,
+            cost: cost,
+            coupon: {
+              code: document.getElementById("couponInput")?.value || "",
+              discount: cost < 2400 ? 2400 - cost : 0,
+              applied: cost < 2400,
+            },
+          };
+
+          console.log("✅ Insurance selected with details:");
+          console.table(shipmentData.insurance);
+        } else {
+          shipmentData.insurance = {
+            selected: false,
+            provider: "",
+            coverage: 0,
+            cost: 0,
+            coupon: {
+              code: "",
+              discount: 0,
+              applied: false,
+            },
+          };
+          console.log("⚠️  Insurance not selected");
+        }
+
+        // Update totals
+        shipmentData.totals.insuranceCost = shipmentData.insurance.cost;
+        shipmentData.totals.breakdown.insurance = shipmentData.insurance.cost;
+
+        // Update metadata
+        shipmentData.metadata.lastUpdatedAt = new Date().toISOString();
+        if (!shipmentData.metadata.completedSteps.includes(5)) {
+          shipmentData.metadata.completedSteps.push(5);
+        }
+
+        console.log("✅ Insurance data collected successfully");
+        console.groupEnd();
+      }
+
+      // ========================================
+      // === COLLECT PICKUP PREFERENCE ===
+      // ========================================
+      function collectPickupPreference() {
+        console.group("🚀 COLLECTING PICKUP PREFERENCE");
+
+        const pickupType =
+          document.querySelector('input[name="pickupType"]:checked')?.value ||
+          "pickup";
+        console.log(`Pickup type: ${pickupType}`);
+
+        shipmentData.pickup.type = pickupType;
+
+        if (pickupType === "dropoff") {
+          const selectedLocation = document.querySelector(
+            'input[name="dropoffLocation"]:checked'
+          );
+          if (selectedLocation) {
+            const locationCard = selectedLocation.closest(
+              ".location-card-modern"
+            );
+            const locationName =
+              locationCard?.querySelector(".location-name")?.textContent || "";
+            const locationAddress =
+              locationCard?.querySelector(".location-address")?.textContent ||
+              "";
+
+            shipmentData.pickup.locationId = selectedLocation.value;
+            shipmentData.pickup.locationName = locationName;
+            shipmentData.pickup.locationAddress = locationAddress;
+
+            console.log("📍 Dropoff location selected:");
+            console.table(shipmentData.pickup);
+          }
+        } else {
+          console.log("🚚 Home pickup selected");
+          shipmentData.pickup.locationId = null;
+          shipmentData.pickup.locationName = "";
+          shipmentData.pickup.locationAddress = "";
+        }
+
+        shipmentData.metadata.lastUpdatedAt = new Date().toISOString();
+        console.log("✅ Pickup preference collected");
+        console.groupEnd();
+      }
+
+      // ========================================
+      // === CALCULATE FINAL TOTALS ===
+      // ========================================
+      function calculateFinalTotals() {
+        console.group("💰 CALCULATING FINAL TOTALS");
+
+        const shippingCost = shipmentData.totals.breakdown.courier || 0;
+        const insuranceCost = shipmentData.totals.breakdown.insurance || 0;
+        const pickupCost = shipmentData.totals.breakdown.pickup || 0;
+        const discount = shipmentData.insurance.coupon.discount || 0;
+
+        // Calculate grand total
+        const subtotal = shippingCost + insuranceCost + pickupCost;
+        const grandTotal = subtotal - discount;
+
+        shipmentData.totals.shippingCost = shippingCost;
+        shipmentData.totals.insuranceCost = insuranceCost;
+        shipmentData.totals.pickupCost = pickupCost;
+        shipmentData.totals.discount = discount;
+        shipmentData.totals.grandTotal = Math.max(0, grandTotal);
+
+        console.table({
+          "Shipping Cost": `₦${shippingCost.toLocaleString()}`,
+          "Insurance Cost": `₦${insuranceCost.toLocaleString()}`,
+          "Pickup Cost": `₦${pickupCost.toLocaleString()}`,
+          Discount: `₦${discount.toLocaleString()}`,
+          "Grand Total": `₦${shipmentData.totals.grandTotal.toLocaleString()}`,
+        });
+
+        console.log("✅ Totals calculated successfully");
+        console.groupEnd();
+      }
+
+      // ========================================
+      // === DEBUG & EXPORT FUNCTIONS ===
+      // ========================================
+      function logShipmentData() {
+        console.group("📊 COMPLETE SHIPMENT DATA");
+        console.log("=".repeat(60));
+        console.log("METADATA:", shipmentData.metadata);
+        console.log("SENDER:", shipmentData.sender);
+        console.log("RECEIVER:", shipmentData.receiver);
+        console.log("SHIPMENT:", shipmentData.shipment);
+        console.log("COURIER:", shipmentData.courier);
+        console.log("INSURANCE:", shipmentData.insurance);
+        console.log("PICKUP:", shipmentData.pickup);
+        console.log("TOTALS:", shipmentData.totals);
+        console.log("=".repeat(60));
+        console.groupEnd();
+      }
+
+      function exportShipmentDataJSON() {
+        console.group("📤 EXPORTING SHIPMENT DATA (JSON)");
+
+        // Prepare for export (remove circular references if any)
+        const exportData = {
+          ...shipmentData,
+          exportedAt: new Date().toISOString(),
+          exportFormat: "application/json",
+        };
+
+        console.log(JSON.stringify(exportData, null, 2));
+        console.groupEnd();
+
+        return exportData;
+      }
+
+      function validateShipmentComplete() {
+        console.group("✅ VALIDATING SHIPMENT COMPLETENESS");
+
+        const errors = [];
+
+        // Check sender
+        if (!shipmentData.sender.firstName || !shipmentData.sender.lastName) {
+          errors.push("❌ Sender name incomplete");
+        }
+        if (!shipmentData.sender.email || !shipmentData.sender.phone) {
+          errors.push("❌ Sender contact incomplete");
+        }
+        // Sender address: at least address1 must be set (country is optional if collected from form)
+        if (!shipmentData.sender.address1) {
+          errors.push("❌ Sender address incomplete");
+        }
+
+        // Check receiver
+        if (
+          !shipmentData.receiver.firstName ||
+          !shipmentData.receiver.lastName
+        ) {
+          errors.push("❌ Receiver name incomplete");
+        }
+        // Require at least one contact method: email OR phone
+        if (!shipmentData.receiver.email && !shipmentData.receiver.phone) {
+          errors.push("❌ Receiver contact incomplete");
+        }
+        // Defensive fallback: if receiver.address1 is missing, try to pull values
+        // from the rendered receiver details in the DOM (address-book UI).
+        if (!shipmentData.receiver.address1) {
+          try {
+            const addrEl = document.getElementById("receiverAddressLi");
+            const emailEl = document.getElementById("receiverEmailLi");
+            const phoneEl = document.getElementById("receiverPhoneLi");
+
+            if (addrEl && addrEl.textContent && addrEl.textContent.trim()) {
+              shipmentData.receiver.address1 = addrEl.textContent.trim();
+              console.warn(
+                "⚠️ Fallback: populated shipmentData.receiver.address1 from #receiverAddressLi"
+              );
+            }
+            if (
+              !shipmentData.receiver.email &&
+              emailEl &&
+              emailEl.textContent &&
+              emailEl.textContent.trim()
+            ) {
+              shipmentData.receiver.email = emailEl.textContent.trim();
+              console.warn(
+                "⚠️ Fallback: populated shipmentData.receiver.email from #receiverEmailLi"
+              );
+            }
+            if (
+              !shipmentData.receiver.phone &&
+              phoneEl &&
+              phoneEl.textContent &&
+              phoneEl.textContent.trim()
+            ) {
+              shipmentData.receiver.phone = phoneEl.textContent.trim();
+              console.warn(
+                "⚠️ Fallback: populated shipmentData.receiver.phone from #receiverPhoneLi"
+              );
+            }
+          } catch (e) {
+            console.warn("Receiver DOM fallback failed:", e);
+          }
+        }
+
+        // Receiver address: at least address1 must be set (country is optional if collected from form)
+        if (!shipmentData.receiver.address1) {
+          errors.push("❌ Receiver address incomplete");
+        }
+
+        // NOTE: Payment selection is validated from the Review modal
+        // (review modal contains the payment UI and is shown after step 5).
+        // We purposely DO NOT enforce payment validation here so the review
+        // modal can be displayed and the user may choose a payment option
+        // there. Final payment checks happen when the user confirms in the
+        // Review modal (see `validatePaymentOption`).
+
+        // Check shipment
+        if (!shipmentData.shipment.purpose) {
+          errors.push("❌ Shipment purpose not selected");
+        }
+        if (shipmentData.shipment.parcels.length === 0) {
+          errors.push("❌ No parcels added");
+        }
+
+        // Check courier
+        if (!shipmentData.courier.name) {
+          errors.push("❌ Courier not selected");
+        }
+
+        // Check pickup
+        if (!shipmentData.pickup.type) {
+          errors.push("❌ Pickup preference not set");
+        }
+
+        if (errors.length === 0) {
+          console.log("✅ All validations passed!");
+          shipmentData.metadata.isValid = true;
+        } else {
+          console.warn("Validation errors found:");
+          errors.forEach((err) => console.warn(err));
+          shipmentData.metadata.isValid = false;
+          shipmentData.metadata.validationErrors = errors;
+        }
+
+        console.groupEnd();
+        return shipmentData.metadata.isValid;
+      }
+
       // === INITIALIZE ===
+      // Initialize helpers
+      try {
+        attachFocusErrorHandlers();
+      } catch (e) {
+        /* ignore if missing */
+      }
+      try {
+        setupAddressSuggestions();
+      } catch (e) {
+        /* ignore if missing */
+      }
       goToStep(1);
     </script>
   </body>
