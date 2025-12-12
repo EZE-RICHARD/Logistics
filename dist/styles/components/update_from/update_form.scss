@@ -149,7 +149,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem 0.5rem;
+    padding: 2rem 0.5rem;
     max-width: 820px;
     margin: 0 auto;
     width: 100%;
@@ -1397,7 +1397,7 @@
         width: 100%;
         padding: 0.9rem 1rem;
         border: 2px solid #e2e8f0;
-        border-radius: 12px;
+        border-radius: 4px;
         font-size: 1rem;
         transition: all 0.3s;
 
@@ -2962,11 +2962,9 @@ body {
 }
 
 .step-container {
+  padding: .5rem;
 }
-.step-header {
-  // background: var(--primary);
-  // color: white;
-}
+ 
 
 .form-grid {
   display: grid;
@@ -2980,15 +2978,15 @@ body {
 }
 label {
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  // font-weight: 600;
   color: var(--gray-700);
 }
 select,
 input[type="text"],
 input[type="number"] {
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--gray-300);
-  border-radius: 8px;
+  padding: 0.5rem ;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
   font-size: 1rem;
   transition: border 0.2s;
 }
@@ -3001,18 +2999,18 @@ input:focus {
 
 .items-section {
   margin-top: 2rem;
-  padding: 1.5rem;
+  padding:1rem .7rem;
   background: var(--gray-100);
-  border-radius: 10px;
+  border-radius: 4px;
 }
 .item-row {
   /*    display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 2fr; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
-  align-items: end;
+  
 }
 .add-item-btn {
   background: var(--primary);
@@ -3068,12 +3066,10 @@ input:focus {
       height: 100%;
       object-fit: cover;
       position: absolute;
-      // aspect-ratio: 1/1;
       border-radius: 4px;
     }
     .content_card {
-      // height: 50%;
-      padding: 1.5rem .5rem 1.5rem 1.5rem;
+      padding: 1.5rem 0.5rem 1.5rem 1.5rem;
       .card_title {
         font-size: 16px;
         letter-spacing: 5px;
@@ -3091,7 +3087,7 @@ input:focus {
       }
     }
     .content_card2 {
-      padding: .5rem;
+      padding: 0.5rem;
       text-align: center;
       display: flex;
       flex-direction: column;

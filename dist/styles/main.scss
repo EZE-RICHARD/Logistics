@@ -15,7 +15,7 @@
 @use "./components/my_account/my_account.scss";
 @use "./components/sign_up/sign_up.scss";
 @use "./components/sign_in/sign_in.scss";
-@use "./components/home/home.scss";
+@use "./components/home/home.scss"; 
 @use "./components/order_page/order_page.scss";
 @use"./components/form_tabs/form_tabs.scss"; 
 @use"./components/usp/usp.scss";
@@ -30,10 +30,9 @@
 // Updated styles
 @use"./components/updated_patner/updated_patner.scss";
 @use"./components/update_from/update_form.scss"
-    
-    
+     
 
-
+ 
 /* 
 clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
 clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);

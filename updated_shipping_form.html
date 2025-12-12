@@ -2750,6 +2750,41 @@
           });
         });
       }
+      // Hide HS dropdown when clicking outside it or pressing Escape
+      (function setupHsDropdownAutoHide() {
+        function getDropdown() {
+          return document.getElementById("hsDropdown");
+        }
+        function getInput() {
+          return document.getElementById("hsSearch");
+        }
+        function hide() {
+          const dd = getDropdown();
+          if (!dd) return;
+          dd.classList.add("hidden");
+          dd.style.display = "none";
+        }
+
+        document.addEventListener(
+          "click",
+          function (e) {
+            const dd = getDropdown();
+            const input = getInput();
+            if (!dd) return;
+            // keep open when clicking inside dropdown or on the input
+            if ((input && input.contains(e.target)) || dd.contains(e.target)) return;
+            hide();
+          },
+          true
+        );
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" || e.key === "Esc") hide();
+        });
+
+        // expose for manual control
+        window.hideHsDropdown = hide;
+      })();
       function editStep(step) {
         console.log(`📝 Editing step ${step}`);
         closeReviewModal();

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipment Wizard</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <style>
+      :root {
+        --bg: #fafbff;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent: #6366f1;
+        --accent-strong: #4f46e5;
+        --danger: #ef4444;
+        --radius: 10px;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+      }
+      body {
+        background: linear-gradient(180deg, #f7f8ff 0%, var(--bg) 100%);
+        color: #111827;
+        overflow-x: hidden;
+      }
+    
+      
+   
+    
+       
+      
+      .form-wrapper {
+        padding: 6px;
+      }
+      .wizard-form h3 {
+        margin: 0 0 12px 0;
+        font-size: 20px;
+      }
+      .step-section {
+        display: none;
+        padding: 12px 0;
+      }
+      .step-section.active {
+        display: block;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .col-12 {
+        flex: 1 1 100%;
+      }
+      .col-md-6 {
+        flex: 1 1 calc(50% - 12px);
+      }
+      .col-lg-3 {
+        flex: 1 1 calc(25% - 12px);
+      }
+      /* two-up layout for the grouped country/state/city/zip row on small screens */
+      @media (max-width: 720px) {
+        .two-up-mobile > .col-12 { flex: 1 1 calc(50% - 12px); }
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 6px;
+        color: var(--muted);
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #e6e7ee;
+        border-radius: 8px;
+        background: #fff;
+        outline: none;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .form-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 16px;
+      }
+      .btn_prev,
+      .btn_next {
+        background: transparent;
+        border: 1px solid #e6e7ee;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #111827;
+      }
+      .btn_next {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .btn_next.finish {
+        background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      }
+      .error {
+        border-color: var(--danger) !important;
+        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.06);
+      }
+      .error-msg {
+        display: block;
+        margin-top: 6px;
+        color: var(--danger);
+        font-size: 12px;
+        height: 16px;
+      }
+      .loading {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent);
+        font-size: 13px;
+      }
+      .loading .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: bounce 1s infinite;
+      }
+      .loading.hidden {
+        display: none;
+      }
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .timeline-step {
+        display: none;
+      }
+      @media (min-width: 920px) {
+        .wizard-ad {
+          display: block;
+        }
+        .mobile-steps {
+          display: none;
+        }
+        .timeline-step {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 18px 0;
+        }
+        .desktop-timeline {
+          position: fixed;
+          left: 16px;
+          top: 120px;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="wizard-layout">
+      <aside class="wizard-ad">
+        <div class="ad-content">
+          <div class="ad_card">
+            <img src="./dist/img/newUpdate/svg/stacked-steps.png" alt="" />
+            <div class="content_card">
+              <p class="card_title">SHIPPING TIPS</p>
+              <p class="card_h1">
+                Properly package fragile items & use stickers to indcate.
+              </p>
+              <p class="card_pg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+
+          <div class="ad_card">
+            <img src="./dist/img/newUpdate/svg/dddepth-226.jpg" alt="" />
+            <div class="content_card">
+              <p class="card_title">SHIPPING TIPS</p>
+              <p class="card_h1">
+                Properly package fragile items & use stickers to indcate.
+              </p>
+              <p class="card_pg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+
+          <div class="ad_card">
+            <img
+              src="./dist/img/newUpdate/svg/circle-scatter-haikei.png"
+              alt=""
+            />
+            <div class="content_card2">
+              <!-- <p class="card_title">SHIPPING TIPS</p> -->
+              <p class="card_h1">Drop off items with ShipShop.</p>
+              <p class="card_pg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+
+          <div class="ad_card">
+            <img src="./dist/img/newUpdate/svg/gggrain.svg" alt="" />
+            <div class="content_card">
+              <p class="card_title">SHIPPING TIPS</p>
+              <p class="card_h1">
+                Properly package fragile items & use stickers to indcate.
+              </p>
+              <p class="card_pg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus, repellat!
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- Main Form Area -->
+      <main class="wizard-main">
+        <!-- Mobile Step Indicator -->
+        <div class="mobile-steps" id="mobileSteps">
+          <div class="step active"><span>1</span></div>
+          <div class="step"><span>2</span></div>
+          <div class="step"><span>3</span></div>
+       
+        </div>
+        <div class="form-wrapper">
+          <form class="wizard-form" novalidate>
+            <!-- Step 1: Sender -->
+            <section
+              class="step-section sender_address_detail active"
+              data-step="1"
+            >
+              <h3>Sender Details</h3>
+              <p class="">Please enter your details</p>
+              <!-- <div class="mt-5"></div>
+               -->
+              <br><br>
+              <!-- Content: Enter Manually -->
+              <div id="enter-manually" class="">
+                <div class="">
+                  <div class="row g-3 mt-5">
+                    <!-- First & Last Name -->
+                    <div class="col-12 col-md-6">
+                      <label class="form-label">First Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-input" id="firstName" name="firstName" value="" required />
+                      <small class="text-danger error-msg" id="firstName"></small>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label">Last Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-input" id="lastName" name="lastName" value="" required />
+                      <small class="text-danger error-msg" id="lastName"></small>
+                    </div>
+                    <!-- Address Lines -->
+                    <div class="col-12">
+                      <label class="form-label">Address Line 1 <span class="text-danger">*</span></label>
+                      <input type="text" class="form-input" id="address1" name="address1" value="" required />
+                      <small class="text-danger error-msg" id="address1"></small>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Address Line 2</label>
+                      <input type="text" class="form-input" id="address2" name="address2" placeholder="Apartment, suite, etc." />
+                    </div>
+                    <!-- COUNTRY + STATE + CITY + ZIP (ONE LINE ON PC) -->
+                    <div class="row g-3 align-items-end two-up-mobile">
+                      <div class="col-12 col-md-6 col-lg-3 position-relative">
+                        <label class="form-label">Country <span class="text-danger">*</span></label>
+                        <select class="form-select country-select" id="country" name="country" required>
+                          <option value="" selected>Loading countries...</option>
+                        </select>
+                        <small class="text-danger error-msg" id="country"></small>
+                        <div class="loading" id="countryLoadingSender"></div>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-3 position-relative">
+                        <label class="form-label">State / Province <span class="text-danger">*</span></label>
+                        <select class="form-select state-select" id="state" name="state" required>
+                          <option value="" selected>Select country first</option>
+                        </select>
+                        <small class="text-danger error-msg" id="state"></small>
+                        <div class="loading" id="stateLoadingSender"></div>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-3 position-relative">
+                        <label class="form-label">City <span class="text-danger">*</span></label>
+                        <select class="form-select city-select" id="city" name="city" required>
+                          <option value="" selected>Select state first</option>
+                        </select>
+                        <small class="text-danger error-msg" id="city"></small>
+                        <div class="loading" id="cityLoadingSender"></div>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-3">
+                        <label class="form-label">ZIP / Postal Code <span class="text-danger">*</span></label>
+                        <input type="text" class="form-input" id="zipCode" name="zipCode" value="" required />
+                        <small class="text-danger error-msg" id="zipCode"></small>
+                      </div>
+                    </div>
+                    <!-- Phone & Email -->
+                    <div class="col-12 col-md-6">
+                      <label class="form-label"
+                        >Phone Number <span class="text-danger">*</span></label
+                      >
+                      <input
+                        type="tel"
+                        class="form-input"
+                        id="phone"
+                        name="phone"
+                        value=""
+                        required
+                      />
+                      <small class="text-danger error-msg" id="phone"></small>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label"
+                        >Email Address <span class="text-danger">*</span></label
+                      >
+                      <input
+                        type="email"
+                        class="form-input"
+                        id="email"
+                        name="email"
+                        value=""
+                        required
+                      />
+                      <small class="text-danger error-msg" id="email"></small>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label"
+                        >Alternate Phone (Optional)</label
+                      >
+                      <input
+                        type="tel"
+                        class="form-input"
+                        id="altPhone"
+                        name="altPhone"
+                      />
+                    </div>
+                    <div class="col-12 mt-4">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="setDefault"
+                          name="setDefault"
+                          value="1"
+                          checked
+                        />
+                        <label class="form-check-label" for="setDefault">
+                          <strong>Set as default sender address</strong>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Step 2: Shipment Details -->
+            <section class="step-section shipment_details" data-step="2">
+              <h3>Shipment Details</h3>
+              <div class="mt-4">
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label
+                      >Package Type <span class="text-danger">*</span></label
+                    >
+                    <select id="packageType" name="packageType" required>
+                      <option value="">Select package type</option>
+                      <option>Document</option>
+                      <option>Parcel</option>
+                      <option>Box</option>
+                      <option>Multiple Items</option>
+                    </select>
+                    <small
+                      class="text-danger error-msg"
+                      id="packageType"
+                    ></small>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label
+                      >Number of Packages
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      id="numPackages"
+                      name="numPackages"
+                      min="1"
+                      value="1"
+                      required
+                    />
+                    <small
+                      class="text-danger error-msg"
+                      id="numPackages"
+                    ></small>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label
+                      >Estimated Weight
+                      <span class="text-danger">*</span></label
+                    >
+                    <div style="display: flex; gap: 8px">
+                      <input
+                        type="number"
+                        id="estWeight"
+                        name="estWeight"
+                        min="0"
+                        step="0.01"
+                        required
+                      />
+                      <select
+                        id="weightUnit"
+                        name="weightUnit"
+                        style="width: 120px"
+                      >
+                        <option value="kg">kg</option>
+                        <option value="lbs">lbs</option>
+                      </select>
+                    </div>
+                    <small class="text-danger error-msg" id="estWeight"></small>
+                  </div>
+
+                  <div class="col-12">
+                    <label>Dimensions (optional)</label>
+                    <div style="display: flex; gap: 8px">
+                      <input
+                        type="number"
+                        id="length"
+                        name="length"
+                        placeholder="Length"
+                        step="0.1"
+                      />
+                      <input
+                        type="number"
+                        id="width"
+                        name="width"
+                        placeholder="Width"
+                        step="0.1"
+                      />
+                      <input
+                        type="number"
+                        id="height"
+                        name="height"
+                        placeholder="Height"
+                        step="0.1"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label
+                      >Description of Contents
+                      <span class="text-danger">*</span></label
+                    >
+                    <textarea
+                      id="contents"
+                      name="contents"
+                      required
+                      placeholder="What are you shipping?"
+                    ></textarea>
+                    <small class="text-danger error-msg" id="contents"></small>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Step 3: Pickup Preferences -->
+            <section class="step-section pickup_prefs" data-step="3">
+              <h3>Pickup Preferences</h3>
+              <div class="mt-4">
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label
+                      >Preferred Pickup Date
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="date"
+                      id="pickupDate"
+                      name="pickupDate"
+                      required
+                    />
+                    <small
+                      class="text-danger error-msg"
+                      id="pickupDate"
+                    ></small>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label
+                      >Preferred Time Slot
+                      <span class="text-danger">*</span></label
+                    >
+                    <select id="timeSlot" name="timeSlot" required>
+                      <option value="">Select time</option>
+                      <option value="Morning 8-12">Morning 8-12</option>
+                      <option value="Afternoon 12-4">Afternoon 12-4</option>
+                      <option value="Evening 4-8">Evening 4-8</option>
+                      <option value="Specific">Specific Time</option>
+                    </select>
+                    <small class="text-danger error-msg" id="timeSlot"></small>
+                  </div>
+
+                  <div
+                    class="col-12"
+                    id="specificTimeRow"
+                    style="display: none"
+                  >
+                    <label>Specific Time (optional)</label>
+                    <input type="time" id="specificTime" name="specificTime" />
+                  </div>
+
+                  <div class="col-12">
+                    <label>Special Instructions (optional)</label>
+                    <textarea
+                      id="specialInstructions"
+                      name="specialInstructions"
+                      placeholder="e.g. Ring doorbell, use back entrance"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="form-actions">
+          <button type="button" class="btn_prev" id="btnPrev">Back</button>
+          <button type="button" class="btn_next" id="btnNext">Next</button>
+        </div>
+      </main>
+      <!-- Desktop Vertical Timeline -->
+     <!--  <nav class="desktop-timeline" id="desktopTimeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-step active" data-step="1">
+          <div class="circle">1</div>
+          <span class="label">Sender</span>
+        </div>
+        <div class="timeline-step" data-step="2">
+          <div class="circle">2</div>
+          <span class="label">Receiver</span>
+        </div>
+        <div class="timeline-step" data-step="3">
+          <div class="circle">3</div>
+          <span class="label">Items</span>
+        </div>
+        <div class="timeline-step" data-step="4">
+          <div class="circle">4</div>
+          <span class="label">Carrier</span>
+        </div>
+        <div class="timeline-step" data-step="5">
+          <div class="circle">5</div>
+          <span class="label">Review</span>
+        </div>
+      </nav> -->
+    </div>
+    <script>
+      (function () {
+        const API_BASE = "https://countriesnow.space/api/v0.1/countries";
+        // Mock fallback data
+        const mock = {
+          countries: [
+            { name: "United States", states: [{ name: "California", cities: [{ name: "Los Angeles", postal: "90001" }, { name: "San Francisco", postal: "94102" }] }, { name: "New York", cities: [{ name: "New York", postal: "10001" }] }] },
+            { name: "Nigeria", states: [{ name: "Lagos", cities: [{ name: "Ikeja", postal: "100001" }, { name: "Lekki", postal: "101001" }] }, { name: "Abuja", cities: [{ name: "Garki", postal: "900001" }] }] },
+            { name: "United Kingdom", states: [{ name: "England", cities: [{ name: "London", postal: "SW1A1AA" }] }] }
+          ]
+        };
+
+        function fakeFetch(data, delay = 600) {
+          return new Promise((res) => setTimeout(() => res(JSON.parse(JSON.stringify(data))), delay));
+        }
+
+        // DOM refs
+        const form = document.querySelector('.wizard-form');
+        const countrySel = document.getElementById('country');
+        const stateSel = document.getElementById('state');
+        const citySel = document.getElementById('city');
+        const zipInput = document.getElementById('zipCode');
+        const countryLoading = document.getElementById('countryLoadingSender');
+        const stateLoading = document.getElementById('stateLoadingSender');
+        const cityLoading = document.getElementById('cityLoadingSender');
+
+        // Load countries from real API, fallback to mock
+        async function loadCountries(){
+          countryLoading.textContent = 'Loading countries';
+          countryLoading.classList.remove('hidden');
+          try{
+            const res = await fetch(`${API_BASE}/`);
+            const json = await res.json();
+            let data = [];
+            if(json && Array.isArray(json.data)){
+              // data may be array of objects or strings
+              data = json.data.map(d => ({ name: d.country || d.name || d }));
+            }
+            if(!data.length) throw new Error('empty');
+            countrySel.innerHTML = '<option value="">Select country</option>' + data.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
+          }catch(err){
+            // fallback
+            const data = mock.countries;
+            countrySel.innerHTML = '<option value="">Select country</option>' + data.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
+          } finally {
+            countryLoading.classList.add('hidden');
+          }
+        }
+
+        // States endpoint expects POST { country }
+        async function loadStates(countryName){
+          stateSel.innerHTML = '<option value="">Loading states...</option>';
+          stateLoading.textContent = 'Loading states';
+          stateLoading.classList.remove('hidden');
+          citySel.innerHTML = '<option value="">Select state first</option>';
+          try{
+            const res = await fetch(`${API_BASE}/states`, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ country: countryName })
+            });
+            const json = await res.json();
+            let states = [];
+            if(json && json.data && Array.isArray(json.data.states)) states = json.data.states.map(s=>({ name: s.name || s }));
+            else if(json && json.data && Array.isArray(json.data)) states = json.data.map(s=>({ name: s }));
+            if(!states.length) throw new Error('no states');
+            stateSel.innerHTML = '<option value="">Select state</option>' + states.map(s=>`<option value="${s.name}">${s.name}</option>`).join('');
+          }catch(err){
+            // fallback to mock
+            const country = mock.countries.find(c=>c.name === countryName);
+            const states = country ? country.states : [];
+            if(states && states.length){
+              stateSel.innerHTML = '<option value="">Select state</option>' + states.map(s=>`<option value="${s.name}">${s.name}</option>`).join('');
+            } else {
+              stateSel.innerHTML = '<option value="">No states available</option>';
+            }
+          } finally {
+            stateLoading.classList.add('hidden');
+          }
+        }
+
+        // Cities endpoint expects POST { country, state }
+        async function loadCities(countryName, stateName){
+          citySel.innerHTML = '<option value="">Loading cities...</option>';
+          cityLoading.textContent = 'Loading cities';
+          cityLoading.classList.remove('hidden');
+          try{
+            const res = await fetch(`${API_BASE}/state/cities`, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ country: countryName, state: stateName })
+            });
+            const json = await res.json();
+            let cities = [];
+            if(json && json.data && Array.isArray(json.data)) cities = json.data.map(c=>({ name: c }));
+            if(!cities.length) throw new Error('no cities');
+            citySel.innerHTML = '<option value="">Select city</option>' + cities.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
+          }catch(err){
+            const country = mock.countries.find(c=>c.name === countryName);
+            const state = country ? country.states.find(s=>s.name === stateName) : null;
+            const cities = state ? state.cities : [];
+            if(cities && cities.length){
+              citySel.innerHTML = '<option value="">Select city</option>' + cities.map(c=>`<option value="${c.name}" data-postal="${c.postal||''}">${c.name}</option>`).join('');
+            } else {
+              citySel.innerHTML = '<option value="">No cities</option>';
+            }
+          } finally {
+            cityLoading.classList.add('hidden');
+          }
+        }
+
+        function setPostalFromCity(){
+          const opt = citySel.options[citySel.selectedIndex];
+          if(opt && opt.dataset && opt.dataset.postal){
+            zipInput.value = opt.dataset.postal || '';
+          }
+        }
+
+        // Wire select events
+        countrySel && countrySel.addEventListener('change', (e)=>{
+          const val = e.target.value;
+          if(val) loadStates(val);
+          else{
+            stateSel.innerHTML = '<option value="">Select country first</option>';
+            citySel.innerHTML = '<option value="">Select state first</option>';
+          }
+        });
+
+        stateSel && stateSel.addEventListener('change', (e)=>{
+          const country = countrySel.value;
+          const state = e.target.value;
+          if(state) loadCities(country, state);
+          else citySel.innerHTML = '<option value="">Select state first</option>';
+        });
+
+        citySel && citySel.addEventListener('change', setPostalFromCity);
+
+        // STEP NAV & VALIDATION (unchanged)
+        const sections = Array.from(document.querySelectorAll('.step-section'));
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const mobileSteps = document.getElementById('mobileSteps');
+
+        function getActiveIndex(){ return sections.findIndex(s=>s.classList.contains('active')); }
+
+        function showStep(index){
+          sections.forEach((s,i)=> s.classList.toggle('active', i===index));
+          if(mobileSteps) Array.from(mobileSteps.children).forEach((c,i)=> c.classList.toggle('active', i===index));
+          btnPrev.style.display = index===0 ? 'none' : 'inline-flex';
+          const lastImplemented = 2;
+          if(index>=lastImplemented){ btnNext.textContent='Finish'; btnNext.classList.add('finish'); } else { btnNext.textContent='Next'; btnNext.classList.remove('finish'); }
+        }
+
+        function validateStep(section){
+          let ok = true;
+          const requiredEls = Array.from(section.querySelectorAll('[required]'));
+          requiredEls.forEach(el=>{
+            const valid = (el.type === 'checkbox') ? el.checked : (el.value !== null && String(el.value).trim() !== '');
+            if(!valid){
+              ok = false; el.classList.add('error');
+              const msgEl = document.getElementById(el.id);
+              if(msgEl && msgEl.classList.contains('error-msg')) msgEl.textContent = 'This field is required';
+            }
+          });
+          return ok;
+        }
+
+        function clearError(e){ const el = e.target; el.classList.remove('error'); const small = document.getElementById(el.id); if(small && small.classList.contains('error-msg')) small.textContent = ''; }
+
+        form.querySelectorAll('input,select,textarea').forEach(el=> el.addEventListener('focus', clearError));
+
+        btnPrev.addEventListener('click', ()=>{ const idx = getActiveIndex(); if(idx>0) showStep(idx-1); });
+
+        btnNext.addEventListener('click', ()=>{
+          const idx = getActiveIndex(); const current = sections[idx]; if(!validateStep(current)) return; const nextIdx = idx+1; const lastImplemented = 2;
+          if(nextIdx>lastImplemented){
+            const fd = new FormData(form); const obj = {};
+            for(const [k,v] of fd.entries()){ if(obj[k] && Array.isArray(obj[k])) obj[k].push(v); else if(obj[k]) obj[k] = [obj[k], v]; else obj[k]=v; }
+            console.log('FormData entries:'); for(const pair of fd.entries()) console.log(pair[0], ':', pair[1]); console.log('Collected object:', obj);
+            window.collectedShipment = { formData: fd, data: obj };
+            btnNext.disabled = true; btnNext.textContent = 'Submitted'; setTimeout(()=> btnNext.disabled = false, 1200); return;
+          }
+          showStep(nextIdx);
+        });
+
+        // specific time
+        const timeSlot = document.getElementById('timeSlot'); const specificRow = document.getElementById('specificTimeRow'); if(timeSlot) timeSlot.addEventListener('change', (e)=> specificRow.style.display = e.target.value === 'Specific' ? 'block' : 'none');
+
+        // init
+        showStep(0);
+        loadCountries();
+      })();
+    </script>
+     <script>
+      (function rotateAdCards() {
+        try {
+          const adCards = Array.from(document.querySelectorAll('.ad-content .ad_card'));
+          if (!adCards || adCards.length <= 2) return; // nothing to rotate
+
+          const pairs = Math.ceil(adCards.length / 2);
+          let idx = parseInt(localStorage.getItem('adCardPairIndex') || '0', 10);
+          if (Number.isNaN(idx) || idx < 0 || idx >= pairs) idx = 0;
+
+          // hide all, then show the current pair
+          adCards.forEach((el) => {
+            el.style.display = 'none';
+            el.classList.remove('ad-visible');
+          });
+
+          const start = idx * 2;
+          for (let i = 0; i < 2; i++) {
+            const el = adCards[start + i];
+            if (el) {
+              el.style.display = '';
+              el.classList.add('ad-visible');
+            }
+          }
+
+          // advance index for next load
+          const next = (idx + 1) % pairs;
+          localStorage.setItem('adCardPairIndex', String(next));
+        } catch (e) {
+          // fail silently
+          console.warn('ad rotation failed', e);
+        }
+      })();
+    </script>
+  </body>
+</html>
