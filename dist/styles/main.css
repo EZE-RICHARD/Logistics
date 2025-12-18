@@ -6114,7 +6114,7 @@ input:focus {
   gap: 4px;
 }
 .container_summary .tracking_code_cta .tracking_code_card .tracking_code span i {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   width: 25px;
   height: 20px;
   border-radius: 2px;
@@ -6202,7 +6202,7 @@ input:focus {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 .container_summary .address_record_sum .address_record_grid .address_grid_sender {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
   height: -moz-fit-content;
@@ -6225,7 +6225,7 @@ input:focus {
   font-size: 16px;
 }
 .container_summary .address_record_sum .address_record_grid .address_grid_receiver {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
   height: -moz-fit-content;
@@ -6248,7 +6248,7 @@ input:focus {
   font-size: 16px;
 }
 .container_summary .address_record_sum .address_record_grid .Courier_Information {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
   height: -moz-fit-content;
@@ -6290,7 +6290,7 @@ input:focus {
   font-size: 16px;
 }
 .container_summary .address_record_sum .address_record_grid .addOn_Information {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
   height: -moz-fit-content;
@@ -6332,7 +6332,7 @@ input:focus {
   font-size: 16px;
 }
 .container_summary .address_record_sum .parcel_record {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
   height: -moz-fit-content;
@@ -6355,7 +6355,7 @@ input:focus {
   color: #0761e0;
 }
 .container_summary .address_record_sum .Proof_record {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
   height: -moz-fit-content;
@@ -6385,8 +6385,13 @@ input:focus {
 }
 @media (min-width: 770px) {
   .container_summary .right_summary {
-    width: 35%;
+    width: 40%;
     padding: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .container_summary .right_summary {
+    width: 35%;
   }
 }
 .container_summary .rate_sum {
@@ -6451,7 +6456,6 @@ input:focus {
 }
 .container_summary .payment_details_sum {
   margin-top: 1rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6466,6 +6470,7 @@ input:focus {
   }
 }
 .container_summary .payment_details_sum .conatiner_payment_details {
+  text-align: center;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -6497,10 +6502,17 @@ input:focus {
 .container_summary .payment_details_sum ul li {
   display: flex;
   justify-content: space-between;
+  gap: 2px;
 }
 .container_summary .payment_details_sum ul li .title {
   opacity: 0.4;
   font-weight: bold;
+}
+.container_summary .payment_details_sum ul li .snap_ellipsis {
+  width: 50%; /* Fixed width required */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .container_summary .payment_details_sum ul .hr_line {
   display: block;
