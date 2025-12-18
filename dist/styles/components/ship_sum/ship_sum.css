@@ -515,6 +515,8 @@ body {
   background-color: #F9FAFB;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (min-width: 770px) {
   .container_summary .address_record_sum .address_record_grid .address_grid_sender {
@@ -536,6 +538,8 @@ body {
   background-color: #F9FAFB;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (min-width: 770px) {
   .container_summary .address_record_sum .address_record_grid .address_grid_receiver {
@@ -557,6 +561,8 @@ body {
   background-color: #F9FAFB;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (min-width: 770px) {
   .container_summary .address_record_sum .address_record_grid .Courier_Information {
@@ -597,6 +603,8 @@ body {
   background-color: #F9FAFB;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (min-width: 770px) {
   .container_summary .address_record_sum .address_record_grid .addOn_Information {
@@ -637,6 +645,8 @@ body {
   background-color: #F9FAFB;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
   margin-top: 1rem;
 }
 @media (min-width: 770px) {
@@ -658,6 +668,8 @@ body {
   background-color: #F9FAFB;
   border-radius: 4px;
   padding: 0.8rem 0.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
   margin-top: 1rem;
 }
 @media (min-width: 770px) {
