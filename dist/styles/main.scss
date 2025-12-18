@@ -29,22 +29,7 @@
 
 // Updated styles
 @use"./components/updated_patner/updated_patner.scss";
-@use"./components/update_from/update_form.scss"
-     
+@use"./components/update_from/update_form.scss";
+@use"./components/ship_sum/ship_sum.scss";
 
  
-/* 
-clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
-clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
-*/
-
-
-
-/* 
-    Drop off your package
-    Would you like to pick up your shipment?
-
-    No, I want my shipment picked up from my address.
-    Yes. I would like to drop-off at a nearby location.
-
-*/

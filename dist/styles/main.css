@@ -6071,4 +6071,420 @@ input:focus {
 .ad-content .ad_card .content_card2 .card_pg {
   font-size: 20px;
   padding-bottom: 1rem;
+}
+
+.container_summary {
+  padding: 0.5rem;
+  width: 100%;
+}
+@media (min-width: 770px) {
+  .container_summary {
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+}
+@media (min-width: 770px) {
+  .container_summary .left_summary {
+    width: 100%;
+  }
+}
+.container_summary .tracking_code_cta {
+  background-color: white;
+  border-radius: 4px;
+  padding: 0.8rem 0.7rem;
+}
+@media (min-width: 770px) {
+  .container_summary .tracking_code_cta {
+    padding: 1rem 1.5rem;
+  }
+}
+@media (min-width: 770px) {
+  .container_summary .tracking_code_cta .tracking_code_card {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+}
+.container_summary .tracking_code_cta .tracking_code_card .tracking_code span {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+.container_summary .tracking_code_cta .tracking_code_card .tracking_code span i {
+  background-color: #F9FAFB;
+  width: 25px;
+  height: 20px;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #363636;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.container_summary .tracking_code_cta .tracking_code_card .tracking_code div {
+  margin-top: 1.5rem;
+}
+@media (min-width: 770px) {
+  .container_summary .tracking_code_cta .tracking_code_card .tracking_code div {
+    margin-top: 0.5rem;
+  }
+}
+.container_summary .tracking_code_cta .tracking_code_card .tracking_code div .status {
+  background-color: rgba(0, 128, 0, 0.219);
+  color: green;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-style: italic;
+}
+.container_summary .tracking_code_cta .tracking_code_card .track_ship_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: #0761e0;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 1.5rem;
+  color: white;
+}
+@media (min-width: 770px) {
+  .container_summary .tracking_code_cta .tracking_code_card .track_ship_btn {
+    margin-top: 0.8rem;
+  }
+}
+.container_summary .tracking_code_cta .arrays_cta {
+  /*   
+  display: grid;
+  grid-template-columns: repeat( auto-fll, minmax(5px, 1fr) ); */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.container_summary .tracking_code_cta .arrays_cta a {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: #f3f4f6;
+  color: black;
+  background-color: white;
+  border: 1px solid rgba(7, 97, 224, 0.5960784314);
+  color: #0761e0;
+  font-weight: 600;
+}
+.container_summary .address_record_sum {
+  background-color: #fff;
+  border-radius: 4px;
+  margin-top: 1rem;
+  position: relative;
+  padding: 1rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum {
+    padding: 1.5rem;
+  }
+}
+.container_summary .address_record_sum .address_record_grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.container_summary .address_record_sum .address_record_grid .address_grid_sender {
+  background-color: #F9FAFB;
+  border-radius: 4px;
+  padding: 0.8rem 0.5rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum .address_record_grid .address_grid_sender {
+    padding: 0.8rem 1rem;
+  }
+}
+.container_summary .address_record_sum .address_record_grid .address_grid_sender p {
+  font-weight: 600;
+}
+.container_summary .address_record_sum .address_record_grid .address_grid_sender span {
+  list-style: none;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 16px;
+}
+.container_summary .address_record_sum .address_record_grid .address_grid_receiver {
+  background-color: #F9FAFB;
+  border-radius: 4px;
+  padding: 0.8rem 0.5rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum .address_record_grid .address_grid_receiver {
+    padding: 0.8rem 1rem;
+  }
+}
+.container_summary .address_record_sum .address_record_grid .address_grid_receiver p {
+  font-weight: 600;
+}
+.container_summary .address_record_sum .address_record_grid .address_grid_receiver span {
+  list-style: none;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 16px;
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information {
+  background-color: #F9FAFB;
+  border-radius: 4px;
+  padding: 0.8rem 0.5rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum .address_record_grid .Courier_Information {
+    padding: 0.8rem 1rem;
+  }
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information p {
+  font-weight: bold;
+  font-size: 16px;
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information section {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information section span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information section span img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information section span a {
+  background-color: #0761e0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+}
+.container_summary .address_record_sum .address_record_grid .Courier_Information section span small {
+  font-size: 16px;
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information {
+  background-color: #F9FAFB;
+  border-radius: 4px;
+  padding: 0.8rem 0.5rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum .address_record_grid .addOn_Information {
+    padding: 0.8rem 1rem;
+  }
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information p {
+  font-weight: bold;
+  font-size: 16px;
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information section {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information section span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information section span img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information section span a {
+  background-color: #0761e0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+}
+.container_summary .address_record_sum .address_record_grid .addOn_Information section span small {
+  font-size: 16px;
+}
+.container_summary .address_record_sum .parcel_record {
+  background-color: #F9FAFB;
+  border-radius: 4px;
+  padding: 0.8rem 0.5rem;
+  margin-top: 1rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum .parcel_record {
+    padding: 0.8rem 1rem;
+  }
+}
+.container_summary .address_record_sum .parcel_record p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.container_summary .address_record_sum .parcel_record .parcel_record_info {
+  margin-top: 0.5rem;
+}
+.container_summary .address_record_sum .parcel_record .parcel_record_info .title {
+  color: #0761e0;
+}
+.container_summary .address_record_sum .Proof_record {
+  background-color: #F9FAFB;
+  border-radius: 4px;
+  padding: 0.8rem 0.5rem;
+  margin-top: 1rem;
+}
+@media (min-width: 770px) {
+  .container_summary .address_record_sum .Proof_record {
+    padding: 0.8rem 1rem;
+  }
+}
+.container_summary .address_record_sum .Proof_record p {
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+.container_summary .address_record_sum .Proof_record ul small {
+  display: flex;
+  justify-content: space-between;
+}
+.container_summary .address_record_sum .Proof_record ul small a {
+  color: #0761e0;
+  text-decoration: none;
+}
+.container_summary .right_summary {
+  width: 35%;
+}
+.container_summary .rate_sum {
+  background-color: white;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0.8rem 0.7rem;
+}
+@media (min-width: 770px) {
+  .container_summary .rate_sum {
+    padding: 1rem 1.5rem;
+  }
+}
+.container_summary .rate_sum .ctarate_sum {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container_summary .rate_sum .ctarate_sum p {
+  font-weight: bold;
+}
+.container_summary .rate_sum .ctarate_sum a {
+  font-size: 12px;
+  border: 1px solid #0761e0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #0761e0;
+}
+.container_summary .rate_sum .courier_sum {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.container_summary .rate_sum .courier_sum img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container_summary .dropOff_sum {
+  background-color: white;
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0.8rem 0.7rem;
+}
+@media (min-width: 770px) {
+  .container_summary .dropOff_sum {
+    padding: 1rem 1.5rem;
+  }
+}
+.container_summary .dropOff_sum p {
+  font-weight: bold;
+}
+.container_summary .dropOff_sum small {
+  padding-top: 1rem;
+  display: block;
+}
+.container_summary .payment_details_sum {
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0.8rem 0.7rem;
+}
+@media (min-width: 770px) {
+  .container_summary .payment_details_sum {
+    padding: 2rem 1.5rem;
+  }
+}
+.container_summary .payment_details_sum .conatiner_payment_details {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container_summary .payment_details_sum .conatiner_payment_details .badge {
+  font-size: 2.5rem;
+  background-color: rgba(255, 166, 0, 0.623);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_summary .payment_details_sum .conatiner_payment_details .amount {
+  background: rgba(255, 166, 0, 0.178);
+  color: rgb(248, 161, 0);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+.container_summary .payment_details_sum ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_summary .payment_details_sum ul li {
+  display: flex;
+  justify-content: space-between;
+}
+.container_summary .payment_details_sum ul li .title {
+  opacity: 0.4;
+  font-weight: bold;
+}
+.container_summary .payment_details_sum ul .hr_line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  opacity: 0.1;
 }/*# sourceMappingURL=main.css.map */
